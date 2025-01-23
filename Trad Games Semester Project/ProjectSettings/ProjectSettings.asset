@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: dcb58b5e047ab6548aa12e9994ab6410
+  productGUID: 988c76fef93754144b4e4b4a6fee85ec
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -687,10 +687,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 656a6c4d-e88b-4cc8-8aca-6c64425e254d
+  cloudProjectId: 7108ed4a-cbbc-41d2-aa09-3c61c9ab3943
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Trad Games Semester Project
+  projectName: Trad Games Semester Project 2025-01-22_18-15-14
   organizationId: instantmessager2
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

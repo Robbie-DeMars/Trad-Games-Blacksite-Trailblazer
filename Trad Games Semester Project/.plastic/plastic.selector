@@ -1,0 +1,4 @@
+repository "Trad Games Semester Project 2025-01-22_18-15-14/Trad Games Semester Project@2474365532267@cloud"
+  path "/"
+    br "/main"
+    co "/main"
