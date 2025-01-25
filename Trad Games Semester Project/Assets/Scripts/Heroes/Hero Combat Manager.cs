@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -9,20 +10,25 @@ using static UnityEngine.Rendering.DebugUI;
 public class HeroCombatManager : MonoBehaviour
 {
     [SerializeField] Hero hero;
+    [SerializeField] GameObject HPBar;
     CombatManager manager;
+    GameObject realBar = null;
+    TextMeshProUGUI textBox = null;
     public delegate void action();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        realBar = Instantiate(HPBar);
+        textBox = realBar.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         manager = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<CombatManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        realBar.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1, this.gameObject.transform.position.z);
+        textBox.text = hero.GetHP(this.gameObject) + "/" + hero.GetHPMax(this.gameObject);
     }
 
     public IEnumerator Attack1()

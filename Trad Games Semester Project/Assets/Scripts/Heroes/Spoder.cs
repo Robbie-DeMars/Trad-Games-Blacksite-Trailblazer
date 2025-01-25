@@ -8,8 +8,8 @@ using UnityEngine.InputSystem.Controls;
 public class Spoder : Hero
 {
     private string name = "Spoder";
-    private int HP = 10;
-    private int maxHP = 10;
+    public int HP = 5;
+    public int maxHP = 5;
     /*
      * Defines the behavior of this specific character's first attack.
      */

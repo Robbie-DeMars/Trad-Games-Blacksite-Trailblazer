@@ -353,7 +353,7 @@ public class CombatManager : MonoBehaviour
 
         //Move animation
         float elapsedTime = 0f;
-        float duration = 0.5f; //Move over 1 second
+        float duration = 0.3f; //Move over 1 second
         while (elapsedTime < duration) 
         {
             if (HPos[currentSelected] != null)
@@ -383,7 +383,7 @@ public class CombatManager : MonoBehaviour
 
         //Move animation
         float elapsedTime = 0f;
-        float duration = 0.5f; //Move over 1 second
+        float duration = 0.3f; //Move over 1 second
         while (elapsedTime < duration)
         {
             if (HPos[currentSelected] != null)

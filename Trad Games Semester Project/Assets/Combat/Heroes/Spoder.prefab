@@ -101,3 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero: {fileID: 11400000, guid: 87548c7634c29f64e9e6740bf99f3b30, type: 2}
+  HPBar: {fileID: 1428567328352810714, guid: e74844bad68ad8f41b9062b66f71e6c2, type: 3}
