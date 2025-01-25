@@ -121,6 +121,13 @@ public class CombatManager : MonoBehaviour
                 swapPartyMembers(currentSelected, altSelection);
             }
         }
+        bool pos1 = HPos[0] != null;
+        bool pos2 = HPos[1] != null;
+        bool pos3 = HPos[2] != null;
+        bool pos4 = HPos[3] != null;
+        bool pos5 = HPos[4] != null;
+        Debug.Log(pos1 + " " + pos2 + " " + pos3 + " " + pos4 + " " + pos5 + " ");
+        Debug.Log(currentSelected);
 
 
     }
@@ -239,10 +246,10 @@ public class CombatManager : MonoBehaviour
         do
         {
             currentSelected++;
-            if (currentSelected >= Heroes.Length)
+            if (currentSelected >= HPos.Length)
                 currentSelected = 0;
         }
-        while (Heroes[currentSelected] == null);
+        while (HPos[currentSelected] == null);
 
         updateSelection();
     }
