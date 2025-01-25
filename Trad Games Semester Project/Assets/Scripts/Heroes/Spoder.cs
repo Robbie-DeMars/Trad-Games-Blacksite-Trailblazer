@@ -10,36 +10,51 @@ public class Spoder : Hero
     private string name = "Spoder";
     private int HP = 10;
     private int maxHP = 10;
+    /*
+     * Defines the behavior of this specific character's first attack.
+     */
     public override IEnumerator Attack1(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
     {
         yield return new WaitForSeconds(0.5f);
         Debug.Log(name + " performed attack 1!");
     }
-    
+    /*
+     * Sends the positions this character's first attack targets, enemies are based on position, heroes are based on position + 100 
+     */
     public override List<int> DisplayAttack1Targets(GameObject thisHero, int position, GameObject[] enemies)
     {
         return new List<int>() {position};
     }
-
+    /*
+     * Defines the behavior of this specific character's second attack.
+     */
     public override IEnumerator Attack2(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
     {
         yield return new WaitForSeconds(0.5f);
         Debug.Log(name + " performed Attack 2!");
         
     }
+    /*
+     * Sends the positions this character's second attack targets, enemies are based on position, heroes are based on position + 100 
+     */
     public override List<int> DisplayAttack2Targets(GameObject thisHero, int position, GameObject[] enemies)
     {
         return new List<int>() { position, position + 1, position - 1};
     }
-
+    /*
+     * Defines the behavior of this specific character's third attack.
+     */
     public override IEnumerator Attack3(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
     {
         yield return new WaitForSeconds(0.5f);
         Debug.Log(name + " performed attack 3!");
     }
+    /*
+     * Sends the positions this character's third attack targets, enemies are based on position, heroes are based on position + 100 
+     */
     public override List<int> DisplayAttack3Targets(GameObject thisHero, int position, GameObject[] enemies)
     {
-        return new List<int>() { position };
+        return new List<int>() { position + 101, position + 99 };
     }
 
     public override void LoadCombatStatus(GameObject thisHero)

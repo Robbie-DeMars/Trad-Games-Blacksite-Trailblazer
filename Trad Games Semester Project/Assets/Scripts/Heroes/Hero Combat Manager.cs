@@ -54,16 +54,4 @@ public class HeroCombatManager : MonoBehaviour
     {
         return hero.DisplayAttack3Targets(this.gameObject, manager.getHeroPosition(this.gameObject), manager.getEnemies());
     }
-
-    public void setSelected(bool isSelected)
-    {
-        if (isSelected)
-        {
-            
-        }
-        else
-        {
-            
-        }
-    }
 }

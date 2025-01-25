@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using static UnityEngine.GraphicsBuffer;
 
 public class CombatManager : MonoBehaviour
 {
@@ -22,7 +24,11 @@ public class CombatManager : MonoBehaviour
     [SerializeField] GameObject[] inits;
 
     //Enemy targets
-    [SerializeField] GameObject[] reticles;
+    [SerializeField] GameObject[] EReticles;
+    [SerializeField] GameObject[] HReticles;
+
+    //Camera
+    [SerializeField] GameObject camera;
 
     public delegate IEnumerator action();
     private Queue<action> actions = new Queue<action>();
@@ -30,6 +36,8 @@ public class CombatManager : MonoBehaviour
     bool setupPostStart = true;
 
     int currentSelected = 0;
+    int altSelection = -1;
+
     string state = "Attacking"; //Other states are 'Moving' 'Executing Queue'
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,14 +95,34 @@ public class CombatManager : MonoBehaviour
             setupPostStart = false;
         }
 
-
-
-
-        if (setupPostStart)
+        if (state.Equals("Moving"))
         {
-            updateSelection();
-            setupPostStart = false;
+            //Find closest position to mouse pointer
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Mathf.Abs(camera.transform.position.z))); //This could break in the future if we move the camera
+            float closestVal = 1;
+            altSelection = -1;
+            for (int x = 0; x < HTrans.Length; x++)
+            {
+                float newVal = Vector3.Distance(mousePosition, HTrans[x].transform.position);
+                if (newVal < closestVal && newVal < 1) { 
+                    altSelection = x;
+                    closestVal = newVal;
+                }
+            }
+
+            //Activate that initiative marker to signify
+            if (altSelection != -1)
+                inits[altSelection].SetActive(true);
+            else
+                updateSelection();
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && altSelection != -1)
+            {
+                swapPartyMembers(currentSelected, altSelection);
+            }
         }
+
+
     }
 
     IEnumerator ExecuteActionCoroutine(action actionToExecute)
@@ -123,7 +151,11 @@ public class CombatManager : MonoBehaviour
         {
             if (targets[i] >= 0 && targets[i] < EPos.Length)
             {
-                reticles[targets[i]].SetActive(true);
+                EReticles[targets[i]].SetActive(true);
+            }
+            else if (targets[i] - 100 >= 0 && targets[i] - 100 < EPos.Length)
+            {
+                HReticles[targets[i] - 100].SetActive(true); 
             }
         }
     }
@@ -147,7 +179,11 @@ public class CombatManager : MonoBehaviour
         {
             if (targets[i] >= 0 && targets[i] < EPos.Length)
             {
-                reticles[targets[i]].SetActive(true);
+                EReticles[targets[i]].SetActive(true);
+            }
+            else if (targets[i] - 100 >= 0 && targets[i] - 100 < EPos.Length)
+            {
+                HReticles[targets[i] - 100].SetActive(true);
             }
         }
     }
@@ -171,7 +207,11 @@ public class CombatManager : MonoBehaviour
         {
             if (targets[i] >= 0 && targets[i] < EPos.Length)
             {
-                reticles[targets[i]].SetActive(true);
+                EReticles[targets[i]].SetActive(true);
+            }
+            else if (targets[i] - 100 >= 0 && targets[i] - 100 < EPos.Length)
+            {
+                HReticles[targets[i] - 100].SetActive(true);
             }
         }
     }
@@ -189,6 +229,7 @@ public class CombatManager : MonoBehaviour
         {
             state = "Attacking";
         }
+        Debug.Log(state);
     }
 
     public IEnumerator passInitiative()
@@ -204,7 +245,6 @@ public class CombatManager : MonoBehaviour
         while (Heroes[currentSelected] == null);
 
         updateSelection();
-        Debug.Log("Initiative Passed");
     }
 
     /**
@@ -274,9 +314,91 @@ public class CombatManager : MonoBehaviour
 
     public void clearReticles()
     {
-        for (int x = 0; x < reticles.Length; x++)
+        for (int x = 0; x < EReticles.Length; x++)
         {
-            reticles[x].SetActive(false);
+            EReticles[x].SetActive(false);
+        }
+
+        for (int x = 0; x < HReticles.Length; x++)
+        {
+            HReticles[x].SetActive(false);
+        }
+    }
+
+    public void swapPartyMembers(int startPos, int endPos)
+    {
+        while (startPos != endPos)
+        {
+            if (startPos < endPos)
+            {
+                startPos++;
+                actions.Enqueue(moveSelectedRight);
+            }
+            else
+            {
+                startPos--;
+                actions.Enqueue(moveSelectedLeft);
+            }
+        }
+    }
+    //Make null check later
+    public IEnumerator moveSelectedRight()
+    {
+        //Swap position in array
+        GameObject temp = HPos[currentSelected];
+        HPos[currentSelected] = HPos[currentSelected + 1];
+        HPos[currentSelected + 1] = temp;
+        currentSelected++;
+        updateSelection();
+
+        //Move animation
+        float elapsedTime = 0f;
+        float duration = 0.5f; //Move over 1 second
+        while (elapsedTime < duration) 
+        {
+            if (HPos[currentSelected] != null)
+            {
+                HPos[currentSelected].transform.position = Vector3.Lerp(HPos[currentSelected].transform.position, HTrans[currentSelected].transform.position, elapsedTime / duration);
+            }
+
+            if (currentSelected - 1 < HPos.Length && HPos[currentSelected - 1] != null)
+            {
+                HPos[currentSelected - 1].transform.position = Vector3.Lerp(HPos[currentSelected - 1].transform.position, HTrans[currentSelected - 1].transform.position, elapsedTime / duration);
+            }
+
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public IEnumerator moveSelectedLeft()
+    {
+        //Swap position in array
+        GameObject temp = HPos[currentSelected];
+        HPos[currentSelected] = HPos[currentSelected - 1];
+        HPos[currentSelected - 1] = temp;
+        currentSelected--;
+        updateSelection();
+
+        //Move animation
+        float elapsedTime = 0f;
+        float duration = 0.5f; //Move over 1 second
+        while (elapsedTime < duration)
+        {
+            if (HPos[currentSelected] != null)
+            {
+                HPos[currentSelected].transform.position = Vector3.Lerp(HPos[currentSelected].transform.position, HTrans[currentSelected].transform.position, elapsedTime / duration);
+            }
+
+            if (currentSelected + 1 >= 0 && HPos[currentSelected + 1] != null)
+            {
+                HPos[currentSelected + 1].transform.position = Vector3.Lerp(HPos[currentSelected + 1].transform.position, HTrans[currentSelected + 1].transform.position, elapsedTime / duration);
+            }
+
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
     }
 }
