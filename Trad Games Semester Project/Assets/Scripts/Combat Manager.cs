@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -31,7 +32,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] GameObject camera;
 
     public delegate IEnumerator action();
-    private Queue<action> actions = new Queue<action>();
+    public Queue<action> actions = new Queue<action>();
 
     bool setupPostStart = true;
 
@@ -39,6 +40,11 @@ public class CombatManager : MonoBehaviour
     int altSelection = -1;
 
     string state = "Attacking"; //Other states are 'Moving' 'Executing Queue'
+
+    //Psionic Heat
+    int psionicHeat = 0;
+    [SerializeField] TextMeshProUGUI heatText;
+    bool heatIncrementing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -121,14 +127,6 @@ public class CombatManager : MonoBehaviour
                 swapPartyMembers(currentSelected, altSelection);
             }
         }
-        bool pos1 = HPos[0] != null;
-        bool pos2 = HPos[1] != null;
-        bool pos3 = HPos[2] != null;
-        bool pos4 = HPos[3] != null;
-        bool pos5 = HPos[4] != null;
-        Debug.Log(pos1 + " " + pos2 + " " + pos3 + " " + pos4 + " " + pos5 + " ");
-        Debug.Log(currentSelected);
-
 
     }
 
@@ -237,6 +235,51 @@ public class CombatManager : MonoBehaviour
             state = "Attacking";
         }
         Debug.Log(state);
+    }
+
+    public void passToEnemies()
+    {
+        for (int x = 0; x < EPos.Length; x++)
+        {
+            if (EPos[x] != null)
+            {
+                int rand = Random.Range(1, 4);
+                if (rand == 1)
+                    actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack1);
+                else if (rand == 2)
+                    actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack2);
+                else if (rand == 3)
+                    actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack3);
+            }
+        }
+        incrementHeat(-psionicHeat / 2);
+    }
+
+    public void incrementHeat(int ammount)
+    {
+        StartCoroutine(incrementHeatHelper(ammount));
+    } 
+
+    private IEnumerator incrementHeatHelper(int ammount)
+    {
+        while (heatIncrementing) { yield return null; };
+        heatIncrementing = true;
+        Debug.Log("we doin it");
+        int targetHeat = psionicHeat + ammount;
+        int startHeat = psionicHeat;
+        float elapsedTime = 0;
+        float time = 0.01f * Mathf.Abs(targetHeat - startHeat);
+        while (elapsedTime <= time)
+        {
+            Debug.Log(elapsedTime);
+            psionicHeat = (int)Mathf.Lerp(startHeat, targetHeat, elapsedTime / time);
+            heatText.text = "Psionic Heat: " + psionicHeat + "%";
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        psionicHeat = targetHeat;
+        heatText.text = "Psionic Heat: " + psionicHeat + "%";
+        heatIncrementing = false;
     }
 
     public IEnumerator passInitiative()

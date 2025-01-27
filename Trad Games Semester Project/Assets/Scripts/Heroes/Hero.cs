@@ -16,7 +16,6 @@ public abstract class Hero : ScriptableObject
     public abstract string GetName(GameObject thisHero);
     public abstract int GetHP(GameObject thisHero);
     public abstract int GetHPMax(GameObject thisHero);
-    public abstract void incrementHP(int ammount);
-    public abstract void setHP(int ammount);
-    public abstract void setHPMax(int ammount);
+    public abstract void SetHP(int ammount);
+    public abstract void SetHPMax(int ammount);
 }

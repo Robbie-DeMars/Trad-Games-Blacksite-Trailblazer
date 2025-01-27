@@ -31,8 +31,17 @@ public class Spoder : Hero
     public override IEnumerator Attack2(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
     {
         yield return new WaitForSeconds(0.5f);
+
+        manager.incrementHeat(50);
+
+        if ((position >= 0 && position < enemies.Length) && enemies[position] != null)
+            enemies[position].GetComponent<EnemyCombatManager>().incrementHP(-2);
+        if ((position + 1 >= 0 && position + 1 < enemies.Length) && enemies[position + 1] != null)
+            enemies[position + 1].GetComponent<EnemyCombatManager>().incrementHP(-2);
+        if ((position - 1 >= 0 && position - 1 < enemies.Length) && enemies[position - 1] != null)
+            enemies[position - 1].GetComponent<EnemyCombatManager>().incrementHP(-2);
+
         Debug.Log(name + " performed Attack 2!");
-        
     }
     /*
      * Sends the positions this character's second attack targets, enemies are based on position, heroes are based on position + 100 
@@ -77,16 +86,12 @@ public class Spoder : Hero
         return maxHP;
     }
 
-    public override void incrementHP(int ammount)
-    {
-        HP += ammount;
-    }
-    public override void setHP(int ammount)
+    public override void SetHP(int ammount)
     {
         HP = ammount;
     }
 
-    public override void setHPMax(int ammount)
+    public override void SetHPMax(int ammount)
     {
         maxHP = ammount;
     }
