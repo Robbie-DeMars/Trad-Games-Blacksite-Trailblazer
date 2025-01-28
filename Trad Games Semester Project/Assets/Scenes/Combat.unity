@@ -2724,10 +2724,10 @@ MonoBehaviour:
   - {fileID: 3200116622980199252, guid: 3bd178be2fa3f5a4d956e29979d295e8, type: 3}
   Enemies:
   - {fileID: 1862695303438798853, guid: 5925625db9f4fe64bbba49368eea18c7, type: 3}
-  - {fileID: 0}
   - {fileID: 1862695303438798853, guid: 5925625db9f4fe64bbba49368eea18c7, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1862695303438798853, guid: 5925625db9f4fe64bbba49368eea18c7, type: 3}
+  - {fileID: 1862695303438798853, guid: 5925625db9f4fe64bbba49368eea18c7, type: 3}
+  - {fileID: 1862695303438798853, guid: 5925625db9f4fe64bbba49368eea18c7, type: 3}
   HTrans:
   - {fileID: 1113849127}
   - {fileID: 81599493}

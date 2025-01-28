@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyCombatManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemyCombatManager : MonoBehaviour
     public delegate void action();
     int hp;
     int maxHP;
+    int nextAttack = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +39,7 @@ public class EnemyCombatManager : MonoBehaviour
 
     public IEnumerator Attack1()
     {
-        yield return enemy.Attack1(this.gameObject, manager, manager.getEnemyPosition(this.gameObject), manager.getHeroes());
+        yield return enemy.Attack1(this.gameObject, manager, manager.getEnemyPosition(this.gameObject), manager.getHeroes(), manager.getEnemies());
     }
 
     public List<int> DisplayAttack1Targets()
@@ -47,7 +49,7 @@ public class EnemyCombatManager : MonoBehaviour
 
     public IEnumerator Attack2()
     {
-        yield return enemy.Attack2(this.gameObject, manager, manager.getEnemyPosition(this.gameObject), manager.getHeroes());
+        yield return enemy.Attack2(this.gameObject, manager, manager.getEnemyPosition(this.gameObject), manager.getHeroes(), manager.getEnemies());
     }
 
     public List<int> DisplayAttack2Targets()
@@ -57,7 +59,7 @@ public class EnemyCombatManager : MonoBehaviour
 
     public IEnumerator Attack3()
     {
-        yield return enemy.Attack3(this.gameObject, manager, manager.getEnemyPosition(this.gameObject), manager.getHeroes());
+        yield return enemy.Attack3(this.gameObject, manager, manager.getEnemyPosition(this.gameObject), manager.getHeroes(), manager.getEnemies());
     }
 
     public List<int> DisplayAttack3Targets()
@@ -83,6 +85,28 @@ public class EnemyCombatManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f); ;
         realBar.SetActive(false);
         this.gameObject.SetActive(false);
+        manager.removeFromCombat(this.gameObject);
+    }
+
+    public int GetNextAttack()
+    {
+        return nextAttack;
+    }
+
+    public void SetNextAttack(int attack)
+    {
+        nextAttack = attack;
+    }
+
+    public void OnMouseEnter()
+    {
+        int pos = manager.getEnemyPosition(this.gameObject);
+        manager.displayEnemyReticles(pos, nextAttack);
+    }
+
+    public void OnMouseExit()
+    {
+        manager.clearReticles();
     }
 
 

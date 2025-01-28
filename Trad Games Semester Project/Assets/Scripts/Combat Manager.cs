@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
 
 public class CombatManager : MonoBehaviour
@@ -77,6 +78,7 @@ public class CombatManager : MonoBehaviour
             currentSelected++;
 
         clearReticles();
+        randomizeEnemyAttacks();
     }
 
     // Update is called once per frame
@@ -127,7 +129,6 @@ public class CombatManager : MonoBehaviour
                 swapPartyMembers(currentSelected, altSelection);
             }
         }
-
     }
 
     IEnumerator ExecuteActionCoroutine(action actionToExecute)
@@ -237,22 +238,40 @@ public class CombatManager : MonoBehaviour
         Debug.Log(state);
     }
 
-    public void passToEnemies()
+
+    public void randomizeEnemyAttacks()
     {
         for (int x = 0; x < EPos.Length; x++)
+            randomizeEnemyAttack(x);
+    }
+
+    public void randomizeEnemyAttack(int pos)
+    {
+        if (EPos[pos] != null)
         {
-            if (EPos[x] != null)
-            {
-                int rand = Random.Range(1, 4);
-                if (rand == 1)
-                    actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack1);
-                else if (rand == 2)
-                    actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack2);
-                else if (rand == 3)
-                    actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack3);
-            }
+            int rand = Random.Range(1, 4);
+            EPos[pos].GetComponent<EnemyCombatManager>().SetNextAttack(rand);
         }
-        incrementHeat(-psionicHeat / 2);
+    }
+
+    public void passToEnemies()
+    {
+        if (!state.Equals("Executing Queue")) {
+            for (int x = 0; x < EPos.Length; x++)
+            {
+                if (EPos[x] != null)
+                {
+                    if (EPos[x].GetComponent<EnemyCombatManager>().GetNextAttack() == 1)
+                        actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack1);
+                    else if (EPos[x].GetComponent<EnemyCombatManager>().GetNextAttack() == 2)
+                        actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack2);
+                    else if (EPos[x].GetComponent<EnemyCombatManager>().GetNextAttack() == 3)
+                        actions.Enqueue(EPos[x].GetComponent<EnemyCombatManager>().Attack3);
+                }
+            }
+            randomizeEnemyAttacks();
+            incrementHeat(-psionicHeat / 2);
+        }
     }
 
     public void incrementHeat(int ammount)
@@ -264,7 +283,6 @@ public class CombatManager : MonoBehaviour
     {
         while (heatIncrementing) { yield return null; };
         heatIncrementing = true;
-        Debug.Log("we doin it");
         int targetHeat = psionicHeat + ammount;
         int startHeat = psionicHeat;
         float elapsedTime = 0;
@@ -391,7 +409,7 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
-    //Make null check later
+    
     public IEnumerator moveSelectedRight()
     {
         //Swap position in array
@@ -451,4 +469,47 @@ public class CombatManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void displayEnemyReticles(int position, int attack)
+    {
+        List<int> targets = new List<int>();
+        if (attack == 1)
+            targets = EPos[position].GetComponent<EnemyCombatManager>().DisplayAttack1Targets();
+        else if (attack == 2)
+            targets = EPos[position].GetComponent<EnemyCombatManager>().DisplayAttack2Targets();
+        else if (attack == 3)
+            targets = EPos[position].GetComponent<EnemyCombatManager>().DisplayAttack3Targets();
+
+        for (int i = 0; i < targets.Count; i++)
+        {
+            if (targets[i] >= 0 && targets[i] < EPos.Length)
+            {
+                EReticles[targets[i]].SetActive(true);
+            }
+            else if (targets[i] - 100 >= 0 && targets[i] - 100 < EPos.Length)
+            {
+                HReticles[targets[i] - 100].SetActive(true);
+            }
+        }
+    }
+
+
+    public void removeFromCombat(GameObject toBeRemoved)
+    {
+        for (int x = 0; x < EPos.Length; x++)
+        {
+            if (EPos[x] == toBeRemoved)
+                EPos[x] = null;
+        }
+        for (int x = 0; x < HPos.Length; x++)
+        {
+            if (HPos[x] == toBeRemoved)
+                HPos[x] = null;
+        }
+        if (HPos[currentSelected] == null)
+            actions.Enqueue(passInitiative);
+    }
+
+
+
 }

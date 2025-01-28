@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7155b71050b275418a53e1302136f65, type: 3}
   m_Name: Spoder Actions
   m_EditorClassIdentifier: 
+  HP: 1
+  maxHP: 1

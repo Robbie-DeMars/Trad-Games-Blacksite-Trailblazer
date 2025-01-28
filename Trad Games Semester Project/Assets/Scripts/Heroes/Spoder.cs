@@ -13,9 +13,15 @@ public class Spoder : Hero
     /*
      * Defines the behavior of this specific character's first attack.
      */
-    public override IEnumerator Attack1(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
+    public override IEnumerator Attack1(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies, GameObject[] allies)
     {
         yield return new WaitForSeconds(0.5f);
+
+        manager.incrementHeat(15);
+
+        if ((position >= 0 && position < enemies.Length) && enemies[position] != null)
+            enemies[position].GetComponent<EnemyCombatManager>().incrementHP(-1);
+
         Debug.Log(name + " performed attack 1!");
     }
     /*
@@ -28,7 +34,7 @@ public class Spoder : Hero
     /*
      * Defines the behavior of this specific character's second attack.
      */
-    public override IEnumerator Attack2(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
+    public override IEnumerator Attack2(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies, GameObject[] allies)
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -53,9 +59,17 @@ public class Spoder : Hero
     /*
      * Defines the behavior of this specific character's third attack.
      */
-    public override IEnumerator Attack3(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies)
+    public override IEnumerator Attack3(GameObject thisHero, CombatManager manager, int position, GameObject[] enemies, GameObject[] allies)
     {
         yield return new WaitForSeconds(0.5f);
+
+        manager.incrementHeat(60);
+
+        if ((position + 1 >= 0 && position + 1 < allies.Length) && allies[position + 1] != null)
+            allies[position + 1].GetComponent<HeroCombatManager>().incrementHP(2);
+        if ((position - 1 >= 0 && position - 1 < allies.Length) && allies[position - 1] != null)
+            allies[position - 1].GetComponent<HeroCombatManager>().incrementHP(2);
+
         Debug.Log(name + " performed attack 3!");
     }
     /*

@@ -33,12 +33,12 @@ public class HeroCombatManager : MonoBehaviour
     void Update()
     {
         realBar.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1, this.gameObject.transform.position.z);
-        textBox.text = hero.GetHP(this.gameObject) + "/" + hero.GetHPMax(this.gameObject);
+        textBox.text = hp + "/" + maxHP;
     }
 
     public IEnumerator Attack1()
     {
-        yield return hero.Attack1(this.gameObject, manager, manager.getHeroPosition(this.gameObject), manager.getEnemies());
+        yield return hero.Attack1(this.gameObject, manager, manager.getHeroPosition(this.gameObject), manager.getEnemies(), manager.getHeroes());
     }
 
     public List<int> DisplayAttack1Targets()
@@ -48,7 +48,7 @@ public class HeroCombatManager : MonoBehaviour
 
     public IEnumerator Attack2()
     {
-        yield return hero.Attack2(this.gameObject, manager, manager.getHeroPosition(this.gameObject), manager.getEnemies());
+        yield return hero.Attack2(this.gameObject, manager, manager.getHeroPosition(this.gameObject), manager.getEnemies(), manager.getHeroes());
     }
 
     public List<int> DisplayAttack2Targets()
@@ -58,7 +58,7 @@ public class HeroCombatManager : MonoBehaviour
 
     public IEnumerator Attack3()
     {
-        yield return hero.Attack3(this.gameObject, manager, manager.getHeroPosition(this.gameObject), manager.getEnemies());
+        yield return hero.Attack3(this.gameObject, manager, manager.getHeroPosition(this.gameObject), manager.getEnemies(), manager.getHeroes());
     }
 
     public List<int> DisplayAttack3Targets()
@@ -84,5 +84,6 @@ public class HeroCombatManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f); ;
         realBar.SetActive(false);
         this.gameObject.SetActive(false);
+        manager.removeFromCombat(this.gameObject);
     }
 }
