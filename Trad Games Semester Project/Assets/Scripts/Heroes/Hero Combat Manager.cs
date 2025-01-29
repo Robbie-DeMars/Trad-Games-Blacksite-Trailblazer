@@ -8,7 +8,7 @@ using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.Rendering.DebugUI;
 
-public class HeroCombatManager : MonoBehaviour
+public class HeroCombatManager : MonoBehaviour, CharacterCombatManager
 {
     [SerializeField] Hero hero;
     [SerializeField] GameObject HPBar;
@@ -85,5 +85,15 @@ public class HeroCombatManager : MonoBehaviour
         realBar.SetActive(false);
         this.gameObject.SetActive(false);
         manager.removeFromCombat(this.gameObject);
+    }
+
+    public IEnumerator moveLeft()
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerator moveRight()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -12,7 +12,6 @@ public abstract class Enemy : ScriptableObject
     public abstract List<int> DisplayAttack1Targets(GameObject thisHero, int position, GameObject[] enemies);
     public abstract List<int> DisplayAttack2Targets(GameObject thisHero, int position, GameObject[] enemies);
     public abstract List<int> DisplayAttack3Targets(GameObject thisHero, int position, GameObject[] enemies);
-    public abstract void LoadCombatStatus(GameObject thisHero);
     public abstract string GetName(GameObject thisHero);
     public abstract int GetHP(GameObject thisHero);
     public abstract int GetHPMax(GameObject thisHero);

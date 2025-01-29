@@ -20,7 +20,7 @@ public class Spoder : Hero
         manager.incrementHeat(15);
 
         if ((position >= 0 && position < enemies.Length) && enemies[position] != null)
-            enemies[position].GetComponent<EnemyCombatManager>().incrementHP(-1);
+            enemies[position].GetComponent<CharacterCombatManager>().incrementHP(-1);
 
         Debug.Log(name + " performed attack 1!");
     }
@@ -41,11 +41,11 @@ public class Spoder : Hero
         manager.incrementHeat(50);
 
         if ((position >= 0 && position < enemies.Length) && enemies[position] != null)
-            enemies[position].GetComponent<EnemyCombatManager>().incrementHP(-2);
+            enemies[position].GetComponent<CharacterCombatManager>().incrementHP(-2);
         if ((position + 1 >= 0 && position + 1 < enemies.Length) && enemies[position + 1] != null)
-            enemies[position + 1].GetComponent<EnemyCombatManager>().incrementHP(-2);
+            enemies[position + 1].GetComponent<CharacterCombatManager>().incrementHP(-2);
         if ((position - 1 >= 0 && position - 1 < enemies.Length) && enemies[position - 1] != null)
-            enemies[position - 1].GetComponent<EnemyCombatManager>().incrementHP(-2);
+            enemies[position - 1].GetComponent<CharacterCombatManager>().incrementHP(-2);
 
         Debug.Log(name + " performed Attack 2!");
     }
@@ -66,9 +66,9 @@ public class Spoder : Hero
         manager.incrementHeat(60);
 
         if ((position + 1 >= 0 && position + 1 < allies.Length) && allies[position + 1] != null)
-            allies[position + 1].GetComponent<HeroCombatManager>().incrementHP(2);
+            allies[position + 1].GetComponent<CharacterCombatManager>().incrementHP(2);
         if ((position - 1 >= 0 && position - 1 < allies.Length) && allies[position - 1] != null)
-            allies[position - 1].GetComponent<HeroCombatManager>().incrementHP(2);
+            allies[position - 1].GetComponent<CharacterCombatManager>().incrementHP(2);
 
         Debug.Log(name + " performed attack 3!");
     }
@@ -83,7 +83,6 @@ public class Spoder : Hero
     public override void LoadCombatStatus(GameObject thisHero)
     {
         Debug.Log("Loading status of " + name + ".");
-        HP = 10;
     }
 
     public override string GetName(GameObject thisHero)

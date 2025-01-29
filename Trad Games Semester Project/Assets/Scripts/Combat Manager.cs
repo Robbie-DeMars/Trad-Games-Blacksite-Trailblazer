@@ -88,7 +88,6 @@ public class CombatManager : MonoBehaviour
         {
             if (!state.Equals("Executing Queue"))
             {
-                toggleActionFlag();
                 action a = actions.Dequeue();
 
                 // Start executing the action as a coroutine
@@ -134,6 +133,7 @@ public class CombatManager : MonoBehaviour
     IEnumerator ExecuteActionCoroutine(action actionToExecute)
     {
         // Invoke the action and wait for it to complete
+        toggleActionFlag();
         yield return StartCoroutine(actionToExecute());
         toggleActionFlag();
     }
@@ -409,6 +409,10 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+
+
+
+
     
     public IEnumerator moveSelectedRight()
     {
@@ -469,7 +473,7 @@ public class CombatManager : MonoBehaviour
             yield return null;
         }
     }
-
+    
     public void displayEnemyReticles(int position, int attack)
     {
         List<int> targets = new List<int>();

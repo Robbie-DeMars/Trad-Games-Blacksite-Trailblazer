@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EnemyCombatManager : MonoBehaviour
+public class EnemyCombatManager : MonoBehaviour, CharacterCombatManager
 {
     [SerializeField] Enemy enemy;
     [SerializeField] GameObject HPBar;
@@ -109,5 +109,13 @@ public class EnemyCombatManager : MonoBehaviour
         manager.clearReticles();
     }
 
+    public IEnumerator moveLeft()
+    {
+        throw new NotImplementedException();
+    }
 
+    public IEnumerator moveRight()
+    {
+        throw new NotImplementedException();
+    }
 }
