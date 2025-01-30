@@ -74,8 +74,13 @@ public class CombatManager : MonoBehaviour
         }
 
         //Select first party member
-        while (Heroes[currentSelected] == null)
+        int heroesChecked = 0;
+        while (Heroes[currentSelected] == null && heroesChecked < HPos.Length)
+        {
             currentSelected++;
+            heroesChecked++;
+        }
+        
 
         clearReticles();
         randomizeEnemyAttacks();
@@ -304,13 +309,16 @@ public class CombatManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         //Select first party member
+        int stopLoop = 0;
         do
         {
+            stopLoop++;
             currentSelected++;
             if (currentSelected >= HPos.Length)
                 currentSelected = 0;
+            Debug.Log("Uh oh 2");
         }
-        while (HPos[currentSelected] == null);
+        while (HPos[currentSelected] == null && stopLoop <= EPos.Length);
 
         updateSelection();
     }
