@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/Trad Games Semester Project/[Ll]ibrary/
-/Trad Games Semester Project/[Tt]emp/
-/Trad Games Semester Project/[Oo]bj/
-/Trad Games Semester Project/[Bb]uild/
-/Trad Games Semester Project/[Bb]uilds/
-/Trad Games Semester Project/[Ll]ogs/
-/Trad Games Semester Project/[Uu]ser[Ss]ettings/
+/Blacksite Trailblazer/[Ll]ibrary/
+/Blacksite Trailblazer/[Tt]emp/
+/Blacksite Trailblazer/[Oo]bj/
+/Blacksite Trailblazer/[Bb]uild/
+/Blacksite Trailblazer/[Bb]uilds/
+/Blacksite Trailblazer/[Ll]ogs/
+/Blacksite Trailblazer/[Uu]ser[Ss]ettings/
  
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
