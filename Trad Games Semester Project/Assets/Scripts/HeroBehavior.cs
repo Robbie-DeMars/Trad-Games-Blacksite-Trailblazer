@@ -17,9 +17,9 @@ public class HeroBehavior : MonoBehaviour
         
     }
 
-    public void Attack1()
+    public GameObject[] Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-
+        return Hero.Attack1(heroes, enemies, currentActor);
     }
 
     public IEnumerator PlayAttack1Anim()

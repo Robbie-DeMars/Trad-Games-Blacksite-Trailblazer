@@ -4,9 +4,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Goober", menuName = "Scriptable Objects/Goober")]
 public class Goober : Hero 
 {
-    public override void Attack1()
+    public override GameObject[] Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        throw new System.NotImplementedException();
+        GameObject temp = heroes[currentActor];
+        heroes[currentActor] = heroes[4];
+        heroes[4] = temp;
+        return heroes;
     }
 
     public override IEnumerator PlayAttack1Anim()
@@ -21,7 +24,17 @@ public class Goober : Hero
         throw new System.NotImplementedException();
     }
 
+    public override IEnumerator PlayAttack2Anim()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Attack3()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator PlayAttack3Anim()
     {
         throw new System.NotImplementedException();
     }
