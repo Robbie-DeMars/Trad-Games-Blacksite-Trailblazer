@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class View : MonoBehaviour
+public class View : StateMachine
 {
     [SerializeField] Transform[] heroBattlePositions;
     [SerializeField] Transform[] enemyBattlePositions;

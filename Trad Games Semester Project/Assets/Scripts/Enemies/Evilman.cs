@@ -30,7 +30,7 @@ public class Evilman : Enemy
     {
         Debug.Log("Enemy Executing attack 1");
         yield return new WaitForSeconds(1f);
-        Debug.Log("Animation Over");
+        Debug.Log("Its so joever");
     }
 
     /// <summary>

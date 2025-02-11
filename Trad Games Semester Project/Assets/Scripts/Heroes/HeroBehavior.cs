@@ -5,6 +5,7 @@ public class HeroBehavior : MonoBehaviour
 {
 
     [SerializeField] Hero Hero;
+    public bool takingTurn = false;
     /// <summary>
     /// Executes the model's side of Attack 1's behavior
     /// </summary>

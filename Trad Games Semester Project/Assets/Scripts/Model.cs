@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Model : MonoBehaviour
+public class Model : StateMachine
 {
-    enum State {ATTACK, MOVE, PAUSED}
-    private State currentState;
-
     [SerializeField] View view;
 
     [SerializeField] PartyState party;
@@ -23,7 +22,6 @@ public class Model : MonoBehaviour
 
     delegate IEnumerator Queueable(IEnumerator e);
 
-    int currentActor = 0;
     bool firstFrame = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,9 +46,16 @@ public class Model : MonoBehaviour
         }
 
         //Highlight first party member
-        view.highlightPartyPosition(currentActor);
-        if (heroes[currentActor] == null)
-            passInitiative();
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null)
+            {
+                heroes[x].GetComponent<HeroBehavior>().takingTurn = true;
+                break;
+            }
+
+        }
+        
     }
 
     private void Update()
@@ -59,9 +64,7 @@ public class Model : MonoBehaviour
         {
             firstFrame = false;
             //Highlight first party member
-            view.highlightPartyPosition(currentActor);
-            if (heroes[currentActor] == null)
-                passInitiative();
+            view.highlightPartyPosition(getCurrentActor());
         }
     }
 
@@ -86,16 +89,10 @@ public class Model : MonoBehaviour
             return;
 
         //Execute attack in model
-        GameObject savedHero = heroes[currentActor];
-        heroes[currentActor].GetComponent<HeroBehavior>().Attack1(heroes, enemies, currentActor);
-        for (int x = 0; x < heroes.Length; x++)
-        {
-            if (heroes[x] != null && heroes[x].Equals(savedHero))
-                currentActor = x;
-        }
+        heroes[getCurrentActor()].GetComponent<HeroBehavior>().Attack1(heroes, enemies, getCurrentActor());
 
         //Execute Animation in view
-        StartCoroutine(pauseWhileExecuting(view.playAttack1Anim(heroes[currentActor].GetComponent<HeroBehavior>(), heroes, enemies, currentActor)));
+        StartCoroutine(pauseWhileExecuting(view.playAttack1Anim(heroes[getCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, getCurrentActor())));
 
         //Go to next avalible character
         passInitiative();
@@ -110,16 +107,10 @@ public class Model : MonoBehaviour
             return;
 
         //Execute attack in model
-        GameObject savedHero = heroes[currentActor];
-        heroes[currentActor].GetComponent<HeroBehavior>().Attack2(heroes, enemies, currentActor);
-        for (int x = 0; x < heroes.Length; x++)
-        {
-            if (heroes[x] != null && heroes[x].Equals(savedHero))
-                currentActor = x;
-        }
+        heroes[getCurrentActor()].GetComponent<HeroBehavior>().Attack2(heroes, enemies, getCurrentActor());
 
         //Execute Animation in view
-        StartCoroutine(pauseWhileExecuting(view.playAttack2Anim(heroes[currentActor].GetComponent<HeroBehavior>(), heroes, enemies, currentActor)));
+        StartCoroutine(pauseWhileExecuting(view.playAttack2Anim(heroes[getCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, getCurrentActor())));
 
         //Go to next avalible character
         passInitiative();
@@ -134,16 +125,10 @@ public class Model : MonoBehaviour
             return;
 
         //Execute attack in model
-        GameObject savedHero = heroes[currentActor];
-        heroes[currentActor].GetComponent<HeroBehavior>().Attack3(heroes, enemies, currentActor);
-        for (int x = 0; x < heroes.Length; x++)
-        {
-            if (heroes[x] != null && heroes[x].Equals(savedHero))
-                currentActor = x;
-        }
+        heroes[getCurrentActor()].GetComponent<HeroBehavior>().Attack3(heroes, enemies, getCurrentActor());
 
         //Execute Animation in view
-        StartCoroutine(pauseWhileExecuting(view.playAttack3Anim(heroes[currentActor].GetComponent<HeroBehavior>(), heroes, enemies, currentActor)));
+        StartCoroutine(pauseWhileExecuting(view.playAttack3Anim(heroes[getCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, getCurrentActor())));
 
         //Go to next avalible character
         passInitiative();
@@ -159,6 +144,35 @@ public class Model : MonoBehaviour
         else if (currentState != State.PAUSED)
             currentState = State.MOVE;
     }
+
+    /// <summary>
+    /// Moves hero at position from to position to, then updates the UI
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    public void MoveHeroFromTo(int from, int to)
+    {
+        Debug.Log("Moving from " + from + " to " + to);
+        if (from < to)
+        {
+            GameObject temp = heroes[from];
+            heroes[from] = heroes[from + 1];
+            heroes[from + 1] = temp;
+            MoveHeroFromTo(from + 1, to);
+        }
+        else if (from > to)
+        {
+            GameObject temp = heroes[from];
+            heroes[from] = heroes[from - 1];
+            heroes[from - 1] = temp;
+            MoveHeroFromTo(from - 1, to);
+        }
+        else
+        {
+            StartCoroutine(pauseWhileExecuting(view.updateBattlePositions(heroes, enemies)));
+        }
+    }
+
 
     /// <summary>
     /// Passes the turn to the enemies.
@@ -186,15 +200,8 @@ public class Model : MonoBehaviour
                 while (currentEnemy.HasMoreAttacks())
                 {
                     Enemy.Attack currentAttack = currentEnemy.GetNextAttack();
-                    GameObject savedHero = heroes[currentActor]; //Save current hero in case position changes
-                    currentAttack(heroes, enemies, x);
+                    currentEnemy.NextAttack(heroes, enemies, x);
 
-                    //Ensure game is still pointing at current hero.
-                    for (int y = 0; y < heroes.Length; y++)
-                    {
-                        if (heroes[y] != null && heroes[y].Equals(savedHero))
-                            currentActor = y;
-                    }
                     yield return view.playEnemyAttackAnim(currentEnemy, heroes, enemies, x, currentAttack);
                 }
                 currentEnemy.prepareAttacks();
@@ -209,21 +216,39 @@ public class Model : MonoBehaviour
     public void passInitiative()
     {
         //Find next party member
-        currentActor++;
-        if (currentActor >= heroes.Length)
-            currentActor = 0;
-        
-        while (heroes[currentActor] == null) {
-            currentActor++;
-            if (currentActor >= heroes.Length)
-                currentActor = 0;
+        int pos = getCurrentActor();
+        heroes[pos].GetComponent<HeroBehavior>().takingTurn = false;
+        if (pos >= heroes.Length)
+            pos = 0;
+        while (heroes[pos] == null)
+        {
+            pos++;
+            if (pos >= heroes.Length)
+                pos = 0;
         }
+        heroes[pos].GetComponent<HeroBehavior>().takingTurn = true;
 
         //Tell view to update
         view.clearPartyHighlights();
-        view.highlightPartyPosition(currentActor);
+        view.highlightPartyPosition(pos);
     }
 
-
+    /// <summary>
+    /// Returns the position on the hero's side of who is currently taking their turn.
+    /// 
+    /// Defaults to 0 if none found.
+    /// </summary>
+    /// <returns></returns>
+    public int getCurrentActor()
+    {
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null && heroes[x].GetComponent<HeroBehavior>().takingTurn)
+            {
+                return x;
+            }
+        }
+        return 0;
+    }
 
 }
