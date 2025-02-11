@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.ReorderableList;
@@ -24,7 +25,6 @@ public class Model : StateMachine
 
     bool firstFrame = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentState = State.ATTACK;
@@ -66,7 +66,27 @@ public class Model : StateMachine
             //Highlight first party member
             view.highlightPartyPosition(getCurrentActor());
         }
+
+
+        //Check to see if game is won or lost
+        bool allyAlive = false;
+        for (int x = 0; x < heroes.Length; x++)
+            if (heroes[x] != null)
+                allyAlive = true;
+
+        bool enemyAlive = false;
+        for (int x = 0; x < enemies.Length; x++)
+            if (enemies[x] != null)
+                enemyAlive = true;
+
+        if (!allyAlive)
+            currentState = State.LOSE;
+        else if (!enemyAlive)
+            currentState = State.WIN;
     }
+
+
+
 
     /// <summary>
     /// Ensures no player functions may happen while passed function is executing.
@@ -152,7 +172,6 @@ public class Model : StateMachine
     /// <param name="to"></param>
     public void MoveHeroFromTo(int from, int to)
     {
-        Debug.Log("Moving from " + from + " to " + to);
         if (from < to)
         {
             GameObject temp = heroes[from];
@@ -188,24 +207,34 @@ public class Model : StateMachine
     /// <returns></returns>
     private IEnumerator PassTurnCoroutine()
     {
-        //For each enemy spot
+        //Load each enemy into an array as their positions may change
+        List<GameObject> enemiesList = new List<GameObject>();
         for (int x = 0; x < enemies.Length; x++)
         {
-            //If there is an enemy there
             if (enemies[x] != null)
-            {
-                EnemyBehavior currentEnemy = enemies[x].GetComponent<EnemyBehavior>();
+                enemiesList.Add(enemies[x]);
+        }
 
-                //For every queued attack, execute and then animate it
-                while (currentEnemy.HasMoreAttacks())
+        while (enemiesList.Count != 0) {
+
+            EnemyBehavior currentEnemyBehavior = enemiesList[0].GetComponent<EnemyBehavior>();
+            GameObject currentEnemy = enemiesList[0];
+            enemiesList.RemoveAt(0);
+
+            while (currentEnemyBehavior.HasMoreAttacks()) {
+
+                Enemy.Attack currentAttack = currentEnemyBehavior.GetNextAttack();
+                for (int pos = 0; pos < enemies.Length; pos++)
                 {
-                    Enemy.Attack currentAttack = currentEnemy.GetNextAttack();
-                    currentEnemy.NextAttack(heroes, enemies, x);
-
-                    yield return view.playEnemyAttackAnim(currentEnemy, heroes, enemies, x, currentAttack);
+                    if (enemies[pos].Equals(currentEnemy))
+                    {
+                        currentEnemyBehavior.NextAttack(heroes, enemies, pos);
+                        yield return view.playEnemyAttackAnim(currentEnemyBehavior, heroes, enemies, pos, currentAttack);
+                    }
                 }
-                currentEnemy.prepareAttacks();
             }
+            currentEnemyBehavior.prepareAttacks();
+
         }
         yield return null;
     }

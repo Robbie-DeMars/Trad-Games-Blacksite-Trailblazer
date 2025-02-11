@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.Properties;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
     //delegate GameObject[] Attack(GameObject[] heroes, GameObject[] enemies, int currentActor);
     [SerializeField] Enemy enemy;
+    [SerializeField] HealthBar HPBar;
     List<Enemy.Attack> upcomingAttacks = new List<Enemy.Attack>();
+    private float HP;
 
     private void Start()
     {
         prepareAttacks();
+        HP = enemy.MaxHP;
+        HPBar.SetMaxHealth(enemy.MaxHP);
     }
 
     /// <summary>
@@ -69,4 +74,30 @@ public class EnemyBehavior : MonoBehaviour
     {
         upcomingAttacks = enemy.PrepareAttacks();
     }
+
+    /// <summary>
+    /// Increments this enemy's hp by the passed ammount and updates its HP bar
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void IncrementHP(float ammount)
+    {
+        HP += ammount;
+        HPBar.SetHealth(HP);
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    /// <summary>
+    /// Removes this enemy from battle
+    /// </summary>
+    public void Die()
+    {
+        HPBar.Die();
+        Destroy(this.gameObject);
+        Destroy(this);
+    }
+
+
 }

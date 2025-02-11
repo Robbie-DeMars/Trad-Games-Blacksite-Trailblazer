@@ -4,8 +4,17 @@ using UnityEngine;
 public class HeroBehavior : MonoBehaviour
 {
 
-    [SerializeField] Hero Hero;
+    [SerializeField] Hero hero;
+    [SerializeField] HealthBar HPBar;
+    private float HP;
     public bool takingTurn = false;
+
+    private void Start()
+    {
+        HP = hero.MaxHP;
+        HPBar.SetMaxHealth(hero.MaxHP);
+    }
+
     /// <summary>
     /// Executes the model's side of Attack 1's behavior
     /// </summary>
@@ -14,7 +23,7 @@ public class HeroBehavior : MonoBehaviour
     /// <param name="currentActor"> Current position of attack </param>
     public void Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        Hero.Attack1(heroes, enemies, currentActor);
+        hero.Attack1(heroes, enemies, currentActor);
     }
 
     /// <summary>
@@ -25,7 +34,7 @@ public class HeroBehavior : MonoBehaviour
     /// <param name="currentActor"> Current position of attack </param>
     public void Attack2(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        Hero.Attack2(heroes, enemies, currentActor);
+        hero.Attack2(heroes, enemies, currentActor);
     }
 
     /// <summary>
@@ -36,7 +45,7 @@ public class HeroBehavior : MonoBehaviour
     /// <param name="currentActor"> Current position of attack </param>
     public void Attack3(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        Hero.Attack3(heroes, enemies, currentActor);
+        hero.Attack3(heroes, enemies, currentActor);
     }
 
     /// <summary>
@@ -46,7 +55,7 @@ public class HeroBehavior : MonoBehaviour
     /// <returns></returns>
     public IEnumerator PlayAttack1Anim(int currentPosition)
     {
-        yield return Hero.PlayAttack1Anim(currentPosition);
+        yield return hero.PlayAttack1Anim(currentPosition);
     }
 
     /// <summary>
@@ -56,7 +65,7 @@ public class HeroBehavior : MonoBehaviour
     /// <returns></returns>
     public IEnumerator PlayAttack2Anim(int currentPosition)
     {
-        yield return Hero.PlayAttack2Anim(currentPosition);
+        yield return hero.PlayAttack2Anim(currentPosition);
     }
 
     /// <summary>
@@ -66,6 +75,30 @@ public class HeroBehavior : MonoBehaviour
     /// <returns></returns>
     public IEnumerator PlayAttack3Anim(int currentPosition)
     {
-        yield return Hero.PlayAttack3Anim(currentPosition);
+        yield return hero.PlayAttack3Anim(currentPosition);
+    }
+
+    /// <summary>
+    /// Increments this hero's hp by the passed ammount and updates its HP bar
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void IncrementHP(float ammount)
+    {
+        HP += ammount;
+        HPBar.SetHealth(HP);
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    /// <summary>
+    /// Removes this hero from battle
+    /// </summary>
+    public void Die()
+    {
+        HPBar.Die();
+        Destroy(this.gameObject);
+        Destroy(this);
     }
 }

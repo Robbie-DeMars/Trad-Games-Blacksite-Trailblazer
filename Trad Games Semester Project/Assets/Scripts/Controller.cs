@@ -18,6 +18,11 @@ public class Controller : StateMachine
     // Update is called once per frame
     void Update()
     {
+
+
+
+
+        //Execute movement state behavior.
         if (currentState == State.MOVE)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -66,6 +71,15 @@ public class Controller : StateMachine
             }
 
         }
+
+
+
+
+
+
+
+
+
 
     }
 }

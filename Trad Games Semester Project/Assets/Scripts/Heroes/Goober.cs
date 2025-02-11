@@ -10,11 +10,10 @@ public class Goober : Hero
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public override void Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
+    public override void Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
-        GameObject temp = heroes[currentActor];
-        heroes[currentActor] = heroes[4];
-        heroes[4] = temp;
+        if (enemies[currentPosition] !=  null)
+            enemies[currentPosition].GetComponent<EnemyBehavior>().IncrementHP(-5);
     }
 
     /// <summary>
@@ -23,7 +22,7 @@ public class Goober : Hero
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public override void Attack2(GameObject[] heroes, GameObject[] enemies, int currentActor)
+    public override void Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
 
     }
@@ -34,7 +33,7 @@ public class Goober : Hero
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public override void Attack3(GameObject[] heroes, GameObject[] enemies, int currentActor)
+    public override void Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         
     }
