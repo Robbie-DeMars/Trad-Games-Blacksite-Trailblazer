@@ -87,13 +87,12 @@ public class Model : MonoBehaviour
 
         //Execute attack in model
         GameObject savedHero = heroes[currentActor];
-        heroes = heroes[currentActor].GetComponent<HeroBehavior>().Attack1(heroes, enemies, currentActor);
+        heroes[currentActor].GetComponent<HeroBehavior>().Attack1(heroes, enemies, currentActor);
         for (int x = 0; x < heroes.Length; x++)
         {
             if (heroes[x] != null && heroes[x].Equals(savedHero))
                 currentActor = x;
         }
-        
 
         //Execute Animation in view
         StartCoroutine(pauseWhileExecuting(view.playAttack1Anim(heroes[currentActor].GetComponent<HeroBehavior>(), heroes, enemies, currentActor)));
@@ -110,8 +109,20 @@ public class Model : MonoBehaviour
         if (currentState != State.ATTACK)
             return;
 
+        //Execute attack in model
+        GameObject savedHero = heroes[currentActor];
+        heroes[currentActor].GetComponent<HeroBehavior>().Attack2(heroes, enemies, currentActor);
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null && heroes[x].Equals(savedHero))
+                currentActor = x;
+        }
 
-        //TODO
+        //Execute Animation in view
+        StartCoroutine(pauseWhileExecuting(view.playAttack2Anim(heroes[currentActor].GetComponent<HeroBehavior>(), heroes, enemies, currentActor)));
+
+        //Go to next avalible character
+        passInitiative();
     }
 
     /// <summary>
@@ -121,7 +132,21 @@ public class Model : MonoBehaviour
     {
         if (currentState != State.ATTACK)
             return;
-        //TODO
+
+        //Execute attack in model
+        GameObject savedHero = heroes[currentActor];
+        heroes[currentActor].GetComponent<HeroBehavior>().Attack3(heroes, enemies, currentActor);
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null && heroes[x].Equals(savedHero))
+                currentActor = x;
+        }
+
+        //Execute Animation in view
+        StartCoroutine(pauseWhileExecuting(view.playAttack3Anim(heroes[currentActor].GetComponent<HeroBehavior>(), heroes, enemies, currentActor)));
+
+        //Go to next avalible character
+        passInitiative();
     }
 
     /// <summary>
@@ -133,7 +158,6 @@ public class Model : MonoBehaviour
             currentState = State.ATTACK;
         else if (currentState != State.PAUSED)
             currentState = State.MOVE;
-        //TODO
     }
 
     /// <summary>
@@ -141,7 +165,42 @@ public class Model : MonoBehaviour
     /// </summary>
     public void PassTurn()
     {
-        //TODO
+        StartCoroutine(pauseWhileExecuting(PassTurnCoroutine()));
+    }
+
+    /// <summary>
+    /// Executes enemy attacks and attack animations in order from left to right.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PassTurnCoroutine()
+    {
+        //For each enemy spot
+        for (int x = 0; x < enemies.Length; x++)
+        {
+            //If there is an enemy there
+            if (enemies[x] != null)
+            {
+                EnemyBehavior currentEnemy = enemies[x].GetComponent<EnemyBehavior>();
+
+                //For every queued attack, execute and then animate it
+                while (currentEnemy.HasMoreAttacks())
+                {
+                    Enemy.Attack currentAttack = currentEnemy.GetNextAttack();
+                    GameObject savedHero = heroes[currentActor]; //Save current hero in case position changes
+                    currentAttack(heroes, enemies, x);
+
+                    //Ensure game is still pointing at current hero.
+                    for (int y = 0; y < heroes.Length; y++)
+                    {
+                        if (heroes[y] != null && heroes[y].Equals(savedHero))
+                            currentActor = y;
+                    }
+                    yield return view.playEnemyAttackAnim(currentEnemy, heroes, enemies, x, currentAttack);
+                }
+                currentEnemy.prepareAttacks();
+            }
+        }
+        yield return null;
     }
 
     /// <summary>
