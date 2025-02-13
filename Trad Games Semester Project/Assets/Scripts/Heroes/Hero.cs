@@ -1,10 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Hero : ScriptableObject
 {
 
     [SerializeField] public int MaxHP = 10;
+    [SerializeField] public int MaxAP = 10;
+    public int HP = 10;
+    [SerializeField] public int Atk = 5;
+    [SerializeField] public int Def = 2;
 
 
     /// <summary>
@@ -13,7 +18,8 @@ public abstract class Hero : ScriptableObject
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public abstract void Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition);
+    /// <returns> AP Cost </returns>
+    public abstract int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition);
 
     /// <summary>
     /// Executes the model's side of Attack 2's behavior
@@ -21,7 +27,8 @@ public abstract class Hero : ScriptableObject
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public abstract void Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition);
+    /// <returns> AP Cost </returns>
+    public abstract int Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition);
 
     /// <summary>
     /// Executes the model's side of Attack 3's behavior
@@ -29,8 +36,27 @@ public abstract class Hero : ScriptableObject
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public abstract void Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition);
-    
+    /// <returns> AP Cost </returns>
+    public abstract int Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition);
+
+    /// <summary>
+    /// Returns the AP cost of executing Attack 1
+    /// </summary>
+    /// <returns> AP Cost </returns>
+    public abstract int GetAPOfAttack1();
+
+    /// <summary>
+    /// Returns the AP cost of executing Attack 1
+    /// </summary>
+    /// <returns> AP Cost </returns>
+    public abstract int GetAPOfAttack2();
+
+    /// <summary>
+    /// Returns the AP cost of executing Attack 1
+    /// </summary>
+    /// <returns> AP Cost </returns>
+    public abstract int GetAPOfAttack3();
+
     /// <summary>
     /// Executes the view's side of Attack 1's behavior
     /// </summary>
@@ -51,4 +77,33 @@ public abstract class Hero : ScriptableObject
     /// <param name="currentSpace"> Current position of attack </param>
     /// <returns></returns>
     public abstract IEnumerator PlayAttack3Anim(int currentSpace);
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public abstract List<List<int>> GetAttack1Targets(int currentSpace);
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public abstract List<List<int>> GetAttack2Targets(int currentSpace);
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public abstract List<List<int>> GetAttack3Targets(int currentSpace);
+
+
 }

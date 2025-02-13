@@ -7,7 +7,7 @@ public class CombatEncounter : ScriptableObject
 
     [SerializeField] GameObject[] enemies = new GameObject[5];
 
-    public GameObject[] getEnemies()
+    public GameObject[] GetEnemies()
     {
         GameObject[] returnedEnemies = new GameObject[maxEncounterSize];
         for (int x = 0; x < returnedEnemies.Length; x++)

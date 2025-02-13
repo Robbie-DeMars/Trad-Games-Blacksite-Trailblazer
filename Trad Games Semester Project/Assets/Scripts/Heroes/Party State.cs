@@ -12,16 +12,30 @@ public class PartyState : ScriptableObject
     bool hasMainHero = true;
     int mainHeroPosition = 0;
     int mainHeroIndex = 0;
+    int level = 0;
+    int Atk = 5;
+    int Def = 2;
+    int HP = 10;
+    int maxHP = 10;
+
+
+
 
     /// <summary>
     /// Builds the current party in a readable manner for the combat model.
     /// </summary>
     /// <returns> Array of all party members in their current positions. </returns>
-    public GameObject[] getCurrentPartyForCombat()
+    public GameObject[] GetCurrentPartyForCombat()
     {
         GameObject[] party = new GameObject[possiblePartySize];
         if (hasMainHero && mainHeroPosition != -1)
+        {
             party[mainHeroPosition] = characterPrefabs[mainHeroIndex];
+            party[mainHeroPosition].GetComponent<Hero>().MaxHP = maxHP;
+            party[mainHeroPosition].GetComponent<Hero>().HP = HP;
+            party[mainHeroPosition].GetComponent<Hero>().Atk = Atk;
+            party[mainHeroPosition].GetComponent<Hero>().Def = Def;
+        }
         
         return party;
     }

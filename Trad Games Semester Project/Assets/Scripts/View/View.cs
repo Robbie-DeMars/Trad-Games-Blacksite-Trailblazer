@@ -4,9 +4,14 @@ using UnityEngine;
 public class View : StateMachine
 {
     [SerializeField] Transform[] heroBattlePositions;
-    [SerializeField] Transform[] enemyBattlePositions;
-
+    [SerializeField] GameObject[] heroReticles;
     [SerializeField] GameObject[] heroHighlights;
+
+    [SerializeField] Transform[] enemyBattlePositions;
+    [SerializeField] GameObject[] enemyReticles;
+
+    [SerializeField] PsiHeatBar psiHeatBar;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,13 +19,21 @@ public class View : StateMachine
         //Set all highlighted markers to inactive
         for (int i = 0; i < heroHighlights.Length; i++)
             heroHighlights[i].SetActive(false);
+
+        //Same for hero reticles
+        for (int i = 0; i < heroReticles.Length; i++)
+            heroReticles[i].SetActive(false);
+
+        //Same for enemy reticles
+        for (int i = 0; i < enemyReticles.Length; i++)
+            enemyReticles[i].SetActive(false);
     }
 
     /// <summary>
     /// Activate the highlighter under the given party position.
     /// </summary>
     /// <param name="space"></param>
-    public void highlightPartyPosition(int space)
+    public void HighlightPartyPosition(int space)
     {
         heroHighlights[space].SetActive(true);
     }
@@ -28,13 +41,44 @@ public class View : StateMachine
     /// <summary>
     /// Clears all highlights on the party side. 
     /// </summary>
-    public void clearPartyHighlights()
+    public void ClearPartyHighlights()
     {
         for (int i = 0; i < heroHighlights.Length; i++)
             heroHighlights[i].SetActive(false);
     }
 
     /// <summary>
+    /// Activates the reticle at the given position on the party side.
+    /// </summary>
+    /// <param name="position"></param>
+    public void ActivatePartyReticle(int position)
+    {
+        heroReticles[position].SetActive(true);
+    }
+
+    /// <summary>
+    /// Activates the reticle at the given position on the enemy side.
+    /// </summary>
+    /// <param name="position"></param>
+    public void ActivateEnemyReticle(int position)
+    {
+        enemyReticles[position].SetActive(true);
+    }
+
+    /// <summary>
+    /// Clears all reticles on both sides of combat.
+    /// </summary>
+    public void ClearReticles()
+    {
+        for (int i = 0; i < heroReticles.Length; i++)
+            heroReticles[i].SetActive(false);
+
+        for (int i = 0; i < enemyReticles.Length; i++)
+            enemyReticles[i].SetActive(false);
+    }
+
+
+    /// <summary>
     /// Execute the animation for this specific character's attack, then update battle positions.
     /// </summary>
     /// <param name="hero"> Specific hero behavior reference </param>
@@ -42,10 +86,10 @@ public class View : StateMachine
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of executing attack </param>
     /// <returns></returns>
-    public IEnumerator playAttack1Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
+    public IEnumerator PlayAttack1Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
         yield return hero.PlayAttack1Anim(currentActor);
-        yield return updateBattlePositions(heroes, enemies);
+        yield return UpdateBattlePositions(heroes, enemies);
     }
 
     /// <summary>
@@ -56,10 +100,10 @@ public class View : StateMachine
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of executing attack </param>
     /// <returns></returns>
-    public IEnumerator playAttack2Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
+    public IEnumerator PlayAttack2Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
         yield return hero.PlayAttack2Anim(currentActor);
-        yield return updateBattlePositions(heroes, enemies);
+        yield return UpdateBattlePositions(heroes, enemies);
     }
 
     /// <summary>
@@ -70,10 +114,10 @@ public class View : StateMachine
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of executing attack </param>
     /// <returns></returns>
-    public IEnumerator playAttack3Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
+    public IEnumerator PlayAttack3Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
         yield return hero.PlayAttack3Anim(currentActor);
-        yield return updateBattlePositions(heroes, enemies);
+        yield return UpdateBattlePositions(heroes, enemies);
     }
 
     /// <summary>
@@ -85,10 +129,10 @@ public class View : StateMachine
     /// <param name="position"> Current position of executing attack </param>
     /// <param name="attack"> Reference to the specific attack executing </param>
     /// <returns></returns>
-    public IEnumerator playEnemyAttackAnim(EnemyBehavior enemy, GameObject[] heroes, GameObject[] enemies, int position, Enemy.Attack attack)
+    public IEnumerator PlayEnemyAttackAnim(EnemyBehavior enemy, GameObject[] heroes, GameObject[] enemies, int position, Enemy.Attack attack)
     {
         yield return enemy.PlayNextAttackAnim(position, attack);
-        yield return updateBattlePositions(heroes, enemies);
+        yield return UpdateBattlePositions(heroes, enemies);
     }
 
     /// <summary>
@@ -99,7 +143,7 @@ public class View : StateMachine
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <returns></returns>
-    public IEnumerator updateBattlePositions(GameObject[] heroes, GameObject[] enemies)
+    public IEnumerator UpdateBattlePositions(GameObject[] heroes, GameObject[] enemies)
     {
         //Check first to see if anyone needs to move
         bool noUpdateNeeded = true;
@@ -151,6 +195,24 @@ public class View : StateMachine
                 enemies[x].transform.position = enemyBattlePositions[x].position;
         }
 
+    }
+
+    /// <summary>
+    /// Sets the current psionic heat in the UI
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SetHeat(int ammount)
+    {
+        psiHeatBar.SetHeat(ammount);
+    }
+
+    /// <summary>
+    /// Sets the maximum psionic heat
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SetMaxHeat(int ammount)
+    {
+        psiHeatBar.SetMaxHeat(ammount);
     }
 
 }

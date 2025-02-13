@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroBehavior : MonoBehaviour
@@ -7,12 +8,18 @@ public class HeroBehavior : MonoBehaviour
     [SerializeField] Hero hero;
     [SerializeField] HealthBar HPBar;
     private float HP;
+
+    [SerializeField] ActionPointBar APBar;
+    private int AP;
+
     public bool takingTurn = false;
 
     private void Start()
     {
         HP = hero.MaxHP;
         HPBar.SetMaxHealth(hero.MaxHP);
+        AP = hero.MaxAP;
+        APBar.SetMaxAP(hero.MaxAP);
     }
 
     /// <summary>
@@ -21,9 +28,10 @@ public class HeroBehavior : MonoBehaviour
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public void Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
+    /// <returns> AP Cost </returns>
+    public int Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        hero.Attack1(heroes, enemies, currentActor);
+        return hero.Attack1(heroes, enemies, currentActor);
     }
 
     /// <summary>
@@ -32,9 +40,10 @@ public class HeroBehavior : MonoBehaviour
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public void Attack2(GameObject[] heroes, GameObject[] enemies, int currentActor)
+    /// <returns> AP Cost </returns>
+    public int Attack2(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        hero.Attack2(heroes, enemies, currentActor);
+        return hero.Attack2(heroes, enemies, currentActor);
     }
 
     /// <summary>
@@ -43,9 +52,10 @@ public class HeroBehavior : MonoBehaviour
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <param name="currentActor"> Current position of attack </param>
-    public void Attack3(GameObject[] heroes, GameObject[] enemies, int currentActor)
+    /// <returns> AP Cost </returns>
+    public int Attack3(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
-        hero.Attack3(heroes, enemies, currentActor);
+        return hero.Attack3(heroes, enemies, currentActor);
     }
 
     /// <summary>
@@ -79,17 +89,102 @@ public class HeroBehavior : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public List<List<int>> GetAttack1Targets(int currentSpace)
+    {
+        return hero.GetAttack1Targets(currentSpace);
+    }
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public List<List<int>> GetAttack2Targets(int currentSpace)
+    {
+        return hero.GetAttack2Targets(currentSpace);
+    }
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public List<List<int>> GetAttack3Targets(int currentSpace)
+    {
+        return hero.GetAttack3Targets(currentSpace);
+    }
+
+    /// <summary>
     /// Increments this hero's hp by the passed ammount and updates its HP bar
     /// </summary>
     /// <param name="ammount"></param>
     public void IncrementHP(float ammount)
     {
-        HP += ammount;
+        if (ammount > 0)
+        {
+            HP += ammount;
+            if (HP > hero.MaxHP)
+            {
+                HP = hero.MaxHP;
+            }
+        }
+        else if (ammount < 0) //If being hurt
+        {
+            float temp = HP + ammount + hero.Def;
+            if (temp < HP)
+                HP = temp;
+        }
         HPBar.SetHealth(HP);
         if (HP <= 0)
         {
             Die();
         }
+    }
+    /// <summary>
+    /// Increments this hero's AP by the passed ammount and updates its AP bar
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void IncrementAP(int ammount)
+    {
+        AP += ammount;
+        if (AP <= 0)
+        {
+            AP = 0;
+        }
+        else if (AP > hero.MaxAP)
+        {
+            AP = hero.MaxAP;
+        }
+        APBar.SetAP(AP);
+    }
+
+    /// <summary>
+    /// Sets this hero's AP to max
+    /// </summary>
+    public void ReplenishAP()
+    {
+        AP = hero.MaxAP;
+        APBar.SetAP(AP);
+    }
+
+
+    /// <summary>
+    /// Returns this hero's remaining AP
+    /// </summary>
+    /// <returns></returns>
+    public int GetAP()
+    {
+        return AP;
     }
 
     /// <summary>

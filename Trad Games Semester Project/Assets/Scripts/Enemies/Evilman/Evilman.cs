@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "Evilman", menuName = "Scriptable Objects/Evilman")]
@@ -10,17 +11,12 @@ public class Evilman : Enemy
     //MAKE SURE TO CHANGE THIS WHEN ADDING NEW ATTACKS
     int totalUniqueAttacks = 2;
 
-    /// <summary>
-    /// Executes the models side of Attack 1's behavior
-    /// </summary>
-    /// <param name="heroes"> Current state of heroes </param>
-    /// <param name="enemies"> Current state of enemies </param>
-    /// <param name="currentActor"> Current position of attack </param>
+    
     public override void Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         //Hit in front
         if (heroes[currentPosition] != null)
-            heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-5);
+            heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
 
         //Move towards camera
         if (currentPosition > 0) {
@@ -40,7 +36,7 @@ public class Evilman : Enemy
     {
         //Hit in front
         if (heroes[currentPosition] != null)
-            heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-5);
+            heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
 
         //Move towards camera
         if (currentPosition < enemies.Length - 1)
@@ -51,11 +47,7 @@ public class Evilman : Enemy
         }
     }
 
-    /// <summary>
-    /// Executes the views side of Attack 1's behavior
-    /// </summary>
-    /// <param name="currentActor"> Current position of attacker </param>
-    /// <returns></returns>
+    
     public override IEnumerator PlayAttack1Anim(int currentPosition)
     {
         Debug.Log("Enemy Executing attack 1");
@@ -75,10 +67,6 @@ public class Evilman : Enemy
         Debug.Log("Its so joever");
     }
 
-    /// <summary>
-    /// Returns a list of delegates containing the attacks and in which order this enemy executes them.
-    /// </summary>
-    /// <returns> List of attack delegates </returns>
     public override List<Attack> PrepareAttacks()
     {
         List<Attack> attackList = new List<Attack>();
@@ -99,12 +87,7 @@ public class Evilman : Enemy
         return attackList;
     }
 
-    /// <summary>
-    /// Executes the animation of the passed attack reference at the passed position
-    /// </summary>
-    /// <param name="currentActor"> Position of attack </param>
-    /// <param name="attack"> Reference to attack executed </param>
-    /// <returns></returns>
+
     public override IEnumerator PlayAttackAnim(int currentPosition, Attack attack)
     {
         if (attack == Attack1)
@@ -119,5 +102,44 @@ public class Evilman : Enemy
         {
             yield return null;
         }
+    }
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentPosition"></param>
+    /// <param name="attack"></param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public List<List<int>> GetAttackTargets(int currentPosition, Attack attack)
+    {
+        if (attack == Attack1)
+            return GetAttack1Targets(currentPosition);
+        else if (attack == Attack2)
+            return GetAttack2Targets(currentPosition);
+        else
+            return new List<List<int>>();
+    }
+
+    public override List<List<int>> GetAttack1Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() { currentSpace };
+        List<int> enemies = new List<int>() { };
+        return new List<List<int>>() { heroes, enemies };
+    }
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"></param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public List<List<int>> GetAttack2Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() { currentSpace };
+        List<int> enemies = new List<int>() { };
+        return new List<List<int>>() { heroes, enemies };
     }
 }

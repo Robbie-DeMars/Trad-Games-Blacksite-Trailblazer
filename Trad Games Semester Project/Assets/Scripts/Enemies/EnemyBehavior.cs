@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start()
     {
-        prepareAttacks();
+        PrepareAttacks();
         HP = enemy.MaxHP;
         HPBar.SetMaxHealth(enemy.MaxHP);
     }
@@ -70,7 +70,7 @@ public class EnemyBehavior : MonoBehaviour
     /// <summary>
     /// Resets the attacks this enemy will execute.
     /// </summary>
-    public void prepareAttacks()
+    public void PrepareAttacks()
     {
         upcomingAttacks = enemy.PrepareAttacks();
     }
@@ -81,7 +81,20 @@ public class EnemyBehavior : MonoBehaviour
     /// <param name="ammount"></param>
     public void IncrementHP(float ammount)
     {
-        HP += ammount;
+        if (ammount > 0)
+        {
+            HP += ammount;
+            if (HP > enemy.MaxHP)
+            {
+                HP = enemy.MaxHP;
+            }
+        }
+        else if (ammount < 0) //If being hurt
+        {
+            float temp = HP + ammount + enemy.Def;
+            if (temp < HP)
+                HP = temp;
+        }
         HPBar.SetHealth(HP);
         if (HP <= 0)
         {
@@ -98,6 +111,4 @@ public class EnemyBehavior : MonoBehaviour
         Destroy(this.gameObject);
         Destroy(this);
     }
-
-
 }

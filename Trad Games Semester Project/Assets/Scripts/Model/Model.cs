@@ -7,38 +7,42 @@ using UnityEngine.UIElements;
 
 public class Model : StateMachine
 {
+    //Reference to the game view
     [SerializeField] View view;
-
+    //Scriptableobject holding all nessesary party data
     [SerializeField] PartyState party;
-
-    GameObject[] heroes;
-
+    //Instances of all heroes
+    public GameObject[] heroes;
+    //Hero positions in battle
     [SerializeField] Transform[] heroBattefieldPositions;
-
-    [SerializeField] CombatEncounter encounter;
-
-    GameObject[] enemies;
-
+    //Reigon scriptableobject containing all combat encounters
+    [SerializeField] Reigon reigon;
+    //Instances of all enemies
+    public GameObject[] enemies;
+    //Enemy battle positions
     [SerializeField] Transform[] enemyBattefieldPositions;
-
-    delegate IEnumerator Queueable(IEnumerator e);
-
+    //First frame - used to do things after start has been called
     bool firstFrame = true;
+    //Psionic heat level - should start at 0
+    int psiHeat = 0;
+    //Max psionic heat before it rolls over
+    [SerializeField] int maxHeat = 10;
 
     void Start()
     {
         currentState = State.ATTACK;
 
         //Instantiate heroes
-        heroes = party.getCurrentPartyForCombat();
+        heroes = party.GetCurrentPartyForCombat();
         for (int x = 0; x < heroes.Length; x++)
         {
-            if (heroes[x] != null)    
+            if (heroes[x] != null)
                 heroes[x] = Instantiate(heroes[x], heroBattefieldPositions[x]);
         }
 
         //Instantiate enemies
-        enemies = encounter.getEnemies();
+        CombatEncounter encounter = reigon.GetRandomCombatEncounter();
+        enemies = encounter.GetEnemies();
         for (int x = 0; x < enemies.Length; x++)
         {
             if (enemies[x] != null)
@@ -55,7 +59,7 @@ public class Model : StateMachine
             }
 
         }
-        
+
     }
 
     private void Update()
@@ -64,7 +68,9 @@ public class Model : StateMachine
         {
             firstFrame = false;
             //Highlight first party member
-            view.highlightPartyPosition(getCurrentActor());
+            view.HighlightPartyPosition(GetCurrentActor());
+            view.SetMaxHeat(maxHeat);
+            view.SetHeat(psiHeat);
         }
 
 
@@ -85,15 +91,12 @@ public class Model : StateMachine
             currentState = State.WIN;
     }
 
-
-
-
     /// <summary>
     /// Ensures no player functions may happen while passed function is executing.
     /// </summary>
     /// <param name="funcToCall"> Function to pause game until finished. </param>
     /// <returns></returns>
-    private IEnumerator pauseWhileExecuting(IEnumerator funcToCall)
+    private IEnumerator PauseWhileExecuting(IEnumerator funcToCall)
     {
         currentState = State.PAUSED;
         yield return StartCoroutine(funcToCall);
@@ -108,14 +111,23 @@ public class Model : StateMachine
         if (currentState != State.ATTACK)
             return;
 
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+
         //Execute attack in model
-        heroes[getCurrentActor()].GetComponent<HeroBehavior>().Attack1(heroes, enemies, getCurrentActor());
+        int APCost = currentHero.Attack1(heroes, enemies, GetCurrentActor());
+
+        //Adjust AP or Heat
+        if (currentHero.GetAP() < APCost)
+        {
+            IncrementPsiHeat(APCost - currentHero.GetAP());
+        }
+        currentHero.IncrementAP(-APCost);
 
         //Execute Animation in view
-        StartCoroutine(pauseWhileExecuting(view.playAttack1Anim(heroes[getCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, getCurrentActor())));
+        StartCoroutine(PauseWhileExecuting(view.PlayAttack1Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
 
         //Go to next avalible character
-        passInitiative();
+        PassInitiative();
     }
 
     /// <summary>
@@ -126,14 +138,23 @@ public class Model : StateMachine
         if (currentState != State.ATTACK)
             return;
 
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+
         //Execute attack in model
-        heroes[getCurrentActor()].GetComponent<HeroBehavior>().Attack2(heroes, enemies, getCurrentActor());
+        int APCost = heroes[GetCurrentActor()].GetComponent<HeroBehavior>().Attack2(heroes, enemies, GetCurrentActor());
+
+        //Adjust AP or Heat
+        if (currentHero.GetAP() < APCost)
+        {
+            IncrementPsiHeat(APCost - currentHero.GetAP());
+        }
+        currentHero.IncrementAP(-APCost);
 
         //Execute Animation in view
-        StartCoroutine(pauseWhileExecuting(view.playAttack2Anim(heroes[getCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, getCurrentActor())));
+        StartCoroutine(PauseWhileExecuting(view.PlayAttack2Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
 
         //Go to next avalible character
-        passInitiative();
+        PassInitiative();
     }
 
     /// <summary>
@@ -144,15 +165,47 @@ public class Model : StateMachine
         if (currentState != State.ATTACK)
             return;
 
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+
         //Execute attack in model
-        heroes[getCurrentActor()].GetComponent<HeroBehavior>().Attack3(heroes, enemies, getCurrentActor());
+        int APCost = heroes[GetCurrentActor()].GetComponent<HeroBehavior>().Attack3(heroes, enemies, GetCurrentActor());
+
+        //Adjust AP or Heat
+        if (currentHero.GetAP() < APCost)
+        {
+            IncrementPsiHeat(APCost - currentHero.GetAP());
+        }
+        currentHero.IncrementAP(-APCost);
 
         //Execute Animation in view
-        StartCoroutine(pauseWhileExecuting(view.playAttack3Anim(heroes[getCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, getCurrentActor())));
+        StartCoroutine(PauseWhileExecuting(view.PlayAttack3Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
 
         //Go to next avalible character
-        passInitiative();
+        PassInitiative();
     }
+
+    /// <summary>
+    /// Manages the effects of psi heat
+    /// </summary>
+    public void IncrementPsiHeat(int ammount)
+    {
+        psiHeat += ammount;
+
+        if (psiHeat > maxHeat)
+        {
+            psiHeat = 0;
+            //TODO: Add negative effects, for now, will just hurt all party members
+            for (int x = 0; x < heroes.Length; x++)
+            {
+                if (heroes[x] != null)
+                    heroes[x].GetComponent<HeroBehavior>().IncrementHP(-5);
+            }
+        }
+
+        view.SetHeat(psiHeat);
+    }
+
+
 
     /// <summary>
     /// Begins the process of moving one character to annother position.
@@ -188,7 +241,7 @@ public class Model : StateMachine
         }
         else
         {
-            StartCoroutine(pauseWhileExecuting(view.updateBattlePositions(heroes, enemies)));
+            StartCoroutine(PauseWhileExecuting(view.UpdateBattlePositions(heroes, enemies)));
         }
     }
 
@@ -198,7 +251,17 @@ public class Model : StateMachine
     /// </summary>
     public void PassTurn()
     {
-        StartCoroutine(pauseWhileExecuting(PassTurnCoroutine()));
+        if (currentState == State.PAUSED || (currentState == State.WIN || currentState == State.LOSE))
+            return;
+        //Replenish AP of all party members
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null)
+            {
+                heroes[x].GetComponent<HeroBehavior>().ReplenishAP();
+            }
+        }
+        StartCoroutine(PauseWhileExecuting(PassTurnCoroutine()));
     }
 
     /// <summary>
@@ -229,11 +292,11 @@ public class Model : StateMachine
                     if (enemies[pos].Equals(currentEnemy))
                     {
                         currentEnemyBehavior.NextAttack(heroes, enemies, pos);
-                        yield return view.playEnemyAttackAnim(currentEnemyBehavior, heroes, enemies, pos, currentAttack);
+                        yield return view.PlayEnemyAttackAnim(currentEnemyBehavior, heroes, enemies, pos, currentAttack);
                     }
                 }
             }
-            currentEnemyBehavior.prepareAttacks();
+            currentEnemyBehavior.PrepareAttacks();
 
         }
         yield return null;
@@ -242,10 +305,10 @@ public class Model : StateMachine
     /// <summary>
     /// Passes initiative to the next hero in turn order.
     /// </summary>
-    public void passInitiative()
+    public void PassInitiative()
     {
         //Find next party member
-        int pos = getCurrentActor();
+        int pos = GetCurrentActor();
         heroes[pos].GetComponent<HeroBehavior>().takingTurn = false;
         if (pos >= heroes.Length)
             pos = 0;
@@ -258,8 +321,8 @@ public class Model : StateMachine
         heroes[pos].GetComponent<HeroBehavior>().takingTurn = true;
 
         //Tell view to update
-        view.clearPartyHighlights();
-        view.highlightPartyPosition(pos);
+        view.ClearPartyHighlights();
+        view.HighlightPartyPosition(pos);
     }
 
     /// <summary>
@@ -268,7 +331,7 @@ public class Model : StateMachine
     /// Defaults to 0 if none found.
     /// </summary>
     /// <returns></returns>
-    public int getCurrentActor()
+    public int GetCurrentActor()
     {
         for (int x = 0; x < heroes.Length; x++)
         {
@@ -279,5 +342,8 @@ public class Model : StateMachine
         }
         return 0;
     }
+
+
+
 
 }

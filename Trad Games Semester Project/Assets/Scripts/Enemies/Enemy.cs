@@ -9,7 +9,9 @@ public abstract class Enemy : ScriptableObject
     
     [SerializeField] public int attacks = 1;
     [SerializeField] public int MaxHP = 10;
-    
+    [SerializeField] public int Atk = 5;
+    [SerializeField] public int Def = 2;
+
 
     /// <summary>
     /// Executes the model's side of Attack 1's behavior
@@ -39,4 +41,15 @@ public abstract class Enemy : ScriptableObject
     /// <param name="attack"> Reference to attack executed </param>
     /// <returns></returns>
     public abstract IEnumerator PlayAttackAnim(int currentPosition, Attack attack);
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"> Current position of attack </param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public abstract List<List<int>> GetAttack1Targets(int currentSpace);
+
+    
 }
