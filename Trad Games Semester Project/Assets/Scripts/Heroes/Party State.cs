@@ -31,10 +31,10 @@ public class PartyState : ScriptableObject
         if (hasMainHero && mainHeroPosition != -1)
         {
             party[mainHeroPosition] = characterPrefabs[mainHeroIndex];
-            party[mainHeroPosition].GetComponent<Hero>().MaxHP = maxHP;
-            party[mainHeroPosition].GetComponent<Hero>().HP = HP;
-            party[mainHeroPosition].GetComponent<Hero>().Atk = Atk;
-            party[mainHeroPosition].GetComponent<Hero>().Def = Def;
+            //party[mainHeroPosition].GetComponent<Hero>().MaxHP = maxHP;
+            //party[mainHeroPosition].GetComponent<Hero>().HP = HP;
+            //party[mainHeroPosition].GetComponent<Hero>().Atk = Atk;
+            //party[mainHeroPosition].GetComponent<Hero>().Def = Def;
         }
         
         return party;
