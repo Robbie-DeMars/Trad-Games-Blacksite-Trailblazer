@@ -51,5 +51,22 @@ public abstract class Enemy : ScriptableObject
     /// <returns>The battefield state in the form of a 2D array</returns>
     public abstract List<List<int>> GetAttack1Targets(int currentSpace);
 
-    
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side 
+    /// </summary>
+    /// <param name="currentSpace">Current position of attack</param>
+    /// <param name="attack"> Attack to return, defaults to 1</param>
+    /// <returns></returns>
+    public abstract List<List<int>> GetAttackTargets(int currentSpace, int attack);
+
+    /// <summary>
+    /// Returns the number of the given attack, or 0
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <returns></returns>
+    public abstract int GetAttackNumber(Attack attack);
+
+
 }

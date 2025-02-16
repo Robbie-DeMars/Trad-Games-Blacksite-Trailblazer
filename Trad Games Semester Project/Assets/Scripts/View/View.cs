@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class View : StateMachine
@@ -11,6 +12,8 @@ public class View : StateMachine
     [SerializeField] GameObject[] enemyReticles;
 
     [SerializeField] PsiHeatBar psiHeatBar;
+
+    [SerializeField] TextMeshProUGUI moveText;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +31,22 @@ public class View : StateMachine
         for (int i = 0; i < enemyReticles.Length; i++)
             enemyReticles[i].SetActive(false);
     }
+
+
+    private void Update()
+    {
+        if (currentState == State.MOVE)
+        {
+            moveText.color = Color.red;
+            moveText.text = "Move (ON)";
+        }
+        else
+        {
+            moveText.color = Color.white;
+            moveText.text = "Move (OFF)";
+        }
+    }
+
 
     /// <summary>
     /// Activate the highlighter under the given party position.

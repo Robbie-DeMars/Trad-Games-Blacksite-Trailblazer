@@ -104,6 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: ec318f72a2f70ce4ea8223eb7e6a5bcf, type: 2}
   HPBar: {fileID: 1731342063504913988}
+  attackTelegraphs:
+  - {fileID: 3541097657791810955, guid: b2b1ade9ae190714f99d38c751b65cff, type: 3}
+  - {fileID: 3541097657791810955, guid: e355d496c157ed5409475ab1ad2787d0, type: 3}
 --- !u!61 &8440670820744986508
 BoxCollider2D:
   m_ObjectHideFlags: 0

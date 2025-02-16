@@ -2,22 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Xml.Serialization;
 using Unity.Properties;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
     //delegate GameObject[] Attack(GameObject[] heroes, GameObject[] enemies, int currentActor);
-    [SerializeField] Enemy enemy;
+    [SerializeField] public Enemy enemy;
     [SerializeField] HealthBar HPBar;
     List<Enemy.Attack> upcomingAttacks = new List<Enemy.Attack>();
     private float HP;
 
+    [SerializeField] GameObject[] attackTelegraphs;
+    List<GameObject> currentTelegraphs;
+
+
     private void Start()
     {
+        currentTelegraphs = new List<GameObject>();
         PrepareAttacks();
         HP = enemy.MaxHP;
         HPBar.SetMaxHealth(enemy.MaxHP);
+    }
+
+    /// <summary>
+    /// Instantiates the telegraphs above this enemy in the worldspace
+    /// </summary>
+    private void MakeTelegraphs()
+    {
+        float totalWidth = (upcomingAttacks.Count - 1) * 1f; // Total width of the telegraphs
+        float startX = HPBar.transform.position.x - (totalWidth / 2); // Center align
+
+        for (int x = 0; x < upcomingAttacks.Count; x++)
+        {
+            int attack = enemy.GetAttackNumber(upcomingAttacks[x]);
+            currentTelegraphs.Add(Instantiate(attackTelegraphs[attack - 1], this.transform));
+            currentTelegraphs[currentTelegraphs.Count - 1].GetComponent<AttackTelegraph>().ConnectAttack(attack, this);
+            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, HPBar.transform.position.y + 1, HPBar.transform.position.z);
+        }
+    }
+
+    /// <summary>
+    /// Removes telegraphs from the worldspace
+    /// </summary>
+    private void DeleteTelegraphs()
+    {
+        for (int x = 0; x < currentTelegraphs.Count(); x++)
+        {
+            Destroy(currentTelegraphs[x]);
+        }
+        currentTelegraphs = new List<GameObject>();
     }
 
     /// <summary>
@@ -72,7 +107,9 @@ public class EnemyBehavior : MonoBehaviour
     /// </summary>
     public void PrepareAttacks()
     {
+        DeleteTelegraphs();
         upcomingAttacks = enemy.PrepareAttacks();
+        MakeTelegraphs();
     }
 
     /// <summary>

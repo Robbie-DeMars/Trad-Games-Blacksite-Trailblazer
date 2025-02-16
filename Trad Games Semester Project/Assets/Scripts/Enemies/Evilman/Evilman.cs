@@ -142,4 +142,30 @@ public class Evilman : Enemy
         List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
     }
+
+    public override List<List<int>> GetAttackTargets(int currentSpace, int attack)
+    {
+        if (attack == 1)
+        {
+            return GetAttack1Targets(currentSpace);
+        }
+        else if (attack == 2)
+        {
+            return GetAttack2Targets(currentSpace);
+        }
+        else
+        {
+            return GetAttack1Targets(currentSpace);
+        }
+    }
+
+    public override int GetAttackNumber(Attack attack)
+    {
+        if (attack == Attack1)
+            return 1;
+        else if (attack == Attack2)
+            return 2;
+        else
+            return 0;
+    }
 }

@@ -303,6 +303,21 @@ public class Model : StateMachine
     }
 
     /// <summary>
+    /// Returns the position of the enemy or 0 of missing
+    /// </summary>
+    /// <param name="enemy"> Enemy to be found </param>
+    /// <returns>Position if found, 0 if not</returns>
+    public int GetPositionOfEnemy(GameObject enemy)
+    {
+        for (int x = 0; x < enemies.Length; x++)
+        {
+            if (enemies[x] == enemy)
+                return x;
+        }
+        return 0;
+    }
+
+    /// <summary>
     /// Passes initiative to the next hero in turn order.
     /// </summary>
     public void PassInitiative()

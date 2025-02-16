@@ -136,17 +136,33 @@ public class Controller : StateMachine
     }
 
     /// <summary>
+    /// Activates the reticles corresponding to the position of the currently active party member's attack 3
+    /// </summary>
+    public void PointerEnterEnemyAttack(List<List<int>> positions)
+    {
+        List<int> heroes = positions[0];
+        List<int> enemies = positions[1];
+
+        for (int x = 0; x < heroes.Count; x++)
+        {
+            if (model.heroes.Length > heroes[x] && heroes[x] >= 0)
+                view.ActivatePartyReticle(heroes[x]);
+        }
+
+        for (int x = 0; x < enemies.Count; x++)
+        {
+            if (model.heroes.Length > heroes[x] && heroes[x] >= 0)
+                view.ActivateEnemyReticle(enemies[x]);
+        }
+    }
+
+
+    /// <summary>
     /// Clears all reticles
     /// </summary>
     public void PointerExit()
     {
         view.ClearReticles();
-    }
-
-
-    public void DisplayEnemyAttack(EnemyBehavior enemy)
-    {
-
     }
 
 
