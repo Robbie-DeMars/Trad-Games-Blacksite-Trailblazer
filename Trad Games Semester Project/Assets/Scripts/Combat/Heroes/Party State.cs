@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PartyState", menuName = "Scriptable Objects/PartyState")]

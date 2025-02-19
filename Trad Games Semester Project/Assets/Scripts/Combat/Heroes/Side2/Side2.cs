@@ -31,10 +31,23 @@ public class Side2 : Hero
         if ((currentPosition - 1 >= 0 && currentPosition - 1 < enemies.Length) && enemies[currentPosition - 1] != null)
             enemies[currentPosition - 1].GetComponent<EnemyBehavior>().IncrementHP(-Atk);
 
-        GameObject temp = enemies[currentPosition];
-        enemies[currentPosition] = enemies[currentPosition + 1];
-        enemies[currentPosition + 1] = enemies[currentPosition - 1];
-        enemies[currentPosition - 1] = temp;
+        if (currentPosition > 0 && currentPosition < enemies.Length - 1) {
+            GameObject temp = enemies[currentPosition];
+            enemies[currentPosition] = enemies[currentPosition + 1];
+            enemies[currentPosition + 1] = enemies[currentPosition - 1];
+            enemies[currentPosition - 1] = temp;
+        }
+        else if (currentPosition == enemies.Length - 1)
+        {
+            GameObject temp = enemies[currentPosition];
+            enemies[currentPosition] = enemies[currentPosition - 1];
+            enemies[currentPosition - 1] = temp;
+        }
+        else if (currentPosition == 0) {
+            GameObject temp = enemies[currentPosition];
+            enemies[currentPosition] = enemies[currentPosition + 1];
+            enemies[currentPosition + 1] = temp;
+        }
 
         return GetAPOfAttack1();
     }

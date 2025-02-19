@@ -86,7 +86,8 @@ public class Evilman : Enemy
     public override List<Attack> PrepareAttacks()
     {
         List<Attack> attackList = new List<Attack>();
-        for (int x = 0; x < attacks; x++)
+        int randAttackNum = Random.Range(1, attacks + 1);
+        for (int x = 0; x < randAttackNum; x++)
         {
             int chosenAttack = Random.Range(0, totalUniqueAttacks);
 
