@@ -105,6 +105,16 @@ public class Model : StateMachine
             }
             SceneManager.LoadScene("RoadScene");
         }
+        if (currentState == State.LOSE)
+        {
+            //Save current HP of enemies
+            for (int x = 0; x < heroes.Length; x++)
+            {
+                if (heroes[x] != null)
+                    heroes[x].GetComponent<HeroBehavior>().SaveStats();
+            }
+            SceneManager.LoadScene("Lose");
+        }
     }
 
     /// <summary>
@@ -305,7 +315,7 @@ public class Model : StateMachine
                 Enemy.Attack currentAttack = currentEnemyBehavior.GetNextAttack();
                 for (int pos = 0; pos < enemies.Length; pos++)
                 {
-                    if (enemies[pos].Equals(currentEnemy))
+                    if (enemies[pos] != null && enemies[pos].Equals(currentEnemy))
                     {
                         currentEnemyBehavior.NextAttack(heroes, enemies, pos);
                         yield return view.PlayEnemyAttackAnim(currentEnemyBehavior, heroes, enemies, pos, currentAttack);

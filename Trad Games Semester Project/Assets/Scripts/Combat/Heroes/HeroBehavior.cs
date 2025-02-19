@@ -18,6 +18,7 @@ public class HeroBehavior : MonoBehaviour
         hero.LoadStats();
         HPBar.SetMaxHealth(hero.MaxHP);
         AP = hero.MaxAP;
+        HP = hero.HP;
     }
 
     public void SaveStats()
@@ -143,7 +144,8 @@ public class HeroBehavior : MonoBehaviour
         }
         else if (ammount < 0) //If being hurt
         {
-            float temp = HP + ammount - ammount * hero.Def / 10;
+            Debug.Log(ammount + " " + HP);
+            float temp = HP + ammount - ammount * (float)((float)hero.Def * 0.1f);
             if (temp < HP)
                 HP = temp;
         }
@@ -193,7 +195,7 @@ public class HeroBehavior : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        hero.SaveStats(Mathf.RoundToInt(HP));
+        SaveStats();
         HPBar.Die();
         Destroy(this.gameObject);
         Destroy(this);

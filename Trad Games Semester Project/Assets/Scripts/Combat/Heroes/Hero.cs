@@ -5,12 +5,12 @@ using UnityEngine;
 public abstract class Hero : ScriptableObject
 {
 
-    [SerializeField] public int MaxHP = 10;
-    [SerializeField] public int MaxAP = 10;
+    public int MaxHP = 10;
+    public int MaxAP = 10;
     public float HP = 10;
-    [SerializeField] public int Atk = 5;
-    [SerializeField] public int Def = 2;
-    [SerializeField] public PartyState party;
+    public int Atk = 5;
+    public int Def = 2;
+    public PartyState party;
 
     /// <summary>
     /// Loads the stats into this character from the party state.

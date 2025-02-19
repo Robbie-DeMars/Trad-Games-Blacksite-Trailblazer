@@ -2,40 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Side2", menuName = "Scriptable Objects/Side2")]
-public class Side2 : Hero
+[CreateAssetMenu(fileName = "MainCharacter", menuName = "Scriptable Objects/MainCharacter")]
+public class MainCharacter : Hero
 {
     public override void LoadStats()
     {
-        HP = party.side2Stats[0];
-        MaxHP = party.side2Stats[1];
-        MaxAP = party.side2Stats[2];
-        Atk = party.side2Stats[3];
-        Def = party.side2Stats[4];
+        HP = party.mainStats[0];
+        MaxHP = party.mainStats[1];
+        MaxAP = party.mainStats[2];
+        Atk = party.mainStats[3];
+        Def = party.mainStats[4];
     }
 
     public override void SaveStats(int currentHP)
     {
-        if (HP == 0)
-            party.side2Stats[0] = 1;
+        if (currentHP <= 0)
+            party.mainStats[0] = 1;
         else
-            party.side2Stats[0] = currentHP;
+            party.mainStats[0] = currentHP;
     }
 
     public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         if (enemies[currentPosition] != null)
             enemies[currentPosition].GetComponent<EnemyBehavior>().IncrementHP(-Atk);
-        if (enemies[currentPosition + 1] != null)
-            enemies[currentPosition + 1].GetComponent<EnemyBehavior>().IncrementHP(-Atk);
-        if (enemies[currentPosition - 1] != null)
-            enemies[currentPosition - 1].GetComponent<EnemyBehavior>().IncrementHP(-Atk);
-
-        GameObject temp = enemies[currentPosition];
-        enemies[currentPosition] = enemies[currentPosition + 1];
-        enemies[currentPosition + 1] = enemies[currentPosition - 1];
-        enemies[currentPosition - 1] = temp;
-
         return GetAPOfAttack1();
     }
 
@@ -46,40 +36,32 @@ public class Side2 : Hero
 
     public override int Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
-        List<GameObject> temp = new List<GameObject>();
-        int enemyCount = 0;
-        for (int x = 0; x < enemies.Length; x++)
+        if (currentPosition != 4)
         {
-            if (enemies[x] != null)
+            while (currentPosition != 4)
             {
-                temp.Add(enemies[x]);
-                enemies[x] = null;
-                enemyCount++;
+                GameObject temp = heroes[currentPosition];
+                heroes[currentPosition] = heroes[currentPosition + 1];
+                heroes[currentPosition + 1] = temp;
+                currentPosition++;
             }
         }
-        if (enemyCount == 1) { 
-            temp.Insert(0, null);
-            temp.Insert(0, null);
-            temp.Insert(0, null);
-        }
-        if (enemyCount == 2)
+        else
         {
-            temp.Insert(0, null);
-            temp.Insert(0, null);
-        }
-        if (enemyCount == 3) {
-            temp.Insert(0, null);
-        }
-        for (int x = 0; x < temp.Count; x++)
-        {
-            enemies[x] = temp[x];
+            while (currentPosition != 0)
+            {
+                GameObject temp = heroes[currentPosition];
+                heroes[currentPosition] = heroes[currentPosition - 1];
+                heroes[currentPosition - 1] = temp;
+                currentPosition--;
+            }
         }
         return GetAPOfAttack3();
     }
 
     public override int GetAPOfAttack1()
     {
-        return 4;
+        return 3;
     }
 
     public override int GetAPOfAttack2()
@@ -89,13 +71,13 @@ public class Side2 : Hero
 
     public override int GetAPOfAttack3()
     {
-        return 6;
+        return 0;
     }
 
     public override List<List<int>> GetAttack1Targets(int currentSpace)
     {
         List<int> heroes = new List<int>() { };
-        List<int> enemies = new List<int>() { currentSpace, currentSpace + 1, currentSpace - 1 };
+        List<int> enemies = new List<int>() { currentSpace };
         return new List<List<int>>() { heroes, enemies };
     }
 
@@ -108,8 +90,12 @@ public class Side2 : Hero
 
     public override List<List<int>> GetAttack3Targets(int currentSpace)
     {
-        List<int> heroes = new List<int>() { };
-        List<int> enemies = new List<int>() {currentSpace, currentSpace + 1, currentSpace + 2, currentSpace + 3, currentSpace + 4, currentSpace + 5, currentSpace - 1, currentSpace - 2, currentSpace - 3, currentSpace - 4, currentSpace - 5 };
+        List<int> heroes;
+        if (currentSpace != 4)
+            heroes = new List<int>() { currentSpace, currentSpace + 1, currentSpace + 2, currentSpace + 3, currentSpace + 4, currentSpace + 5};
+        else
+            heroes = new List<int>() { currentSpace, currentSpace - 1, currentSpace - 2, currentSpace - 3, currentSpace - 4, currentSpace - 5 };
+        List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
     }
 

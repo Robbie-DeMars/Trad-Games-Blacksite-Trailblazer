@@ -71,6 +71,9 @@ public class Controller : StateMachine
     /// </summary>
     public void PointerEnterAttack1()
     {
+        if (currentState == State.LOSE && currentState == State.WIN)
+            return;
+
         List<List<int>> positions = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack1Targets(model.GetCurrentActor());
 
         List<int> heroes = positions[0];
