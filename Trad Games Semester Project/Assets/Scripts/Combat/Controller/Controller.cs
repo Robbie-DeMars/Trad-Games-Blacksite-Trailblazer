@@ -97,6 +97,9 @@ public class Controller : StateMachine
     /// </summary>
     public void PointerEnterAttack2()
     {
+        if (currentState == State.LOSE && currentState == State.WIN)
+            return;
+
         List<List<int>> positions = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack2Targets(model.GetCurrentActor());
 
         List<int> heroes = positions[0];
@@ -120,6 +123,9 @@ public class Controller : StateMachine
     /// </summary>
     public void PointerEnterAttack3()
     {
+        if (currentState == State.LOSE && currentState == State.WIN)
+            return;
+
         List<List<int>> positions = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack3Targets(model.GetCurrentActor());
 
         List<int> heroes = positions[0];

@@ -19,6 +19,7 @@ public class HeroBehavior : MonoBehaviour
         HPBar.SetMaxHealth(hero.MaxHP);
         AP = hero.MaxAP;
         HP = hero.HP;
+        HPBar.SetHealth(HP);
     }
 
     public void SaveStats()
@@ -144,16 +145,18 @@ public class HeroBehavior : MonoBehaviour
         }
         else if (ammount < 0) //If being hurt
         {
-            Debug.Log(ammount + " " + HP);
             float temp = HP + ammount - ammount * (float)((float)hero.Def * 0.1f);
             if (temp < HP)
                 HP = temp;
         }
+        if (HP > hero.MaxHP)
+            HP = hero.MaxHP;
         HPBar.SetHealth(HP);
         if (HP <= 0)
         {
             Die();
         }
+        
     }
     /// <summary>
     /// Increments this hero's AP by the passed ammount and updates its AP bar

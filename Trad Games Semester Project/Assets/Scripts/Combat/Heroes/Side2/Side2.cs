@@ -54,6 +54,7 @@ public class Side2 : Hero
 
     public override int Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
+        heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(2);
         return GetAPOfAttack2();
     }
 
@@ -97,7 +98,7 @@ public class Side2 : Hero
 
     public override int GetAPOfAttack2()
     {
-        return 0;
+        return 10;
     }
 
     public override int GetAPOfAttack3()
@@ -114,7 +115,7 @@ public class Side2 : Hero
 
     public override List<List<int>> GetAttack2Targets(int currentSpace)
     {
-        List<int> heroes = new List<int>() { };
+        List<int> heroes = new List<int>() { currentSpace };
         List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
     }

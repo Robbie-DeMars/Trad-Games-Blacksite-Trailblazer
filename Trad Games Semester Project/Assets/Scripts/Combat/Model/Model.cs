@@ -281,6 +281,8 @@ public class Model : StateMachine
             }
         }
         HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+        psiHeat = 0;
+        view.SetHeat(psiHeat);
         view.SetAP(currentHero.GetAP());
         view.SetMaxAP(currentHero.hero.MaxAP);
         StartCoroutine(PauseWhileExecuting(PassTurnCoroutine()));
@@ -361,9 +363,10 @@ public class Model : StateMachine
         //Tell view to update
         view.ClearPartyHighlights();
         view.HighlightPartyPosition(pos);
-        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+        HeroBehavior currentHero = heroes[pos].GetComponent<HeroBehavior>();
         view.SetAP(currentHero.GetAP());
         view.SetMaxAP(currentHero.hero.MaxAP);
+        Debug.Log(pos);
         
     }
 
