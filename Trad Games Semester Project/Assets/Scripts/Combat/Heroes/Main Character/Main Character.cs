@@ -7,7 +7,8 @@ public class MainCharacter : Hero
 {
     public override void LoadStats()
     {
-        HP = party.mainStats[0];
+        HP = PlayerPrefs.GetInt("MainHP");
+        Debug.Log(HP);
         MaxHP = party.mainStats[1];
         MaxAP = party.mainStats[2];
         Atk = party.mainStats[3];
@@ -17,9 +18,10 @@ public class MainCharacter : Hero
     public override void SaveStats(int currentHP)
     {
         if (currentHP <= 0)
-            party.mainStats[0] = 1;
+            PlayerPrefs.SetInt("MainHP", 1);
         else
-            party.mainStats[0] = currentHP;
+            PlayerPrefs.SetInt("MainHP", currentHP);
+        PlayerPrefs.Save();
     }
 
     public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)

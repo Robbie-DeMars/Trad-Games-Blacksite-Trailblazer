@@ -13,14 +13,13 @@ public class Pathway : MonoBehaviour
     [SerializeField] TMP_Text Text; 
     [SerializeField] TMP_Text EventText;
     [SerializeField] Slider ProgressSlider;
-    [SerializeField] LocationOnPath location;
 
     bool ready = false;
     private List<Tuple<string, float>> _event_and_when = null; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (location._event_and_when != null)
+        if (_event_and_when != null)
         {
             ready = true;
             return;
@@ -37,15 +36,14 @@ public class Pathway : MonoBehaviour
         _event_and_when.Sort(CompareTuples);
         ready = true;
         ProgressSlider.normalizedValue = 0;
-        location._event_and_when = _event_and_when;
     }
 
     public void NextButtonClicked() {
         if (ready) {
-            if (location._event_and_when.Count <= 0) {EventText.text = "No more events!"; return; }
+            if (_event_and_when.Count <= 0) {EventText.text = "No more events!"; return; }
             //collect and manage data
-            Tuple<string, float> _event = location._event_and_when[location._event_and_when.Count - 1];
-            location._event_and_when.RemoveAt(location._event_and_when.Count-1);
+            Tuple<string, float> _event = _event_and_when[_event_and_when.Count - 1];
+            _event_and_when.RemoveAt(_event_and_when.Count-1);
 
             //do the stuff with the data (start the encounter?)
             EventText.text = "Event " + _event.Item1.ToString() + " at " + _event.Item2.ToString();

@@ -7,7 +7,7 @@ public class Side2 : Hero
 {
     public override void LoadStats()
     {
-        HP = party.side2Stats[0];
+        HP = PlayerPrefs.GetInt("Side2HP");
         MaxHP = party.side2Stats[1];
         MaxAP = party.side2Stats[2];
         Atk = party.side2Stats[3];
@@ -16,10 +16,11 @@ public class Side2 : Hero
 
     public override void SaveStats(int currentHP)
     {
-        if (currentHP == 0)
-            party.side2Stats[0] = 1;
+        if (currentHP <= 0)
+            PlayerPrefs.SetInt("Side2HP", 0);
         else
-            party.side2Stats[0] = currentHP;
+            PlayerPrefs.SetInt("Side2HP", currentHP);
+        PlayerPrefs.Save();
     }
 
     public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
