@@ -199,6 +199,8 @@ public class HeroBehavior : MonoBehaviour
     public void Die()
     {
         SaveStats();
+        if (takingTurn)
+            GameObject.FindGameObjectWithTag("Model").GetComponent<Model>().PassInitiative();
         HPBar.Die();
         Destroy(this.gameObject);
         Destroy(this);

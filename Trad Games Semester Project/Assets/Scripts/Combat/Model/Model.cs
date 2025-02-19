@@ -366,7 +366,6 @@ public class Model : StateMachine
         HeroBehavior currentHero = heroes[pos].GetComponent<HeroBehavior>();
         view.SetAP(currentHero.GetAP());
         view.SetMaxAP(currentHero.hero.MaxAP);
-        Debug.Log(pos);
         
     }
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test3
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 8920411193829220666, guid: 425ad0f8f2f12c24895d1f65cd5827ac, type: 3}
-  - {fileID: 8920411193829220666, guid: 425ad0f8f2f12c24895d1f65cd5827ac, type: 3}
-  - {fileID: 8920411193829220666, guid: 425ad0f8f2f12c24895d1f65cd5827ac, type: 3}
-  - {fileID: 8920411193829220666, guid: 425ad0f8f2f12c24895d1f65cd5827ac, type: 3}
-  - {fileID: 8920411193829220666, guid: 425ad0f8f2f12c24895d1f65cd5827ac, type: 3}
+  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
+  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
+  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
+  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
+  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}

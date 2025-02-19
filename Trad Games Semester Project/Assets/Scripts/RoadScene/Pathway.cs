@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Pathway : MonoBehaviour
@@ -12,12 +13,18 @@ public class Pathway : MonoBehaviour
     [SerializeField] TMP_Text Text; 
     [SerializeField] TMP_Text EventText;
     [SerializeField] Slider ProgressSlider;
+    [SerializeField] LocationOnPath location;
 
     bool ready = false;
-    private List<Tuple<string, float>> _event_and_when; 
+    private List<Tuple<string, float>> _event_and_when = null; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (location._event_and_when != null)
+        {
+            ready = true;
+            return;
+        }
         _event_and_when = new List<Tuple<string, float>>();
         Text.text = "";
         for (int i = 0; i < Predetermined_Events.Count; i++)
@@ -30,18 +37,23 @@ public class Pathway : MonoBehaviour
         _event_and_when.Sort(CompareTuples);
         ready = true;
         ProgressSlider.normalizedValue = 0;
+        location._event_and_when = _event_and_when;
     }
 
     public void NextButtonClicked() {
         if (ready) {
-            if (_event_and_when.Count <= 0) {EventText.text = "No more events!"; return; }
+            if (location._event_and_when.Count <= 0) {EventText.text = "No more events!"; return; }
             //collect and manage data
-            Tuple<string, float> _event = _event_and_when[_event_and_when.Count - 1];
-            _event_and_when.RemoveAt(_event_and_when.Count-1);
+            Tuple<string, float> _event = location._event_and_when[location._event_and_when.Count - 1];
+            location._event_and_when.RemoveAt(location._event_and_when.Count-1);
 
             //do the stuff with the data (start the encounter?)
             EventText.text = "Event " + _event.Item1.ToString() + " at " + _event.Item2.ToString();
             ProgressSlider.normalizedValue = _event.Item2;
+
+            //Start battle
+            if (_event.Item1.Equals("Battle"))
+                SceneManager.LoadScene("Combat");
         }
     }
 

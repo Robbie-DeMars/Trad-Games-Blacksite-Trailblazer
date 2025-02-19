@@ -17,6 +17,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] GameObject[] attackTelegraphs;
     List<GameObject> currentTelegraphs;
 
+    [SerializeField] float TelegraphOffset;
+
 
     private void Start()
     {
@@ -39,7 +41,7 @@ public class EnemyBehavior : MonoBehaviour
             int attack = enemy.GetAttackNumber(upcomingAttacks[x]);
             currentTelegraphs.Add(Instantiate(attackTelegraphs[attack - 1], this.transform));
             currentTelegraphs[currentTelegraphs.Count - 1].GetComponent<AttackTelegraph>().ConnectAttack(attack, this);
-            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, HPBar.transform.position.y - 2, HPBar.transform.position.z);
+            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, HPBar.transform.position.y + TelegraphOffset, HPBar.transform.position.z - 0.1f);
         }
     }
 

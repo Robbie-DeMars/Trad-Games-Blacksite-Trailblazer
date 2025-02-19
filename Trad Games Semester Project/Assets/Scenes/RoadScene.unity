@@ -1151,14 +1151,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Predetermined_Events:
-  - Battle1
+  - Battle
   - Dialogue
   - NOTHING. DIE.
-  - Battle2
+  - Battle
   - ' Mama Luigi'
   Text: {fileID: 126507748}
   EventText: {fileID: 1518895188}
   ProgressSlider: {fileID: 1261356907}
+  location: {fileID: 11400000, guid: 584a9b72a0d49e342996f1d12e23776a, type: 2}
 --- !u!1 &1935463937
 GameObject:
   m_ObjectHideFlags: 0

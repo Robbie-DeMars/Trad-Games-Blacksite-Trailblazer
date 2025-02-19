@@ -39,17 +39,14 @@ public class PartyState : ScriptableObject
         if (hasMainHero && mainStats[5] != -1)
         {
             party[mainStats[5]] = characterPrefabs[mainHeroIndex];
-            Debug.Log("Added main to " + mainStats[5]);
         }
         if (hasSide1 && side1Stats[5] != -1)
         {
             party[side1Stats[5]] = characterPrefabs[side1Index];
-            Debug.Log("Added side1 to " + side1Stats[5]);
         }
         if (hasSide2 && side2Stats[5] != -1)
         {
             party[side2Stats[5]] = characterPrefabs[side2Index];
-            Debug.Log("Added side2 to " + side2Stats[5]);
         }
 
         return party;
