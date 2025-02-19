@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hero: {fileID: 11400000, guid: 1a2dd9db155f41945b010dd3b92efc7c, type: 2}
   HPBar: {fileID: 7257485829394991777}
+  party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   takingTurn: 0
 --- !u!1 &1266263867439733159
 GameObject:

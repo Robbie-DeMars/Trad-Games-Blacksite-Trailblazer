@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7edc62e04bc724c95cc711ee20e1b6, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  MaxHP: 12
-  MaxAP: 10
-  HP: 12
-  Atk: 5
-  Def: 2
+  MaxHP: 0
+  MaxAP: 0
+  HP: 0
+  Atk: 0
+  Def: 0
+  party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}

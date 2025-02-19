@@ -13,11 +13,16 @@ public class HeroBehavior : MonoBehaviour
 
     public bool takingTurn = false;
 
-    private void Start()
+    private void Awake()
     {
-        HP = hero.MaxHP;
+        hero.LoadStats();
         HPBar.SetMaxHealth(hero.MaxHP);
         AP = hero.MaxAP;
+    }
+
+    public void SaveStats()
+    {
+        hero.SaveStats(Mathf.RoundToInt(HP));
     }
 
     /// <summary>
@@ -138,7 +143,7 @@ public class HeroBehavior : MonoBehaviour
         }
         else if (ammount < 0) //If being hurt
         {
-            float temp = HP + ammount + hero.Def;
+            float temp = HP + ammount - ammount * hero.Def / 10;
             if (temp < HP)
                 HP = temp;
         }
@@ -188,6 +193,7 @@ public class HeroBehavior : MonoBehaviour
     /// </summary>
     public void Die()
     {
+        hero.SaveStats(Mathf.RoundToInt(HP));
         HPBar.Die();
         Destroy(this.gameObject);
         Destroy(this);

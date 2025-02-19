@@ -17,7 +17,6 @@ public class ActionPointBar : MonoBehaviour
     public void SetMaxAP(int value)
     {
         slider.maxValue = value;
-        slider.value = value;
         text.color = Color.red;
         text.text = slider.value + "\n--\n" + slider.maxValue;
     }

@@ -5,6 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MainCharacter", menuName = "Scriptable Objects/MainCharacter")]
 public class MainCharacter : Hero
 {
+    public override void LoadStats()
+    {
+        HP = party.mainStats[0];
+        MaxHP = party.mainStats[1];
+        MaxAP = party.mainStats[2];
+        Atk = party.mainStats[3];
+        Def = party.mainStats[4];
+    }
+
+    public override void SaveStats(int currentHP)
+    {
+        if (HP == 0)
+            party.mainStats[0] = 1;
+        else
+            party.mainStats[0] = currentHP;
+    }
+
     public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         if (enemies[currentPosition] != null)
@@ -19,6 +36,26 @@ public class MainCharacter : Hero
 
     public override int Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
+        if (currentPosition != 4)
+        {
+            while (currentPosition != 4)
+            {
+                GameObject temp = heroes[currentPosition];
+                heroes[currentPosition] = heroes[currentPosition + 1];
+                heroes[currentPosition + 1] = temp;
+                currentPosition++;
+            }
+        }
+        else
+        {
+            while (currentPosition != 0)
+            {
+                GameObject temp = heroes[currentPosition];
+                heroes[currentPosition] = heroes[currentPosition - 1];
+                heroes[currentPosition - 1] = temp;
+                currentPosition--;
+            }
+        }
         return GetAPOfAttack3();
     }
 
@@ -34,7 +71,7 @@ public class MainCharacter : Hero
 
     public override int GetAPOfAttack3()
     {
-        return 3;
+        return 0;
     }
 
     public override List<List<int>> GetAttack1Targets(int currentSpace)
@@ -53,7 +90,11 @@ public class MainCharacter : Hero
 
     public override List<List<int>> GetAttack3Targets(int currentSpace)
     {
-        List<int> heroes = new List<int>() { };
+        List<int> heroes;
+        if (currentSpace != 4)
+            heroes = new List<int>() { currentSpace, currentSpace + 1, currentSpace + 2, currentSpace + 3, currentSpace + 4, currentSpace + 5};
+        else
+            heroes = new List<int>() { currentSpace, currentSpace - 1, currentSpace - 2, currentSpace - 3, currentSpace - 4, currentSpace - 5 };
         List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
     }

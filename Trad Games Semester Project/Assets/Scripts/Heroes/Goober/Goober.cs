@@ -58,6 +58,11 @@ public class Goober : Hero
         return new List<List<int>>() { heroes, enemies };
     }
 
+    public override void LoadStats()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override IEnumerator PlayAttack1Anim(int currentSpace)
     {
         View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
@@ -103,5 +108,10 @@ public class Goober : Hero
 
         yield return new WaitForSeconds(0.2f);
         view.clearParticles();
+    }
+
+    public override void SaveStats(int currentHP)
+    {
+        throw new System.NotImplementedException();
     }
 }

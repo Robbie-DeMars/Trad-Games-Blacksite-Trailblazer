@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 
@@ -74,6 +75,7 @@ public class Model : StateMachine
             view.SetHeat(psiHeat);
             HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
             view.SetMaxAP(currentHero.hero.MaxAP);
+            view.SetAP(currentHero.GetAP());
         }
 
 
@@ -92,6 +94,17 @@ public class Model : StateMachine
             currentState = State.LOSE;
         else if (!enemyAlive)
             currentState = State.WIN;
+
+        if (currentState == State.WIN)
+        {
+            //Save current HP of enemies
+            for (int x = 0; x < heroes.Length; x++)
+            {
+                if (heroes[x] != null)
+                    heroes[x].GetComponent<HeroBehavior>().SaveStats();
+            }
+            SceneManager.LoadScene("RoadScene");
+        }
     }
 
     /// <summary>
@@ -123,10 +136,7 @@ public class Model : StateMachine
         DecrementHeroAP(currentHero, APCost);
 
         //Execute Animation in view
-        StartCoroutine(PauseWhileExecuting(view.PlayAttack1Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
-
-        //Go to next avalible character
-        PassInitiative();
+        StartCoroutine(PauseWhileExecuting(PassInitiativeAfter(view.PlayAttack1Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor()))));
     }
 
     /// <summary>
@@ -146,10 +156,7 @@ public class Model : StateMachine
         DecrementHeroAP(currentHero, APCost);
 
         //Execute Animation in view
-        StartCoroutine(PauseWhileExecuting(view.PlayAttack2Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
-
-        //Go to next avalible character
-        PassInitiative();
+        StartCoroutine(PauseWhileExecuting(PassInitiativeAfter(view.PlayAttack2Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor()))));
     }
 
     /// <summary>
@@ -169,10 +176,7 @@ public class Model : StateMachine
         DecrementHeroAP(currentHero, APCost);
 
         //Execute Animation in view
-        StartCoroutine(PauseWhileExecuting(view.PlayAttack3Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
-
-        //Go to next avalible character
-        PassInitiative();
+        StartCoroutine(PauseWhileExecuting(PassInitiativeAfter(view.PlayAttack3Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor()))));
     }
 
     /// <summary>
@@ -272,6 +276,7 @@ public class Model : StateMachine
         }
         HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
         view.SetAP(currentHero.GetAP());
+        view.SetMaxAP(currentHero.hero.MaxAP);
         StartCoroutine(PauseWhileExecuting(PassTurnCoroutine()));
     }
 
@@ -350,6 +355,22 @@ public class Model : StateMachine
         //Tell view to update
         view.ClearPartyHighlights();
         view.HighlightPartyPosition(pos);
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+        view.SetAP(currentHero.GetAP());
+        view.SetMaxAP(currentHero.hero.MaxAP);
+        
+    }
+
+    /// <summary>
+    /// Passes the initiative after a 0.5 second delay.
+    /// </summary>
+    /// <param name="passInitiativeAfterThis"></param>
+    /// <returns></returns>
+    public IEnumerator PassInitiativeAfter(IEnumerator passInitiativeAfterThis)
+    {
+        yield return passInitiativeAfterThis;
+        yield return new WaitForSeconds(0.5f);
+        PassInitiative();
     }
 
     /// <summary>

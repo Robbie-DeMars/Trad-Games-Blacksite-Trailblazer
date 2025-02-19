@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d845b12bc35a4a48914f23ae850b415, type: 3}
   m_Name: Side2
   m_EditorClassIdentifier: 
+  MaxHP: 0
+  MaxAP: 0
+  HP: 0
+  Atk: 0
+  Def: 0
+  party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}

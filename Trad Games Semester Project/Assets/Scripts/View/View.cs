@@ -256,6 +256,7 @@ public class View : StateMachine
     public void SetAP(int ammount)
     {
         APBar.SetAP(ammount);
+        Debug.Log(ammount);
     }
 
     /// <summary>

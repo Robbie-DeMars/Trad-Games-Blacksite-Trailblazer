@@ -106,7 +106,7 @@ MonoBehaviour:
   HPBar: {fileID: 1731342063504913988}
   attackTelegraphs:
   - {fileID: 3541097657791810955, guid: b2b1ade9ae190714f99d38c751b65cff, type: 3}
-  - {fileID: 3541097657791810955, guid: e355d496c157ed5409475ab1ad2787d0, type: 3}
+  - {fileID: 3541097657791810955, guid: edfcbffac00c840478f8e66b78e188e7, type: 3}
 --- !u!61 &8440670820744986508
 BoxCollider2D:
   m_ObjectHideFlags: 0

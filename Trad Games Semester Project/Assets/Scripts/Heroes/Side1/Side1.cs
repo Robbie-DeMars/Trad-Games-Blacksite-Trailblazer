@@ -5,6 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Side1", menuName = "Scriptable Objects/Side1")]
 public class Side1 : Hero
 {
+    public override void LoadStats()
+    {
+        HP = party.side1Stats[0];
+        MaxHP = party.side1Stats[1];
+        MaxAP = party.side1Stats[2];
+        Atk = party.side1Stats[3];
+        Def = party.side1Stats[4];
+    }
+
+    public override void SaveStats(int currentHP)
+    {
+        if (currentHP == 0)
+            party.side1Stats[0] = 1;
+        else
+            party.side1Stats[0] = currentHP;
+    }
+
     public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         if (currentPosition + 1 < 5 && enemies[currentPosition + 1] != null)

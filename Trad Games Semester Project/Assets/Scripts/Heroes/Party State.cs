@@ -11,18 +11,21 @@ public class PartyState : ScriptableObject
     [SerializeField] GameObject[] characterPrefabs;
     //Main Character
     bool hasMainHero = true;
-    int mainHeroPosition = 2;
     int mainHeroIndex = 0;
+    [Header("Main Character Stats: HP, Max HP, MaxAP, Atk, Def, Position")]
+    [SerializeField] public int[] mainStats;
 
     //Side Character 1
     bool hasSide1 = true;
-    int Side1Position = 1;
-    int Side1Index = 1;
+    int side1Index = 1;
+    [Header("Main Character Stats: HP, Max HP, MaxAP, Atk, Def, Position")]
+    [SerializeField] public int[] side1Stats;
 
     //Side Character 2
     bool hasSide2 = true;
-    int Side2Position = 3;
-    int Side2Index = 2;
+    int side2Index = 2;
+    [Header("Main Character Stats: HP, Max HP, MaxAP, Atk, Def, Position")]
+    [SerializeField] public int[] side2Stats;
 
 
 
@@ -34,20 +37,20 @@ public class PartyState : ScriptableObject
     public GameObject[] GetCurrentPartyForCombat()
     {
         GameObject[] party = new GameObject[possiblePartySize];
-        if (hasMainHero && mainHeroPosition != -1)
+        if (hasMainHero && mainStats[5] != -1)
         {
-            party[mainHeroPosition] = characterPrefabs[mainHeroIndex];
-            Debug.Log("Added main to " + mainHeroPosition);
+            party[mainStats[5]] = characterPrefabs[mainHeroIndex];
+            Debug.Log("Added main to " + mainStats[5]);
         }
-        if (hasSide1 && Side1Position != -1)
+        if (hasSide1 && side1Stats[5] != -1)
         {
-            party[Side1Position] = characterPrefabs[Side1Index];
-            Debug.Log("Added side1 to " + Side1Position);
+            party[side1Stats[5]] = characterPrefabs[side1Index];
+            Debug.Log("Added side1 to " + side1Stats[5]);
         }
-        if (hasSide2 && Side2Position != -1)
+        if (hasSide2 && side2Stats[5] != -1)
         {
-            party[Side2Position] = characterPrefabs[Side2Index];
-            Debug.Log("Added side2 to " + Side2Position);
+            party[side2Stats[5]] = characterPrefabs[side2Index];
+            Debug.Log("Added side2 to " + side2Stats[5]);
         }
 
         return party;

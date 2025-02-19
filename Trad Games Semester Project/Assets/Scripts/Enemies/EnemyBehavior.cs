@@ -39,7 +39,7 @@ public class EnemyBehavior : MonoBehaviour
             int attack = enemy.GetAttackNumber(upcomingAttacks[x]);
             currentTelegraphs.Add(Instantiate(attackTelegraphs[attack - 1], this.transform));
             currentTelegraphs[currentTelegraphs.Count - 1].GetComponent<AttackTelegraph>().ConnectAttack(attack, this);
-            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, HPBar.transform.position.y + 1, HPBar.transform.position.z);
+            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, HPBar.transform.position.y - 2, HPBar.transform.position.z);
         }
     }
 
@@ -128,7 +128,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if (ammount < 0) //If being hurt
         {
-            float temp = HP + ammount + enemy.Def;
+            float temp = HP + ammount + ammount * enemy.Def / 10;
             if (temp < HP)
                 HP = temp;
         }

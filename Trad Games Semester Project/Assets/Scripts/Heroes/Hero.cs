@@ -7,10 +7,20 @@ public abstract class Hero : ScriptableObject
 
     [SerializeField] public int MaxHP = 10;
     [SerializeField] public int MaxAP = 10;
-    public int HP = 10;
+    public float HP = 10;
     [SerializeField] public int Atk = 5;
     [SerializeField] public int Def = 2;
+    [SerializeField] public PartyState party;
 
+    /// <summary>
+    /// Loads the stats into this character from the party state.
+    /// </summary>
+    public abstract void LoadStats();
+
+    /// <summary>
+    /// Loads the stats into this character to the party state.
+    /// </summary>
+    public abstract void SaveStats(int currentHP);
 
     /// <summary>
     /// Executes the model's side of Attack 1's behavior
