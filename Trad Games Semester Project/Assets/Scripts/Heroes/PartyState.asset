@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PartyState
   m_EditorClassIdentifier: 
   characterPrefabs:
-  - {fileID: 5103204463057456073, guid: ea9fb474871d38b4fb4c400842a559d6, type: 3}
+  - {fileID: 585436764936509283, guid: 82ed3151d721719439c1b25f7e4b0d5f, type: 3}
+  - {fileID: 585436764936509283, guid: 75e62113967738d479aefecb6cd74c4d, type: 3}
+  - {fileID: 585436764936509283, guid: 59044ad17ef22724daf5e57d088dad14, type: 3}

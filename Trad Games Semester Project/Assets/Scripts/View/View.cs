@@ -12,8 +12,12 @@ public class View : StateMachine
     [SerializeField] GameObject[] enemyReticles;
 
     [SerializeField] PsiHeatBar psiHeatBar;
+    [SerializeField] ActionPointBar APBar;
 
     [SerializeField] TextMeshProUGUI moveText;
+
+    [SerializeField] ParticleSystem[] particlesHero;
+    [SerializeField] ParticleSystem[] particlesEnemy;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,6 +34,17 @@ public class View : StateMachine
         //Same for enemy reticles
         for (int i = 0; i < enemyReticles.Length; i++)
             enemyReticles[i].SetActive(false);
+
+        //Turn particle emitters off
+        for (int i = 0; i < particlesHero.Length; i++) {
+            var emission = particlesHero[i].emission;
+            emission.enabled = false;
+        }
+        for (int i = 0; i < particlesEnemy.Length; i++)
+        {
+            var emission = particlesEnemy[i].emission;
+            emission.enabled = false;
+        }
     }
 
 
@@ -232,6 +247,82 @@ public class View : StateMachine
     public void SetMaxHeat(int ammount)
     {
         psiHeatBar.SetMaxHeat(ammount);
+    }
+
+    /// <summary>
+    /// Sets the current AP in the UI
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SetAP(int ammount)
+    {
+        APBar.SetAP(ammount);
+    }
+
+    /// <summary>
+    /// Sets the maximum AP
+    /// </summary>
+    /// <param name="ammount"></param>
+    public void SetMaxAP(int ammount)
+    {
+        APBar.SetMaxAP(ammount);
+    }
+
+    /// <summary>
+    /// Activates the particle at the given position on the hero side.
+    /// </summary>
+    /// <param name="position"></param>
+    public void ActivateHeroParticle(int position)
+    {
+        var emission = particlesHero[position].emission;
+        emission.enabled = true;
+    }
+
+    /// <summary>
+    /// Activates the particle at the given position on the hero side.
+    /// </summary>
+    /// <param name="position"></param>
+    public void ActivateEnemyParticle(int position)
+    {
+        var emission = particlesEnemy[position].emission;
+        emission.enabled = true;
+    }
+
+    /// <summary>
+    /// Deactivates all particles on screen.
+    /// </summary>
+    public void clearParticles()
+    {
+        for (int i = 0; i < particlesHero.Length; i++)
+        {
+            var emission = particlesHero[i].emission;
+            emission.enabled = false;
+        }
+        for (int i = 0; i < particlesEnemy.Length; i++)
+        {
+            var emission = particlesEnemy[i].emission;
+            emission.enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Plays the animation for the psionic heat effect.
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator PlayPsiHeatAnimation()
+    {
+        //Turn particle emitters on
+        for (int i = 0; i < particlesHero.Length; i++)
+        {
+            var emission = particlesHero[i].emission;
+            emission.enabled = true;
+        }
+        yield return new WaitForSeconds(1f);
+        //Turn particle emitters off
+        for (int i = 0; i < particlesHero.Length; i++)
+        {
+            var emission = particlesHero[i].emission;
+            emission.enabled = false;
+        }
     }
 
 }

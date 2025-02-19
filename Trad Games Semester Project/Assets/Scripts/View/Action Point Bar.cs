@@ -10,7 +10,8 @@ public class ActionPointBar : MonoBehaviour
     public void SetAP(float points)
     {
         slider.value = points;
-        text.text = slider.maxValue + " / " + slider.value;
+        text.color = Color.red;
+        text.text = slider.value + "\n--\n" + slider.maxValue;
     }
 
     public void SetMaxAP(int value)
@@ -18,7 +19,7 @@ public class ActionPointBar : MonoBehaviour
         slider.maxValue = value;
         slider.value = value;
         text.color = Color.red;
-        text.text = slider.maxValue + " / " + slider.value;
+        text.text = slider.value + "\n--\n" + slider.maxValue;
     }
 
     public void Die()
@@ -26,4 +27,6 @@ public class ActionPointBar : MonoBehaviour
         Destroy(this.gameObject);
         Destroy(this);
     }
+
+
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class Model : StateMachine
 {
@@ -71,6 +72,8 @@ public class Model : StateMachine
             view.HighlightPartyPosition(GetCurrentActor());
             view.SetMaxHeat(maxHeat);
             view.SetHeat(psiHeat);
+            HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+            view.SetMaxAP(currentHero.hero.MaxAP);
         }
 
 
@@ -117,11 +120,7 @@ public class Model : StateMachine
         int APCost = currentHero.Attack1(heroes, enemies, GetCurrentActor());
 
         //Adjust AP or Heat
-        if (currentHero.GetAP() < APCost)
-        {
-            IncrementPsiHeat(APCost - currentHero.GetAP());
-        }
-        currentHero.IncrementAP(-APCost);
+        DecrementHeroAP(currentHero, APCost);
 
         //Execute Animation in view
         StartCoroutine(PauseWhileExecuting(view.PlayAttack1Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
@@ -144,11 +143,7 @@ public class Model : StateMachine
         int APCost = heroes[GetCurrentActor()].GetComponent<HeroBehavior>().Attack2(heroes, enemies, GetCurrentActor());
 
         //Adjust AP or Heat
-        if (currentHero.GetAP() < APCost)
-        {
-            IncrementPsiHeat(APCost - currentHero.GetAP());
-        }
-        currentHero.IncrementAP(-APCost);
+        DecrementHeroAP(currentHero, APCost);
 
         //Execute Animation in view
         StartCoroutine(PauseWhileExecuting(view.PlayAttack2Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
@@ -171,17 +166,28 @@ public class Model : StateMachine
         int APCost = heroes[GetCurrentActor()].GetComponent<HeroBehavior>().Attack3(heroes, enemies, GetCurrentActor());
 
         //Adjust AP or Heat
-        if (currentHero.GetAP() < APCost)
-        {
-            IncrementPsiHeat(APCost - currentHero.GetAP());
-        }
-        currentHero.IncrementAP(-APCost);
+        DecrementHeroAP(currentHero, APCost);
 
         //Execute Animation in view
         StartCoroutine(PauseWhileExecuting(view.PlayAttack3Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor())));
 
         //Go to next avalible character
         PassInitiative();
+    }
+
+    /// <summary>
+    /// Manages correct translation between the AP meter and the Psi Heat Meter
+    /// </summary>
+    /// <param name="currentHero"></param>
+    /// <param name="APCost"></param>
+    public void DecrementHeroAP(HeroBehavior currentHero, int APCost)
+    {
+        if (currentHero.GetAP() < APCost)
+        {
+            IncrementPsiHeat(APCost - currentHero.GetAP());
+        }
+        currentHero.IncrementAP(-APCost);
+        view.SetAP(currentHero.GetAP());
     }
 
     /// <summary>
@@ -200,6 +206,7 @@ public class Model : StateMachine
                 if (heroes[x] != null)
                     heroes[x].GetComponent<HeroBehavior>().IncrementHP(-5);
             }
+            StartCoroutine(PauseWhileExecuting(view.PlayPsiHeatAnimation()));
         }
 
         view.SetHeat(psiHeat);
@@ -241,6 +248,8 @@ public class Model : StateMachine
         }
         else
         {
+            HeroBehavior currentHero = heroes[to].GetComponent<HeroBehavior>();
+            DecrementHeroAP(currentHero, 2);
             StartCoroutine(PauseWhileExecuting(view.UpdateBattlePositions(heroes, enemies)));
         }
     }
@@ -261,6 +270,8 @@ public class Model : StateMachine
                 heroes[x].GetComponent<HeroBehavior>().ReplenishAP();
             }
         }
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+        view.SetAP(currentHero.GetAP());
         StartCoroutine(PauseWhileExecuting(PassTurnCoroutine()));
     }
 
@@ -325,6 +336,7 @@ public class Model : StateMachine
         //Find next party member
         int pos = GetCurrentActor();
         heroes[pos].GetComponent<HeroBehavior>().takingTurn = false;
+        pos++;
         if (pos >= heroes.Length)
             pos = 0;
         while (heroes[pos] == null)

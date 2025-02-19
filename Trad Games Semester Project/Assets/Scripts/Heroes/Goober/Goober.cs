@@ -60,24 +60,48 @@ public class Goober : Hero
 
     public override IEnumerator PlayAttack1Anim(int currentSpace)
     {
-        Debug.Log("Animation Start");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Animation Over");
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentSpace);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
     }
 
    
     public override IEnumerator PlayAttack2Anim(int currentSpace)
     {
-        Debug.Log("Animation Start");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Animation Over");
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentSpace);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
     }
 
 
     public override IEnumerator PlayAttack3Anim(int currentSpace)
     {
-        Debug.Log("Animation Start");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Animation Over");
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentSpace);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
     }
 }

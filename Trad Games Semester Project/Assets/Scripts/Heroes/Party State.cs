@@ -9,14 +9,20 @@ public class PartyState : ScriptableObject
     
     //Defines main character
     [SerializeField] GameObject[] characterPrefabs;
+    //Main Character
     bool hasMainHero = true;
-    int mainHeroPosition = 0;
+    int mainHeroPosition = 2;
     int mainHeroIndex = 0;
-    int level = 0;
-    int Atk = 5;
-    int Def = 2;
-    int HP = 10;
-    int maxHP = 10;
+
+    //Side Character 1
+    bool hasSide1 = true;
+    int Side1Position = 1;
+    int Side1Index = 1;
+
+    //Side Character 2
+    bool hasSide2 = true;
+    int Side2Position = 3;
+    int Side2Index = 2;
 
 
 
@@ -31,12 +37,19 @@ public class PartyState : ScriptableObject
         if (hasMainHero && mainHeroPosition != -1)
         {
             party[mainHeroPosition] = characterPrefabs[mainHeroIndex];
-            //party[mainHeroPosition].GetComponent<Hero>().MaxHP = maxHP;
-            //party[mainHeroPosition].GetComponent<Hero>().HP = HP;
-            //party[mainHeroPosition].GetComponent<Hero>().Atk = Atk;
-            //party[mainHeroPosition].GetComponent<Hero>().Def = Def;
+            Debug.Log("Added main to " + mainHeroPosition);
         }
-        
+        if (hasSide1 && Side1Position != -1)
+        {
+            party[Side1Position] = characterPrefabs[Side1Index];
+            Debug.Log("Added side1 to " + Side1Position);
+        }
+        if (hasSide2 && Side2Position != -1)
+        {
+            party[Side2Position] = characterPrefabs[Side2Index];
+            Debug.Log("Added side2 to " + Side2Position);
+        }
+
         return party;
     }
 

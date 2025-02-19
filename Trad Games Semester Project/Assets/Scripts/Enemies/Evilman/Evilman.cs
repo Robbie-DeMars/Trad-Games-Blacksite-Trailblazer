@@ -50,9 +50,17 @@ public class Evilman : Enemy
     
     public override IEnumerator PlayAttack1Anim(int currentPosition)
     {
-        Debug.Log("Enemy Executing attack 1");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Its so joever");
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentPosition);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
     }
 
     /// <summary>
@@ -62,9 +70,17 @@ public class Evilman : Enemy
     /// <returns></returns>
     public IEnumerator PlayAttack2Anim(int currentPosition)
     {
-        Debug.Log("Enemy Executing attack 2");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Its so joever");
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentPosition);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
     }
 
     public override List<Attack> PrepareAttacks()

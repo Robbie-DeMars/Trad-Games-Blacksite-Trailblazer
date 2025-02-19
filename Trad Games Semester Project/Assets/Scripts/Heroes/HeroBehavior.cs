@@ -5,11 +5,10 @@ using UnityEngine;
 public class HeroBehavior : MonoBehaviour
 {
 
-    [SerializeField] Hero hero;
+    [SerializeField] public Hero hero;
     [SerializeField] HealthBar HPBar;
     private float HP;
 
-    [SerializeField] ActionPointBar APBar;
     private int AP;
 
     public bool takingTurn = false;
@@ -19,7 +18,6 @@ public class HeroBehavior : MonoBehaviour
         HP = hero.MaxHP;
         HPBar.SetMaxHealth(hero.MaxHP);
         AP = hero.MaxAP;
-        APBar.SetMaxAP(hero.MaxAP);
     }
 
     /// <summary>
@@ -165,7 +163,6 @@ public class HeroBehavior : MonoBehaviour
         {
             AP = hero.MaxAP;
         }
-        APBar.SetAP(AP);
     }
 
     /// <summary>
@@ -174,7 +171,6 @@ public class HeroBehavior : MonoBehaviour
     public void ReplenishAP()
     {
         AP = hero.MaxAP;
-        APBar.SetAP(AP);
     }
 
 
