@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(float health)
     {
         slider.value = health;
-        text.text = slider.maxValue + " / " + slider.value;
+        text.text = slider.value + " / " + slider.maxValue;
     }
 
     public void SetMaxHealth(int value)
@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
         slider.maxValue = value;
         slider.value = value;
         text.color = Color.blue;
-        text.text = slider.maxValue + " / " + slider.value;
+        text.text = slider.value + " / " + slider.maxValue;
     }
 
     public void Die()

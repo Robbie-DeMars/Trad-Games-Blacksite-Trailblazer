@@ -11,7 +11,7 @@ public class PsiHeatBar : MonoBehaviour
     public void SetHeat(float heat)
     {
         slider.value = heat;
-        text.text = slider.maxValue + " / " + slider.value;
+        text.text = slider.value + " / " + slider.maxValue;
     }
 
     public void SetMaxHeat(int value)
@@ -19,6 +19,6 @@ public class PsiHeatBar : MonoBehaviour
         slider.maxValue = value;
         slider.value = value;
         text.color = Color.red;
-        text.text = slider.maxValue + " / " + slider.value;
+        text.text = slider.value + " / " + slider.maxValue;
     }
 }
