@@ -321,7 +321,13 @@ public class Model : StateMachine
                 }
             }
             currentEnemyBehavior.PrepareAttacks();
-
+            
+            //Settle status effects 
+            for (int x = 0; x < heroes.Length; x++)
+            {
+                if (heroes[x] != null)
+                    heroes[x].GetComponent<HeroBehavior>().SettleEffects();
+            }
         }
         yield return null;
     }

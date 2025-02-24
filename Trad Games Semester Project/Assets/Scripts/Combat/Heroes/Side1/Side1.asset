@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2763f08949acfa8408f11257c4557390, type: 3}
   m_Name: Side1
   m_EditorClassIdentifier: 
-  MaxHP: 0
-  MaxAP: 0
+  MaxHP: 15
   HP: 0
-  Atk: 0
-  Def: 0
+  Atk: 3
+  Def: 3
+  MaxAP: 10
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
+  statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}

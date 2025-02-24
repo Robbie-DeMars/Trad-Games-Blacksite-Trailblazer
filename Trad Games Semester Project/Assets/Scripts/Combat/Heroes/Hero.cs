@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Hero : ScriptableObject
+public abstract class Hero : BattleActor
 {
 
-    public int MaxHP = 10;
     public int MaxAP = 10;
-    public float HP = 10;
-    public int Atk = 5;
-    public int Def = 2;
     public PartyState party;
+    [SerializeField] public StatusEffectManager statusEffectManager;
 
     /// <summary>
     /// Loads the stats into this character from the party state.

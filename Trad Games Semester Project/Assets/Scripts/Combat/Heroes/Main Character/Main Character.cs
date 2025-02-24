@@ -33,7 +33,7 @@ public class MainCharacter : Hero
 
     public override int Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
-        heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(2);
+        heroes[currentPosition].GetComponent<HeroBehavior>().GiveEffect(statusEffectManager.Defend());
         return GetAPOfAttack2();
     }
 

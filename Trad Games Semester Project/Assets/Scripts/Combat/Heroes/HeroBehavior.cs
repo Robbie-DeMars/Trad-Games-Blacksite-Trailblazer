@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroBehavior : MonoBehaviour
+public class HeroBehavior : BattleActorBehavior
 {
 
     [SerializeField] public Hero hero;
     [SerializeField] HealthBar HPBar;
+
+    List<AgnosticEffect> aEffects = new List<AgnosticEffect>();
+
     private float HP;
 
     private int AP;
@@ -129,11 +132,8 @@ public class HeroBehavior : MonoBehaviour
         return hero.GetAttack3Targets(currentSpace);
     }
 
-    /// <summary>
-    /// Increments this hero's hp by the passed ammount and updates its HP bar
-    /// </summary>
-    /// <param name="ammount"></param>
-    public void IncrementHP(float ammount)
+    
+    public override void IncrementHP(float ammount)
     {
         if (ammount > 0)
         {
@@ -196,7 +196,7 @@ public class HeroBehavior : MonoBehaviour
     /// <summary>
     /// Removes this hero from battle
     /// </summary>
-    public void Die()
+    public override void Die()
     {
         SaveStats();
         if (takingTurn)
@@ -204,5 +204,42 @@ public class HeroBehavior : MonoBehaviour
         HPBar.Die();
         Destroy(this.gameObject);
         Destroy(this);
+    }
+
+    public override BattleActor GetBattleActor()
+    {
+        return hero;
+    }
+
+    public override void SettleEffects()
+    {
+        int count = aEffects.Count;
+        for (int x = 0; x < count; x++)
+        {
+            aEffects[x].DoEffect(this);
+            if (aEffects == null)
+            {
+                aEffects.RemoveAt(x);
+                x--;
+                count--;
+            }
+        }
+    }
+
+    public override void GiveEffect(StatusEffect effect)
+    {
+        if (effect is AgnosticEffect ae)
+        {
+            aEffects.Add(ae);
+            ae.DoEffect(this);
+        }
+    }
+
+    public override void ClearEffects()
+    {
+        for (int x = 0; x < aEffects.Count; x++)
+        {
+            aEffects[x].ClearEffect(this);
+        }
     }
 }

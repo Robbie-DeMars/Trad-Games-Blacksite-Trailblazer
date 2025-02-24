@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml.Serialization;
-using Unity.Properties;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : BattleActorBehavior
 {
     //delegate GameObject[] Attack(GameObject[] heroes, GameObject[] enemies, int currentActor);
     [SerializeField] public Enemy enemy;
@@ -18,6 +15,9 @@ public class EnemyBehavior : MonoBehaviour
     List<GameObject> currentTelegraphs;
 
     [SerializeField] float TelegraphOffset;
+
+
+    List<AgnosticEffect> aEffects = new List<AgnosticEffect>();
 
 
     private void Start()
@@ -114,11 +114,7 @@ public class EnemyBehavior : MonoBehaviour
         MakeTelegraphs();
     }
 
-    /// <summary>
-    /// Increments this enemy's hp by the passed ammount and updates its HP bar
-    /// </summary>
-    /// <param name="ammount"></param>
-    public void IncrementHP(float ammount)
+    public override void IncrementHP(float ammount)
     {
         if (ammount > 0)
         {
@@ -141,13 +137,48 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Removes this enemy from battle
-    /// </summary>
-    public void Die()
+
+    public override void Die()
     {
         HPBar.Die();
         Destroy(this.gameObject);
         Destroy(this);
+    }
+
+    public override BattleActor GetBattleActor()
+    {
+        return enemy;
+    }
+
+    public override void SettleEffects()
+    {
+        int count = aEffects.Count;
+        for (int x = 0; x < count; x++)
+        {
+            aEffects[x].DoEffect(this);
+            if (aEffects == null)
+            {
+                aEffects.RemoveAt(x);
+                x--;
+                count--;
+            }
+        }
+    }
+
+    public override void GiveEffect(StatusEffect effect)
+    {
+        if (effect is AgnosticEffect ae)
+        {
+            aEffects.Add(ae);
+            ae.DoEffect(this);
+        }
+    }
+
+    public override void ClearEffects()
+    {
+        for (int x = 0; x < aEffects.Count; x++)
+        {
+            aEffects[x].ClearEffect(this);
+        }
     }
 }

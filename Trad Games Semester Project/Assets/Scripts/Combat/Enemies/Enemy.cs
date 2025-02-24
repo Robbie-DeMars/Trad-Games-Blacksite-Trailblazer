@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : ScriptableObject
+public abstract class Enemy : BattleActor
 {
     //Delegate used to hold attacks from enemies.
     public delegate void Attack(GameObject[] heroes, GameObject[] enemies, int currentPosition);
     
     [SerializeField] public int attacks = 1;
-    [SerializeField] public int MaxHP = 10;
-    [SerializeField] public int Atk = 5;
-    [SerializeField] public int Def = 2;
 
+    [SerializeField] public StatusEffectManager statusEffectManager;
 
     /// <summary>
     /// Executes the model's side of Attack 1's behavior
