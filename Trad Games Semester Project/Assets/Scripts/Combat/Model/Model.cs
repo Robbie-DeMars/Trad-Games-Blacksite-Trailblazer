@@ -97,7 +97,10 @@ public class Model : StateMachine
             for (int x = 0; x < heroes.Length; x++)
             {
                 if (heroes[x] != null)
+                {
                     heroes[x].GetComponent<HeroBehavior>().SaveStats();
+                    heroes[x].GetComponent<HeroBehavior>().ClearEffects();
+                }
             }
             SceneManager.LoadScene("RoadScene");
         }
@@ -107,7 +110,10 @@ public class Model : StateMachine
             for (int x = 0; x < heroes.Length; x++)
             {
                 if (heroes[x] != null)
+                {
                     heroes[x].GetComponent<HeroBehavior>().SaveStats();
+                    heroes[x].GetComponent<HeroBehavior>().ClearEffects();
+                }
             }
             SceneManager.LoadScene("Lose");
         }
