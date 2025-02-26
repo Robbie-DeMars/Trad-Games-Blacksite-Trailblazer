@@ -10,6 +10,8 @@ public abstract class BattleActorBehavior : MonoBehaviour
     public List<AgnosticEffect> aEffects = new List<AgnosticEffect>();
     //The display for the effects in the worldspace
     public List<GameObject> effects = new List<GameObject>();
+    //Instance HP
+    public float HP = 10;
 
     /// <summary>
     /// Increments this actor's hp by the passed ammount and updates its HP bar

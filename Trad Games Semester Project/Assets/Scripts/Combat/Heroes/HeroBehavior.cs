@@ -8,8 +8,6 @@ public class HeroBehavior : BattleActorBehavior
     [SerializeField] public Hero hero;
     //HP Bar Instance
     [SerializeField] HealthBar HPBar;
-    //Instance HP
-    private float HP;
     //Instance AP
     private int AP;
     //Flag for whether it is this hero's turn or not

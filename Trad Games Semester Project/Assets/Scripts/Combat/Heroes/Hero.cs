@@ -4,10 +4,15 @@ using UnityEngine;
 
 public abstract class Hero : BattleActor
 {
-
+    //Max AP of character
     public int MaxAP = 10;
+    //Party state
     public PartyState party;
+    //Status effect definitions
     [SerializeField] public StatusEffectManager statusEffectManager;
+    public int attack1APCost = 0;
+    public int attack2APCost = 0;
+    public int attack3APCost = 0;
 
     /// <summary>
     /// Loads the stats into this character from the party state.

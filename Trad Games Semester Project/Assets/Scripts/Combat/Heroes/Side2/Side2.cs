@@ -90,17 +90,17 @@ public class Side2 : Hero
 
     public override int GetAPOfAttack1()
     {
-        return 4;
+        return attack1APCost;
     }
 
     public override int GetAPOfAttack2()
     {
-        return 10;
+        return attack2APCost;
     }
 
     public override int GetAPOfAttack3()
     {
-        return 6;
+        return attack3APCost;
     }
 
     public override List<List<int>> GetAttack1Targets(int currentSpace)

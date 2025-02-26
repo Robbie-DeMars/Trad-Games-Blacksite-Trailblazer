@@ -17,8 +17,6 @@ public class EnemyBehavior : BattleActorBehavior
     [SerializeField] GameObject[] attackTelegraphs;
     //Offset for how the telegraph should appear on each enemy
     [SerializeField] Transform telegraphDisplayPosition;
-    //Instance HP
-    private float HP;
 
 
     private void Start()

@@ -64,17 +64,17 @@ public class MainCharacter : Hero
 
     public override int GetAPOfAttack1()
     {
-        return 3;
+        return attack1APCost;
     }
 
     public override int GetAPOfAttack2()
     {
-        return 10;
+        return attack2APCost;
     }
 
     public override int GetAPOfAttack3()
     {
-        return 0;
+        return attack3APCost;
     }
 
     public override List<List<int>> GetAttack1Targets(int currentSpace)
