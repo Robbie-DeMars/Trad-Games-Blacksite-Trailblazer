@@ -60,8 +60,10 @@ public class Model : StateMachine
 
     }
 
+    //Every frame checks to see if the combat is over
     private void Update()
     {
+        //Some actions need to happen after initialization of other elements.
         if (firstFrame)
         {
             firstFrame = false;
@@ -119,6 +121,66 @@ public class Model : StateMachine
         }
     }
 
+    //COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS//COROUTINE FLAGS
+
+    /// <summary>
+    /// Executes enemy attacks and attack animations in order from left to right.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PassTurnCoroutine()
+    {
+        //Load each enemy into an array as their positions may change
+        List<GameObject> enemiesList = new List<GameObject>();
+        for (int x = 0; x < enemies.Length; x++)
+        {
+            if (enemies[x] != null)
+                enemiesList.Add(enemies[x]);
+        }
+
+        while (enemiesList.Count != 0)
+        {
+
+            EnemyBehavior currentEnemyBehavior = enemiesList[0].GetComponent<EnemyBehavior>();
+            GameObject currentEnemy = enemiesList[0];
+            enemiesList.RemoveAt(0);
+
+            while (currentEnemyBehavior.HasMoreAttacks())
+            {
+
+                Enemy.Attack currentAttack = currentEnemyBehavior.GetNextAttack();
+                for (int pos = 0; pos < enemies.Length; pos++)
+                {
+                    if (enemies[pos] != null && enemies[pos].Equals(currentEnemy))
+                    {
+                        currentEnemyBehavior.NextAttack(heroes, enemies, pos);
+                        yield return view.PlayEnemyAttackAnim(currentEnemyBehavior, heroes, enemies, pos, currentAttack);
+                    }
+                }
+            }
+            currentEnemyBehavior.PrepareAttacks();
+
+            //Settle status effects 
+            for (int x = 0; x < heroes.Length; x++)
+            {
+                if (heroes[x] != null)
+                    heroes[x].GetComponent<HeroBehavior>().SettleEffects();
+            }
+        }
+        yield return null;
+    }
+
+    /// <summary>
+    /// Passes the initiative after a 0.5 second delay.
+    /// </summary>
+    /// <param name="passInitiativeAfterThis"></param>
+    /// <returns></returns>
+    public IEnumerator PassInitiativeAfter(IEnumerator passInitiativeAfterThis)
+    {
+        yield return passInitiativeAfterThis;
+        yield return new WaitForSeconds(0.5f);
+        PassInitiative();
+    }
+
     /// <summary>
     /// Ensures no player functions may happen while passed function is executing.
     /// </summary>
@@ -130,6 +192,8 @@ public class Model : StateMachine
         yield return StartCoroutine(funcToCall);
         currentState = State.ATTACK;
     }
+
+    //ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK
 
     /// <summary>
     /// Executes the first attack of the currently selected party member.
@@ -191,6 +255,9 @@ public class Model : StateMachine
         StartCoroutine(PauseWhileExecuting(PassInitiativeAfter(view.PlayAttack3Anim(heroes[GetCurrentActor()].GetComponent<HeroBehavior>(), heroes, enemies, GetCurrentActor()))));
     }
 
+
+    //CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS//CHANGE BATTLE NUMBERS
+
     /// <summary>
     /// Manages correct translation between the AP meter and the Psi Heat Meter
     /// </summary>
@@ -228,7 +295,60 @@ public class Model : StateMachine
         view.SetHeat(psiHeat);
     }
 
+    //TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION//TURN PROGRESSION
 
+    /// <summary>
+    /// Passes the turn to the enemies.
+    /// </summary>
+    public void PassTurn()
+    {
+        if (currentState == State.PAUSED || (currentState == State.WIN || currentState == State.LOSE))
+            return;
+        //Replenish AP of all party members
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null)
+            {
+                heroes[x].GetComponent<HeroBehavior>().ReplenishAP();
+            }
+        }
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+        psiHeat = 0;
+        view.SetHeat(psiHeat);
+        view.SetAP(currentHero.GetAP());
+        view.SetMaxAP(currentHero.hero.MaxAP);
+        StartCoroutine(PauseWhileExecuting(PassTurnCoroutine()));
+    }
+
+    /// <summary>
+    /// Passes initiative to the next hero in turn order.
+    /// </summary>
+    public void PassInitiative()
+    {
+        //Find next party member
+        int pos = GetCurrentActor();
+        heroes[pos].GetComponent<HeroBehavior>().takingTurn = false;
+        pos++;
+        if (pos >= heroes.Length)
+            pos = 0;
+        while (heroes[pos] == null)
+        {
+            pos++;
+            if (pos >= heroes.Length)
+                pos = 0;
+        }
+        heroes[pos].GetComponent<HeroBehavior>().takingTurn = true;
+
+        //Tell view to update
+        view.ClearPartyHighlights();
+        view.HighlightPartyPosition(pos);
+        HeroBehavior currentHero = heroes[pos].GetComponent<HeroBehavior>();
+        view.SetAP(currentHero.GetAP());
+        view.SetMaxAP(currentHero.hero.MaxAP);
+
+    }
+
+    //STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE//STATE CHANGE
 
     /// <summary>
     /// Begins the process of moving one character to annother position.
@@ -270,73 +390,7 @@ public class Model : StateMachine
         }
     }
 
-
-    /// <summary>
-    /// Passes the turn to the enemies.
-    /// </summary>
-    public void PassTurn()
-    {
-        if (currentState == State.PAUSED || (currentState == State.WIN || currentState == State.LOSE))
-            return;
-        //Replenish AP of all party members
-        for (int x = 0; x < heroes.Length; x++)
-        {
-            if (heroes[x] != null)
-            {
-                heroes[x].GetComponent<HeroBehavior>().ReplenishAP();
-            }
-        }
-        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
-        psiHeat = 0;
-        view.SetHeat(psiHeat);
-        view.SetAP(currentHero.GetAP());
-        view.SetMaxAP(currentHero.hero.MaxAP);
-        StartCoroutine(PauseWhileExecuting(PassTurnCoroutine()));
-    }
-
-    /// <summary>
-    /// Executes enemy attacks and attack animations in order from left to right.
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator PassTurnCoroutine()
-    {
-        //Load each enemy into an array as their positions may change
-        List<GameObject> enemiesList = new List<GameObject>();
-        for (int x = 0; x < enemies.Length; x++)
-        {
-            if (enemies[x] != null)
-                enemiesList.Add(enemies[x]);
-        }
-
-        while (enemiesList.Count != 0) {
-
-            EnemyBehavior currentEnemyBehavior = enemiesList[0].GetComponent<EnemyBehavior>();
-            GameObject currentEnemy = enemiesList[0];
-            enemiesList.RemoveAt(0);
-
-            while (currentEnemyBehavior.HasMoreAttacks()) {
-
-                Enemy.Attack currentAttack = currentEnemyBehavior.GetNextAttack();
-                for (int pos = 0; pos < enemies.Length; pos++)
-                {
-                    if (enemies[pos] != null && enemies[pos].Equals(currentEnemy))
-                    {
-                        currentEnemyBehavior.NextAttack(heroes, enemies, pos);
-                        yield return view.PlayEnemyAttackAnim(currentEnemyBehavior, heroes, enemies, pos, currentAttack);
-                    }
-                }
-            }
-            currentEnemyBehavior.PrepareAttacks();
-            
-            //Settle status effects 
-            for (int x = 0; x < heroes.Length; x++)
-            {
-                if (heroes[x] != null)
-                    heroes[x].GetComponent<HeroBehavior>().SettleEffects();
-            }
-        }
-        yield return null;
-    }
+    //HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS
 
     /// <summary>
     /// Returns the position of the enemy or 0 of missing
@@ -351,46 +405,6 @@ public class Model : StateMachine
                 return x;
         }
         return 0;
-    }
-
-    /// <summary>
-    /// Passes initiative to the next hero in turn order.
-    /// </summary>
-    public void PassInitiative()
-    {
-        //Find next party member
-        int pos = GetCurrentActor();
-        heroes[pos].GetComponent<HeroBehavior>().takingTurn = false;
-        pos++;
-        if (pos >= heroes.Length)
-            pos = 0;
-        while (heroes[pos] == null)
-        {
-            pos++;
-            if (pos >= heroes.Length)
-                pos = 0;
-        }
-        heroes[pos].GetComponent<HeroBehavior>().takingTurn = true;
-
-        //Tell view to update
-        view.ClearPartyHighlights();
-        view.HighlightPartyPosition(pos);
-        HeroBehavior currentHero = heroes[pos].GetComponent<HeroBehavior>();
-        view.SetAP(currentHero.GetAP());
-        view.SetMaxAP(currentHero.hero.MaxAP);
-        
-    }
-
-    /// <summary>
-    /// Passes the initiative after a 0.5 second delay.
-    /// </summary>
-    /// <param name="passInitiativeAfterThis"></param>
-    /// <returns></returns>
-    public IEnumerator PassInitiativeAfter(IEnumerator passInitiativeAfterThis)
-    {
-        yield return passInitiativeAfterThis;
-        yield return new WaitForSeconds(0.5f);
-        PassInitiative();
     }
 
     /// <summary>

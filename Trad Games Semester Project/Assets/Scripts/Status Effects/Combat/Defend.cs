@@ -6,15 +6,15 @@ public class Defend : AgnosticEffect
     public override void ClearEffect(BattleActorBehavior actor)
     {
         actor.GetBattleActor().Def /= (2 * roundsInEffect);
+        Destroy(this);
     }
 
     public override void DoEffect(BattleActorBehavior actor)
     {
         rounds--;
-        if (rounds < 0)
+        if (HasMoreRounds())
         {
             ClearEffect(actor);
-            Destroy(this);
         }
         actor.GetBattleActor().Def *= 2;
         roundsInEffect++;

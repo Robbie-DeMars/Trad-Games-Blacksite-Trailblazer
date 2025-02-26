@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1990985381544304100}
+  - {fileID: 7974659845509406842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3346311105628282365
@@ -45,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff60fc1b6593fe41a79cd1793db05ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectDisplayPosition: {fileID: 7974659845509406842}
+  aEffects: []
+  effects: []
   hero: {fileID: 11400000, guid: 1a2dd9db155f41945b010dd3b92efc7c, type: 2}
   HPBar: {fileID: 7257485829394991777}
-  party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   takingTurn: 0
 --- !u!1 &1266263867439733159
 GameObject:
@@ -370,6 +373,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 2305616369809860308}
   text: {fileID: 4123266435139133545}
+--- !u!1 &4974479626542065269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7974659845509406842}
+  m_Layer: 0
+  m_Name: EffectTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7974659845509406842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974479626542065269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.311, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4083062322559150183}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6097466302734261556
 GameObject:
   m_ObjectHideFlags: 0

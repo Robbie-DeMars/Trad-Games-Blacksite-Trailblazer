@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class HeroBehavior : BattleActorBehavior
 {
-
+    //Hero Definition
     [SerializeField] public Hero hero;
+    //HP Bar Instance
     [SerializeField] HealthBar HPBar;
-
-    List<AgnosticEffect> aEffects = new List<AgnosticEffect>();
-
+    //Instance HP
     private float HP;
-
+    //Instance AP
     private int AP;
-
+    //Flag for whether it is this hero's turn or not
     public bool takingTurn = false;
+    
 
+    //SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA
+
+    //Upon spawining, load save data of stats
     private void Awake()
     {
         hero.LoadStats();
@@ -25,10 +28,34 @@ public class HeroBehavior : BattleActorBehavior
         HPBar.SetHealth(HP);
     }
 
+    /// <summary>
+    /// Saves the relevant data for this character
+    /// </summary>
     public void SaveStats()
     {
         hero.SaveStats(Mathf.RoundToInt(HP));
     }
+
+    /// <summary>
+    /// Removes this hero from battle
+    /// </summary>
+    public override void Die()
+    {
+        HP = 1;
+        SaveStats();
+        if (takingTurn)
+            GameObject.FindGameObjectWithTag("Model").GetComponent<Model>().PassInitiative();
+        HPBar.Die();
+        Destroy(this.gameObject);
+        Destroy(this);
+    }
+
+    public override BattleActor GetBattleActor()
+    {
+        return hero;
+    }
+
+    //ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK
 
     /// <summary>
     /// Executes the model's side of Attack 1's behavior
@@ -132,13 +159,14 @@ public class HeroBehavior : BattleActorBehavior
         return hero.GetAttack3Targets(currentSpace);
     }
 
-    
+    //STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION
+
     public override void IncrementHP(float ammount)
     {
         if (ammount > 0)
         {
             HP += ammount;
-            if (HP > hero.MaxHP)
+            if (HP > hero.MaxHP) //If being healed
             {
                 HP = hero.MaxHP;
             }
@@ -193,23 +221,7 @@ public class HeroBehavior : BattleActorBehavior
         return AP;
     }
 
-    /// <summary>
-    /// Removes this hero from battle
-    /// </summary>
-    public override void Die()
-    {
-        SaveStats();
-        if (takingTurn)
-            GameObject.FindGameObjectWithTag("Model").GetComponent<Model>().PassInitiative();
-        HPBar.Die();
-        Destroy(this.gameObject);
-        Destroy(this);
-    }
-
-    public override BattleActor GetBattleActor()
-    {
-        return hero;
-    }
+    //STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS
 
     public override void SettleEffects()
     {
@@ -232,6 +244,7 @@ public class HeroBehavior : BattleActorBehavior
         {
             aEffects.Add(ae);
             ae.DoEffect(this);
+            UpdateEffectDisplay();
         }
     }
 
@@ -240,6 +253,7 @@ public class HeroBehavior : BattleActorBehavior
         for (int x = 0; x < aEffects.Count; x++)
         {
             aEffects[x].ClearEffect(this);
+            UpdateEffectDisplay();
         }
     }
 }

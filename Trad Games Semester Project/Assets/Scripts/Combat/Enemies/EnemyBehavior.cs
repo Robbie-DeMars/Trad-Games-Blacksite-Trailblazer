@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class EnemyBehavior : BattleActorBehavior
 {
-    //delegate GameObject[] Attack(GameObject[] heroes, GameObject[] enemies, int currentActor);
+    //Enemy Definition
     [SerializeField] public Enemy enemy;
+    //HP Bar Instance
     [SerializeField] HealthBar HPBar;
+    //Prepared Attack List
     List<Enemy.Attack> upcomingAttacks = new List<Enemy.Attack>();
-    private float HP;
-
-    [SerializeField] GameObject[] attackTelegraphs;
+    //Telegraph instances for upcoming attacks
     List<GameObject> currentTelegraphs;
-
-    [SerializeField] float TelegraphOffset;
-
-
-    List<AgnosticEffect> aEffects = new List<AgnosticEffect>();
+    //Telegraphs for each attack
+    [SerializeField] GameObject[] attackTelegraphs;
+    //Offset for how the telegraph should appear on each enemy
+    [SerializeField] Transform telegraphDisplayPosition;
+    //Instance HP
+    private float HP;
 
 
     private void Start()
@@ -28,20 +29,34 @@ public class EnemyBehavior : BattleActorBehavior
         HPBar.SetMaxHealth(enemy.MaxHP);
     }
 
+    public override void Die()
+    {
+        HPBar.Die();
+        Destroy(this.gameObject);
+        Destroy(this);
+    }
+
+    public override BattleActor GetBattleActor()
+    {
+        return enemy;
+    }
+
+    //TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS//TELEGRAPHS
+
     /// <summary>
     /// Instantiates the telegraphs above this enemy in the worldspace
     /// </summary>
     private void MakeTelegraphs()
     {
         float totalWidth = (upcomingAttacks.Count - 1) * 1f; // Total width of the telegraphs
-        float startX = HPBar.transform.position.x - (totalWidth / 2); // Center align
+        float startX = telegraphDisplayPosition.position.x - (totalWidth / 2); // Center align
 
         for (int x = 0; x < upcomingAttacks.Count; x++)
         {
             int attack = enemy.GetAttackNumber(upcomingAttacks[x]);
             currentTelegraphs.Add(Instantiate(attackTelegraphs[attack - 1], this.transform));
             currentTelegraphs[currentTelegraphs.Count - 1].GetComponent<AttackTelegraph>().ConnectAttack(attack, this);
-            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, HPBar.transform.position.y + TelegraphOffset, HPBar.transform.position.z - 0.1f);
+            currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, telegraphDisplayPosition.position.y, telegraphDisplayPosition.position.z);
         }
     }
 
@@ -57,25 +72,7 @@ public class EnemyBehavior : BattleActorBehavior
         currentTelegraphs = new List<GameObject>();
     }
 
-    /// <summary>
-    /// Returns true if this enemy can execute more attacks this turn, false if not.
-    /// </summary>
-    /// <returns></returns>
-    public bool HasMoreAttacks()
-    {
-        return upcomingAttacks.Count > 0;
-    }
-
-    /// <summary>
-    /// Plays the passed attack at the given position, does nothing if given attack does not exist in this context .
-    /// </summary>
-    /// <param name="currentActor"> Position of current attacker </param>
-    /// <param name="attack"> Reference to the attack executed </param>
-    /// <returns></returns>
-    public IEnumerator PlayNextAttackAnim(int currentActor, Enemy.Attack attack)
-    {
-        yield return enemy.PlayAttackAnim(currentActor, attack);
-    }
+    //ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK//ATTACK
 
     /// <summary>
     /// Executes the next attack queued for this enemy, if such an attack exists.
@@ -105,6 +102,26 @@ public class EnemyBehavior : BattleActorBehavior
     }
 
     /// <summary>
+    /// Returns true if this enemy can execute more attacks this turn, false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool HasMoreAttacks()
+    {
+        return upcomingAttacks.Count > 0;
+    }
+
+    /// <summary>
+    /// Plays the passed attack at the given position, does nothing if given attack does not exist in this context .
+    /// </summary>
+    /// <param name="currentActor"> Position of current attacker </param>
+    /// <param name="attack"> Reference to the attack executed </param>
+    /// <returns></returns>
+    public IEnumerator PlayNextAttackAnim(int currentActor, Enemy.Attack attack)
+    {
+        yield return enemy.PlayAttackAnim(currentActor, attack);
+    }
+
+    /// <summary>
     /// Resets the attacks this enemy will execute.
     /// </summary>
     public void PrepareAttacks()
@@ -114,9 +131,11 @@ public class EnemyBehavior : BattleActorBehavior
         MakeTelegraphs();
     }
 
+    //STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION
+
     public override void IncrementHP(float ammount)
     {
-        if (ammount > 0)
+        if (ammount > 0) //If being healed
         {
             HP += ammount;
             if (HP > enemy.MaxHP)
@@ -137,18 +156,7 @@ public class EnemyBehavior : BattleActorBehavior
         }
     }
 
-
-    public override void Die()
-    {
-        HPBar.Die();
-        Destroy(this.gameObject);
-        Destroy(this);
-    }
-
-    public override BattleActor GetBattleActor()
-    {
-        return enemy;
-    }
+    //STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS
 
     public override void SettleEffects()
     {
@@ -171,6 +179,7 @@ public class EnemyBehavior : BattleActorBehavior
         {
             aEffects.Add(ae);
             ae.DoEffect(this);
+            UpdateEffectDisplay();
         }
     }
 
@@ -179,6 +188,7 @@ public class EnemyBehavior : BattleActorBehavior
         for (int x = 0; x < aEffects.Count; x++)
         {
             aEffects[x].ClearEffect(this);
+            UpdateEffectDisplay();
         }
     }
 }

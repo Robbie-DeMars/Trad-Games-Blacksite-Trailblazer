@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2768408666499103884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1796951111887825451}
+  m_Layer: 0
+  m_Name: TelegraphPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1796951111887825451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2768408666499103884}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.43, y: -0.8, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3174384758750089174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3476315048992603100
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,8 +61,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9200447687609791019}
   - {fileID: 1436986351732442862}
   - {fileID: 6043958949176686829}
+  - {fileID: 1796951111887825451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7540772588031189037
@@ -46,12 +79,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc32bdbe37f95ff44bd06d11dbb44b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectDisplayPosition: {fileID: 9200447687609791019}
+  aEffects: []
+  effects: []
   enemy: {fileID: 11400000, guid: ec318f72a2f70ce4ea8223eb7e6a5bcf, type: 2}
   HPBar: {fileID: 4894652814893627695}
   attackTelegraphs:
   - {fileID: 3541097657791810955, guid: b2b1ade9ae190714f99d38c751b65cff, type: 3}
   - {fileID: 3541097657791810955, guid: edfcbffac00c840478f8e66b78e188e7, type: 3}
-  TelegraphOffset: -4
+  telegraphDisplayPosition: {fileID: 1796951111887825451}
+--- !u!1 &6173684079431764595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9200447687609791019}
+  m_Layer: 0
+  m_Name: EffectTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9200447687609791019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173684079431764595}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.62, y: 3.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3174384758750089174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6276568538778765936
 GameObject:
   m_ObjectHideFlags: 0

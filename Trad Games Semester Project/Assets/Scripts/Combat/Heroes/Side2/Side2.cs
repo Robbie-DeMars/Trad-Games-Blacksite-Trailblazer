@@ -75,16 +75,12 @@ public class Side2 : Hero
         if (enemyCount == 1) { 
             temp.Insert(0, null);
             temp.Insert(0, null);
-            temp.Insert(0, null);
         }
-        if (enemyCount == 2)
+        if (enemyCount == 2 || enemyCount == 3)
         {
             temp.Insert(0, null);
-            temp.Insert(0, null);
         }
-        if (enemyCount == 3) {
-            temp.Insert(0, null);
-        }
+        
         for (int x = 0; x < temp.Count; x++)
         {
             enemies[x] = temp[x];
