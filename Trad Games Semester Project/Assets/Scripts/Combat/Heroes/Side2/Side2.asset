@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Side2
   m_EditorClassIdentifier: 
   MaxHP: 10
-  HP: 0
+  HP: 10
   Atk: 2
   Def: 2
   MaxAP: 20
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}
+  attack1APCost: 4
+  attack2APCost: 10
+  attack3APCost: 6

@@ -44,24 +44,24 @@ public abstract class BattleActorBehavior : MonoBehaviour
     /// <summary>
     /// Makes the displays for the effects attached to this actor in the worldspace
     /// </summary>
-    public virtual void UpdateEffectDisplay()
+    public abstract void UpdateEffectDisplay();
+
+    /// <summary>
+    /// Removes references to this effect from this hero
+    /// 
+    /// MODIFIES THE AEFFECTS LIST
+    /// </summary>
+    /// <param name="effect"></param>
+    public virtual void RemoveEffect(StatusEffect effect)
     {
-        float offset = 0.2f;
-        float totalWidth = (aEffects.Count - 1) * offset; // Total width of the agnostic effects
-        float startX = effectDisplayPosition.position.x - (totalWidth / 2); // Center align
-
-        //Remove existing displays
-        for (int x = 0; x < effects.Count; x++)
-        {
-            Destroy(effects[x]);
-        }
-        effects.Clear();
-
-        //Remake them with the current information
-        for (int x = 0; x < aEffects.Count; x++)
-        {
-            effects.Add(Instantiate(aEffects[x].effectImage, this.transform));
-            effects[x].transform.position = new Vector3(startX + x * offset, effectDisplayPosition.position.y, effectDisplayPosition.position.z);
-        }
+        int count = aEffects.Count;
+        for (int x = 0; x < count; x++)
+            if (aEffects[x] == effect)
+            {
+                aEffects.RemoveAt(x);
+                x--;
+                count--;
+            }
+        UpdateEffectDisplay();
     }
 }

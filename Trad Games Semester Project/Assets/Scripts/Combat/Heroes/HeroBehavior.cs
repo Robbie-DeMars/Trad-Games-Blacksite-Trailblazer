@@ -226,10 +226,10 @@ public class HeroBehavior : BattleActorBehavior
         int count = aEffects.Count;
         for (int x = 0; x < count; x++)
         {
+            int ID = aEffects[x].GetInstanceID();
             aEffects[x].DoEffect(this);
-            if (aEffects == null)
+            if (x >= aEffects.Count || ID != aEffects[x].GetInstanceID())
             {
-                aEffects.RemoveAt(x);
                 x--;
                 count--;
             }
@@ -242,8 +242,8 @@ public class HeroBehavior : BattleActorBehavior
         {
             aEffects.Add(ae);
             ae.DoEffect(this);
-            UpdateEffectDisplay();
         }
+        UpdateEffectDisplay();
     }
 
     public override void ClearEffects()
@@ -251,7 +251,28 @@ public class HeroBehavior : BattleActorBehavior
         for (int x = 0; x < aEffects.Count; x++)
         {
             aEffects[x].ClearEffect(this);
-            UpdateEffectDisplay();
+        }
+        UpdateEffectDisplay();
+    }
+
+    public override void UpdateEffectDisplay()
+    {
+        float offset = 0.2f;
+        float totalWidth = (aEffects.Count - 1) * offset; // Total width of the agnostic effects
+        float startX = effectDisplayPosition.position.x - (totalWidth / 2); // Center align
+
+        //Remove existing displays
+        for (int x = 0; x < effects.Count; x++)
+        {
+            Destroy(effects[x]);
+        }
+        effects.Clear();
+
+        //Remake them with the current information
+        for (int x = 0; x < aEffects.Count; x++)
+        {
+            effects.Add(Instantiate(aEffects[x].effectImage, this.transform));
+            effects[x].transform.position = new Vector3(startX + x * offset, effectDisplayPosition.position.y, effectDisplayPosition.position.z);
         }
     }
 }

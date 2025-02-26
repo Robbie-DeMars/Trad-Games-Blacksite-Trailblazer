@@ -26,12 +26,5 @@ public abstract class AgnosticEffect : StatusEffect
     /// Returns false if rounds left is less than 0, implying this efects lifetime is up
     /// </summary>
     /// <returns></returns>
-    public virtual bool HasMoreRounds()
-    {
-        if (rounds < 0)
-        { 
-            return false;
-        }
-        return true;
-    }
+    public abstract bool HasMoreRounds();
 }
