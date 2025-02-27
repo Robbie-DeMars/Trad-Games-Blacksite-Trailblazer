@@ -39,7 +39,8 @@ public class Model : StateMachine
         }
 
         //Instantiate enemies
-        CombatEncounter encounter = reigon.GetRandomCombatEncounter();
+        Level level = reigon.GetCurrentLevel();
+        CombatEncounter encounter = level.GetRandomCombatEncounter();
         enemies = encounter.GetEnemies();
         for (int x = 0; x < enemies.Length; x++)
         {
@@ -76,6 +77,10 @@ public class Model : StateMachine
             view.SetAP(currentHero.GetAP());
         }
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            currentState = State.WIN;
+        }
 
         //Check to see if game is won or lost
         bool allyAlive = false;

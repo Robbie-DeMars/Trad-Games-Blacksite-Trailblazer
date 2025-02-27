@@ -9,16 +9,18 @@ using UnityEngine.SceneManagement;
 
 public class Pathway : MonoBehaviour
 {
-    [SerializeField] List<string> Predetermined_Events;
+    [SerializeField] public List<string> Predetermined_Events;
     [SerializeField] TMP_Text Text; 
     [SerializeField] TMP_Text EventText;
     [SerializeField] Slider ProgressSlider;
+    [SerializeField] GameObject DDOL;
 
     bool ready = false;
-    private List<Tuple<string, float>> _event_and_when = null; 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private List<Tuple<string, float>> _event_and_when = null;
+
+    private void Awake()
     {
+
         if (_event_and_when != null)
         {
             ready = true;
@@ -38,6 +40,13 @@ public class Pathway : MonoBehaviour
         ProgressSlider.normalizedValue = 0;
     }
 
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        EventText = GameObject.Find("EventStatementText").GetComponent<TMP_Text>();
+    }
+
     public void NextButtonClicked() {
         if (ready) {
             if (_event_and_when.Count <= 0) {EventText.text = "No more events!"; return; }
@@ -51,7 +60,9 @@ public class Pathway : MonoBehaviour
 
             //Start battle
             if (_event.Item1.Equals("Battle"))
+            {
                 SceneManager.LoadScene("Combat");
+            }
         }
     }
 

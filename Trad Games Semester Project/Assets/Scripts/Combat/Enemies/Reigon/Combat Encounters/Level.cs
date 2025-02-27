@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Reigon", menuName = "Scriptable Objects/Reigon")]
-public class Reigon : ScriptableObject
+[CreateAssetMenu(fileName = "Level", menuName = "Scriptable Objects/Level")]
+public class Level : ScriptableObject
 {
     [SerializeField] CombatEncounter[] encountersInReigon;
 
