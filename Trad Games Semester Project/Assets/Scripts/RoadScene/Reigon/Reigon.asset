@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37d4336f357d3eb4a926997ce8d1a045, type: 3}
-  m_Name: LocationOnPath
+  m_Script: {fileID: 11500000, guid: 5a2ad4fdcefd5d24081a07d66f03b48f, type: 3}
+  m_Name: Reigon
   m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: 165f807c9fffd0e4b9d51a26d72e949c, type: 2}

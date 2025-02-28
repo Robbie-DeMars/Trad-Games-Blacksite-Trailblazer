@@ -5,8 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-
 public class Pathway : MonoBehaviour
 {
     [SerializeField] public List<string> Predetermined_Events;

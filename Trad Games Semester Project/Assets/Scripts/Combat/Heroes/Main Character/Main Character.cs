@@ -38,25 +38,19 @@ public class MainCharacter : Hero
 
     public override int Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
-        if (currentPosition != 4)
+        if (currentPosition != heroes.Length - 1)
         {
-            while (currentPosition != 4)
-            {
-                GameObject temp = heroes[currentPosition];
-                heroes[currentPosition] = heroes[currentPosition + 1];
-                heroes[currentPosition + 1] = temp;
-                currentPosition++;
-            }
+            GameObject temp = heroes[currentPosition];
+            heroes[currentPosition] = heroes[heroes.Length - 1];
+            heroes[heroes.Length - 1] = temp;
+            currentPosition++;
         }
         else
         {
-            while (currentPosition != 0)
-            {
-                GameObject temp = heroes[currentPosition];
-                heroes[currentPosition] = heroes[currentPosition - 1];
-                heroes[currentPosition - 1] = temp;
-                currentPosition--;
-            }
+            GameObject temp = heroes[currentPosition];
+            heroes[currentPosition] = heroes[0];
+            heroes[0] = temp;
+            currentPosition--;
         }
         return GetAPOfAttack3();
     }

@@ -373,26 +373,14 @@ public class Model : StateMachine
     /// <param name="to"></param>
     public void MoveHeroFromTo(int from, int to)
     {
-        if (from < to)
-        {
-            GameObject temp = heroes[from];
-            heroes[from] = heroes[from + 1];
-            heroes[from + 1] = temp;
-            MoveHeroFromTo(from + 1, to);
-        }
-        else if (from > to)
-        {
-            GameObject temp = heroes[from];
-            heroes[from] = heroes[from - 1];
-            heroes[from - 1] = temp;
-            MoveHeroFromTo(from - 1, to);
-        }
-        else
-        {
-            HeroBehavior currentHero = heroes[to].GetComponent<HeroBehavior>();
-            DecrementHeroAP(currentHero, 2);
-            StartCoroutine(PauseWhileExecuting(view.UpdateBattlePositions(heroes, enemies)));
-        }
+
+        GameObject temp = heroes[from];
+        heroes[from] = heroes[to];
+        heroes[to] = temp;
+        
+        HeroBehavior currentHero = heroes[to].GetComponent<HeroBehavior>();
+        DecrementHeroAP(currentHero, 2);
+        StartCoroutine(PauseWhileExecuting(view.UpdateBattlePositions(heroes, enemies)));
     }
 
     //HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS

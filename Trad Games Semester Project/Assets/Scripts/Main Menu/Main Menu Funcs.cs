@@ -22,8 +22,8 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetInt("Side1HP", party.side1Stats[0]);
         PlayerPrefs.SetInt("Side2HP", party.side2Stats[0]);
 
-        //Set Level to 1
-        PlayerPrefs.SetInt("level", 1);
+        //Set Level to 0 - tutorial level
+        PlayerPrefs.SetInt("level", 0);
 
         PlayerPrefs.Save();
         SceneManager.LoadScene("RoadScene");
