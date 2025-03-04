@@ -194,8 +194,6 @@ public class View : StateMachine
         if (noUpdateNeeded)
             yield break;
 
-        Debug.Log("Updating positions...");
-
         //Move all heroes / enemies to their positions
         float elapsedTime = 0f;
         float duration = 1f;

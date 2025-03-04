@@ -22,6 +22,15 @@ public class Pathway : MonoBehaviour
     [SerializeField] WaterfallText endDialogue;
     [SerializeField] WaterfallText endCombat;
 
+    [SerializeField] Image characterImage;
+    [SerializeField] Image characterImageOut;
+    Coroutine slidingIn;
+    Coroutine slidingOut;
+    [SerializeField] Transform slideInStartPos;
+    [SerializeField] Transform slideInEndPos;
+    [SerializeField] float slideSpeed = 1f;
+
+
     CombatEncounter combatEncounter = null;
     DialogueEncounter dialogueEncounter = null;
     ChoiceEncounter choiceEncounter = null;
@@ -39,6 +48,14 @@ public class Pathway : MonoBehaviour
         choice4.gameObject.SetActive(false);
         endDialogue.gameObject.SetActive(false);
         endCombat.gameObject.SetActive(false);
+
+        //Prepare the character onscreen sprites
+        characterImage.material = Instantiate(characterImage.material);
+        characterImageOut.material = Instantiate(characterImageOut.material);
+        characterImage.material.SetFloat("_Darkness", 1);
+        characterImageOut.material.SetFloat("_Darkness", 1);
+        slidingIn = null;
+        slidingOut = null;
 
         //Set choices and dialogues completed for this reigon.
         PlayerPrefs.SetInt("choices", 0);
@@ -143,6 +160,9 @@ public class Pathway : MonoBehaviour
         //Set initial text
         d.Init();
         eventText.SetText(d.GetNextDialogue());
+        if (slidingIn != null)
+            StopCoroutine(slidingIn);
+        slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), false));
 
 
         //Wait fot user input for continuing text
@@ -151,6 +171,9 @@ public class Pathway : MonoBehaviour
             if (Input.GetKey(KeyCode.Return))
             {
                 eventText.SetText(d.GetNextDialogue());
+                if (slidingIn != null)
+                    StopCoroutine(slidingIn);
+                slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), true));
                 yield return new WaitForSeconds(0.5f);
             }
             yield return null;
@@ -162,6 +185,65 @@ public class Pathway : MonoBehaviour
         yield return null;
     }
 
+    private IEnumerator SlideIn(Sprite spr, bool slideOut)
+    {
+        float elapsedTime = 0f;
+        float duration = slideSpeed;
+        float animPercentage = 0;
+
+        //Do not repeat the animation if the same character is still talking.
+        if (spr.name.Equals(characterImage.sprite.name))
+        {
+            yield break;
+        }
+
+        if (slideOut) {
+            if (slidingOut != null)
+                StopCoroutine(slidingOut);
+            slidingOut = StartCoroutine(SlideOut(characterImage.sprite));
+        }
+
+        characterImage.sprite = spr;
+
+        characterImage.material.SetFloat("_Darkness", 1f - animPercentage);
+        characterImage.transform.position = slideInStartPos.transform.position;
+
+        while (animPercentage < 1f)
+        {
+            elapsedTime += Time.deltaTime;
+            animPercentage = elapsedTime / duration;
+            characterImage.material.SetFloat("_Darkness", 1f - animPercentage);
+            characterImage.transform.position = Vector3.Lerp(slideInStartPos.transform.position, slideInEndPos.transform.position, animPercentage);
+            yield return null;
+        }
+        characterImage.material.SetFloat("_Darkness", 0);
+        yield return null;
+    }
+
+    private IEnumerator SlideOut(Sprite spr)
+    {
+        characterImageOut.sprite = spr;
+        float elapsedTime = 0f;
+        float duration = slideSpeed;
+        float animPercentage = 0;
+
+        characterImageOut.material.SetFloat("_Darkness", animPercentage);
+        characterImageOut.transform.position = slideInEndPos.transform.position;
+
+        while (animPercentage < 1f)
+        {
+            elapsedTime += Time.deltaTime;
+            animPercentage = elapsedTime / duration;
+            characterImageOut.material.SetFloat("_Darkness", animPercentage);
+            characterImageOut.transform.position = Vector3.Lerp(slideInEndPos.transform.position, slideInStartPos.transform.position, animPercentage);
+            yield return null;
+        }
+        characterImageOut.material.SetFloat("_Darkness", 1);
+        yield return null;
+    }
+
+
+
     /// <summary>
     /// Ends the dialogue encounter
     /// </summary>
@@ -169,6 +251,7 @@ public class Pathway : MonoBehaviour
     {
         //Make relevant elements invisible 
         endDialogue.gameObject.SetActive(false);
+        characterImage.transform.position = slideInStartPos.transform.position;
 
         NextButtonClicked();
     }
