@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +19,7 @@ public class Pathway : MonoBehaviour
     [SerializeField] WaterfallText choice4;
     [SerializeField] WaterfallText endDialogue;
     [SerializeField] WaterfallText endCombat;
+    [SerializeField] WaterfallText goToCamp;
 
     [SerializeField] Image characterImage;
     [SerializeField] Image characterImageOut;
@@ -30,7 +29,7 @@ public class Pathway : MonoBehaviour
     [SerializeField] Transform slideInEndPos;
     [SerializeField] float slideSpeed = 1f;
 
-
+    [SerializeField] Singleton singleton;
     CombatEncounter combatEncounter = null;
     DialogueEncounter dialogueEncounter = null;
     ChoiceEncounter choiceEncounter = null;
@@ -40,6 +39,7 @@ public class Pathway : MonoBehaviour
     private void Awake()
     {
         currentLevel = reigon.GetCurrentLevel();
+        currentLevel.Init();
 
         //Disable non-active UI elements
         choice1.gameObject.SetActive(false);
@@ -48,6 +48,7 @@ public class Pathway : MonoBehaviour
         choice4.gameObject.SetActive(false);
         endDialogue.gameObject.SetActive(false);
         endCombat.gameObject.SetActive(false);
+        goToCamp.gameObject.SetActive(false);
 
         //Prepare the character onscreen sprites
         characterImage.material = Instantiate(characterImage.material);
@@ -56,11 +57,6 @@ public class Pathway : MonoBehaviour
         characterImageOut.material.SetFloat("_Darkness", 1);
         slidingIn = null;
         slidingOut = null;
-
-        //Set choices and dialogues completed for this reigon.
-        PlayerPrefs.SetInt("choices", 0);
-        PlayerPrefs.SetInt("dialogues", 0);
-        PlayerPrefs.Save();
     }
 
 
@@ -77,7 +73,14 @@ public class Pathway : MonoBehaviour
     }
 
     public void NextButtonClicked() {
-        Debug.Log("LOADING NEXT ENCOUNTER");
+
+        if (!currentLevel.HasMoreDialogueEncounters(singleton) && !currentLevel.HasMoreChoiceEncounters(singleton))
+        {
+            Debug.Log("GRAHHH");
+            TransitionToCamp();
+            return;
+        }
+
         bool nextEventFound = false;
         int encounter = 0;
         combatEncounter = null;
@@ -96,19 +99,19 @@ public class Pathway : MonoBehaviour
             //Dialogue Encounter
             else if (encounter == 2)
             {
-                if (currentLevel.HasMoreDialogueEncounters())
+                if (currentLevel.HasMoreDialogueEncounters(singleton))
                 {
                     nextEventFound = true; 
-                    dialogueEncounter = currentLevel.GetNextDialogueEncounter();
+                    dialogueEncounter = currentLevel.GetNextDialogueEncounter(singleton);
                 }
             }
             //Choice Encounter
             else
             {
-                if (currentLevel.HasMoreChoiceEncounters())
+                if (currentLevel.HasMoreChoiceEncounters(singleton))
                 {
                     nextEventFound = true;
-                    choiceEncounter = currentLevel.GetNextChoiceEncounter();
+                    choiceEncounter = currentLevel.GetNextChoiceEncounter(singleton);
                 }
             }
         }
@@ -117,22 +120,36 @@ public class Pathway : MonoBehaviour
         //Combat
         if (combatEncounter != null)
         {
-            Debug.Log("COMBAT ENCOUNTER FOUND");
             DoCombatEncounter(combatEncounter);
         }
         //Dialogue
         else if (dialogueEncounter != null)
         {
-            Debug.Log("DIALOGUE ENCOUNTER FOUND");
             StartCoroutine(DoDialogueEncounter(dialogueEncounter));
         }
         //Choice
         else
         {
-            Debug.Log("CHOICE ENCOUNTER FOUND");
             DoChoiceEncounter(choiceEncounter);
         }
 
+    }
+
+    private void TransitionToCamp()
+    {
+        singleton.choices = 0;
+        singleton.dialogues = 0;
+
+        //Make transition to camp button visible
+        eventText.SetText("Go to Camp?");
+        goToCamp.gameObject.SetActive(true);
+        goToCamp.SetText("-->");
+    }
+
+    public void EndTransitionToCamp()
+    {
+        goToCamp.gameObject.SetActive(false);
+        SceneManager.LoadScene("Camp");
     }
 
     private void DoCombatEncounter(CombatEncounter c)

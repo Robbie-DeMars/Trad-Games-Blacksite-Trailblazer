@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CHE 1
   m_EditorClassIdentifier: 
   choices:
-  - {fileID: 11400000, guid: 62e32c8c60ba0964ba00735b7b391d91, type: 2}
-  - {fileID: 11400000, guid: 62e32c8c60ba0964ba00735b7b391d91, type: 2}
-  - {fileID: 11400000, guid: 62e32c8c60ba0964ba00735b7b391d91, type: 2}
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
   choiceText: What will you do?? HMMM I bet you wont... unless?..?
   optionTexts:
   - Give infinite money

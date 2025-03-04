@@ -9,6 +9,10 @@ public class Singleton : MonoBehaviour
 
     bool firstFrameInScene = true;
 
+    public int dialogues = 0;
+    public int choices = 0;
+    public bool newLevel = false;
+
     private void Awake()
     {
         if (instance != null)
@@ -18,6 +22,8 @@ public class Singleton : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+        dialogues = 0;
+        choices = 0;
     }
 
     private void Update()

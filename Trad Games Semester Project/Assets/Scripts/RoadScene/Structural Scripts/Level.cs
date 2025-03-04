@@ -9,6 +9,16 @@ public class Level : ScriptableObject
     [SerializeField] ChoiceEncounter[] choiceEncounters;
 
     /// <summary>
+    /// Prepares this level to be completed
+    /// </summary>
+    public void Init()
+    {
+        //PlayerPrefs.SetInt("choices", 0);
+        //PlayerPrefs.SetInt("dialogues", 0);
+        //PlayerPrefs.Save();
+    }
+
+    /// <summary>
     /// Returns a random combat encounter from this reigon.
     /// </summary>
     /// <returns></returns>
@@ -37,23 +47,24 @@ public class Level : ScriptableObject
     /// Returns true if there are more choice encounters, else false
     /// </summary>
     /// <returns></returns>
-    public bool HasMoreChoiceEncounters()
+    public bool HasMoreChoiceEncounters(Singleton s)
     {
-        if (PlayerPrefs.GetInt("choices") < choiceEncounters.Length)
-            return true;
-        return false;
+        //return PlayerPrefs.GetInt("choices") < choiceEncounters.Length;
+        return s.choices < choiceEncounters.Length;
     }
 
     /// <summary>
     /// Returns the next choice encounter, or starts from the beginning if it runs out.
     /// </summary>
     /// <returns></returns>
-    public ChoiceEncounter GetNextChoiceEncounter()
+    public ChoiceEncounter GetNextChoiceEncounter(Singleton s)
     {
-        int choice = PlayerPrefs.GetInt("choices");
-        PlayerPrefs.SetInt("choices", choice + 1);
-        PlayerPrefs.Save();
-        if (!HasMoreChoiceEncounters())
+        //int choice = PlayerPrefs.GetInt("choices");
+        //PlayerPrefs.SetInt("choices", choice + 1);
+        //PlayerPrefs.Save();
+        int choice = s.choices;
+        s.choices++;
+        if (!HasMoreChoiceEncounters(s))
             choice = 0;
         return choiceEncounters[choice];
     }
@@ -62,23 +73,24 @@ public class Level : ScriptableObject
     /// Returns true if there are more dialogue encounters, else false
     /// </summary>
     /// <returns></returns>
-    public bool HasMoreDialogueEncounters()
+    public bool HasMoreDialogueEncounters(Singleton s)
     {
-        if (PlayerPrefs.GetInt("dialogues") < dialogueEncounters.Length)
-            return true;
-        return false;
+        //return PlayerPrefs.GetInt("dialogues") < dialogueEncounters.Length;
+        return s.dialogues < dialogueEncounters.Length;
     }
 
     /// <summary>
     /// Returns the next dialogue encounter, or starts from the beginning if it runs out.
     /// </summary>
     /// <returns></returns>
-    public DialogueEncounter GetNextDialogueEncounter()
+    public DialogueEncounter GetNextDialogueEncounter(Singleton s)
     {
-        int dialogue = PlayerPrefs.GetInt("dialogues");
-        PlayerPrefs.SetInt("dialogues", dialogue + 1);
-        PlayerPrefs.Save();
-        if (!HasMoreDialogueEncounters())
+        //int dialogue = PlayerPrefs.GetInt("dialogues");
+        //PlayerPrefs.SetInt("dialogues", dialogue + 1);
+        //PlayerPrefs.Save();
+        int dialogue = s.dialogues;
+        s.dialogues++;
+        if (!HasMoreDialogueEncounters(s))
             dialogue = 0;
         return dialogueEncounters[dialogue];
     }
