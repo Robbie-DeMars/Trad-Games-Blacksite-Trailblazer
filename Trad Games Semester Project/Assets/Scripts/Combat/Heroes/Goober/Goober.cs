@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Goober", menuName = "Scriptable Objects/Goober")]
+[CreateAssetMenu(fileName = "Goober", menuName = "Scriptable Objects/BattleActors/Heroes/Goober")]
 public class Goober : Hero 
 {
     public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)

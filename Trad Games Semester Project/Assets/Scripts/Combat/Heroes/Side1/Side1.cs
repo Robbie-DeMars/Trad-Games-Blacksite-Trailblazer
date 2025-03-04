@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Side1", menuName = "Scriptable Objects/Side1")]
+[CreateAssetMenu(fileName = "Side1", menuName = "Scriptable Objects/BattleActors/Heroes/Side1")]
 public class Side1 : Hero
 {
     public override void LoadStats()

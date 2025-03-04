@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BattleActor", menuName = "Scriptable Objects/BattleActor")]
+[CreateAssetMenu(fileName = "BattleActor", menuName = "Scriptable Objects/BattleActors/BattleActor")]
 public class BattleActor : ScriptableObject
 {
     [SerializeField] public int MaxHP = 10;

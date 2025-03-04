@@ -40,7 +40,7 @@ public class Model : StateMachine
 
         //Instantiate enemies
         Level level = reigon.GetCurrentLevel();
-        CombatEncounter encounter = level.GetRandomCombatEncounter();
+        CombatEncounter encounter = level.GetCombatEncounterViaID(PlayerPrefs.GetString("combatEncounter"));
         enemies = encounter.GetEnemies();
         for (int x = 0; x < enemies.Length; x++)
         {

@@ -7,6 +7,12 @@ public class CombatEncounter : ScriptableObject
 
     [SerializeField] GameObject[] enemies = new GameObject[5];
 
+    public string ID = "Test Encounter";
+
+    /// <summary>
+    /// Returns the list of enemies representing the layout of this combat encounter.
+    /// </summary>
+    /// <returns></returns>
     public GameObject[] GetEnemies()
     {
         GameObject[] returnedEnemies = new GameObject[maxEncounterSize];

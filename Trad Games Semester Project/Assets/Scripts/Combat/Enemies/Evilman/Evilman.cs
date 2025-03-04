@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-[CreateAssetMenu(fileName = "Evilman", menuName = "Scriptable Objects/Evilman")]
+[CreateAssetMenu(fileName = "Evilman", menuName = "Scriptable Objects/BattleActors/Enemies/Evilman")]
 public class Evilman : Enemy
 {
     //MAKE SURE TO CHANGE THIS WHEN ADDING NEW ATTACKS

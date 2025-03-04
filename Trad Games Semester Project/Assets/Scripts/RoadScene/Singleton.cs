@@ -5,13 +5,19 @@ using UnityEngine.SceneManagement;
 public class Singleton : MonoBehaviour
 {
     public static Singleton instance = null;
+    [SerializeField] Pathway path;
+
+    bool firstFrameInScene = true;
+
     private void Awake()
     {
         if (instance != null)
             Destroy(this.gameObject);
-
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     private void Update()
@@ -29,6 +35,21 @@ public class Singleton : MonoBehaviour
             {
                 child.gameObject.SetActive(false);
             }
+        }
+
+
+        //Do next encounter upon entering this scene
+        if (SceneManager.GetActiveScene().name.Equals("RoadScene"))
+        {
+            if (firstFrameInScene)
+            {
+                path.NextButtonClicked();
+                firstFrameInScene = false;
+            }
+        }
+        else
+        {
+            firstFrameInScene = true;
         }
     }
 

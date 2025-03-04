@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Level", menuName = "Scriptable Objects/Level")]
@@ -7,25 +8,78 @@ public class Level : ScriptableObject
     [SerializeField] DialogueEncounter[] dialogueEncounters;
     [SerializeField] ChoiceEncounter[] choiceEncounters;
 
-    int dialogueProgression = 0;
-    int choiceProgression = 0;
-
+    /// <summary>
+    /// Returns a random combat encounter from this reigon.
+    /// </summary>
+    /// <returns></returns>
     public CombatEncounter GetRandomCombatEncounter()
     {
-        return combatEncounters[Random.Range(0, combatEncounters.Length - 1)];
+        return combatEncounters[Random.Range(0, combatEncounters.Length)];
     }
 
+    /// <summary>
+    /// Returns the first combat encounter with the passed string ID.
+    /// Returns the first combat encounter if no such ID exists.
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    public CombatEncounter GetCombatEncounterViaID(string ID)
+    {
+        for (int x = 0; x < combatEncounters.Length; x++)
+        {
+            if (combatEncounters[x].Equals(ID))
+                return combatEncounters[x];
+        }
+        return combatEncounters[0];
+    }
+
+    /// <summary>
+    /// Returns true if there are more choice encounters, else false
+    /// </summary>
+    /// <returns></returns>
     public bool HasMoreChoiceEncounters()
     {
-        if (choiceProgression < choiceEncounters.Length)
+        if (PlayerPrefs.GetInt("choices") < choiceEncounters.Length)
             return true;
         return false;
     }
 
+    /// <summary>
+    /// Returns the next choice encounter, or starts from the beginning if it runs out.
+    /// </summary>
+    /// <returns></returns>
     public ChoiceEncounter GetNextChoiceEncounter()
     {
-        choiceProgression++;
-        return choiceEncounters[choiceProgression - 1];
+        int choice = PlayerPrefs.GetInt("choices");
+        PlayerPrefs.SetInt("choices", choice + 1);
+        PlayerPrefs.Save();
+        if (!HasMoreChoiceEncounters())
+            choice = 0;
+        return choiceEncounters[choice];
     }
 
+    /// <summary>
+    /// Returns true if there are more dialogue encounters, else false
+    /// </summary>
+    /// <returns></returns>
+    public bool HasMoreDialogueEncounters()
+    {
+        if (PlayerPrefs.GetInt("dialogues") < dialogueEncounters.Length)
+            return true;
+        return false;
+    }
+
+    /// <summary>
+    /// Returns the next dialogue encounter, or starts from the beginning if it runs out.
+    /// </summary>
+    /// <returns></returns>
+    public DialogueEncounter GetNextDialogueEncounter()
+    {
+        int dialogue = PlayerPrefs.GetInt("dialogues");
+        PlayerPrefs.SetInt("dialogues", dialogue + 1);
+        PlayerPrefs.Save();
+        if (!HasMoreDialogueEncounters())
+            dialogue = 0;
+        return dialogueEncounters[dialogue];
+    }
 }

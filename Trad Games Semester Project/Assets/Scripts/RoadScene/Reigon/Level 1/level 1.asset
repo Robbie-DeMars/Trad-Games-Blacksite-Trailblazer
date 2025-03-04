@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatEncounters:
   - {fileID: 11400000, guid: 25de2d574b285c5449e212ff237e0113, type: 2}
-  dialogueEncounters: []
-  choiceEncounters: []
+  dialogueEncounters:
+  - {fileID: 11400000, guid: 2d485c00c4a271547ba3b0faa6cadfcd, type: 2}
+  choiceEncounters:
+  - {fileID: 11400000, guid: 09526705d5b81b9498dde346eff1d4ab, type: 2}

@@ -1,72 +1,273 @@
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
+
 public class Pathway : MonoBehaviour
 {
-    [SerializeField] public List<string> Predetermined_Events;
-    [SerializeField] TMP_Text Text; 
-    [SerializeField] TMP_Text EventText;
-    [SerializeField] Slider ProgressSlider;
-    [SerializeField] GameObject DDOL;
+    [SerializeField] Reigon reigon;
+    Level currentLevel;
 
-    bool ready = false;
-    private List<Tuple<string, float>> _event_and_when = null;
+    [SerializeField] WaterfallText eventText;
+    [SerializeField] Slider progressSlider;
+    [SerializeField] WaterfallText choice1;
+    [SerializeField] WaterfallText choice2;
+    [SerializeField] WaterfallText choice3;
+    [SerializeField] WaterfallText choice4;
+    [SerializeField] WaterfallText endDialogue;
+    [SerializeField] WaterfallText endCombat;
+
+    CombatEncounter combatEncounter = null;
+    DialogueEncounter dialogueEncounter = null;
+    ChoiceEncounter choiceEncounter = null;
+
+    bool firstFrameInScene = true;
 
     private void Awake()
     {
+        currentLevel = reigon.GetCurrentLevel();
 
-        if (_event_and_when != null)
-        {
-            ready = true;
-            return;
-        }
-        _event_and_when = new List<Tuple<string, float>>();
-        Text.text = "";
-        for (int i = 0; i < Predetermined_Events.Count; i++)
-        {
-            float _event_time = UnityEngine.Random.value;
-            _event_and_when.Add(new Tuple<string, float>(Predetermined_Events[i], _event_time));
-            Debug.Log(Predetermined_Events[i].ToString() + " at " + _event_time.ToString());
-            Text.text += "\n" + Predetermined_Events[i].ToString() + " at " + _event_time.ToString();
-        }
-        _event_and_when.Sort(CompareTuples);
-        ready = true;
-        ProgressSlider.normalizedValue = 0;
+        //Disable non-active UI elements
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
+        choice3.gameObject.SetActive(false);
+        choice4.gameObject.SetActive(false);
+        endDialogue.gameObject.SetActive(false);
+        endCombat.gameObject.SetActive(false);
+
+        //Set choices and dialogues completed for this reigon.
+        PlayerPrefs.SetInt("choices", 0);
+        PlayerPrefs.SetInt("dialogues", 0);
+        PlayerPrefs.Save();
     }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        EventText = GameObject.Find("EventStatementText").GetComponent<TMP_Text>();
+
+    }
+
+    //Primarily for tracking when leaving and re-entering the scene
+    private void Update()
+    {
+       
     }
 
     public void NextButtonClicked() {
-        if (ready) {
-            if (_event_and_when.Count <= 0) {EventText.text = "No more events!"; return; }
-            //collect and manage data
-            Tuple<string, float> _event = _event_and_when[_event_and_when.Count - 1];
-            _event_and_when.RemoveAt(_event_and_when.Count-1);
+        Debug.Log("LOADING NEXT ENCOUNTER");
+        bool nextEventFound = false;
+        int encounter = 0;
+        combatEncounter = null;
+        dialogueEncounter = null;
+        choiceEncounter = null;
 
-            //do the stuff with the data (start the encounter?)
-            EventText.text = "Event " + _event.Item1.ToString() + " at " + _event.Item2.ToString();
-            ProgressSlider.normalizedValue = _event.Item2;
-
-            //Start battle
-            if (_event.Item1.Equals("Battle"))
-            {
-                SceneManager.LoadScene("Combat");
+        //Reroll encounter until valid one is found.
+        while (!nextEventFound)
+        {
+            encounter = Random.Range(1, 4);
+            //Combat Encounter
+            if (encounter == 1) {
+                nextEventFound = true;
+                combatEncounter = currentLevel.GetRandomCombatEncounter();
             }
+            //Dialogue Encounter
+            else if (encounter == 2)
+            {
+                if (currentLevel.HasMoreDialogueEncounters())
+                {
+                    nextEventFound = true; 
+                    dialogueEncounter = currentLevel.GetNextDialogueEncounter();
+                }
+            }
+            //Choice Encounter
+            else
+            {
+                if (currentLevel.HasMoreChoiceEncounters())
+                {
+                    nextEventFound = true;
+                    choiceEncounter = currentLevel.GetNextChoiceEncounter();
+                }
+            }
+        }
+
+        //Load encounter
+        //Combat
+        if (combatEncounter != null)
+        {
+            Debug.Log("COMBAT ENCOUNTER FOUND");
+            DoCombatEncounter(combatEncounter);
+        }
+        //Dialogue
+        else if (dialogueEncounter != null)
+        {
+            Debug.Log("DIALOGUE ENCOUNTER FOUND");
+            StartCoroutine(DoDialogueEncounter(dialogueEncounter));
+        }
+        //Choice
+        else
+        {
+            Debug.Log("CHOICE ENCOUNTER FOUND");
+            DoChoiceEncounter(choiceEncounter);
+        }
+
+    }
+
+    private void DoCombatEncounter(CombatEncounter c)
+    {
+        //Make elements visible
+        endCombat.gameObject.SetActive(true);
+        endCombat.SetText("Battlestations!");
+
+        eventText.SetText("Enemies Approach...");
+
+        PlayerPrefs.SetString("combatEncounter", c.ID);
+        PlayerPrefs.Save();
+    }
+
+    public void EndCombatEncounter()
+    {
+        //Make elements invisible
+        endCombat.gameObject.SetActive(false);
+
+        SceneManager.LoadScene("Combat");
+    }
+
+    private IEnumerator DoDialogueEncounter(DialogueEncounter d)
+    {
+        //Set initial text
+        d.Init();
+        eventText.SetText(d.GetNextDialogue());
+
+
+        //Wait fot user input for continuing text
+        while (d.HasMoreDialogue())
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                eventText.SetText(d.GetNextDialogue());
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return null;
+        }
+
+        //Make end dialogue button visible
+        endDialogue.gameObject.SetActive(true);
+        endDialogue.SetText("OK");
+        yield return null;
+    }
+
+    /// <summary>
+    /// Ends the dialogue encounter
+    /// </summary>
+    public void EndDialogueEncounter()
+    {
+        //Make relevant elements invisible 
+        endDialogue.gameObject.SetActive(false);
+
+        NextButtonClicked();
+    }
+
+    private void DoChoiceEncounter(ChoiceEncounter c)
+    {
+        //Make choice elements visible and other UI elements invisible
+        int choiceCount = c.GetChoiceCount();
+
+        eventText.SetText(c.choiceText);
+
+        if (choiceCount == 1)
+        {
+            choice1.gameObject.SetActive(true);
+            choice1.SetText(c.Option1Text());
+        }
+        else if (choiceCount == 2)
+        {
+            choice1.gameObject.SetActive(true);
+            choice1.SetText(c.Option1Text());
+            choice2.gameObject.SetActive(true);
+            choice2.SetText(c.Option2Text());
+        }
+        else if (choiceCount == 3)
+        {
+            choice1.gameObject.SetActive(true);
+            choice1.SetText(c.Option1Text());
+            choice2.gameObject.SetActive(true);
+            choice2.SetText(c.Option2Text());
+            choice3.gameObject.SetActive(true);
+            choice3.SetText(c.Option3Text());
+        }
+        else
+        {
+            choice1.gameObject.SetActive(true);
+            choice1.SetText(c.Option1Text());
+            choice2.gameObject.SetActive(true);
+            choice2.SetText(c.Option2Text());
+            choice3.gameObject.SetActive(true);
+            choice3.SetText(c.Option3Text());
+            choice4.gameObject.SetActive(true);
+            choice4.SetText(c.Option4Text());
         }
     }
 
-    private static int CompareTuples(Tuple<string,float> x, Tuple<string,float> y) {
-        if (x.Item2 < y.Item2) {  return 1; }
-        if (x.Item1 == y.Item1) { return 0; }
-        return -1;
+    /// <summary>
+    /// Executes the effect of the first choice in the current choice encounter, if any
+    /// </summary>
+    public void DoChoice1()
+    {
+        if (choiceEncounter != null)
+            choiceEncounter.Choice1();
+        NextButtonClicked();
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
+        choice3.gameObject.SetActive(false);
+        choice4.gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// Executes the effect of the second choice in the current choice encounter, if any
+    /// </summary>
+    public void DoChoice2()
+    {
+        if (choiceEncounter != null)
+            choiceEncounter.Choice2();
+        NextButtonClicked();
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
+        choice3.gameObject.SetActive(false);
+        choice4.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Executes the effect of the third choice in the current choice encounter, if any
+    /// </summary>
+    public void DoChoice3()
+    {
+        if (choiceEncounter != null)
+            choiceEncounter.Choice3();
+        NextButtonClicked();
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
+        choice3.gameObject.SetActive(false);
+        choice4.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Executes the effect of the fourth choice in the current choice encounter, if any
+    /// </summary>
+    public void DoChoice4()
+    {
+        if (choiceEncounter != null)
+            choiceEncounter.Choice4();
+        NextButtonClicked();
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
+        choice3.gameObject.SetActive(false);
+        choice4.gameObject.SetActive(false);
+    }
+
 }
