@@ -59,24 +59,10 @@ public class Pathway : MonoBehaviour
         slidingOut = null;
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    //Primarily for tracking when leaving and re-entering the scene
-    private void Update()
-    {
-       
-    }
-
     public void NextButtonClicked() {
 
         if (!currentLevel.HasMoreDialogueEncounters(singleton) && !currentLevel.HasMoreChoiceEncounters(singleton))
         {
-            Debug.Log("GRAHHH");
             TransitionToCamp();
             return;
         }
