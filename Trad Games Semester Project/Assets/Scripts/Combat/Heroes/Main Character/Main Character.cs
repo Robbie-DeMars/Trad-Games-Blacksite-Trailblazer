@@ -8,10 +8,10 @@ public class MainCharacter : Hero
     public override void LoadStats()
     {
         HP = PlayerPrefs.GetInt("MainHP");
-        MaxHP = party.mainStats[1];
-        MaxAP = party.mainStats[2];
-        Atk = party.mainStats[3];
-        Def = party.mainStats[4];
+        MaxHP = party.mainLevels[party.GetMainLevel()].Max_HP;
+        MaxAP = party.mainLevels[party.GetMainLevel()].Max_AP;
+        Atk = party.mainLevels[party.GetMainLevel()].Atk;
+        Def = party.mainLevels[party.GetMainLevel()].Def;
     }
 
     public override void SaveStats(int currentHP)

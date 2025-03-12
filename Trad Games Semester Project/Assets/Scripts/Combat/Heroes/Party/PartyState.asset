@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc406209f41e1144f851e70b4f46bad2, type: 3}
+  m_Name: PartyState
+  m_EditorClassIdentifier: 
+  characterPrefabs:
+  - {fileID: 585436764936509283, guid: 82ed3151d721719439c1b25f7e4b0d5f, type: 3}
+  - {fileID: 585436764936509283, guid: 75e62113967738d479aefecb6cd74c4d, type: 3}
+  - {fileID: 585436764936509283, guid: 59044ad17ef22724daf5e57d088dad14, type: 3}
+  hasMainHero: 1
+  mainLevels:
+  - {fileID: 11400000, guid: 822dabfba1329b04aa36f03ed005dedf, type: 2}
+  - {fileID: 11400000, guid: 39c2f4a2178a7bb45b61b4c8e712b404, type: 2}
+  - {fileID: 11400000, guid: 1899bafb7f397c447870b51a69c85ebf, type: 2}
+  hasSide1: 1
+  side1Levels:
+  - {fileID: 11400000, guid: 5722c928ee7311a4a9590949f5ba920f, type: 2}
+  - {fileID: 11400000, guid: f8eeb58f9dbe8444cbd0e9f7656bd911, type: 2}
+  - {fileID: 11400000, guid: 5ba35f866942ffc42a55b467dac16be1, type: 2}
+  hasSide2: 1
+  side2Levels:
+  - {fileID: 11400000, guid: 2d861a83b49d7b44eb572f78c3c90c47, type: 2}
+  - {fileID: 11400000, guid: ce7007916531c03429808ee5ee90369d, type: 2}
+  - {fileID: 11400000, guid: 33f4dede028f47c4d9b822dc723ecbea, type: 2}

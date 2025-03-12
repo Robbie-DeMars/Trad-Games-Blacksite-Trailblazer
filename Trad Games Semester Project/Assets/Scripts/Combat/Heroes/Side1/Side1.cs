@@ -8,10 +8,10 @@ public class Side1 : Hero
     public override void LoadStats()
     {
         HP = PlayerPrefs.GetInt("Side1HP");
-        MaxHP = party.side1Stats[1];
-        MaxAP = party.side1Stats[2];
-        Atk = party.side1Stats[3];
-        Def = party.side1Stats[4];
+        MaxHP = party.side1Levels[party.GetSide1Level()].Max_HP;
+        MaxAP = party.side1Levels[party.GetSide1Level()].Max_AP;
+        Atk = party.side1Levels[party.GetSide1Level()].Atk;
+        Def = party.side1Levels[party.GetSide1Level()].Def;
     }
 
     public override void SaveStats(int currentHP)

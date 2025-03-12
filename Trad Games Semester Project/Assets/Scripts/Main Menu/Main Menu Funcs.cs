@@ -7,9 +7,20 @@ public class MainMenuFuncs : MonoBehaviour
     public void LoadCombat()
     {
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("MainHP", party.mainStats[0]);
-        PlayerPrefs.SetInt("Side1HP", party.side1Stats[0]);
-        PlayerPrefs.SetInt("Side2HP", party.side2Stats[0]);
+
+        PlayerPrefs.SetInt("MainLevel", 0);
+        PlayerPrefs.SetInt("Side1Level", 0);
+        PlayerPrefs.SetInt("Side2Level", 0);
+
+        PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
+        
+        //TEMPORARY
+        PlayerPrefs.SetInt("MainPos", 1);
+        PlayerPrefs.SetInt("Side1Pos", 2);
+        PlayerPrefs.SetInt("Side2Pos", 3);
+
         PlayerPrefs.Save();
         SceneManager.LoadScene("Combat");
 
@@ -18,9 +29,19 @@ public class MainMenuFuncs : MonoBehaviour
     public void LoadRoad()
     {
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("MainHP", party.mainStats[0]);
-        PlayerPrefs.SetInt("Side1HP", party.side1Stats[0]);
-        PlayerPrefs.SetInt("Side2HP", party.side2Stats[0]);
+
+        PlayerPrefs.SetInt("MainLevel", 0);
+        PlayerPrefs.SetInt("Side1Level", 0);
+        PlayerPrefs.SetInt("Side2Level", 0);
+
+        PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
+
+        //TEMPORARY
+        PlayerPrefs.SetInt("MainPos", 1);
+        PlayerPrefs.SetInt("Side1Pos", 2);
+        PlayerPrefs.SetInt("Side2Pos", 3);
 
         //Set Level to 0 - tutorial level
         PlayerPrefs.SetInt("level", 0);
