@@ -9,6 +9,7 @@ TagManager:
   - Model
   - Canvas
   - Normal Tooltip
+  - Combat Tooltip
   layers:
   - Default
   - TransparentFX

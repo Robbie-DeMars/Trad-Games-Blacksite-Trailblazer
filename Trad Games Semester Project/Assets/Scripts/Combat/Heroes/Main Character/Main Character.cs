@@ -153,4 +153,19 @@ public class MainCharacter : Hero
         PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
         HP = PlayerPrefs.GetInt("MainHP");
     }
+
+    public override string GetAttack1Tooltip()
+    {
+        return "AP[" + GetAPOfAttack1() + "]: " + "Deals damage to the enemy directly across from it.";
+    }
+
+    public override string GetAttack2Tooltip()
+    {
+        return "AP[" + GetAPOfAttack2() + "]: " + "Raise the defense of this hero for one turn.";
+    }
+
+    public override string GetAttack3Tooltip()
+    {
+        return "AP[" + GetAPOfAttack3() + "]: " + "This hero goes to the left end of the battlefield, if able, else, goes to the right end.";
+    }
 }

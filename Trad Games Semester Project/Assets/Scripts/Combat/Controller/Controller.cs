@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -73,8 +74,17 @@ public class Controller : StateMachine
     {
         if (currentState == State.LOSE && currentState == State.WIN)
             return;
-
+        
+        //Get affected positions
         List<List<int>> positions = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack1Targets(model.GetCurrentActor());
+        
+        //Find combat tooltip box
+        CanvasGroup canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();
+        TextMeshProUGUI tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        //Get attack descriptor
+        tooltipText.text = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack1Tooltip();
+        canvasGroup.alpha = 1;  
 
         List<int> heroes = positions[0];
         List<int> enemies = positions[1];
@@ -100,7 +110,16 @@ public class Controller : StateMachine
         if (currentState == State.LOSE && currentState == State.WIN)
             return;
 
+        //Get affected positions
         List<List<int>> positions = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack2Targets(model.GetCurrentActor());
+
+        //Find combat tooltip box
+        CanvasGroup canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();
+        TextMeshProUGUI tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        //Get attack descriptor
+        tooltipText.text = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack2Tooltip();
+        canvasGroup.alpha = 1;
 
         List<int> heroes = positions[0];
         List<int> enemies = positions[1];
@@ -126,7 +145,16 @@ public class Controller : StateMachine
         if (currentState == State.LOSE && currentState == State.WIN)
             return;
 
+        //Get affected positions
         List<List<int>> positions = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack3Targets(model.GetCurrentActor());
+
+        //Find combat tooltip box
+        CanvasGroup canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();
+        TextMeshProUGUI tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        //Get attack descriptor
+        tooltipText.text = model.heroes[model.GetCurrentActor()].GetComponent<HeroBehavior>().GetAttack3Tooltip();
+        canvasGroup.alpha = 1;
 
         List<int> heroes = positions[0];
         List<int> enemies = positions[1];
@@ -172,6 +200,13 @@ public class Controller : StateMachine
     public void PointerExit()
     {
         view.ClearReticles();
+
+        //Find combat tooltip box
+        CanvasGroup canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();
+        TextMeshProUGUI tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        //Clear attack descriptor
+        canvasGroup.alpha = 0;
     }
 
 

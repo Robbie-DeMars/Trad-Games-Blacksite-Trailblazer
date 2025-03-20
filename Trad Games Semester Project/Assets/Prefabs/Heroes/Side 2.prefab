@@ -49,6 +49,7 @@ MonoBehaviour:
   effectDisplayPosition: {fileID: 2497075953167919967}
   aEffects: []
   effects: []
+  HP: 10
   hero: {fileID: 11400000, guid: 8379222075b8fc94d8e35cdebabed817, type: 2}
   HPBar: {fileID: 7257485829394991777}
   takingTurn: 0

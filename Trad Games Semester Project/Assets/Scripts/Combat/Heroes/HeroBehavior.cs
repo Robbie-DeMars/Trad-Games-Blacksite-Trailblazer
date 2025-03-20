@@ -157,6 +157,33 @@ public class HeroBehavior : BattleActorBehavior
         return hero.GetAttack3Targets(currentSpace);
     }
 
+    /// <summary>
+    /// Returns the string tooltip of this characters first attack
+    /// </summary>
+    /// <returns></returns>
+    public string GetAttack1Tooltip()
+    {
+        return hero.GetAttack1Tooltip();
+    }
+
+    /// <summary>
+    /// Returns the string tooltip of this characters second attack
+    /// </summary>
+    /// <returns></returns>
+    public string GetAttack2Tooltip()
+    {
+        return hero.GetAttack2Tooltip();
+    }
+
+    /// <summary>
+    /// Returns the string tooltip of this characters third attack
+    /// </summary>
+    /// <returns></returns>
+    public string GetAttack3Tooltip()
+    {
+        return hero.GetAttack3Tooltip();
+    }
+
     //STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION//STAT MANIPULATION
 
     public override void IncrementHP(float ammount)

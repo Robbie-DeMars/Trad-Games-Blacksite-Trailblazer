@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,12 +9,28 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] string tooltip;
     CanvasGroup canvasGroup;
     TextMeshProUGUI tooltipText;
+
+    public enum TooltipType
+    {
+        NORMAL,
+        COMBAT
+    }
+
+    [SerializeField] private TooltipType type;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvasGroup = GameObject.FindGameObjectsWithTag("Normal Tooltip")[0].GetComponent<CanvasGroup>();
-        tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        if (type == TooltipType.NORMAL)
+        {
+            canvasGroup = GameObject.FindGameObjectsWithTag("Normal Tooltip")[0].GetComponent<CanvasGroup>();
+            tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        }
+        else if (type == TooltipType.COMBAT)
+        {
+            canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();
+            tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        }
     }
 
 
@@ -31,7 +48,6 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
         canvasGroup.alpha = 0;
     }
 

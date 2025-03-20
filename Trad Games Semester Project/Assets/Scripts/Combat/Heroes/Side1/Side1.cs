@@ -143,4 +143,19 @@ public class Side1 : Hero
         PlayerPrefs.SetInt("Side1HP", party.mainLevels[party.GetMainLevel()].Max_HP);
         HP = PlayerPrefs.GetInt("Side1HP");
     }
+
+    public override string GetAttack1Tooltip()
+    {
+        return "AP[" + GetAPOfAttack1() + "]: " + "Deals damage to the left and right opposing enemies.";
+    }
+
+    public override string GetAttack2Tooltip()
+    {
+        return "AP[" + GetAPOfAttack2() + "]: " + "Raise the defense of this hero for one turn.";
+    }
+
+    public override string GetAttack3Tooltip()
+    {
+        return "AP[" + GetAPOfAttack3() + "]: " + "Deals damage to opposing enemy and pushes them rightward.";
+    }
 }

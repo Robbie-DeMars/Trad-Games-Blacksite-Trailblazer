@@ -44,6 +44,11 @@ public class Goober : Hero
         return new List<List<int>>() { heroes, enemies };
     }
 
+    public override string GetAttack1Tooltip()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override List<List<int>> GetAttack2Targets(int currentSpace)
     {
         List<int> heroes = new List<int>() { };
@@ -51,11 +56,21 @@ public class Goober : Hero
         return new List<List<int>>() { heroes, enemies };
     }
 
+    public override string GetAttack2Tooltip()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override List<List<int>> GetAttack3Targets(int currentSpace)
     {
         List<int> heroes = new List<int>() { };
         List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
+    }
+
+    public override string GetAttack3Tooltip()
+    {
+        throw new System.NotImplementedException();
     }
 
     public override void LoadStats()

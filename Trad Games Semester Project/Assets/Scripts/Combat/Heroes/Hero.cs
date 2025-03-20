@@ -122,5 +122,21 @@ public abstract class Hero : BattleActor
     /// <returns>The battefield state in the form of a 2D array</returns>
     public abstract List<List<int>> GetAttack3Targets(int currentSpace);
 
+    /// <summary>
+    /// Returns the string tooltip of this characters first attack
+    /// </summary>
+    /// <returns></returns>
+    public abstract string GetAttack1Tooltip();
 
+    /// <summary>
+    /// Returns the string tooltip of this characters second attack
+    /// </summary>
+    /// <returns></returns>
+    public abstract string GetAttack2Tooltip();
+
+    /// <summary>
+    /// Returns the string tooltip of this characters third attack
+    /// </summary>
+    /// <returns></returns>
+    public abstract string GetAttack3Tooltip();
 }

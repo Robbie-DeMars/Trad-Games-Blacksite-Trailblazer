@@ -182,4 +182,19 @@ public class Side2 : Hero
         PlayerPrefs.SetInt("Side2HP", party.mainLevels[party.GetMainLevel()].Max_HP);
         HP = PlayerPrefs.GetInt("Side2HP");
     }
+
+    public override string GetAttack1Tooltip()
+    {
+        return "AP[" + GetAPOfAttack1() + "]: " + "Deals damage to and rotates left right and opposing enemies clockwise.";
+    }
+
+    public override string GetAttack2Tooltip()
+    {
+        return "AP[" + GetAPOfAttack2() + "]: " + "Raise the defense of this hero for one turn.";
+    }
+
+    public override string GetAttack3Tooltip()
+    {
+        return "AP[" + GetAPOfAttack3() + "]: " + "Pulls all opposing enemies to the center of their side.";
+    }
 }
