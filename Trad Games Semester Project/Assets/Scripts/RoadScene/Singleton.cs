@@ -11,6 +11,7 @@ public class Singleton : MonoBehaviour
 
     public int dialogues = 0;
     public int choices = 0;
+    public int combats = 0;
     public bool newLevel = false;
 
     private void Awake()
@@ -24,6 +25,7 @@ public class Singleton : MonoBehaviour
         }
         dialogues = 0;
         choices = 0;
+        combats = 0;
     }
 
     private void Update()

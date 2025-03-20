@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b24f9a1b9a02a4c94f4f36807cd81d, type: 3}
   m_Name: level 2
   m_EditorClassIdentifier: 
+  maxCombatEncounters: 3
+  minCombatEncounters: 1
   combatEncounters:
   - {fileID: 11400000, guid: d880a27e4e9d94e4488efa6cfb5349c8, type: 2}
   dialogueEncounters:

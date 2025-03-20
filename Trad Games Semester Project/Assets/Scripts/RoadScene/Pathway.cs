@@ -39,7 +39,6 @@ public class Pathway : MonoBehaviour
     private void Awake()
     {
         currentLevel = reigon.GetCurrentLevel();
-        currentLevel.Init();
 
         //Disable non-active UI elements
         choice1.gameObject.SetActive(false);
@@ -60,8 +59,8 @@ public class Pathway : MonoBehaviour
     }
 
     public void NextButtonClicked() {
-
-        if (!currentLevel.HasMoreDialogueEncounters(singleton) && !currentLevel.HasMoreChoiceEncounters(singleton))
+        bool moreCombat = currentLevel.HasMoreCombatEncounters(singleton);
+        if (!currentLevel.HasMoreDialogueEncounters(singleton) && !currentLevel.HasMoreChoiceEncounters(singleton) && !moreCombat)
         {
             TransitionToCamp();
             return;
@@ -79,8 +78,10 @@ public class Pathway : MonoBehaviour
             encounter = Random.Range(1, 4);
             //Combat Encounter
             if (encounter == 1) {
-                nextEventFound = true;
-                combatEncounter = currentLevel.GetRandomCombatEncounter();
+                if (moreCombat) {
+                    nextEventFound = true;
+                    combatEncounter = currentLevel.GetRandomCombatEncounter(singleton);
+                }
             }
             //Dialogue Encounter
             else if (encounter == 2)
@@ -125,6 +126,7 @@ public class Pathway : MonoBehaviour
     {
         singleton.choices = 0;
         singleton.dialogues = 0;
+        singleton.combats = 0;
 
         //Make transition to camp button visible
         eventText.SetText("Go to Camp?");
