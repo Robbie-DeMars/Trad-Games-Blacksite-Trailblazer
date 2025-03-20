@@ -55,6 +55,7 @@ public class EnemyBehavior : BattleActorBehavior
             currentTelegraphs.Add(Instantiate(attackTelegraphs[attack - 1], this.transform));
             currentTelegraphs[currentTelegraphs.Count - 1].GetComponent<AttackTelegraph>().ConnectAttack(attack, this);
             currentTelegraphs[x].transform.position = new Vector3(startX + x * 1f, telegraphDisplayPosition.position.y, telegraphDisplayPosition.position.z);
+            currentTelegraphs[x].GetComponent<AttackTelegraph>().tooltip = enemy.GetAttackTooltip(upcomingAttacks[x]);
         }
     }
 

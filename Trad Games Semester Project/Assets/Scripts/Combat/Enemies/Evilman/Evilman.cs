@@ -185,4 +185,14 @@ public class Evilman : Enemy
         else
             return 0;
     }
+
+    public override string GetAttackTooltip(Attack attack)
+    {
+        if (attack == Attack1)
+            return "Lake Baikal Swimmer: (Right hook) Deals decent damage to the opposing hero, then moves right.";
+        else if (attack == Attack2)
+            return "Lake Baikal Swimmer: (Left hook) Deals decent damage to the opposing hero, then moves left.";
+        else
+            return "";
+    }
 }

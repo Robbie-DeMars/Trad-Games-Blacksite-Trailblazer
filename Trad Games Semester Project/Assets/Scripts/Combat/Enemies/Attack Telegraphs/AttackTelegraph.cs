@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class AttackTelegraph : MonoBehaviour
@@ -8,6 +9,7 @@ public class AttackTelegraph : MonoBehaviour
 
     Controller controller;
     Model model;
+    public string tooltip = "";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +28,16 @@ public class AttackTelegraph : MonoBehaviour
     private void OnMouseEnter()
     {
         controller.PointerEnterEnemyAttack(enemy.enemy.GetAttackTargets(model.GetPositionOfEnemy(enemy.gameObject), attack));
+
+        Debug.Log("TELEGRAPH ENTER");
+
+        //Find combat tooltip box
+        CanvasGroup canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();
+        TextMeshProUGUI tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        tooltipText.text = tooltip;
+
+        //Clear attack descriptor
+        canvasGroup.alpha = 1;
     }
 
     private void OnMouseExit()

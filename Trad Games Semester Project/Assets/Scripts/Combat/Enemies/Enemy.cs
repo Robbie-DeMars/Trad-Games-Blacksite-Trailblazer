@@ -66,5 +66,12 @@ public abstract class Enemy : BattleActor
     /// <returns></returns>
     public abstract int GetAttackNumber(Attack attack);
 
+    /// <summary>
+    /// Returns the attack tooltip of the passed attack, or an empty string
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <returns></returns>
+    public abstract string GetAttackTooltip(Attack attack);
+
 
 }
