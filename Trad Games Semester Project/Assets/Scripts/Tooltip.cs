@@ -1,20 +1,21 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Tooltip : MonoBehaviour
+public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] string tooltip;
-    Canvas canvas;
-    [SerializeField] CanvasGroup canvasGroup;
-    [SerializeField] TextMeshProUGUI tooltipText;
+    CanvasGroup canvasGroup;
+    TextMeshProUGUI tooltipText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvas = GameObject.FindGameObjectsWithTag("Canvas")[0].GetComponent<Canvas>();
-
-        canvasGroup.alpha = 0;
+        canvasGroup = GameObject.FindGameObjectsWithTag("Normal Tooltip")[0].GetComponent<CanvasGroup>();
+        tooltipText = canvasGroup.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -22,17 +23,26 @@ public class Tooltip : MonoBehaviour
         
     }
 
-
-    private void OnMouseOver()
+    public void OnPointerEnter(PointerEventData eventData)
     {
+        tooltipText.text = tooltip;
         canvasGroup.alpha = 1;
-        Debug.Log("MOUSE OVER");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+
+        canvasGroup.alpha = 0;
+    }
+
+    private void OnMouseEnter()
+    {
+        tooltipText.text = tooltip;
+        canvasGroup.alpha = 1;
     }
 
     private void OnMouseExit()
     {
         canvasGroup.alpha = 0;
-        Debug.Log("Mouse left");
     }
-
 }
