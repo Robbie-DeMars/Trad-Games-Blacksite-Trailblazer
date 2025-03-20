@@ -34,8 +34,6 @@ public class Pathway : MonoBehaviour
     DialogueEncounter dialogueEncounter = null;
     ChoiceEncounter choiceEncounter = null;
 
-    bool firstFrameInScene = true;
-
     private void Awake()
     {
         currentLevel = reigon.GetCurrentLevel();
