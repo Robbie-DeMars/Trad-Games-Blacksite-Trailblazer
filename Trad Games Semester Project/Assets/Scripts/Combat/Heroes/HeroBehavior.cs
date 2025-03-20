@@ -184,6 +184,25 @@ public class HeroBehavior : BattleActorBehavior
         }
         
     }
+
+    /// <summary>
+    /// Sets this hero's HP to max
+    /// </summary>
+    public void ReplenishHP()
+    {
+        hero.ReplenishHP();
+    }
+
+
+    /// <summary>
+    /// Sets this hero's AP to max
+    /// </summary>
+    public void ReplenishAP()
+    {
+        AP = hero.MaxAP;
+    }
+
+
     /// <summary>
     /// Increments this hero's AP by the passed ammount and updates its AP bar
     /// </summary>
@@ -199,14 +218,6 @@ public class HeroBehavior : BattleActorBehavior
         {
             AP = hero.MaxAP;
         }
-    }
-
-    /// <summary>
-    /// Sets this hero's AP to max
-    /// </summary>
-    public void ReplenishAP()
-    {
-        AP = hero.MaxAP;
     }
 
 

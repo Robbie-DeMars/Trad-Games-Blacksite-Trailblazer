@@ -100,11 +100,12 @@ public class Model : StateMachine
 
         if (currentState == State.WIN)
         {
-            //Save current HP of enemies
+            //Save current HP of heroes
             for (int x = 0; x < heroes.Length; x++)
             {
                 if (heroes[x] != null)
                 {
+                    party.HealOffBoardEnemies();
                     heroes[x].GetComponent<HeroBehavior>().SaveStats();
                     heroes[x].GetComponent<HeroBehavior>().ClearEffects();
                 }
@@ -113,7 +114,7 @@ public class Model : StateMachine
         }
         if (currentState == State.LOSE)
         {
-            //Save current HP of enemies
+            //Save current HP of heroes
             for (int x = 0; x < heroes.Length; x++)
             {
                 if (heroes[x] != null)

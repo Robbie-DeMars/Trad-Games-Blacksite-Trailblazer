@@ -7,6 +7,8 @@ TagManager:
   - View
   - Controller
   - Model
+  - Canvas
+  - Normal Tooltip
   layers:
   - Default
   - TransparentFX

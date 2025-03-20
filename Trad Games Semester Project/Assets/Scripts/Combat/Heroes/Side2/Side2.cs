@@ -176,4 +176,10 @@ public class Side2 : Hero
         yield return new WaitForSeconds(0.2f);
         view.clearParticles();
     }
+
+    public override void ReplenishHP()
+    {
+        PlayerPrefs.SetInt("Side2HP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        HP = PlayerPrefs.GetInt("Side2HP");
+    }
 }

@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal.Filters;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,9 @@ public class PartyUI : MonoBehaviour
 
     //Possible party member sprite representations
     [SerializeField] Sprite transparent; //For empty space
-    [SerializeField] Sprite main; //For main character
-    [SerializeField] Sprite side1; //For side1 character
-    [SerializeField] Sprite side2; //For side2 character
+    [SerializeField] Sprite main;        //For main character
+    [SerializeField] Sprite side1;       //For side1 character
+    [SerializeField] Sprite side2;       //For side2 character
 
     //Images to represent current spaces
     [SerializeField] Image[] onImages;
@@ -39,9 +40,30 @@ public class PartyUI : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
 
         //Set main image
-        onImages[party.GetMainPosition()].sprite = main;
-        onImages[party.GetSide1Position()].sprite = side1;
-        onImages[party.GetSide2Position()].sprite = side2;
+        if (party.GetMainPosition() != -1)
+        {
+            onImages[party.GetMainPosition()].sprite = main;
+        }
+        else
+        {
+            offImages[0].sprite = main;
+        }
+        if (party.GetSide1Position() != -1)
+        {
+            onImages[party.GetSide1Position()].sprite = side1;
+        }
+        else
+        {
+            offImages[1].sprite = side1;
+        }
+        if (party.GetSide2Position() != -1)
+        {
+            onImages[party.GetSide2Position()].sprite = side2;
+        }
+        else
+        {
+            offImages[2].sprite = side2;
+        }
 
     }
 
@@ -65,6 +87,10 @@ public class PartyUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the starting position of party members based on where the last hero was dragged
+    /// </summary>
+    /// <param name="draggedImage"></param>
     public void UpdateParty(Image draggedImage)
     {
         //Find dragged character, if any (there should be at most one)
@@ -173,15 +199,27 @@ public class PartyUI : MonoBehaviour
             for (int x = 0; x < onImages.Length; x++)
             {
                 onImages[x].transform.position = onTransforms[x].position;
+                if (onImages[x].sprite.Equals(main))
+                    party.SetMainPosition(x);
+                else if (onImages[x].sprite.Equals(side1))
+                    party.SetSide1Position(x);
+                else if (onImages[x].sprite.Equals(side2))
+                    party.SetSide2Position(x);
+                
             }
             //Loop through offImages
             for (int x = 0; x < offImages.Length; x++)
             {
                 offImages[x].transform.position = offTransforms[x].position;
+                if (offImages[x].sprite.Equals(main))
+                    party.SetMainPosition(-1);
+                else if (offImages[x].sprite.Equals(side1))
+                    party.SetSide1Position(-1);
+                else if (offImages[x].sprite.Equals(side2))
+                    party.SetSide2Position(-1);
             }
         }
 
     }
-
 
 }

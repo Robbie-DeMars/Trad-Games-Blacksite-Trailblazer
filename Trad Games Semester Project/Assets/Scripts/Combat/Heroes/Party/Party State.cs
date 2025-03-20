@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "PartyState", menuName = "Scriptable Objects/PartyManagement/PartyState")]
 public class PartyState : ScriptableObject
@@ -81,6 +82,33 @@ public class PartyState : ScriptableObject
     }
 
     /// <summary>
+    /// Sets the combat position of the main character, -1 for offboard 
+    /// </summary>
+    public void SetMainPosition(int position)
+    {
+        PlayerPrefs.SetInt("MainPos", position);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// Sets the combat position of the side1 character, -1 for offboard
+    /// </summary>
+    public void SetSide1Position(int position)
+    {
+        PlayerPrefs.SetInt("Side1Pos", position);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// Sets the combat position of the side2 character, -1 for offboard
+    /// </summary>
+    public void SetSide2Position(int position)
+    {
+        PlayerPrefs.SetInt("Side2Pos", position);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
     /// Builds the current party in a readable manner for the combat model.
     /// </summary>
     /// <returns> Array of all party members in their current positions. </returns>
@@ -101,6 +129,26 @@ public class PartyState : ScriptableObject
         }
 
         return party;
+    }
+
+    /// <summary>
+    /// Heals all enemies who are in the off board, preferably at the end of battle
+    /// </summary>
+    public void HealOffBoardEnemies()
+    {
+        GameObject[] party = new GameObject[possiblePartySize];
+        if (hasMainHero && GetMainPosition() == -1)
+        {
+            characterPrefabs[mainHeroIndex].GetComponent<HeroBehavior>().ReplenishHP();
+        }
+        if (hasSide1 && GetSide1Position() == -1)
+        {
+            characterPrefabs[side1Index].GetComponent<HeroBehavior>().ReplenishHP();
+        }
+        if (hasSide2 && GetSide2Position() == -1)
+        {
+            characterPrefabs[side2Index].GetComponent<HeroBehavior>().ReplenishHP();
+        }
     }
 
 }

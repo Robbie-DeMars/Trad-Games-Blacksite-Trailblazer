@@ -20,6 +20,11 @@ public abstract class Hero : BattleActor
     public abstract void LoadStats();
 
     /// <summary>
+    /// Replenishes this hero's HP and saves it.
+    /// </summary>
+    public abstract void ReplenishHP();
+
+    /// <summary>
     /// Loads the stats into this character to the party state.
     /// </summary>
     public abstract void SaveStats(int currentHP);

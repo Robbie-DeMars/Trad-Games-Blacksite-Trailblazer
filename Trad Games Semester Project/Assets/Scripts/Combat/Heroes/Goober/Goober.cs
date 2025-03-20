@@ -110,6 +110,11 @@ public class Goober : Hero
         view.clearParticles();
     }
 
+    public override void ReplenishHP()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void SaveStats(int currentHP)
     {
         throw new System.NotImplementedException();

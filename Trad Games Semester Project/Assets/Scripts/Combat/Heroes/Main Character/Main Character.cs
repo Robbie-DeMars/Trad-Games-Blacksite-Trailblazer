@@ -147,4 +147,10 @@ public class MainCharacter : Hero
         yield return new WaitForSeconds(0.2f);
         view.clearParticles();
     }
+
+    public override void ReplenishHP()
+    {
+        PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        HP = PlayerPrefs.GetInt("MainHP");
+    }
 }
