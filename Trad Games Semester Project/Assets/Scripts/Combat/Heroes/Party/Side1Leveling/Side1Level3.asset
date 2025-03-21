@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ac150d0c5654b44a91893b9817ad43, type: 3}
   m_Name: Side1Level3
   m_EditorClassIdentifier: 
+  cost: 99
   Max_HP: 24
   Max_AP: 14
   Atk: 8

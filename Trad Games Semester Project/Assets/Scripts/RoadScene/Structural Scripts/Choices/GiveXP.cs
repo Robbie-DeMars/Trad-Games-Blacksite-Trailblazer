@@ -3,8 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GiveXP", menuName = "Scriptable Objects/Choices/GiveXP")]
 public class GiveXP : Choice
 {
+    [SerializeField] int ammount;
     public override void Outcome()
     {
-        Debug.Log("MONEYYYYYYYYYYYYYY");
+        PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") + ammount);
+        PlayerPrefs.Save();
     }
 }

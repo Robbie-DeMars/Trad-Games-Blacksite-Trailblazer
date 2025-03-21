@@ -109,6 +109,116 @@ public class PartyState : ScriptableObject
     }
 
     /// <summary>
+    /// Attempts to level up main, 
+    /// returns true if successfull and false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool LevelUpMain()
+    {
+        //Check to make sure conditions are met.
+        if (PlayerPrefs.GetInt("MainLevel") + 1 >= mainLevels.Length)
+            return false;
+        if (PlayerPrefs.GetInt("XP") < mainLevels[GetMainLevel() + 1].cost)
+            return false;
+
+        //Increment level
+        PlayerPrefs.SetInt("MainLevel", GetMainLevel() + 1);
+        PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") - mainLevels[GetMainLevel()].cost);
+        PlayerPrefs.Save();
+
+        return true;
+    }
+
+    /// <summary>
+    /// Attempts to level up side1, 
+    /// returns true if successfull and false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool LevelUpSide1()
+    {
+        //Check to make sure conditions are met.
+        if (PlayerPrefs.GetInt("Side1Level") + 1 >= side1Levels.Length)
+            return false;
+        if (PlayerPrefs.GetInt("XP") < side1Levels[GetSide1Level() + 1].cost)
+            return false;
+
+        //Increment level
+        PlayerPrefs.SetInt("Side1Level", GetSide1Level() + 1);
+        PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") - side1Levels[GetSide1Level()].cost);
+        PlayerPrefs.Save();
+
+        return true;
+    }
+
+    /// <summary>
+    /// Attempts to level up side2, 
+    /// returns true if successfull and false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool LevelUpSide2()
+    {
+        //Check to make sure conditions are met.
+        if (PlayerPrefs.GetInt("Side2Level") + 1 >= side2Levels.Length)
+            return false;
+        if (PlayerPrefs.GetInt("XP") < side2Levels[GetSide2Level() + 1].cost)
+            return false;
+
+        //Increment level
+        PlayerPrefs.SetInt("Side2Level", GetSide2Level() + 1);
+        PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") - side2Levels[GetSide2Level()].cost);
+        PlayerPrefs.Save();
+
+        return true;
+    }
+
+    /// <summary>
+    /// Returns the level up cost, or -- as a string.
+    /// </summary>
+    /// <returns></returns>
+    public string GetMainLevelUpCost()
+    {
+        if (PlayerPrefs.GetInt("MainLevel") + 1 >= mainLevels.Length)
+            return "--";
+        else
+            return "" + mainLevels[GetMainLevel() + 1].cost;
+    }
+
+    /// <summary>
+    /// Returns the level up cost, or -- as a string.
+    /// </summary>
+    /// <returns></returns>
+    public string GetSide1LevelUpCost()
+    {
+        if (PlayerPrefs.GetInt("Side1Level") + 1 >= side1Levels.Length)
+            return "--";
+        else
+            return "" + side1Levels[GetSide1Level() + 1].cost;
+    }
+
+    /// <summary>
+    /// Returns the level up cost, or -- as a string.
+    /// </summary>
+    /// <returns></returns>
+    public string GetSide2LevelUpCost()
+    {
+        if (PlayerPrefs.GetInt("Side2Level") + 1 >= side2Levels.Length)
+            return "--";
+        else
+            return "" + side2Levels[GetSide2Level() + 1].cost;
+    }
+
+    /// <summary>
+    /// Resets the level of all party members to 1 (stored as 0)
+    /// </summary>
+    public void ResetPartyLevels()
+    {
+        PlayerPrefs.SetInt("MainLevel", 0);
+        PlayerPrefs.SetInt("Side1Level", 0);
+        PlayerPrefs.SetInt("Side2Level", 0);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
     /// Builds the current party in a readable manner for the combat model.
     /// </summary>
     /// <returns> Array of all party members in their current positions. </returns>

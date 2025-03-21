@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ac1bffa5836244bbb961e196782080, type: 3}
   m_Name: GiveXP
   m_EditorClassIdentifier: 
+  ammount: 20

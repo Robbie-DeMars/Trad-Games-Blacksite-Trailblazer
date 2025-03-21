@@ -25,6 +25,8 @@ public class Model : StateMachine
     int psiHeat = 0;
     //Max psionic heat before it rolls over
     [SerializeField] int maxHeat = 10;
+    //The current encounter
+    CombatEncounter encounter;
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class Model : StateMachine
 
         //Instantiate enemies
         Level level = reigon.GetCurrentLevel();
-        CombatEncounter encounter = level.GetCombatEncounterViaID(PlayerPrefs.GetString("combatEncounter"));
+        encounter = level.GetCombatEncounterViaID(PlayerPrefs.GetString("combatEncounter"));
         enemies = encounter.GetEnemies();
         for (int x = 0; x < enemies.Length; x++)
         {
@@ -110,6 +112,8 @@ public class Model : StateMachine
                     heroes[x].GetComponent<HeroBehavior>().ClearEffects();
                 }
             }
+            //Award XP
+            encounter.AwardXP();
             SceneManager.LoadScene("RoadScene");
         }
         if (currentState == State.LOSE)

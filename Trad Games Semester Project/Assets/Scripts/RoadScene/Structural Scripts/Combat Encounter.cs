@@ -4,7 +4,7 @@ using UnityEngine;
 public class CombatEncounter : ScriptableObject
 {
     int maxEncounterSize = 5;
-
+    [SerializeField] private int XP;
     [SerializeField] GameObject[] enemies = new GameObject[5];
 
     public string ID = "Test Encounter";
@@ -21,5 +21,14 @@ public class CombatEncounter : ScriptableObject
             returnedEnemies[x] = enemies[x];
         }
         return returnedEnemies;
+    }
+
+    /// <summary>
+    /// Rewards the player with the specified XP ammount in this enounter.
+    /// </summary>
+    public void AwardXP()
+    {
+        PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") + XP);
+        PlayerPrefs.Save();
     }
 }
