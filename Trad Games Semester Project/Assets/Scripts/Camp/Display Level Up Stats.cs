@@ -8,7 +8,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
     [SerializeField] CanvasGroup subMenuCanvasGroup = null;
     CanvasGroup canvasGroup;
     TextMeshProUGUI tooltipText;
-    bool DisplayLevelUp = true;
+    public bool DisplayLevelUp = true;
 
     public enum TooltipType
     {
@@ -60,7 +60,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
             else
             {
                 tooltipText.text =
-                    "Max HP: " + hero.Max_HP + "\n" +
+                    "Max HP: " + hero.Max_HP + " / " + PlayerPrefs.GetInt("MainHP") + "\n" +
                     "ATK: " + hero.Atk + "\n" +
                     "DEF: " + hero.Def + "\n" +
                     "AP: " + hero.Max_AP + "\n";
@@ -81,7 +81,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
             else
             {
                 tooltipText.text =
-                    "Max HP: " + hero.Max_HP + "\n" +
+                    "Max HP: " + hero.Max_HP + " / " + PlayerPrefs.GetInt("Side1HP") + "\n" +
                     "ATK: " + hero.Atk + "\n" +
                     "DEF: " + hero.Def + "\n" +
                     "AP: " + hero.Max_AP + "\n";
@@ -102,7 +102,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
             else
             {
                 tooltipText.text =
-                    "Max HP: " + hero.Max_HP + "\n" +
+                    "Max HP: " + hero.Max_HP + " / " + PlayerPrefs.GetInt("Side2HP") + "\n" +
                     "ATK: " + hero.Atk + "\n" +
                     "DEF: " + hero.Def + "\n" +
                     "AP: " + hero.Max_AP + "\n";
@@ -135,7 +135,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
             else
             {
                 tooltipText.text =
-                    "Max HP: " + hero.Max_HP + "\n" +
+                    "Max HP: " + hero.Max_HP + " / " + PlayerPrefs.GetInt("MainHP") + "\n" +
                     "ATK: " + hero.Atk + "\n" +
                     "DEF: " + hero.Def + "\n" +
                     "AP: " + hero.Max_AP + "\n";
@@ -156,7 +156,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
             else
             {
                 tooltipText.text =
-                    "Max HP: " + hero.Max_HP + "\n" +
+                    "Max HP: " + hero.Max_HP + " / " + PlayerPrefs.GetInt("Side1HP") + "\n" +
                     "ATK: " + hero.Atk + "\n" +
                     "DEF: " + hero.Def + "\n" +
                     "AP: " + hero.Max_AP + "\n";
@@ -177,7 +177,7 @@ public class DisplayLevelUpStats : MonoBehaviour, IPointerEnterHandler, IPointer
             else
             {
                 tooltipText.text =
-                    "Max HP: " + hero.Max_HP + "\n" +
+                    "Max HP: " + hero.Max_HP + " / " + PlayerPrefs.GetInt("Side2HP") + "\n" +
                     "ATK: " + hero.Atk + "\n" +
                     "DEF: " + hero.Def + "\n" +
                     "AP: " + hero.Max_AP + "\n";
