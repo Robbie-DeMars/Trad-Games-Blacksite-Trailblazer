@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -8,35 +10,48 @@ using Random = UnityEngine.Random;
 
 public class Pathway : MonoBehaviour
 {
+    [Header("Stage Elements")]
     [SerializeField] Reigon reigon;
-    Level currentLevel;
-
     [SerializeField] WaterfallText eventText;
     [SerializeField] Slider progressSlider;
+    [SerializeField] Singleton singleton;
+    [SerializeField] Transform road;
+    [SerializeField] ParticleSystem roadDust;
+    Level currentLevel;
+
+    [Header("Combat Encounter")]
+    [SerializeField] Transform enemyGroup;
+    [SerializeField] Transform enemyGroupStartPos;
+    [SerializeField] Transform enemyGroupEndPos;
+    [SerializeField] WaterfallText endCombat;
+    CombatEncounter combatEncounter = null;
+
+    [Header("Dialogue Encounter")]
+    [SerializeField] Transform slideInStartPos;
+    [SerializeField] Transform slideInEndPos;
+    [SerializeField] float slideSpeed = 1f;
+    [SerializeField] Image characterImage;
+    [SerializeField] Image characterImageOut;
+    [SerializeField] WaterfallText endDialogue;
+    DialogueEncounter dialogueEncounter = null;
+    Coroutine slidingIn;
+    Coroutine slidingOut;
+
+    [Header("Choice Encounter")]
     [SerializeField] WaterfallText choice1;
     [SerializeField] WaterfallText choice2;
     [SerializeField] WaterfallText choice3;
     [SerializeField] WaterfallText choice4;
-    [SerializeField] WaterfallText endDialogue;
-    [SerializeField] WaterfallText endCombat;
-    [SerializeField] WaterfallText goToCamp;
-
-    [SerializeField] Image characterImage;
-    [SerializeField] Image characterImageOut;
-    Coroutine slidingIn;
-    Coroutine slidingOut;
-    [SerializeField] Transform slideInStartPos;
-    [SerializeField] Transform slideInEndPos;
-    [SerializeField] float slideSpeed = 1f;
-
-    [SerializeField] Singleton singleton;
-    CombatEncounter combatEncounter = null;
-    DialogueEncounter dialogueEncounter = null;
     ChoiceEncounter choiceEncounter = null;
+
+    [Header("Camp")]
+    [SerializeField] WaterfallText goToCamp;
 
     private void Awake()
     {
         currentLevel = reigon.GetCurrentLevel();
+        currentLevel.RollCombat();
+        progressSlider.maxValue = currentLevel.GetTotalEncounters(singleton);
 
         //Disable non-active UI elements
         choice1.gameObject.SetActive(false);
@@ -56,12 +71,46 @@ public class Pathway : MonoBehaviour
         slidingOut = null;
     }
 
+    private void Update()
+    {
+        progressSlider.value = currentLevel.GetRemainingEncounters(singleton);
+        if(currentLevel.GetRemainingEncounters(singleton) < 0)
+            progressSlider.value = 0;
+    }
+
+
     public void NextButtonClicked() {
+        StartCoroutine(TravelToNextEncounter());
+    }
+    public IEnumerator TravelToNextEncounter()
+    {
+        float duration = 5f;
+        float elapsed = 0f;
+
+        float roadSpeed = 100f;
+        float tempSpeed = roadSpeed;
+        var emission = roadDust.emission;
+        emission.enabled = true;
+
+        //Make things happen every frame traveling
+        while (elapsed < duration)
+        {
+            tempSpeed = Mathf.Sin((elapsed / duration) * Mathf.PI) * roadSpeed;
+            elapsed += Time.deltaTime;
+            road.transform.Rotate(0f, tempSpeed * Time.deltaTime, 0f);
+            yield return null;
+        }
+        emission.enabled = false;
+        yield return ProgressToNextEncounter();
+    }
+
+    private IEnumerator ProgressToNextEncounter()
+    {
         bool moreCombat = currentLevel.HasMoreCombatEncounters(singleton);
         if (!currentLevel.HasMoreDialogueEncounters(singleton) && !currentLevel.HasMoreChoiceEncounters(singleton) && !moreCombat)
         {
             TransitionToCamp();
-            return;
+            yield break;
         }
 
         bool nextEventFound = false;
@@ -75,8 +124,10 @@ public class Pathway : MonoBehaviour
         {
             encounter = Random.Range(1, 4);
             //Combat Encounter
-            if (encounter == 1) {
-                if (moreCombat) {
+            if (encounter == 1)
+            {
+                if (moreCombat)
+                {
                     nextEventFound = true;
                     combatEncounter = currentLevel.GetRandomCombatEncounter(singleton);
                 }
@@ -86,7 +137,7 @@ public class Pathway : MonoBehaviour
             {
                 if (currentLevel.HasMoreDialogueEncounters(singleton))
                 {
-                    nextEventFound = true; 
+                    nextEventFound = true;
                     dialogueEncounter = currentLevel.GetNextDialogueEncounter(singleton);
                 }
             }
@@ -105,19 +156,19 @@ public class Pathway : MonoBehaviour
         //Combat
         if (combatEncounter != null)
         {
-            DoCombatEncounter(combatEncounter);
+            yield return DoCombatEncounter(combatEncounter);
         }
         //Dialogue
         else if (dialogueEncounter != null)
         {
-            StartCoroutine(DoDialogueEncounter(dialogueEncounter));
+            yield return DoDialogueEncounter(dialogueEncounter);
         }
         //Choice
         else
         {
-            DoChoiceEncounter(choiceEncounter);
+            yield return DoChoiceEncounter(choiceEncounter);
         }
-
+        yield return null;
     }
 
     private void TransitionToCamp()
@@ -138,22 +189,51 @@ public class Pathway : MonoBehaviour
         SceneManager.LoadScene("Camp");
     }
 
-    private void DoCombatEncounter(CombatEncounter c)
+    private IEnumerator DoCombatEncounter(CombatEncounter c)
     {
         //Make elements visible
         endCombat.gameObject.SetActive(true);
+        enemyGroup.position = enemyGroupStartPos.position;
         endCombat.SetText("Battlestations!");
 
         eventText.SetText("Enemies Approach...");
 
         PlayerPrefs.SetString("combatEncounter", c.ID);
         PlayerPrefs.Save();
+
+        GameObject[] enemies = c.GetEnemies();
+        for (int x = 0; x < enemies.Length; x++)
+        {
+            if (enemies[x] != null)
+                enemies[x] = Instantiate(enemies[x], enemyGroup.GetChild(x).transform);
+        }
+
+        //make the enemies slide in
+        float duration = 1f;
+        float elapsed = 0f;
+
+        Vector3 startPos = enemyGroup.position;
+        Vector3 endPos = enemyGroupEndPos.position;
+
+        while (elapsed < duration)
+        {
+            enemyGroup.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        enemyGroup.position = enemyGroupEndPos.position; 
+
+        yield return null;  
     }
 
     public void EndCombatEncounter()
     {
         //Make elements invisible
         endCombat.gameObject.SetActive(false);
+
+        //Return enemies to start positiuon
+        enemyGroup.position = enemyGroupStartPos.position;
 
         SceneManager.LoadScene("Combat");
     }
@@ -259,7 +339,7 @@ public class Pathway : MonoBehaviour
         NextButtonClicked();
     }
 
-    private void DoChoiceEncounter(ChoiceEncounter c)
+    private IEnumerator DoChoiceEncounter(ChoiceEncounter c)
     {
         //Make choice elements visible and other UI elements invisible
         int choiceCount = c.GetChoiceCount();
@@ -298,6 +378,7 @@ public class Pathway : MonoBehaviour
             choice4.gameObject.SetActive(true);
             choice4.SetText(c.Option4Text());
         }
+        yield return null;
     }
 
     /// <summary>

@@ -1,5 +1,7 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttackTelegraph : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class AttackTelegraph : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!SceneManager.GetActiveScene().name.Equals("Combat"))
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
         controller = GameObject.FindGameObjectsWithTag("Controller")[0].GetComponent<Controller>();
         model = GameObject.FindGameObjectsWithTag("Model")[0].GetComponent<Model>();
     }
@@ -28,8 +35,6 @@ public class AttackTelegraph : MonoBehaviour
     private void OnMouseEnter()
     {
         controller.PointerEnterEnemyAttack(enemy.enemy.GetAttackTargets(model.GetPositionOfEnemy(enemy.gameObject), attack));
-
-        Debug.Log("TELEGRAPH ENTER");
 
         //Find combat tooltip box
         CanvasGroup canvasGroup = GameObject.FindGameObjectsWithTag("Combat Tooltip")[0].GetComponent<CanvasGroup>();

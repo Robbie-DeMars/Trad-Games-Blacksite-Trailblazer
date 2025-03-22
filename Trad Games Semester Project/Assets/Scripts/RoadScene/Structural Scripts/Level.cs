@@ -9,7 +9,15 @@ public class Level : ScriptableObject
     [SerializeField] CombatEncounter[] combatEncounters;
     [SerializeField] DialogueEncounter[] dialogueEncounters;
     [SerializeField] ChoiceEncounter[] choiceEncounters;
+    int roll;
 
+    /// <summary>
+    /// Sets the number of combat encounters in this reigon between the min and max randomly.
+    /// </summary>
+    public void RollCombat()
+    {
+        roll = Random.Range(minCombatEncounters, maxCombatEncounters + 1);
+    }
 
     /// <summary>
     /// Returns a random combat encounter from this reigon.
@@ -89,7 +97,25 @@ public class Level : ScriptableObject
     /// <returns></returns>
     public bool HasMoreCombatEncounters(Singleton s)
     {
-        int roll = Random.Range(minCombatEncounters, maxCombatEncounters + 1);
         return s.combats < roll;
+    }
+
+    /// <summary>
+    /// Returns the remaining number of encounters in this level.
+    /// </summary>
+    /// <returns></returns>
+    public int GetRemainingEncounters(Singleton s)
+    {
+        return roll + choiceEncounters.Length + dialogueEncounters.Length - s.combats - s.choices - s.dialogues;
+    }
+
+    /// <summary>
+    /// Returns the total number of encounters in this level.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public int GetTotalEncounters(Singleton s)
+    {
+        return roll + choiceEncounters.Length + dialogueEncounters.Length;
     }
 }
