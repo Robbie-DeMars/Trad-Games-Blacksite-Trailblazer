@@ -6,6 +6,8 @@ public abstract class Hero : BattleActor
 {
     //Max AP of character
     public int MaxAP = 10;
+    //Name of character
+    public string Name = "";
     //Party state
     public PartyState party;
     //Status effect definitions

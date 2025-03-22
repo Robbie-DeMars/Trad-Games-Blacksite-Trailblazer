@@ -122,7 +122,9 @@ public class PartyState : ScriptableObject
             return false;
 
         //Increment level
+        int prevMaxHP = mainLevels[GetMainLevel()].Max_HP;
         PlayerPrefs.SetInt("MainLevel", GetMainLevel() + 1);
+        PlayerPrefs.SetInt("MainHP", PlayerPrefs.GetInt("MainHP") + mainLevels[GetMainLevel()].Max_HP - prevMaxHP);
         PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") - mainLevels[GetMainLevel()].cost);
         PlayerPrefs.Save();
 
@@ -143,7 +145,9 @@ public class PartyState : ScriptableObject
             return false;
 
         //Increment level
+        int prevMaxHP = side1Levels[GetSide1Level()].Max_HP;
         PlayerPrefs.SetInt("Side1Level", GetSide1Level() + 1);
+        PlayerPrefs.SetInt("Side1HP", PlayerPrefs.GetInt("Side1HP") + side1Levels[GetSide1Level()].Max_HP - prevMaxHP);
         PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") - side1Levels[GetSide1Level()].cost);
         PlayerPrefs.Save();
 
@@ -164,7 +168,9 @@ public class PartyState : ScriptableObject
             return false;
 
         //Increment level
+        int prevMaxHP = side2Levels[GetSide2Level()].Max_HP;
         PlayerPrefs.SetInt("Side2Level", GetSide2Level() + 1);
+        PlayerPrefs.SetInt("Side2HP", PlayerPrefs.GetInt("Side2HP") + side2Levels[GetSide2Level()].Max_HP - prevMaxHP);
         PlayerPrefs.SetInt("XP", PlayerPrefs.GetInt("XP") - side2Levels[GetSide2Level()].cost);
         PlayerPrefs.Save();
 
@@ -205,6 +211,42 @@ public class PartyState : ScriptableObject
             return "--";
         else
             return "" + side2Levels[GetSide2Level() + 1].cost;
+    }
+
+    /// <summary>
+    /// Returns true if main can level up, false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool MainHasNextLevel()
+    {
+        if (PlayerPrefs.GetInt("MainLevel") + 1 >= mainLevels.Length)
+            return false;
+        else
+            return true;
+    }
+
+    /// <summary>
+    /// Returns true if side1 can level up, false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool Side1HasNextLevel()
+    {
+        if (PlayerPrefs.GetInt("Side1Level") + 1 >= side1Levels.Length)
+            return false;
+        else
+            return true;
+    }
+
+    /// <summary>
+    /// Returns true if side2 can level up, false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool Side2HasNextLevel()
+    {
+        if (PlayerPrefs.GetInt("Side2Level") + 1 >= side2Levels.Length)
+            return false;
+        else
+            return true;
     }
 
     /// <summary>

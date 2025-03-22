@@ -37,7 +37,10 @@ public class Model : StateMachine
         for (int x = 0; x < heroes.Length; x++)
         {
             if (heroes[x] != null)
+            {
                 heroes[x] = Instantiate(heroes[x], heroBattefieldPositions[x]);
+                heroes[x].GetComponent<HeroBehavior>().hero.LoadStats();
+            }
         }
 
         //Instantiate enemies

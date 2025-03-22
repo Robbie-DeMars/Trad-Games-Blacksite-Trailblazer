@@ -10,6 +10,9 @@ public class LevelUpScreen : MonoBehaviour
     [SerializeField] TextMeshProUGUI side2Cost;
     [SerializeField] PartyState party;
     [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] TextMeshProUGUI mainLevelDisplay;
+    [SerializeField] TextMeshProUGUI side1LevelDisplay;
+    [SerializeField] TextMeshProUGUI side2LevelDisplay;
 
     private Coroutine coroutine1;
     private Coroutine coroutine2;
@@ -29,6 +32,11 @@ public class LevelUpScreen : MonoBehaviour
         mainCost.text = "XP: " + party.GetMainLevelUpCost();
         side1Cost.text = "XP: " + party.GetSide1LevelUpCost();
         side2Cost.text = "XP: " + party.GetSide2LevelUpCost();
+
+        mainLevelDisplay.text = (party.GetMainLevel() + 1) + "";
+        side1LevelDisplay.text = (party.GetSide1Level() + 1) + "";
+        side2LevelDisplay.text = (party.GetSide2Level() + 1) + "";
+
 
         if (Input.GetKeyDown(KeyCode.E))
         {
