@@ -62,9 +62,9 @@ public class Level : ScriptableObject
     {
         
         int choice = s.choices;
-        s.choices++;
         if (!HasMoreChoiceEncounters(s))
             choice = 0;
+        s.choices++;
         return choiceEncounters[choice];
     }
 
@@ -85,9 +85,9 @@ public class Level : ScriptableObject
     {
         
         int dialogue = s.dialogues;
-        s.dialogues++;
         if (!HasMoreDialogueEncounters(s))
             dialogue = 0;
+        s.dialogues++;
         return dialogueEncounters[dialogue];
     }
 

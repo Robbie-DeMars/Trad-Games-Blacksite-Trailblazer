@@ -245,10 +245,10 @@ public class Pathway : MonoBehaviour
         eventText.SetText(d.GetNextDialogue());
         if (slidingIn != null)
             StopCoroutine(slidingIn);
-        slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), false));
+        slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), false, true));
 
 
-        //Wait fot user input for continuing text
+        //Wait for user input for continuing text
         while (d.HasMoreDialogue())
         {
             if (Input.GetKey(KeyCode.Return))
@@ -256,7 +256,7 @@ public class Pathway : MonoBehaviour
                 eventText.SetText(d.GetNextDialogue());
                 if (slidingIn != null)
                     StopCoroutine(slidingIn);
-                slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), true));
+                slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), true, false));
                 yield return new WaitForSeconds(0.5f);
             }
             yield return null;
@@ -268,14 +268,14 @@ public class Pathway : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator SlideIn(Sprite spr, bool slideOut)
+    private IEnumerator SlideIn(Sprite spr, bool slideOut, bool newEncounter)
     {
         float elapsedTime = 0f;
         float duration = slideSpeed;
         float animPercentage = 0;
 
         //Do not repeat the animation if the same character is still talking.
-        if (spr.name.Equals(characterImage.sprite.name))
+        if (spr.name.Equals(characterImage.sprite.name) && !newEncounter)
         {
             yield break;
         }

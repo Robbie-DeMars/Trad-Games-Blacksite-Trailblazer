@@ -7,10 +7,9 @@ using UnityEngine.SceneManagement;
 public class Camp : MonoBehaviour
 {
     [SerializeField] Reigon reigon;
+    [SerializeField] 
     public void NextLevel()
     {
-
-
         //Increment level
         reigon.LoadLevel(PlayerPrefs.GetInt("level") + 1);
         DestroyAllDontDestroyOnLoad();

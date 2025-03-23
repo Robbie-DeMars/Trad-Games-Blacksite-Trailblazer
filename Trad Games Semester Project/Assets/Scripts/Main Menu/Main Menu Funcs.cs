@@ -16,7 +16,6 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
         PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
         
-        //TEMPORARY
         PlayerPrefs.SetInt("MainPos", 1);
         PlayerPrefs.SetInt("Side1Pos", 2);
         PlayerPrefs.SetInt("Side2Pos", 3);
@@ -38,13 +37,15 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
         PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
 
-        //TEMPORARY
         PlayerPrefs.SetInt("MainPos", 1);
         PlayerPrefs.SetInt("Side1Pos", 2);
         PlayerPrefs.SetInt("Side2Pos", 3);
 
         //Set Level to 0 - tutorial level
         PlayerPrefs.SetInt("level", 0);
+        PlayerPrefs.SetInt("visitedLevel1", 0);
+        PlayerPrefs.SetInt("visitedLevel2", 0);
+        PlayerPrefs.SetInt("visitedLevel3", 0);
 
         PlayerPrefs.Save();
         SceneManager.LoadScene("RoadScene");
