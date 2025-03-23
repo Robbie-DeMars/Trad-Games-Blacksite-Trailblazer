@@ -17,6 +17,7 @@ public class Pathway : MonoBehaviour
     [SerializeField] Singleton singleton;
     [SerializeField] Transform road;
     [SerializeField] ParticleSystem roadDust;
+    [SerializeField] PartyState party;
     Level currentLevel;
 
     [Header("Combat Encounter")]
@@ -80,6 +81,16 @@ public class Pathway : MonoBehaviour
 
 
     public void NextButtonClicked() {
+        //Heal members 1/10 of HP
+        PlayerPrefs.SetInt("MainHP", PlayerPrefs.GetInt("MainHP") + party.mainLevels[party.GetMainLevel()].Max_HP / 10);
+        if (PlayerPrefs.GetInt("MainHP") > party.mainLevels[party.GetMainLevel()].Max_HP)
+            PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetInt("Side1HP", PlayerPrefs.GetInt("Side1HP") + party.side1Levels[party.GetSide1Level()].Max_HP / 10);
+        if (PlayerPrefs.GetInt("Side1HP") > party.side1Levels[party.GetSide1Level()].Max_HP)
+            PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetInt("Side2HP", PlayerPrefs.GetInt("Side2HP") + party.side2Levels[party.GetSide2Level()].Max_HP / 10);
+        if (PlayerPrefs.GetInt("Side2HP") > party.side2Levels[party.GetSide2Level()].Max_HP)
+            PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
         StartCoroutine(TravelToNextEncounter());
     }
     public IEnumerator TravelToNextEncounter()

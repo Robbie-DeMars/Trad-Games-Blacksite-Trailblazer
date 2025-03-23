@@ -10977,6 +10977,7 @@ MonoBehaviour:
   singleton: {fileID: 21237276}
   road: {fileID: 936273347}
   roadDust: {fileID: 1254801578}
+  party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   enemyGroup: {fileID: 1152521601}
   enemyGroupStartPos: {fileID: 1130511135}
   enemyGroupEndPos: {fileID: 521412743}
