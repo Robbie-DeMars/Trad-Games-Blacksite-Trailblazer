@@ -18,6 +18,9 @@ public class EnemyBehavior : BattleActorBehavior
     //Offset for how the telegraph should appear on each enemy
     [SerializeField] Transform telegraphDisplayPosition;
 
+    //private ref to prefab of damage readout
+    [SerializeField] private GameObject damageReadoutPrefab;
+
 
     private void Start()
     {
@@ -134,6 +137,11 @@ public class EnemyBehavior : BattleActorBehavior
 
     public override void IncrementHP(float ammount)
     {
+        //declaring variables for computing total difference in HP, used for Damage Readout.
+        float _prevHP = HP;
+        float _newHP;
+        float _deltaHP;
+
         if (ammount > 0) //If being healed
         {
             HP += ammount;
@@ -149,10 +157,21 @@ public class EnemyBehavior : BattleActorBehavior
                 HP = temp;
         }
         HPBar.SetHealth(HP);
+
+        _newHP = HP;
+
         if (HP <= 0)
         {
+            _newHP = 0f;
             Die();
         }
+
+        //instantiate damage readout.
+        _deltaHP = _newHP - _prevHP;
+        GameObject _readout = Instantiate(damageReadoutPrefab, this.gameObject.transform.position, Quaternion.identity);
+        DamageReadout _damageReadout = _readout.GetComponent<DamageReadout>();
+        _damageReadout.Init(((int)Mathf.Abs(_deltaHP)).ToString(), Vector3.up, 2.5f);
+        if (_deltaHP > 0) { _damageReadout.Greenify(); }
     }
 
     //STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS//STATUS EFFECTS

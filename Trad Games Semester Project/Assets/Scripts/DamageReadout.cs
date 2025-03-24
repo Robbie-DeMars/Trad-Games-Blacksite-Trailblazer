@@ -43,11 +43,25 @@ public class DamageReadout : MonoBehaviour
         }
 
     }
-    public void Init(string _readout, Vector3 _targetPointFromHere, float _timeToTween, float _timeItTakes)
+
+    /// <summary>
+    /// Sets the initial parameters for this particular readout. Use to set number and customize how long something is shown and where it goes.
+    /// </summary>
+    /// <param name="_readout">The string that the readout will display. Usually a number of damage dealt/healed.</param>
+    /// <param name="_targetPointFromHere">Where the readout will tween to from where it currently is. Default Vector3.up</param>
+    /// <param name="_timeToTween">How long it takes for readout to tween to its position and to an alpha of 0. typically 2.5f.</param>
+    public void Init(string _readout, Vector3 _targetPointFromHere , float _timeToTween= 2.5f)
     {
         _timePassedSoFar = 0f;
         _originalPos = this.gameObject.transform.position;
         _pointToTweenTo = _originalPos + _targetPointFromHere;
         TimeToTween = _timeToTween;
+        if (_number == null) { _number = this.gameObject.GetComponentInChildren<TextMeshProUGUI>(); }
+        _number.text = _readout;
+    }
+
+    //Makes the text green. Useful for conveying healing. 
+    public void Greenify() {
+        _number.faceColor = new Color32(0, 255, 0, 255);
     }
 }

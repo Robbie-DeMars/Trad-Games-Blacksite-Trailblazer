@@ -12,7 +12,9 @@ public class HeroBehavior : BattleActorBehavior
     private int AP;
     //Flag for whether it is this hero's turn or not
     public bool takingTurn = false;
-    
+
+    //private ref to prefab of damage readout
+    [SerializeField] private GameObject damageReadoutPrefab;
 
     //SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA
 
@@ -188,6 +190,11 @@ public class HeroBehavior : BattleActorBehavior
 
     public override void IncrementHP(float ammount)
     {
+        //declaring variables for computing total difference in HP, used for Damage Readout.
+        float _prevHP = HP;
+        float _newHP;
+        float _deltaHP;
+
         if (ammount > 0)
         {
             HP += ammount;
@@ -205,10 +212,22 @@ public class HeroBehavior : BattleActorBehavior
         if (HP > hero.MaxHP)
             HP = hero.MaxHP;
         HPBar.SetHealth(HP);
+
+        _newHP = HP;
+
         if (HP <= 0)
         {
+            _newHP = 0;
             Die();
         }
+
+        //instantiate damage readout.
+        _deltaHP = _newHP - _prevHP;
+        GameObject _readout = Instantiate(damageReadoutPrefab, this.gameObject.transform.position, Quaternion.identity);
+        DamageReadout _damageReadout = _readout.GetComponent<DamageReadout>();
+        _damageReadout.Init(((int)Mathf.Abs(_deltaHP)).ToString(), Vector3.up , 2.5f);
+        _damageReadout.Greenify();//TODO REMOVE THIS IS JUST TO TEST AND SEE IF IT WORKS
+        if (_deltaHP > 0) { _damageReadout.Greenify(); }
         
     }
 

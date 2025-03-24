@@ -89,6 +89,7 @@ MonoBehaviour:
   - {fileID: 3541097657791810955, guid: b2b1ade9ae190714f99d38c751b65cff, type: 3}
   - {fileID: 3541097657791810955, guid: edfcbffac00c840478f8e66b78e188e7, type: 3}
   telegraphDisplayPosition: {fileID: 1796951111887825451}
+  damageReadoutPrefab: {fileID: 4429718679735075527, guid: fcd15070843acb842b2d99ff8f0b8c16, type: 3}
 --- !u!1 &6173684079431764595
 GameObject:
   m_ObjectHideFlags: 0

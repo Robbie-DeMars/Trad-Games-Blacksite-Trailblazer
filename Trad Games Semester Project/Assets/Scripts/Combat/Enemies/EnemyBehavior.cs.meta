@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: fc32bdbe37f95ff44bd06d11dbb44b1a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - effectDisplayPosition: {instanceID: 0}
+  - enemy: {instanceID: 0}
+  - HPBar: {instanceID: 0}
+  - telegraphDisplayPosition: {instanceID: 0}
+  - damageReadoutPrefab: {fileID: 4429718679735075527, guid: fcd15070843acb842b2d99ff8f0b8c16, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

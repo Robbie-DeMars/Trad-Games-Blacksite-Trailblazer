@@ -102,11 +102,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc32bdbe37f95ff44bd06d11dbb44b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectDisplayPosition: {fileID: 0}
+  aEffects: []
+  effects: []
+  HP: 10
   enemy: {fileID: 11400000, guid: ec318f72a2f70ce4ea8223eb7e6a5bcf, type: 2}
   HPBar: {fileID: 1731342063504913988}
   attackTelegraphs:
   - {fileID: 3541097657791810955, guid: b2b1ade9ae190714f99d38c751b65cff, type: 3}
   - {fileID: 3541097657791810955, guid: edfcbffac00c840478f8e66b78e188e7, type: 3}
+  telegraphDisplayPosition: {fileID: 0}
+  damageReadoutPrefab: {fileID: 4429718679735075527, guid: fcd15070843acb842b2d99ff8f0b8c16, type: 3}
 --- !u!61 &8440670820744986508
 BoxCollider2D:
   m_ObjectHideFlags: 0

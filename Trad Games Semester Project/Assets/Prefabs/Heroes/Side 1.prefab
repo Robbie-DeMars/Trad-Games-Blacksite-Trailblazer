@@ -55,6 +55,7 @@ MonoBehaviour:
   hero: {fileID: 11400000, guid: 2bd22b1a991c68a47bdab7d7c8c85561, type: 2}
   HPBar: {fileID: 7257485829394991777}
   takingTurn: 0
+  damageReadoutPrefab: {fileID: 4429718679735075527, guid: fcd15070843acb842b2d99ff8f0b8c16, type: 3}
 --- !u!114 &-9117873048847507480
 MonoBehaviour:
   m_ObjectHideFlags: 0
