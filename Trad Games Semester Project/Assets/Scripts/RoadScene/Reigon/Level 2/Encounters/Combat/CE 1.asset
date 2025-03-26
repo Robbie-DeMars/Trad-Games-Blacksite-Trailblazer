@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XP: 30
   enemies:
-  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
+  - {fileID: 3476315048992603100, guid: 669bda76648defa4ba953d0df9c10f09, type: 3}
   - {fileID: 0}
-  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
+  - {fileID: 3476315048992603100, guid: c5b078ceee6629d428b8e6c7f060610d, type: 3}
+  - {fileID: 3476315048992603100, guid: 669bda76648defa4ba953d0df9c10f09, type: 3}
   - {fileID: 0}
-  - {fileID: 3476315048992603100, guid: 5951d6d8a9ff8c946a819c4a00a20d2d, type: 3}
-  ID: Test Encounter 2
+  ID: L21

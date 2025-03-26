@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b24f9a1b9a02a4c94f4f36807cd81d, type: 3}
   m_Name: level 2
   m_EditorClassIdentifier: 
-  maxCombatEncounters: 3
-  minCombatEncounters: 1
+  maxCombatEncounters: 4
+  minCombatEncounters: 3
   combatEncounters:
   - {fileID: 11400000, guid: d880a27e4e9d94e4488efa6cfb5349c8, type: 2}
+  - {fileID: 11400000, guid: f20979fa3ab189a42b246e0c4c23dfd2, type: 2}
+  - {fileID: 11400000, guid: bb73808e87d2ed149953ab67c4ee6f28, type: 2}
+  - {fileID: 11400000, guid: fbb94cdcc7f46d945ad8f0317617f1a4, type: 2}
   dialogueEncounters:
   - {fileID: 11400000, guid: 1292a8d46e043fd4093d0cc35b60fb9a, type: 2}
   choiceEncounters:

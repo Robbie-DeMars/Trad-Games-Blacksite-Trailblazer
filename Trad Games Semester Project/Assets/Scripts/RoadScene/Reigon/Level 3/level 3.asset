@@ -16,6 +16,9 @@ MonoBehaviour:
   minCombatEncounters: 3
   combatEncounters:
   - {fileID: 11400000, guid: 8113cd2b307f0fc4992e4dc202e0b8cc, type: 2}
+  - {fileID: 11400000, guid: 9df9965435b5a494eb6b515c27cba979, type: 2}
+  - {fileID: 11400000, guid: b109d85fa66a7e540848199ae9cf49d6, type: 2}
+  - {fileID: 11400000, guid: 1743442dae52cd94b92990365d1651ce, type: 2}
   dialogueEncounters:
   - {fileID: 11400000, guid: 51ffeeb140ccbda46905c67ccc5a31a8, type: 2}
   choiceEncounters:
