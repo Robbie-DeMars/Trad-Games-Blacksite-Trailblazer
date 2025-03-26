@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 [CreateAssetMenu(fileName = "Evilman", menuName = "Scriptable Objects/BattleActors/Enemies/Evilman")]

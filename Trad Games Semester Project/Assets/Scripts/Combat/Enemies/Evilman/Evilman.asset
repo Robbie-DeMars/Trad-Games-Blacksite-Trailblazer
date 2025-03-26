@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1823b621b4f95d42aaa94f2b798a247, type: 3}
   m_Name: Evilman
   m_EditorClassIdentifier: 
-  attacks: 3
   MaxHP: 10
+  HP: 10
+  Atk: 5
+  Def: 2
+  attacks: 3
+  statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}
