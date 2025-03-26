@@ -2368,7 +2368,7 @@ MonoBehaviour:
   transparent: {fileID: -4158553288356310445, guid: 2096b668e004d46438ac7d55a3dd5613, type: 3}
   main: {fileID: -2684102947291226346, guid: b96570da59beffc4b9208f0070a9f7cb, type: 3}
   side1: {fileID: -1962201580291615686, guid: f8308abac256a02489f1bd87e0cb40f0, type: 3}
-  side2: {fileID: 6552812209483224130, guid: 6e8ef72197aaace47bd79463a36b0e2b, type: 3}
+  side2: {fileID: -5283261531042369010, guid: 6b33397fc2bbdee48851007aba22a9ad, type: 3}
   onImages:
   - {fileID: 75993150}
   - {fileID: 1354677096}
@@ -8620,7 +8620,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
