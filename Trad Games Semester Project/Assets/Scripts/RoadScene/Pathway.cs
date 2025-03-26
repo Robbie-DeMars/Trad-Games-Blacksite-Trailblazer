@@ -262,7 +262,7 @@ public class Pathway : MonoBehaviour
         //Wait for user input for continuing text
         while (d.HasMoreDialogue())
         {
-            if (Input.GetKey(KeyCode.Return))
+            if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.E))
             {
                 eventText.SetText(d.GetNextDialogue());
                 if (slidingIn != null)

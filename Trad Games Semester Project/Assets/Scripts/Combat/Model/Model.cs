@@ -82,7 +82,8 @@ public class Model : StateMachine
             view.SetAP(currentHero.GetAP());
         }
 
-        if (Input.GetKey(KeyCode.Space))
+      
+        if (Input.GetKey(KeyCode.F1))
         {
             currentState = State.WIN;
         }
