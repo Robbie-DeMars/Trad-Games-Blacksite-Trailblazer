@@ -39,7 +39,7 @@ public class Level : ScriptableObject
     {
         for (int x = 0; x < combatEncounters.Length; x++)
         {
-            if (combatEncounters[x].Equals(ID))
+            if (combatEncounters[x].ID.Equals(ID))
                 return combatEncounters[x];
         }
         return combatEncounters[0];

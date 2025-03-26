@@ -98,7 +98,7 @@ public class Pathway : MonoBehaviour
         float duration = 5f;
         float elapsed = 0f;
 
-        float roadSpeed = 100f;
+        float roadSpeed = 25f;
         float tempSpeed = roadSpeed;
         var emission = roadDust.emission;
         emission.enabled = true;
