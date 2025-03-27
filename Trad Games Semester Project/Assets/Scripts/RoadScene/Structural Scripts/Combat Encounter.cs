@@ -20,7 +20,7 @@ public class CombatEncounter : ScriptableObject
         {
             returnedEnemies[x] = enemies[x];
         }
-        return returnedEnemies;
+        return returnedEnemies; 
     }
 
     /// <summary>

@@ -33,7 +33,6 @@ public class Pathway : MonoBehaviour
     [SerializeField] float slideSpeed = 1f;
     [SerializeField] Image characterImage;
     [SerializeField] Image characterImageOut;
-    [SerializeField] WaterfallText endDialogue;
     DialogueEncounter dialogueEncounter = null;
     Coroutine slidingIn;
     Coroutine slidingOut;
@@ -59,7 +58,6 @@ public class Pathway : MonoBehaviour
         choice2.gameObject.SetActive(false);
         choice3.gameObject.SetActive(false);
         choice4.gameObject.SetActive(false);
-        endDialogue.gameObject.SetActive(false);
         endCombat.gameObject.SetActive(false);
         goToCamp.gameObject.SetActive(false);
 
@@ -269,7 +267,7 @@ public class Pathway : MonoBehaviour
         //Wait for user input for continuing text
         while (d.HasMoreDialogue())
         {
-            if (Input.anyKeyDown && (!Input.GetKeyDown(KeyCode.E) || !Input.GetKeyDown(KeyCode.Space)))
+            if (Input.anyKeyDown && (!Input.GetKeyDown(KeyCode.E) && !Input.GetKeyDown(KeyCode.Space)))
             {
                 eventText.SetText(d.GetNextDialogue());
                 if (slidingIn != null)
@@ -280,9 +278,12 @@ public class Pathway : MonoBehaviour
             yield return null;
         }
 
-        //Make end dialogue button visible
-        endDialogue.gameObject.SetActive(true);
-        endDialogue.SetText("OK");
+        //Wait for user confirmation
+        while (!(Input.anyKeyDown && (!Input.GetKeyDown(KeyCode.E) && !Input.GetKeyDown(KeyCode.Space))))
+        {
+            yield return null;
+        }
+        EndDialogueEncounter();
         yield return null;
     }
 
@@ -350,10 +351,7 @@ public class Pathway : MonoBehaviour
     /// </summary>
     public void EndDialogueEncounter()
     {
-        //Make relevant elements invisible 
-        endDialogue.gameObject.SetActive(false);
         characterImage.transform.position = slideInStartPos.transform.position;
-
         NextButtonClicked();
     }
 
