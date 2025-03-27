@@ -246,6 +246,13 @@ public class Pathway : MonoBehaviour
         //Return enemies to start positiuon
         enemyGroup.position = enemyGroupStartPos.position;
 
+        //Delete all in world enemies
+        GameObject[] toBeDestroyed = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int x = 0; x < toBeDestroyed.Length; x++)
+        {
+            Destroy(toBeDestroyed[x]);
+        }
+
         SceneManager.LoadScene("Combat");
     }
 
@@ -262,7 +269,7 @@ public class Pathway : MonoBehaviour
         //Wait for user input for continuing text
         while (d.HasMoreDialogue())
         {
-            if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.E))
+            if (Input.anyKeyDown && (!Input.GetKeyDown(KeyCode.E) || !Input.GetKeyDown(KeyCode.Space)))
             {
                 eventText.SetText(d.GetNextDialogue());
                 if (slidingIn != null)
