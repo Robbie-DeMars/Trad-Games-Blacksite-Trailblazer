@@ -80,15 +80,15 @@ public class Pathway : MonoBehaviour
 
     public void NextButtonClicked() {
         //Heal members 1/10 of HP
-        PlayerPrefs.SetInt("MainHP", PlayerPrefs.GetInt("MainHP") + party.mainLevels[party.GetMainLevel()].Max_HP / 10);
-        if (PlayerPrefs.GetInt("MainHP") > party.mainLevels[party.GetMainLevel()].Max_HP)
-            PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
-        PlayerPrefs.SetInt("Side1HP", PlayerPrefs.GetInt("Side1HP") + party.side1Levels[party.GetSide1Level()].Max_HP / 10);
-        if (PlayerPrefs.GetInt("Side1HP") > party.side1Levels[party.GetSide1Level()].Max_HP)
-            PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
-        PlayerPrefs.SetInt("Side2HP", PlayerPrefs.GetInt("Side2HP") + party.side2Levels[party.GetSide2Level()].Max_HP / 10);
-        if (PlayerPrefs.GetInt("Side2HP") > party.side2Levels[party.GetSide2Level()].Max_HP)
-            PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
+        PlayerPrefs.SetFloat("MainHP", PlayerPrefs.GetFloat("MainHP") + (float)party.mainLevels[party.GetMainLevel()].Max_HP / 10);
+        if (PlayerPrefs.GetFloat("MainHP") > party.mainLevels[party.GetMainLevel()].Max_HP)
+            PlayerPrefs.SetFloat("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetFloat("Side1HP", PlayerPrefs.GetFloat("Side1HP") + (float)party.side1Levels[party.GetSide1Level()].Max_HP / 10);
+        if (PlayerPrefs.GetFloat("Side1HP") > party.side1Levels[party.GetSide1Level()].Max_HP)
+            PlayerPrefs.SetFloat("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetFloat("Side2HP", PlayerPrefs.GetFloat("Side2HP") + (float)party.side2Levels[party.GetSide2Level()].Max_HP / 10);
+        if (PlayerPrefs.GetFloat("Side2HP") > party.side2Levels[party.GetSide2Level()].Max_HP)
+            PlayerPrefs.SetFloat("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
         StartCoroutine(TravelToNextEncounter());
     }
     public IEnumerator TravelToNextEncounter()

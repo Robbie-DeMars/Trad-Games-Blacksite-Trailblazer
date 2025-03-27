@@ -7,7 +7,7 @@ public class Side2 : Hero
 {
     public override void LoadStats()
     {
-        HP = PlayerPrefs.GetInt("Side2HP");
+        HP = PlayerPrefs.GetFloat("Side2HP");
         MaxHP = party.side2Levels[party.GetSide2Level()].Max_HP;
         MaxAP = party.side2Levels[party.GetSide2Level()].Max_AP;
         Atk = party.side2Levels[party.GetSide2Level()].Atk;
@@ -17,9 +17,9 @@ public class Side2 : Hero
     public override void SaveStats(int currentHP)
     {
         if (currentHP <= 0)
-            PlayerPrefs.SetInt("Side2HP", 0);
+            PlayerPrefs.SetFloat("Side2HP", 0);
         else
-            PlayerPrefs.SetInt("Side2HP", currentHP);
+            PlayerPrefs.SetFloat("Side2HP", currentHP);
         PlayerPrefs.Save();
     }
 
@@ -179,8 +179,8 @@ public class Side2 : Hero
 
     public override void ReplenishHP()
     {
-        PlayerPrefs.SetInt("Side2HP", party.mainLevels[party.GetMainLevel()].Max_HP);
-        HP = PlayerPrefs.GetInt("Side2HP");
+        PlayerPrefs.SetFloat("Side2HP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        HP = PlayerPrefs.GetFloat("Side2HP");
     }
 
     public override string GetAttack1Tooltip()

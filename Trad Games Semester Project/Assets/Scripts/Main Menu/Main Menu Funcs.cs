@@ -18,9 +18,9 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetInt("Side1Level", 0);
         PlayerPrefs.SetInt("Side2Level", 0);
 
-        PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
-        PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
-        PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
+        PlayerPrefs.SetFloat("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetFloat("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetFloat("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
         
         PlayerPrefs.SetInt("MainPos", 1);
         PlayerPrefs.SetInt("Side1Pos", 2);
@@ -50,9 +50,9 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetInt("Side1Level", 0);
         PlayerPrefs.SetInt("Side2Level", 0);
 
-        PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
-        PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
-        PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
+        PlayerPrefs.SetFloat("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetFloat("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetFloat("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
 
         PlayerPrefs.SetInt("MainPos", 1);
         PlayerPrefs.SetInt("Side1Pos", 2);
@@ -81,9 +81,9 @@ public class MainMenuFuncs : MonoBehaviour
         }
 
         //Heal party so people dont get too stuck
-        PlayerPrefs.SetInt("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
-        PlayerPrefs.SetInt("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
-        PlayerPrefs.SetInt("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
+        PlayerPrefs.SetFloat("MainHP", party.mainLevels[party.GetMainLevel()].Max_HP);
+        PlayerPrefs.SetFloat("Side1HP", party.side1Levels[party.GetSide1Level()].Max_HP);
+        PlayerPrefs.SetFloat("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
 
         PlayerPrefs.Save();
         SceneManager.LoadScene("RoadScene");
