@@ -1,0 +1,1730 @@
+fileFormatVersion: 2
+guid: 9e11557a90550fb48886fc4b69bbe9d1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8780507621487397076
+    second: T_SmokeRender_FC_0
+  - first:
+      213: -6280006369291365467
+    second: T_SmokeRender_FC_1
+  - first:
+      213: -776335543991153935
+    second: T_SmokeRender_FC_2
+  - first:
+      213: 3639709329281149424
+    second: T_SmokeRender_FC_3
+  - first:
+      213: -2885498518496363871
+    second: T_SmokeRender_FC_4
+  - first:
+      213: -2841158864710767585
+    second: T_SmokeRender_FC_5
+  - first:
+      213: -3869751192965946982
+    second: T_SmokeRender_FC_6
+  - first:
+      213: 6026406789393338210
+    second: T_SmokeRender_FC_7
+  - first:
+      213: 3661583416060187283
+    second: T_SmokeRender_FC_8
+  - first:
+      213: 5330129117181655231
+    second: T_SmokeRender_FC_9
+  - first:
+      213: 786504634166908665
+    second: T_SmokeRender_FC_10
+  - first:
+      213: -2998652198202844142
+    second: T_SmokeRender_FC_11
+  - first:
+      213: 2545707123717506858
+    second: T_SmokeRender_FC_12
+  - first:
+      213: 5768761981816568691
+    second: T_SmokeRender_FC_13
+  - first:
+      213: 4828618244956825590
+    second: T_SmokeRender_FC_14
+  - first:
+      213: 6250948510940963127
+    second: T_SmokeRender_FC_15
+  - first:
+      213: -429318644202886662
+    second: T_SmokeRender_FC_16
+  - first:
+      213: -9036805920826248881
+    second: T_SmokeRender_FC_17
+  - first:
+      213: -1583045218085130315
+    second: T_SmokeRender_FC_18
+  - first:
+      213: -6172401082920991887
+    second: T_SmokeRender_FC_19
+  - first:
+      213: -2539442678147912072
+    second: T_SmokeRender_FC_20
+  - first:
+      213: -7812675863343638607
+    second: T_SmokeRender_FC_21
+  - first:
+      213: -4330827186539431390
+    second: T_SmokeRender_FC_22
+  - first:
+      213: 1152308795760855238
+    second: T_SmokeRender_FC_23
+  - first:
+      213: 1301854454063838130
+    second: T_SmokeRender_FC_24
+  - first:
+      213: 3739970917136042267
+    second: T_SmokeRender_FC_25
+  - first:
+      213: -799550648712419179
+    second: T_SmokeRender_FC_26
+  - first:
+      213: 4201353218274452173
+    second: T_SmokeRender_FC_27
+  - first:
+      213: -9106965018398580600
+    second: T_SmokeRender_FC_28
+  - first:
+      213: 4613522329551137033
+    second: T_SmokeRender_FC_29
+  - first:
+      213: 8011580097787011142
+    second: T_SmokeRender_FC_30
+  - first:
+      213: 1047611511493619714
+    second: T_SmokeRender_FC_31
+  - first:
+      213: 3639878125272859681
+    second: T_SmokeRender_FC_32
+  - first:
+      213: 74222297080406818
+    second: T_SmokeRender_FC_33
+  - first:
+      213: 5519574015810089273
+    second: T_SmokeRender_FC_34
+  - first:
+      213: -3254926073454840654
+    second: T_SmokeRender_FC_35
+  - first:
+      213: -7019209508510517854
+    second: T_SmokeRender_FC_36
+  - first:
+      213: 3334710421065428124
+    second: T_SmokeRender_FC_37
+  - first:
+      213: -1138682748820434264
+    second: T_SmokeRender_FC_38
+  - first:
+      213: 7445231260500980888
+    second: T_SmokeRender_FC_39
+  - first:
+      213: -2898675419142627722
+    second: T_SmokeRender_FC_40
+  - first:
+      213: 7815059774614245751
+    second: T_SmokeRender_FC_41
+  - first:
+      213: 4002280947086453817
+    second: T_SmokeRender_FC_42
+  - first:
+      213: 6207171943144256318
+    second: T_SmokeRender_FC_43
+  - first:
+      213: 519442029418420495
+    second: T_SmokeRender_FC_44
+  - first:
+      213: -7012369141720946069
+    second: T_SmokeRender_FC_45
+  - first:
+      213: -1357778291393358114
+    second: T_SmokeRender_FC_46
+  - first:
+      213: -5771265350069053585
+    second: T_SmokeRender_FC_47
+  - first:
+      213: -2101321284006005827
+    second: T_SmokeRender_FC_48
+  - first:
+      213: -1115762751060627342
+    second: T_SmokeRender_FC_49
+  - first:
+      213: 5521043654948154206
+    second: T_SmokeRender_FC_50
+  - first:
+      213: -193918919770491265
+    second: T_SmokeRender_FC_51
+  - first:
+      213: 6238793373791640479
+    second: T_SmokeRender_FC_52
+  - first:
+      213: -3762472749692602822
+    second: T_SmokeRender_FC_53
+  - first:
+      213: -7548739179129601547
+    second: T_SmokeRender_FC_54
+  - first:
+      213: 3558092100817163186
+    second: T_SmokeRender_FC_55
+  - first:
+      213: 7643100375486641689
+    second: T_SmokeRender_FC_56
+  - first:
+      213: -3871252970520563229
+    second: T_SmokeRender_FC_57
+  - first:
+      213: -8743564524113892444
+    second: T_SmokeRender_FC_58
+  - first:
+      213: -122306138645034544
+    second: T_SmokeRender_FC_59
+  - first:
+      213: -662703128038696347
+    second: T_SmokeRender_FC_60
+  - first:
+      213: -5065978564556109581
+    second: T_SmokeRender_FC_61
+  - first:
+      213: -4293405846712711012
+    second: T_SmokeRender_FC_62
+  - first:
+      213: -5459325897061238168
+    second: T_SmokeRender_FC_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1838
+        width: 90
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d8cd5e1921aad970800000000000000
+      internalID: 8780507621487397076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_1
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 1838
+        width: 94
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a39233ea7fe8d8a0800000000000000
+      internalID: -6280006369291365467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_2
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 1838
+        width: 94
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fac5e99fe6e935f0800000000000000
+      internalID: -776335543991153935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_3
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1838
+        width: 95
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f96a79d958d28230800000000000000
+      internalID: 3639709329281149424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_4
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 1838
+        width: 95
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aabb1da266a4f7d0800000000000000
+      internalID: -2885498518496363871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_5
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 1838
+        width: 96
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c667ec01d2298d0800000000000000
+      internalID: -2841158864710767585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_6
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 1837
+        width: 96
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a91ee16fac1eb4ac0800000000000000
+      internalID: -3869751192965946982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_7
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 1837
+        width: 95
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26fcac1bb0912a350800000000000000
+      internalID: 6026406789393338210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_8
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1580
+        width: 94
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3929abd87be80d230800000000000000
+      internalID: 3661583416060187283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_9
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 1580
+        width: 92
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb8349c113c68f940800000000000000
+      internalID: 5330129117181655231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1578
+        width: 92
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f697b53cc93aea00800000000000000
+      internalID: 786504634166908665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_11
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1579
+        width: 90
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21cdc2996b5a266d0800000000000000
+      internalID: -2998652198202844142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_12
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1579
+        width: 88
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a270d5b242b245320800000000000000
+      internalID: 2545707123717506858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_13
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 1579
+        width: 86
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b74ff4572ce0050800000000000000
+      internalID: 5768761981816568691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_14
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 1579
+        width: 85
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f72f9ee5b2b20340800000000000000
+      internalID: 4828618244956825590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_15
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 1579
+        width: 83
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731a4ef3d84dfb650800000000000000
+      internalID: 6250948510940963127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_16
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1324
+        width: 83
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9a5dcb7f0ca0af0800000000000000
+      internalID: -429318644202886662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_17
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 1325
+        width: 81
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f413101e4e0d69280800000000000000
+      internalID: -9036805920826248881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_18
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1325
+        width: 81
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bfa7a0f2c4e70ae0800000000000000
+      internalID: -1583045218085130315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_19
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 1325
+        width: 79
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1730249fae9375aa0800000000000000
+      internalID: -6172401082920991887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_20
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 1326
+        width: 79
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87ee689b65612ccd0800000000000000
+      internalID: -2539442678147912072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_21
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1327
+        width: 79
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7522412bcc39390800000000000000
+      internalID: -7812675863343638607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_22
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 1328
+        width: 78
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22a76ba9e9fc5e3c0800000000000000
+      internalID: -4330827186539431390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_23
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 1329
+        width: 80
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c842ea9eb2ddff00800000000000000
+      internalID: 1152308795760855238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_24
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1074
+        width: 80
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b33cbb7abd111210800000000000000
+      internalID: 1301854454063838130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_25
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1075
+        width: 81
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b198f22ebbb07e330800000000000000
+      internalID: 3739970917136042267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_26
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1076
+        width: 81
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5982093dbec67e4f0800000000000000
+      internalID: -799550648712419179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_27
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1076
+        width: 82
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc261370e743e4a30800000000000000
+      internalID: 4201353218274452173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_28
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 1076
+        width: 84
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 880a178019f8d9180800000000000000
+      internalID: -9106965018398580600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_29
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1075
+        width: 86
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9096a308d16860040800000000000000
+      internalID: 4613522329551137033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_30
+      rect:
+        serializedVersion: 2
+        x: 1626
+        y: 1074
+        width: 86
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6402f2ad6a9de2f60800000000000000
+      internalID: 8011580097787011142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_31
+      rect:
+        serializedVersion: 2
+        x: 1881
+        y: 1072
+        width: 88
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 200ff258e1dd98e00800000000000000
+      internalID: 1047611511493619714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_32
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 815
+        width: 88
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1248a9abed1738230800000000000000
+      internalID: 3639878125272859681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_33
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 814
+        width: 88
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22324e339c0b70100800000000000000
+      internalID: 74222297080406818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_34
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 813
+        width: 89
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93136dbc257799c40800000000000000
+      internalID: 5519574015810089273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_35
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 813
+        width: 89
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b431954bfd24d2d0800000000000000
+      internalID: -3254926073454840654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_36
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 812
+        width: 89
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a5bf213422c69e90800000000000000
+      internalID: -7019209508510517854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_37
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 812
+        width: 89
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9ce56cb575474e20800000000000000
+      internalID: 3334710421065428124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_38
+      rect:
+        serializedVersion: 2
+        x: 1625
+        y: 811
+        width: 88
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a251bca2169230f0800000000000000
+      internalID: -1138682748820434264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_39
+      rect:
+        serializedVersion: 2
+        x: 1882
+        y: 811
+        width: 88
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8947bc88266c25760800000000000000
+      internalID: 7445231260500980888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_40
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 555
+        width: 87
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67ed8da6016d5c7d0800000000000000
+      internalID: -2898675419142627722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_41
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 556
+        width: 88
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7719354857ba47c60800000000000000
+      internalID: 7815059774614245751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_42
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 556
+        width: 89
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ce66ef055fa8730800000000000000
+      internalID: 4002280947086453817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_43
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 557
+        width: 90
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3372eacefd442650800000000000000
+      internalID: 6207171943144256318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_44
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 558
+        width: 91
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0994ec06cd653700800000000000000
+      internalID: 519442029418420495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_45
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 559
+        width: 91
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6aefc13b6f0fae90800000000000000
+      internalID: -7012369141720946069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_46
+      rect:
+        serializedVersion: 2
+        x: 1626
+        y: 560
+        width: 91
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed613c976d3382de0800000000000000
+      internalID: -1357778291393358114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_47
+      rect:
+        serializedVersion: 2
+        x: 1881
+        y: 560
+        width: 92
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f671d98ddb858efa0800000000000000
+      internalID: -5771265350069053585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_48
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 304
+        width: 93
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3badbec6b96d2e0800000000000000
+      internalID: -2101321284006005827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_49
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 305
+        width: 94
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2703b6180b30480f0800000000000000
+      internalID: -1115762751060627342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_50
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 307
+        width: 95
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5beb92d3ffae9c40800000000000000
+      internalID: 5521043654948154206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_51
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 309
+        width: 96
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f763ad715cf0f4df0800000000000000
+      internalID: -193918919770491265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_52
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 309
+        width: 96
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b59e7d485a49650800000000000000
+      internalID: 6238793373791640479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_53
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 310
+        width: 96
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a363c75f7f209cbc0800000000000000
+      internalID: -3762472749692602822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_54
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 311
+        width: 96
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f108e526bd7d3790800000000000000
+      internalID: -7548739179129601547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_55
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 311
+        width: 95
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b394530ae1e06130800000000000000
+      internalID: 3558092100817163186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_56
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 55
+        width: 95
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916398feb4fb11a60800000000000000
+      internalID: 7643100375486641689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_57
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 56
+        width: 96
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e132702feb864ac0800000000000000
+      internalID: -3871252970520563229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_58
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 57
+        width: 96
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4abeb75046e98a680800000000000000
+      internalID: -8743564524113892444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_59
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 59
+        width: 96
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d98634073b7d4ef0800000000000000
+      internalID: -122306138645034544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_60
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 61
+        width: 95
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56a96b5240b9dc6f0800000000000000
+      internalID: -662703128038696347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_61
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 62
+        width: 94
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8c3e3165702b9b0800000000000000
+      internalID: -5065978564556109581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_62
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 62
+        width: 93
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c988a1e3122ca64c0800000000000000
+      internalID: -4293405846712711012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_SmokeRender_FC_63
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 62
+        width: 92
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86af29875049c34b0800000000000000
+      internalID: -5459325897061238168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
