@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6db0e9d7dcc4e24295f0b359a2f69a7, type: 3}
   m_Name: Defend
   m_EditorClassIdentifier: 
+  stackable: 0
+  ID: Defend
   rounds: 1
   roundsInEffect: 0
   effectImage: {fileID: 100177735362886064, guid: 5f944528c88842547a13d3ab5d65504d, type: 3}

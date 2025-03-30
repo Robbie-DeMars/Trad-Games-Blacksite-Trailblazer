@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4157fd9aaea45ed46afd4ac794a74c60, type: 3}
-  m_Name: Kitsune
+  m_Script: {fileID: 11500000, guid: a01e358e0f1a73545a4281ccb03bb046, type: 3}
+  m_Name: TheCreature
   m_EditorClassIdentifier: 
-  MaxHP: 10
-  HP: 10
+  MaxHP: 50
+  HP: 50
   Atk: 5
   Def: 2
   attacks: 1

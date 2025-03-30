@@ -64,4 +64,11 @@ public abstract class BattleActorBehavior : MonoBehaviour
             }
         UpdateEffectDisplay();
     }
+
+    /// <summary>
+    /// Returns true of the passed status effect type exists on this character already.
+    /// </summary>
+    /// <param name="effect"></param>
+    /// <returns></returns>
+    public abstract bool HasStatusEffect(StatusEffect effect);
 }

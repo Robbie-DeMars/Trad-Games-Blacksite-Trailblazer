@@ -303,6 +303,8 @@ public class Model : StateMachine
                 if (heroes[x] != null)
                     heroes[x].GetComponent<HeroBehavior>().IncrementHP(-5);
             }
+            PassTurn();
+            
             StartCoroutine(PauseWhileExecuting(view.PlayPsiHeatAnimation()));
         }
 

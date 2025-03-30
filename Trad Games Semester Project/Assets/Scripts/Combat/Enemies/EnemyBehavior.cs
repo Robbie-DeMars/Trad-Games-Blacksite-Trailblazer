@@ -195,10 +195,30 @@ public class EnemyBehavior : BattleActorBehavior
     {
         if (effect is AgnosticEffect ae)
         {
-            aEffects.Add(ae);
-            ae.DoEffect(this);
+            if (effect.stackable || (!effect.stackable && !HasStatusEffect(effect)))
+            {
+                aEffects.Add(ae);
+                ae.DoEffect(this);
+            }
         }
         UpdateEffectDisplay();
+    }
+
+    public override bool HasStatusEffect(StatusEffect effect)
+    {
+        bool hasStatusEffect = false;
+        if (effect is AgnosticEffect ae)
+        {
+            for (int x = 0; x < aEffects.Count; x++)
+            {
+                if (aEffects[x].Equals(effect))
+                {
+                    hasStatusEffect = true;
+                }
+            }
+        }
+
+        return hasStatusEffect;
     }
 
     public override void ClearEffects()

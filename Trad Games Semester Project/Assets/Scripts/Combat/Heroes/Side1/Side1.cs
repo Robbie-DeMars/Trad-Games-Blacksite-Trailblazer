@@ -43,6 +43,7 @@ public class Side1 : Hero
         GameObject tempEnemy = enemies[currentPosition];
         if (currentPosition > 0 && enemies[currentPosition] != null)
         {
+            enemies[currentPosition].GetComponent<EnemyBehavior>().IncrementHP(-Atk);
             enemies[currentPosition] = enemies[currentPosition - 1];
             enemies[currentPosition - 1] = tempEnemy;
         }

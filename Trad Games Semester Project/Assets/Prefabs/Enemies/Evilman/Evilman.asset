@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a01e358e0f1a73545a4281ccb03bb046, type: 3}
-  m_Name: TheCreature
+  m_Script: {fileID: 11500000, guid: c1823b621b4f95d42aaa94f2b798a247, type: 3}
+  m_Name: Evilman
   m_EditorClassIdentifier: 
-  MaxHP: 10
-  HP: 10
+  MaxHP: 100
+  HP: 100
   Atk: 5
   Def: 2
-  attacks: 1
+  attacks: 3
   statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}

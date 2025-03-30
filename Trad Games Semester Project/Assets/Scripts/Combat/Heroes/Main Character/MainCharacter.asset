@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f7edc62e04bc724c95cc711ee20e1b6, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: 
-  MaxHP: 12
-  HP: 1
-  Atk: 8
-  Def: 2
-  MaxAP: 7
+  MaxHP: 7
+  HP: 7
+  Atk: 7
+  Def: 8
+  MaxAP: 8
+  Name: 
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}
   attack1APCost: 3
-  attack2APCost: 10
+  attack2APCost: 2
   attack3APCost: 0
