@@ -15,6 +15,7 @@ MonoBehaviour:
   characterImages:
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
+  isEnemy: 0000
   dialogue:
   - Between encounters like this one, your party will slowly regenerate health passively.
   - Neat!

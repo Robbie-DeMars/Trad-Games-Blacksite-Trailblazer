@@ -28,14 +28,25 @@ public class Pathway : MonoBehaviour
     CombatEncounter combatEncounter = null;
 
     [Header("Dialogue Encounter")]
+    [SerializeField] float slideSpeed = 1f;
+
+    [Header("HERO DISPLAY")]
     [SerializeField] Transform slideInStartPos;
     [SerializeField] Transform slideInEndPos;
-    [SerializeField] float slideSpeed = 1f;
     [SerializeField] Image characterImage;
     [SerializeField] Image characterImageOut;
+
+    [Header("ENEMY DISPLAY")]
+    [SerializeField] Transform slideInStartPos2;
+    [SerializeField] Transform slideInEndPos2;
+    [SerializeField] Image characterImage2;
+    [SerializeField] Image characterImageOut2;
+
     DialogueEncounter dialogueEncounter = null;
     Coroutine slidingIn;
     Coroutine slidingOut;
+    Coroutine slidingIn2;
+    Coroutine slidingOut2;
 
     [Header("Choice Encounter")]
     [SerializeField] WaterfallText choice1;
@@ -258,11 +269,8 @@ public class Pathway : MonoBehaviour
     {
         //Set initial text
         d.Init();
-        eventText.SetText(d.GetNextDialogue());
-        if (slidingIn != null)
-            StopCoroutine(slidingIn);
-        slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), false, true));
-
+        bool firstLeft = true;
+        bool firstRight = true;
 
         //Wait for user input for continuing text
         while (d.HasMoreDialogue())
@@ -272,7 +280,18 @@ public class Pathway : MonoBehaviour
                 eventText.SetText(d.GetNextDialogue());
                 if (slidingIn != null)
                     StopCoroutine(slidingIn);
-                slidingIn = StartCoroutine(SlideIn(d.GetNextSprite(), true, false));
+                if (slidingIn2 != null)
+                    StopCoroutine(slidingIn2);
+                if (d.IsVillian())
+                {
+                    slidingIn2 = StartCoroutine(SlideInFromRight(d.GetNextSprite(), !firstRight, firstRight));
+                    firstRight = false;
+                }
+                else
+                {
+                    slidingIn = StartCoroutine(SlideInFromLeft(d.GetNextSprite(), !firstLeft, firstLeft));
+                    firstLeft = false;
+                }
                 yield return new WaitForSeconds(0.5f);
             }
             yield return null;
@@ -287,7 +306,7 @@ public class Pathway : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator SlideIn(Sprite spr, bool slideOut, bool newEncounter)
+    private IEnumerator SlideInFromLeft(Sprite spr, bool slideOut, bool newEncounter)
     {
         float elapsedTime = 0f;
         float duration = slideSpeed;
@@ -302,7 +321,7 @@ public class Pathway : MonoBehaviour
         if (slideOut) {
             if (slidingOut != null)
                 StopCoroutine(slidingOut);
-            slidingOut = StartCoroutine(SlideOut(characterImage.sprite));
+            slidingOut = StartCoroutine(SlideOutFromLeft(characterImage.sprite));
         }
 
         characterImage.sprite = spr;
@@ -322,7 +341,7 @@ public class Pathway : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator SlideOut(Sprite spr)
+    private IEnumerator SlideOutFromLeft(Sprite spr)
     {
         characterImageOut.sprite = spr;
         float elapsedTime = 0f;
@@ -345,6 +364,65 @@ public class Pathway : MonoBehaviour
     }
 
 
+    private IEnumerator SlideInFromRight(Sprite spr, bool slideOut, bool newEncounter)
+    {
+        float elapsedTime = 0f;
+        float duration = slideSpeed;
+        float animPercentage = 0;
+
+        //Do not repeat the animation if the same character is still talking.
+        if (spr.name.Equals(characterImage2.sprite.name) && !newEncounter)
+        {
+            yield break;
+        }
+
+        if (slideOut)
+        {
+            if (slidingOut != null)
+                StopCoroutine(slidingOut);
+            slidingOut = StartCoroutine(SlideOutFromRight(characterImage2.sprite));
+        }
+
+        characterImage2.sprite = spr;
+
+        characterImage2.material.SetFloat("_Darkness", 1f - animPercentage);
+        characterImage2.transform.position = slideInStartPos2.transform.position;
+
+        while (animPercentage < 1f)
+        {
+            elapsedTime += Time.deltaTime;
+            animPercentage = elapsedTime / duration;
+            characterImage2.material.SetFloat("_Darkness", 1f - animPercentage);
+            characterImage2.transform.position = Vector3.Lerp(slideInStartPos2.transform.position, slideInEndPos2.transform.position, animPercentage);
+            yield return null;
+        }
+        characterImage2.material.SetFloat("_Darkness", 0);
+        yield return null;
+    }
+
+    private IEnumerator SlideOutFromRight(Sprite spr)
+    {
+        characterImageOut2.sprite = spr;
+        float elapsedTime = 0f;
+        float duration = slideSpeed;
+        float animPercentage = 0;
+
+        characterImageOut2.material.SetFloat("_Darkness", animPercentage);
+        characterImageOut2.transform.position = slideInEndPos2.transform.position;
+
+        while (animPercentage < 1f)
+        {
+            elapsedTime += Time.deltaTime;
+            animPercentage = elapsedTime / duration;
+            characterImageOut2.material.SetFloat("_Darkness", animPercentage);
+            characterImageOut2.transform.position = Vector3.Lerp(slideInEndPos2.transform.position, slideInStartPos2.transform.position, animPercentage);
+            yield return null;
+        }
+        characterImageOut2.material.SetFloat("_Darkness", 1);
+        yield return null;
+    }
+
+
 
     /// <summary>
     /// Ends the dialogue encounter
@@ -352,6 +430,7 @@ public class Pathway : MonoBehaviour
     public void EndDialogueEncounter()
     {
         characterImage.transform.position = slideInStartPos.transform.position;
+        characterImage2.transform.position = slideInStartPos2.transform.position;
         NextButtonClicked();
     }
 

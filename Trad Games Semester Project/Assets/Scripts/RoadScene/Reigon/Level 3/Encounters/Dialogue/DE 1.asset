@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImages:
   - {fileID: 3370310553352430471, guid: 3cc479a621b7b8046914cefcbc509c29, type: 3}
+  isEnemy: 00
   dialogue:
   - What the... how did I get here??

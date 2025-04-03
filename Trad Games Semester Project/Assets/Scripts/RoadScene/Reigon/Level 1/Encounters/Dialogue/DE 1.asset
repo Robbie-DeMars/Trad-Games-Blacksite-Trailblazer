@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: -5283261531042369010, guid: 6b33397fc2bbdee48851007aba22a9ad, type: 3}
   - {fileID: -5283261531042369010, guid: 6b33397fc2bbdee48851007aba22a9ad, type: 3}
   - {fileID: -1962201580291615686, guid: f8308abac256a02489f1bd87e0cb40f0, type: 3}
+  isEnemy: 000000000000
   dialogue:
   - Ermmm, what the scallop?!
   - Tell me about it...

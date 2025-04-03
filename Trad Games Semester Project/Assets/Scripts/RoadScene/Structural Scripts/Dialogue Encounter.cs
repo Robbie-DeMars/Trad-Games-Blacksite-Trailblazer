@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueEncounter : ScriptableObject
 {
     [SerializeField] private Sprite[] characterImages;
+    [SerializeField] private bool[] isEnemy;
     [SerializeField] private string[] dialogue;
     int currentDialogue = 0;
     int currentSprite = 0;
@@ -48,6 +49,15 @@ public class DialogueEncounter : ScriptableObject
         if (currentSprite < characterImages.Length)
             return characterImages[currentSprite++];
         return characterImages[0];
+    }
+
+    /// <summary>
+    /// Returns true if it is a villian (right), or false if hero (left)
+    /// </summary>
+    /// <returns></returns>
+    public bool IsVillian()
+    {
+        return isEnemy[currentSprite];
     }
 
 }

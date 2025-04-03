@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImages:
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
+  - {fileID: 301514340006640203, guid: fe24f006265f6344e9147caea083f068, type: 3}
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
+  - {fileID: -1962201580291615686, guid: f8308abac256a02489f1bd87e0cb40f0, type: 3}
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
   - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
+  isEnemy: 00010000010000
   dialogue:
   - Welcome to the tutorial!
   - Blacksite trailblazer is an RPG-battler where positioning matters.
