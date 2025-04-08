@@ -17,7 +17,7 @@ MonoBehaviour:
   Atk: 3
   Def: 4
   MaxAP: 20
-  Name: 
+  Name: Side2
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}
   attack1APCost: 4

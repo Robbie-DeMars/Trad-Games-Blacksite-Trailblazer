@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class View : StateMachine
@@ -18,6 +19,11 @@ public class View : StateMachine
 
     [SerializeField] ParticleSystem[] particlesHero;
     [SerializeField] ParticleSystem[] particlesEnemy;
+
+    [SerializeField] Transform[] heroOrderBar;
+    [SerializeField] GameObject MainImage;
+    [SerializeField] GameObject Side1Image;
+    [SerializeField] GameObject Side2Image;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,6 +51,8 @@ public class View : StateMachine
             var emission = particlesEnemy[i].emission;
             emission.enabled = false;
         }
+
+
     }
 
 
@@ -193,6 +201,35 @@ public class View : StateMachine
         }
         if (noUpdateNeeded)
             yield break;
+
+
+        //Update turn order in UI
+        int initiativeHaver = 0;
+
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (heroes[x] != null)
+                if (heroes[x].GetComponent<HeroBehavior>().takingTurn)
+                    initiativeHaver = x;
+        }
+
+        int heroesPlaced = 0;
+        for (int x = 0; x < heroes.Length; x++)
+        {
+            if (initiativeHaver >= heroes.Length)
+                initiativeHaver = 0;
+            if (heroes[initiativeHaver] != null)
+            {
+                if (heroes[initiativeHaver].GetComponent<HeroBehavior>().hero.name.Equals("Main"))
+                    MainImage.transform.position = heroOrderBar[heroesPlaced].transform.position;
+                else if (heroes[initiativeHaver].GetComponent<HeroBehavior>().hero.name.Equals("Side1"))
+                    Side1Image.transform.position = heroOrderBar[heroesPlaced].transform.position;
+                else if (heroes[initiativeHaver].GetComponent<HeroBehavior>().hero.name.Equals("Side2"))
+                    Side2Image.transform.position = heroOrderBar[heroesPlaced].transform.position;
+                heroesPlaced++;
+            }
+            initiativeHaver++;
+        }
 
         //Move all heroes / enemies to their positions
         float elapsedTime = 0f;

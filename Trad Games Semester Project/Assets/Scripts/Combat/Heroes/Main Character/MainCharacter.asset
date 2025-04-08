@@ -17,7 +17,7 @@ MonoBehaviour:
   Atk: 7
   Def: 8
   MaxAP: 8
-  Name: 
+  Name: Main
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}
   attack1APCost: 3
