@@ -1,5 +1,3 @@
-using NUnit.Framework;
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogueEncounter", menuName = "Scriptable Objects/Dialogues/DialogueEncounter")]
