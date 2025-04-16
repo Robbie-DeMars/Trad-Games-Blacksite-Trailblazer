@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class View : StateMachine
