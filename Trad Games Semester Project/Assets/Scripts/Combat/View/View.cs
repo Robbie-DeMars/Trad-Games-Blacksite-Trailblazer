@@ -24,6 +24,8 @@ public class View : StateMachine
     [SerializeField] GameObject Side1Image;
     [SerializeField] GameObject Side2Image;
 
+    public float globalLerpSpeed = 0.2f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,8 +52,6 @@ public class View : StateMachine
             var emission = particlesEnemy[i].emission;
             emission.enabled = false;
         }
-
-
     }
 
 
@@ -130,7 +130,8 @@ public class View : StateMachine
     public IEnumerator PlayAttack1Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
         yield return hero.PlayAttack1Anim(currentActor);
-        yield return UpdateBattlePositions(heroes, enemies);
+        ClearReticles();
+        yield return UpdateBattlePositions(heroes, enemies, globalLerpSpeed);
     }
 
     /// <summary>
@@ -144,7 +145,8 @@ public class View : StateMachine
     public IEnumerator PlayAttack2Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
         yield return hero.PlayAttack2Anim(currentActor);
-        yield return UpdateBattlePositions(heroes, enemies);
+        ClearReticles();
+        yield return UpdateBattlePositions(heroes, enemies, globalLerpSpeed);
     }
 
     /// <summary>
@@ -158,7 +160,8 @@ public class View : StateMachine
     public IEnumerator PlayAttack3Anim(HeroBehavior hero, GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
         yield return hero.PlayAttack3Anim(currentActor);
-        yield return UpdateBattlePositions(heroes, enemies);
+        ClearReticles();
+        yield return UpdateBattlePositions(heroes, enemies, globalLerpSpeed);
     }
 
     /// <summary>
@@ -173,7 +176,8 @@ public class View : StateMachine
     public IEnumerator PlayEnemyAttackAnim(EnemyBehavior enemy, GameObject[] heroes, GameObject[] enemies, int position, Enemy.Attack attack)
     {
         yield return enemy.PlayNextAttackAnim(position, attack);
-        yield return UpdateBattlePositions(heroes, enemies);
+        ClearReticles();
+        yield return UpdateBattlePositions(heroes, enemies, globalLerpSpeed);
     }
 
     /// <summary>
@@ -184,50 +188,30 @@ public class View : StateMachine
     /// <param name="heroes"> Current state of heroes </param>
     /// <param name="enemies"> Current state of enemies </param>
     /// <returns></returns>
-    public IEnumerator UpdateBattlePositions(GameObject[] heroes, GameObject[] enemies)
+    public IEnumerator UpdateBattlePositions(GameObject[] heroes, GameObject[] enemies, float lerpSpeed)
     {
-        //Check first to see if anyone needs to move
-        bool noUpdateNeeded = true;
-        for (int x = 0; x < heroes.Length; x++)
-        {
-            if (heroes[x] != null && heroes[x].transform.position != heroBattlePositions[x].position)
-                noUpdateNeeded = false;
-        }
-        for (int x = 0; x < enemies.Length; x++)
-        {
-            if (enemies[x] != null && enemies[x].transform.position != enemyBattlePositions[x].position)
-                noUpdateNeeded = false;
-        }
-        if (noUpdateNeeded)
-            yield break;
-
-
         //Update turn order in UI
-        int initiativeHaver = 0;
-
-        for (int x = 0; x < heroes.Length; x++)
-        {
-            if (heroes[x] != null)
-                if (heroes[x].GetComponent<HeroBehavior>().takingTurn)
-                    initiativeHaver = x;
-        }
-
         int heroesPlaced = 0;
         for (int x = 0; x < heroes.Length; x++)
         {
-            if (initiativeHaver >= heroes.Length)
-                initiativeHaver = 0;
-            if (heroes[initiativeHaver] != null)
+            if (heroes[x] != null)
             {
-                if (heroes[initiativeHaver].GetComponent<HeroBehavior>().hero.name.Equals("Main"))
-                    MainImage.transform.position = heroOrderBar[heroesPlaced].transform.position;
-                else if (heroes[initiativeHaver].GetComponent<HeroBehavior>().hero.name.Equals("Side1"))
-                    Side1Image.transform.position = heroOrderBar[heroesPlaced].transform.position;
-                else if (heroes[initiativeHaver].GetComponent<HeroBehavior>().hero.name.Equals("Side2"))
-                    Side2Image.transform.position = heroOrderBar[heroesPlaced].transform.position;
-                heroesPlaced++;
+                if (heroes[x].GetComponent<HeroBehavior>().hero.Name.Equals("Main"))
+                {
+                    StartCoroutine(LerpToTarget(MainImage, heroOrderBar[heroesPlaced], lerpSpeed));
+                    heroesPlaced++;
+                }
+                else if (heroes[x].GetComponent<HeroBehavior>().hero.Name.Equals("Side1"))
+                {
+                    StartCoroutine(LerpToTarget(Side1Image, heroOrderBar[heroesPlaced], lerpSpeed));
+                    heroesPlaced++;
+                }
+                else if (heroes[x].GetComponent<HeroBehavior>().hero.Name.Equals("Side2"))
+                {
+                    StartCoroutine(LerpToTarget(Side2Image, heroOrderBar[heroesPlaced], lerpSpeed));
+                    heroesPlaced++;
+                }
             }
-            initiativeHaver++;
         }
 
         //Move all heroes / enemies to their positions
@@ -263,6 +247,29 @@ public class View : StateMachine
                 enemies[x].transform.position = enemyBattlePositions[x].position;
         }
 
+    }
+
+    private IEnumerator LerpToTarget(GameObject toLerp, Transform destination, float seconds)
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPos = toLerp.transform.position;
+        Quaternion startingRot = toLerp.transform.rotation;
+
+        while (elapsedTime < seconds)
+        {
+            float t = elapsedTime / seconds;
+
+            // Lerp position and rotation
+            toLerp.transform.position = Vector3.Lerp(startingPos, destination.position, t);
+            toLerp.transform.rotation = Quaternion.Slerp(startingRot, destination.rotation, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Snap to final position/rotation to avoid overshooting or undershooting
+        toLerp.transform.position = destination.position;
+        toLerp.transform.rotation = destination.rotation;
     }
 
     /// <summary>

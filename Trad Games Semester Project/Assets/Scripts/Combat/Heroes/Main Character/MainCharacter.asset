@@ -15,7 +15,7 @@ MonoBehaviour:
   MaxHP: 7
   HP: 7
   Atk: 7
-  Def: 8
+  Def: 2
   MaxAP: 8
   Name: Main
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}

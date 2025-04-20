@@ -64,6 +64,8 @@ public class Model : StateMachine
 
         }
 
+        StartCoroutine(view.UpdateBattlePositions(heroes, enemies, 0));
+
     }
 
     //Every frame checks to see if the combat is over
@@ -391,7 +393,7 @@ public class Model : StateMachine
         
         HeroBehavior currentHero = heroes[to].GetComponent<HeroBehavior>();
         DecrementHeroAP(currentHero, 2);
-        StartCoroutine(PauseWhileExecuting(view.UpdateBattlePositions(heroes, enemies)));
+        StartCoroutine(PauseWhileExecuting(view.UpdateBattlePositions(heroes, enemies, view.globalLerpSpeed)));
     }
 
     //HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS//HELPER METHODS
