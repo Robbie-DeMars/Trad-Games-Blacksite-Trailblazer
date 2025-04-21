@@ -157,12 +157,12 @@ public class Model : StateMachine
         {
 
             EnemyBehavior currentEnemyBehavior = enemiesList[0].GetComponent<EnemyBehavior>();
+            currentEnemyBehavior.takingTurn = true;
             GameObject currentEnemy = enemiesList[0];
             enemiesList.RemoveAt(0);
 
             while (currentEnemyBehavior.HasMoreAttacks())
             {
-
                 Enemy.Attack currentAttack = currentEnemyBehavior.GetNextAttack();
                 for (int pos = 0; pos < enemies.Length; pos++)
                 {
@@ -181,6 +181,7 @@ public class Model : StateMachine
                 if (heroes[x] != null)
                     heroes[x].GetComponent<HeroBehavior>().SettleEffects();
             }
+            currentEnemyBehavior.takingTurn = false;
         }
         yield return null;
     }
@@ -363,6 +364,7 @@ public class Model : StateMachine
         HeroBehavior currentHero = heroes[pos].GetComponent<HeroBehavior>();
         view.SetAP(currentHero.GetAP());
         view.SetMaxAP(currentHero.hero.MaxAP);
+        StartCoroutine(view.UpdateBattlePositions(heroes, enemies, 0.2f));
 
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyBehavior : BattleActorBehavior
@@ -24,6 +25,8 @@ public class EnemyBehavior : BattleActorBehavior
     //UI element meant to be them in the turn order
     [SerializeField] public GameObject turnDisplay;
 
+    public bool takingTurn = false;
+
 
 
     private void Start()
@@ -37,6 +40,7 @@ public class EnemyBehavior : BattleActorBehavior
     public override void Die()
     {
         HPBar.Die();
+        Destroy(turnDisplay);
         Destroy(this.gameObject);
         Destroy(this);
     }

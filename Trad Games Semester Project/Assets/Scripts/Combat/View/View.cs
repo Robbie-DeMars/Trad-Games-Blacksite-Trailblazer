@@ -23,10 +23,12 @@ public class View : StateMachine
     [SerializeField] GameObject MainImage;
     [SerializeField] GameObject Side1Image;
     [SerializeField] GameObject Side2Image;
+    [SerializeField] GameObject heroBarHighlight;
 
     [SerializeField] Transform[] enemyOrderBar;
     [SerializeField] Transform enemyOrder;
     private GameObject[] EnemyXImage = new GameObject[5];
+    [SerializeField] GameObject enemyBarHighlight;
 
     public float globalLerpSpeed = 0.2f;
     bool instantiatedEnemies = false;
@@ -214,12 +216,20 @@ public class View : StateMachine
             if (enemies[x] != null)
             {
                 StartCoroutine(LerpToTarget(enemies[x].GetComponent<EnemyBehavior>().turnDisplay, enemyOrderBar[enemiesPlaced], lerpSpeed));
+                //Make sure highlight follows hero taking turn
+                if (enemies[x].GetComponent<EnemyBehavior>().takingTurn)
+                {
+                    StartCoroutine(LerpToTarget(enemyBarHighlight, enemyOrderBar[enemiesPlaced], lerpSpeed));
+                }
                 enemiesPlaced++;
             }
         }
 
         //Update turn order in UI
         int heroesPlaced = 0;
+        bool mainFound = false;
+        bool side1Found = false;
+        bool side2Found = false;
         for (int x = 0; x < heroes.Length; x++)
         {
             if (heroes[x] != null)
@@ -227,20 +237,35 @@ public class View : StateMachine
                 if (heroes[x].GetComponent<HeroBehavior>().hero.Name.Equals("Main"))
                 {
                     StartCoroutine(LerpToTarget(MainImage, heroOrderBar[heroesPlaced], lerpSpeed));
-                    heroesPlaced++;
+                    mainFound = true;
                 }
                 else if (heroes[x].GetComponent<HeroBehavior>().hero.Name.Equals("Side1"))
                 {
                     StartCoroutine(LerpToTarget(Side1Image, heroOrderBar[heroesPlaced], lerpSpeed));
-                    heroesPlaced++;
+                    side1Found = true;
                 }
                 else if (heroes[x].GetComponent<HeroBehavior>().hero.Name.Equals("Side2"))
                 {
                     StartCoroutine(LerpToTarget(Side2Image, heroOrderBar[heroesPlaced], lerpSpeed));
-                    heroesPlaced++;
+                    side2Found = true;
                 }
+
+                //Make sure highlight follows hero taking turn
+                if (heroes[x].GetComponent<HeroBehavior>().takingTurn)
+                {
+                    StartCoroutine(LerpToTarget(heroBarHighlight, heroOrderBar[heroesPlaced], lerpSpeed));
+                }
+                heroesPlaced++;
             }
         }
+        //Remove them from the bar if they died
+        if (!mainFound)
+            Destroy(MainImage);
+        if (!side1Found)
+            Destroy(Side1Image);
+        if (!side2Found)
+            Destroy(Side2Image);
+
 
         //Move all heroes / enemies to their positions
         float elapsedTime = 0f;
