@@ -21,6 +21,10 @@ public class EnemyBehavior : BattleActorBehavior
     //private ref to prefab of damage readout
     [SerializeField] private GameObject damageReadoutPrefab;
 
+    //UI element meant to be them in the turn order
+    [SerializeField] public GameObject turnDisplay;
+
+
 
     private void Start()
     {

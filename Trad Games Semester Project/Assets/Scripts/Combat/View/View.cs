@@ -24,7 +24,12 @@ public class View : StateMachine
     [SerializeField] GameObject Side1Image;
     [SerializeField] GameObject Side2Image;
 
+    [SerializeField] Transform[] enemyOrderBar;
+    [SerializeField] Transform enemyOrder;
+    private GameObject[] EnemyXImage = new GameObject[5];
+
     public float globalLerpSpeed = 0.2f;
+    bool instantiatedEnemies = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -190,6 +195,29 @@ public class View : StateMachine
     /// <returns></returns>
     public IEnumerator UpdateBattlePositions(GameObject[] heroes, GameObject[] enemies, float lerpSpeed)
     {
+        //Instantiate images for each enemy
+        if (!instantiatedEnemies) {
+            for (int x = 0; x < enemies.Length; x++)
+            {
+                if (enemies[x] != null) {
+                    EnemyXImage[x] = Instantiate(enemies[x].GetComponent<EnemyBehavior>().turnDisplay, enemyOrder);
+                    enemies[x].GetComponent<EnemyBehavior>().turnDisplay = EnemyXImage[x];
+                }
+            }
+            instantiatedEnemies = true;
+        }
+
+        //Update enemy turn order UI
+        int enemiesPlaced = 0;
+        for (int x = 0; x < enemies.Length; x++)
+        {
+            if (enemies[x] != null)
+            {
+                StartCoroutine(LerpToTarget(enemies[x].GetComponent<EnemyBehavior>().turnDisplay, enemyOrderBar[enemiesPlaced], lerpSpeed));
+                enemiesPlaced++;
+            }
+        }
+
         //Update turn order in UI
         int heroesPlaced = 0;
         for (int x = 0; x < heroes.Length; x++)
