@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: 9dd6954166420404882ba325f47eb0eb
+  - enabled: 1
+    path: Assets/Scenes/Combat Tutorial.unity
+    guid: 689255a04889c4d469eb0c0febecf645
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

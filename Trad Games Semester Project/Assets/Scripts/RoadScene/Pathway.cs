@@ -55,6 +55,8 @@ public class Pathway : MonoBehaviour
     [Header("Camp")]
     [SerializeField] WaterfallText goToCamp;
 
+
+
     private void Awake()
     {
         currentLevel = reigon.GetCurrentLevel();
@@ -259,7 +261,26 @@ public class Pathway : MonoBehaviour
             Destroy(toBeDestroyed[x]);
         }
 
-        SceneManager.LoadScene("Combat");
+        if (PlayerPrefs.GetInt("level") == 0)
+        {
+            SceneManager.LoadScene("Combat Tutorial");
+        }
+        else if (PlayerPrefs.GetInt("level") == 1)
+        {
+            SceneManager.LoadScene("Combat");
+        }
+        else if (PlayerPrefs.GetInt("level") == 2)
+        {
+            SceneManager.LoadScene("Combat");
+        }
+        else if (PlayerPrefs.GetInt("level") == 3)
+        {
+            SceneManager.LoadScene("Combat");
+        }
+        else 
+        {
+            SceneManager.LoadScene("Combat");
+        }
     }
 
     private IEnumerator DoDialogueEncounter(DialogueEncounter d)

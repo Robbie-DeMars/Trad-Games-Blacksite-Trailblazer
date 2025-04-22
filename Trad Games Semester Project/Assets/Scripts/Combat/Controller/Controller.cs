@@ -7,6 +7,8 @@ public class Controller : StateMachine
 {
     [SerializeField] Model model;
     [SerializeField] View view;
+    public bool tutorialMove = false;
+    [SerializeField] Tutorial tutorial;
 
     [SerializeField] Transform[] heroPositions;
 
@@ -36,6 +38,11 @@ public class Controller : StateMachine
                     }
                 }
 
+                if (tutorialMove)
+                {
+                    closestTransform = 2;
+                }
+
                 if (closestTransform != -1)
                 {
                     view.ClearPartyHighlights();
@@ -45,6 +52,10 @@ public class Controller : StateMachine
                     //Move hero to highlighted position
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
+                        if (tutorialMove)
+                        {
+                            tutorial.Attack();
+                        }
                         model.MoveHeroFromTo(model.GetCurrentActor(), closestTransform);
                         view.ClearPartyHighlights();
                         view.HighlightPartyPosition(model.GetCurrentActor());

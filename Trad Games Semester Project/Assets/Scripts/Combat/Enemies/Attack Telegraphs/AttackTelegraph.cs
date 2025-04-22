@@ -15,7 +15,7 @@ public class AttackTelegraph : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (!SceneManager.GetActiveScene().name.Equals("Combat"))
+        if (!SceneManager.GetActiveScene().name.Equals("Combat") && !SceneManager.GetActiveScene().name.Equals("Combat Tutorial"))
         {
             this.gameObject.SetActive(false);
             return;
