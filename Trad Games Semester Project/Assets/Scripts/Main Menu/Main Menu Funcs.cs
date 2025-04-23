@@ -65,7 +65,7 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetInt("visitedLevel3", 0);
 
         PlayerPrefs.Save();
-        SceneManager.LoadScene("RoadScene");
+        SceneManager.LoadScene("RoadScene_Desert");
     }
 
 
@@ -86,6 +86,15 @@ public class MainMenuFuncs : MonoBehaviour
         PlayerPrefs.SetFloat("Side2HP", party.side2Levels[party.GetSide2Level()].Max_HP);
 
         PlayerPrefs.Save();
-        SceneManager.LoadScene("RoadScene");
+        if (PlayerPrefs.GetInt("level") == 0) 
+            SceneManager.LoadScene("RoadScene_Desert");
+        if (PlayerPrefs.GetInt("level") == 1)
+            SceneManager.LoadScene("RoadScene_Desert");
+        if (PlayerPrefs.GetInt("level") == 2)
+            SceneManager.LoadScene("RoadScene_Swamp");
+        if (PlayerPrefs.GetInt("level") == 3)
+            SceneManager.LoadScene("RoadScene");
+        if (PlayerPrefs.GetInt("level") == 4)
+            SceneManager.LoadScene("RoadScene");
     }
 }
