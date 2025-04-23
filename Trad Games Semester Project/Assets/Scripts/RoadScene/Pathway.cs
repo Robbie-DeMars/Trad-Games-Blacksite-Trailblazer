@@ -78,6 +78,8 @@ public class Pathway : MonoBehaviour
         characterImageOut.material.SetFloat("_Darkness", 1);
         slidingIn = null;
         slidingOut = null;
+        slidingIn2 = null;
+        slidingOut2 = null;
     }
 
     private void Update()
@@ -138,37 +140,51 @@ public class Pathway : MonoBehaviour
         dialogueEncounter = null;
         choiceEncounter = null;
 
-        //Reroll encounter until valid one is found.
-        while (!nextEventFound)
+        if (!currentLevel.ordered)
         {
-            encounter = Random.Range(1, 4);
-            //Combat Encounter
-            if (encounter == 1)
+            //Reroll encounter until valid one is found.
+            while (!nextEventFound)
             {
-                if (moreCombat)
+                encounter = Random.Range(1, 4);
+                //Combat Encounter
+                if (encounter == 1)
                 {
-                    nextEventFound = true;
-                    combatEncounter = currentLevel.GetRandomCombatEncounter(singleton);
+                    if (moreCombat)
+                    {
+                        nextEventFound = true;
+                        combatEncounter = currentLevel.GetRandomCombatEncounter(singleton);
+                    }
+                }
+                //Dialogue Encounter
+                else if (encounter == 2)
+                {
+                    if (currentLevel.HasMoreDialogueEncounters(singleton))
+                    {
+                        nextEventFound = true;
+                        dialogueEncounter = currentLevel.GetNextDialogueEncounter(singleton);
+                    }
+                }
+                //Choice Encounter
+                else
+                {
+                    if (currentLevel.HasMoreChoiceEncounters(singleton))
+                    {
+                        nextEventFound = true;
+                        choiceEncounter = currentLevel.GetNextChoiceEncounter(singleton);
+                    }
                 }
             }
-            //Dialogue Encounter
-            else if (encounter == 2)
-            {
-                if (currentLevel.HasMoreDialogueEncounters(singleton))
-                {
-                    nextEventFound = true;
-                    dialogueEncounter = currentLevel.GetNextDialogueEncounter(singleton);
-                }
-            }
-            //Choice Encounter
-            else
-            {
-                if (currentLevel.HasMoreChoiceEncounters(singleton))
-                {
-                    nextEventFound = true;
-                    choiceEncounter = currentLevel.GetNextChoiceEncounter(singleton);
-                }
-            }
+        }
+        //Travel the ordered path
+        else
+        {
+            Encounter e = currentLevel.GetNextEncounter(singleton);
+            if (e is CombatEncounter)
+                combatEncounter = (CombatEncounter)e;
+            if (e is DialogueEncounter)
+                dialogueEncounter = (DialogueEncounter)e;
+            if (e is ChoiceEncounter)
+                choiceEncounter = (ChoiceEncounter)e;
         }
 
         //Load encounter
@@ -396,9 +412,9 @@ public class Pathway : MonoBehaviour
 
         if (slideOut)
         {
-            if (slidingOut != null)
-                StopCoroutine(slidingOut);
-            slidingOut = StartCoroutine(SlideOutFromRight(characterImage2.sprite));
+            if (slidingOut2 != null)
+                StopCoroutine(slidingOut2);
+            slidingOut2 = StartCoroutine(SlideOutFromRight(characterImage2.sprite));
         }
 
         characterImage2.sprite = spr;

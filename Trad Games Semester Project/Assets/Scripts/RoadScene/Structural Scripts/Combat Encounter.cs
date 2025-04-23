@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CombatEncounter", menuName = "Scriptable Objects/CombatEncounter")]
-public class CombatEncounter : ScriptableObject
+public class CombatEncounter : Encounter
 {
     int maxEncounterSize = 5;
     [SerializeField] private int XP;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChoiceEncounter", menuName = "Scriptable Objects/Choices/ChoiceEncounter")]
-public class ChoiceEncounter : ScriptableObject
+public class ChoiceEncounter : Encounter
 {
     [SerializeField] Choice[] choices;
     [SerializeField] public string choiceText;

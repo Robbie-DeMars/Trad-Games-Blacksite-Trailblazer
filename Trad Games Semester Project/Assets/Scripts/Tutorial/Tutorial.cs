@@ -218,7 +218,6 @@ public class Tutorial : MonoBehaviour
             oneFramePassedEvent = true;
             yield return null;
         }
-
         disableAllButtons();
 
         yield return new WaitForSeconds(2);

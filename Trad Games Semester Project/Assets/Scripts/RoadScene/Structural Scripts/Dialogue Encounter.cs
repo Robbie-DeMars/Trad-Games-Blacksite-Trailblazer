@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogueEncounter", menuName = "Scriptable Objects/Dialogues/DialogueEncounter")]
-public class DialogueEncounter : ScriptableObject
+public class DialogueEncounter : Encounter
 {
     [SerializeField] private Sprite[] characterImages;
     [SerializeField] private bool[] isEnemy;

@@ -19,5 +19,11 @@ MonoBehaviour:
   dialogueEncounters:
   - {fileID: 11400000, guid: 7a3538b2c4702ff41a597781dd5faf71, type: 2}
   - {fileID: 11400000, guid: dca3de018aa1250438ba02fe5215a196, type: 2}
-  - {fileID: 11400000, guid: 4107ff1477e69c647ae98bf7d5310b40, type: 2}
+  - {fileID: 11400000, guid: 75da7c0dcfc8f0e498d52311b30239da, type: 2}
   choiceEncounters: []
+  ordered: 1
+  encounterOrder:
+  - {fileID: 11400000, guid: 7a3538b2c4702ff41a597781dd5faf71, type: 2}
+  - {fileID: 11400000, guid: dca3de018aa1250438ba02fe5215a196, type: 2}
+  - {fileID: 11400000, guid: a3d6c27d722a09e46b0bdb602f029ff8, type: 2}
+  - {fileID: 11400000, guid: 75da7c0dcfc8f0e498d52311b30239da, type: 2}

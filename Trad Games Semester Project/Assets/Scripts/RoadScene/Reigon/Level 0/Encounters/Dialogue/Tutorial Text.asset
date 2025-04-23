@@ -13,20 +13,32 @@ MonoBehaviour:
   m_Name: Tutorial Text
   m_EditorClassIdentifier: 
   characterImages:
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 301514340006640203, guid: fe24f006265f6344e9147caea083f068, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: -1962201580291615686, guid: f8308abac256a02489f1bd87e0cb40f0, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  isEnemy: 00010000010000
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  isEnemy: 0000000000000000
   dialogue:
-  - Welcome to the tutorial!
-  - Blacksite trailblazer is an RPG-battler where positioning matters.
-  - Before any combat happens, press [E] to choose where your heroes start.
-  - Put your heroes in the lower bar so they can heal rather than fight. Sometimes
-    its good to take a breather!
-  - If one of your heroes fall during combat, don't worry, they'll come back at 1hp!
-  - Assuming, well, they weren't the last party member to fall.
-  - If that happens, you lose!
+  - "Departure confirmed. Current coordinates\u2026undefined (no data). Confirmed
+    successful arrival."
+  - "The landscape has changed drastically from where you were moments before. The
+    clean and organized military base is gone, replaced by an urban wasteland. The
+    sky is overcast\u2013 or is it rather filled with ash? "
+  - "Maybe it\u2019s best to avoid such questions.  "
+  - "There\u2019s no sign of life anywhere in your immediate vicinity. The wastes
+    are lit by the dim light of the moon, struggling to break through whatever it
+    is that fills the sky. The only noise you hear is the eerie whistle of the wind
+    through nearby buildings.  "
+  - "But now you realize that there is something else\u2013 distant clattering, and
+    sounds like shuffling coming from somewhere as well. "
+  - 'You know this place has inhabitants, but who, or what, are they? '
+  - 'Your two squadmates are also taking in the surroundings. You see RN fiddling
+    with the safety switch on his rifle, his head slowly turning to scan the ruinous
+    waste. '
+  - "HV seems less observant, and more like he\u2019s trying to comprehend what he\u2019s
+    seeing. It\u2019s also possible he can\u2019t actually see most of it. The tiny
+    viewports in his helmet certainly aren\u2019t helping. "

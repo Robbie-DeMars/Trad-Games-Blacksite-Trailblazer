@@ -10,13 +10,48 @@ public class Level : ScriptableObject
     [SerializeField] DialogueEncounter[] dialogueEncounters;
     [SerializeField] ChoiceEncounter[] choiceEncounters;
     int roll;
+    [SerializeField] public bool ordered;
+    [SerializeField] Encounter[] encounterOrder;
 
     /// <summary>
     /// Sets the number of combat encounters in this reigon between the min and max randomly.
+    /// If this level is ordered, instead sets the max value
     /// </summary>
     public void RollCombat()
     {
-        roll = Random.Range(minCombatEncounters, maxCombatEncounters + 1);
+        if (!ordered)
+            roll = Random.Range(minCombatEncounters, maxCombatEncounters + 1);
+        else
+            roll = maxCombatEncounters;
+    }
+    /// <summary>
+    /// Returns the next encounter if this level is ordered
+    /// </summary>
+    /// <returns></returns>
+    public Encounter GetNextEncounter(Singleton s)
+    {
+        if (!ordered)
+            return null;
+        //Find which encounter type it is
+        if (encounterOrder[s.combats + s.dialogues + s.choices] is CombatEncounter)
+        {
+            s.combats++;
+            return encounterOrder[s.combats + s.dialogues + s.choices - 1];
+        }
+        else if (encounterOrder[s.combats + s.dialogues + s.choices] is DialogueEncounter)
+        {
+            s.dialogues++;
+            return encounterOrder[s.combats + s.dialogues + s.choices - 1];
+        }
+        else if (encounterOrder[s.combats + s.dialogues + s.choices] is ChoiceEncounter)
+        {
+            s.choices++;
+            return encounterOrder[s.combats + s.dialogues + s.choices - 1];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     /// <summary>

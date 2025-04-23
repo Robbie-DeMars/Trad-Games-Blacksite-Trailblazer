@@ -13,15 +13,9 @@ MonoBehaviour:
   m_Name: Tutorial Text 3
   m_EditorClassIdentifier: 
   characterImages:
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: 160749357234345346, guid: bd5c7c4970615b84b96198772f50bcdc, type: 3}
-  - {fileID: -5283261531042369010, guid: 6b33397fc2bbdee48851007aba22a9ad, type: 3}
-  - {fileID: -1962201580291615686, guid: f8308abac256a02489f1bd87e0cb40f0, type: 3}
-  isEnemy: 0000000000
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  isEnemy: 00
   dialogue:
-  - At the end of a level, you'll have the opportunity to visit your camp!
-  - There you can plot your course and level up characters with XP!
-  - You can get XP from completing encounters, usually combat ones!
-  - Did you guys hear something?
-  - Idunnuh. *shrugs*
+  - One last tip, party members will slowly heal outside of combat, but pressing
+    [E] lets you opt them out of combat and choose their starting position, which
+    heals them rapidly after a battle.

@@ -1377,7 +1377,7 @@ RectTransform:
   m_GameObject: {fileID: 519069665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1759949662}
@@ -1753,18 +1753,6 @@ MonoBehaviour:
       - m_Target: {fileID: 90026646}
         m_TargetAssemblyTypeName: Model, Assembly-CSharp
         m_MethodName: Move
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 786084134}
-        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
-        m_MethodName: Attack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2835,6 +2823,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial Text
       objectReference: {fileID: 0}
+    - target: {fileID: 2744281269836762623, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744281269836762623, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744281269836762623, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744281269836762623, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 764
+      objectReference: {fileID: 0}
     - target: {fileID: 2960860959978771592, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
       propertyPath: view
       value: 
@@ -2867,6 +2871,34 @@ PrefabInstance:
       propertyPath: specialButton
       value: 
       objectReference: {fileID: 993104582}
+    - target: {fileID: 4509305171429483514, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970992159093436943, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970992159093436943, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 841
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080709055540518244, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172417849456745593, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172417849456745593, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 521
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498328735927479078, guid: e08eed38e8b7493478d545fb30ab7ab6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6070,7 +6102,7 @@ RectTransform:
   m_GameObject: {fileID: 1692441780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1901968038}
@@ -7594,7 +7626,7 @@ MonoBehaviour:
   model: {fileID: 90026646}
   view: {fileID: 1516968296}
   tutorialMove: 0
-  tutorial: {fileID: 0}
+  tutorial: {fileID: 786084134}
   heroPositions:
   - {fileID: 2102609206}
   - {fileID: 860668154}
