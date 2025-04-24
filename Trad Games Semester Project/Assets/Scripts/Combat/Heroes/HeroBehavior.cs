@@ -1,6 +1,10 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class HeroBehavior : BattleActorBehavior
 {
@@ -15,6 +19,15 @@ public class HeroBehavior : BattleActorBehavior
 
     //private ref to prefab of damage readout
     [SerializeField] private GameObject damageReadoutPrefab;
+
+    [SerializeField] AudioSource heroAudioSource;
+    [SerializeField] AudioResource attack1Sfx;
+    [SerializeField] AudioResource attack1SfxHit;
+    [SerializeField] AudioResource attack2Sfx;
+    [SerializeField] AudioResource attack2SfxHit;
+    [SerializeField] AudioResource attack3Sfx;
+    [SerializeField] AudioResource attack3SfxHit;
+
 
     //SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA
 
@@ -66,6 +79,24 @@ public class HeroBehavior : BattleActorBehavior
     /// <returns> AP Cost </returns>
     public int Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
+        //Play the associated sound 
+        if (attack1Sfx != null)
+        {
+            heroAudioSource.resource = attack1Sfx;
+            heroAudioSource.Play();
+            List<List<int>> targets = GetAttack1Targets(currentActor);
+            List<int> targetedEnemies = targets[1];
+            for (int x = 0; x < targetedEnemies.Count; x++)
+            {
+                if ((targetedEnemies[x] > -1 && targetedEnemies[x] < enemies.Length) && enemies[targetedEnemies[x]] != null)
+                {
+                    AudioSource enemyAudio = enemies[targetedEnemies[x]].GetComponent<AudioSource>();
+                    Thread.Sleep(100);
+                    enemyAudio.resource = attack1SfxHit;
+                    enemyAudio.Play();
+                }
+            }
+        }
         return hero.Attack1(heroes, enemies, currentActor);
     }
 
@@ -78,6 +109,24 @@ public class HeroBehavior : BattleActorBehavior
     /// <returns> AP Cost </returns>
     public int Attack2(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
+        //Play the associated sound 
+        if (attack2Sfx != null)
+        {
+            heroAudioSource.resource = attack2Sfx;
+            heroAudioSource.Play();
+            List<List<int>> targets = GetAttack2Targets(currentActor);
+            List<int> targetedEnemies = targets[1];
+            for (int x = 0; x < targetedEnemies.Count; x++)
+            {
+                if ((targetedEnemies[x] > -1 && targetedEnemies[x] < enemies.Length) && enemies[targetedEnemies[x]] != null)
+                {
+                    AudioSource enemyAudio = enemies[targetedEnemies[x]].GetComponent<AudioSource>();
+                    Thread.Sleep(100);
+                    enemyAudio.resource = attack2SfxHit;
+                    enemyAudio.Play();
+                }
+            }
+        }
         return hero.Attack2(heroes, enemies, currentActor);
     }
 
@@ -90,6 +139,24 @@ public class HeroBehavior : BattleActorBehavior
     /// <returns> AP Cost </returns>
     public int Attack3(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
+        //Play the associated sound 
+        if (attack3Sfx != null)
+        {
+            heroAudioSource.resource = attack3Sfx;
+            heroAudioSource.Play();
+            List<List<int>> targets = GetAttack3Targets(currentActor);
+            List<int> targetedEnemies = targets[1];
+            for (int x = 0; x < targetedEnemies.Count; x++)
+            {
+                if ((targetedEnemies[x] > -1 && targetedEnemies[x] < enemies.Length) && enemies[targetedEnemies[x]] != null)
+                {
+                    AudioSource enemyAudio = enemies[targetedEnemies[x]].GetComponent<AudioSource>();
+                    Thread.Sleep(100);
+                    enemyAudio.resource = attack3SfxHit;
+                    enemyAudio.Play();
+                }
+            }
+        }
         return hero.Attack3(heroes, enemies, currentActor);
     }
 

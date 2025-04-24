@@ -120,7 +120,16 @@ public class Model : StateMachine
             }
             //Award XP
             encounter.AwardXP();
-            SceneManager.LoadScene("RoadScene");
+            if (PlayerPrefs.GetInt("level") == 0)
+                SceneManager.LoadScene("RoadScene_Desert");
+            if (PlayerPrefs.GetInt("level") == 1)
+                SceneManager.LoadScene("RoadScene_Desert");
+            if (PlayerPrefs.GetInt("level") == 2)
+                SceneManager.LoadScene("RoadScene_Swamp");
+            if (PlayerPrefs.GetInt("level") == 3)
+                SceneManager.LoadScene("RoadScene");
+            if (PlayerPrefs.GetInt("level") == 4)
+                SceneManager.LoadScene("RoadScene");
         }
         if (currentState == State.LOSE)
         {

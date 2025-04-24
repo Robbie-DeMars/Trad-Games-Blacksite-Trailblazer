@@ -283,11 +283,11 @@ public class Pathway : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("level") == 1)
         {
-            SceneManager.LoadScene("Combat_Desert");
+            SceneManager.LoadScene("Combat Desert");
         }
         else if (PlayerPrefs.GetInt("level") == 2)
         {
-            SceneManager.LoadScene("Combat_Swamp");
+            SceneManager.LoadScene("Combat Swamp");
         }
         else if (PlayerPrefs.GetInt("level") == 3)
         {

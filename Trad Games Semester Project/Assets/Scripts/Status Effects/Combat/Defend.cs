@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Defend", menuName = "Scriptable Objects/Defend")]
+[CreateAssetMenu(fileName = "Defend", menuName = "Scriptable Objects/StatusEffects/Defend")]
 public class Defend : AgnosticEffect
 {
     public override void ClearEffect(BattleActorBehavior actor)

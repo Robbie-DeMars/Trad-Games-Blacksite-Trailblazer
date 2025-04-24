@@ -26,6 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Combat Tutorial.unity
     guid: 689255a04889c4d469eb0c0febecf645
+  - enabled: 1
+    path: Assets/Combat.unity
+    guid: a9399630e90583649a1391bcac4a8ab9
+  - enabled: 1
+    path: Assets/Combat Swamp.unity
+    guid: bce13d06375e62c438e8bc97dc9d0f39
+  - enabled: 1
+    path: Assets/RoadScene.unity
+    guid: 87d5de38f0fade647aecb21012ab55ee
+  - enabled: 1
+    path: Assets/RoadScene_Swamp.unity
+    guid: 3e5f1f7f4b3aa564580f35a4a5d77736
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

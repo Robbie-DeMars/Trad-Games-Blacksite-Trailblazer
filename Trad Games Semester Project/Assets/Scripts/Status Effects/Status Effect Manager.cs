@@ -10,4 +10,10 @@ public class StatusEffectManager : ScriptableObject
     {
         return Instantiate(effects[0]);
     }
+
+    //Indexxed at 1
+    public AgnosticEffect Bleed()
+    {
+        return Instantiate(effects[1]);
+    }
 }

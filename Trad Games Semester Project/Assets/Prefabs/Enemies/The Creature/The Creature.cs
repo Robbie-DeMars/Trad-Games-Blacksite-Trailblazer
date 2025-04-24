@@ -6,14 +6,33 @@ using UnityEngine;
 public class TheCreature : Enemy
 {
     //MAKE SURE TO CHANGE THIS WHEN ADDING NEW ATTACKS
-    int totalUniqueAttacks = 1;
+    int totalUniqueAttacks = 2;
 
     //Implementation-Dependant
     public override void Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         //Hit in front
         if (heroes[currentPosition] != null)
+        {
             heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
+            heroes[currentPosition].GetComponent<HeroBehavior>().GiveEffect(statusEffectManager.Bleed());
+        }
+    }
+
+    public void Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
+    {
+        //Move left
+        GameObject thisEnemy = enemies[currentPosition];
+        if (currentPosition != 0)
+        {
+            enemies[currentPosition] = enemies[0];
+            enemies[0] = thisEnemy;
+        }
+        else
+        {
+            enemies[currentPosition] = enemies[enemies.Length - 1];
+            enemies[enemies.Length - 1] = thisEnemy;
+        }
     }
 
 
@@ -32,6 +51,11 @@ public class TheCreature : Enemy
         view.clearParticles();
     }
 
+    public IEnumerator PlayAttack2Anim(int currentPosition)
+    {
+        yield return new WaitForSeconds(0.2f);
+    }
+
     public override List<Attack> PrepareAttacks()
     {
         List<Attack> attackList = new List<Attack>();
@@ -44,6 +68,10 @@ public class TheCreature : Enemy
             {
                 attackList.Add(Attack1);
             }
+            else if (chosenAttack == 1)
+            {
+                attackList.Add(Attack2);
+            }
         }
 
         return attackList;
@@ -55,6 +83,10 @@ public class TheCreature : Enemy
         if (attack == Attack1)
         {
             yield return PlayAttack1Anim(currentPosition);
+        }
+        else  if (attack == Attack2)
+        {
+            yield return PlayAttack2Anim(currentPosition);
         }
         else
         {
@@ -74,6 +106,8 @@ public class TheCreature : Enemy
     {
         if (attack == Attack1)
             return GetAttack1Targets(currentPosition);
+        else if (attack == Attack2)
+            return GetAttack2Targets(currentPosition);
         else
             return new List<List<int>>();
     }
@@ -85,11 +119,31 @@ public class TheCreature : Enemy
         return new List<List<int>>() { heroes, enemies };
     }
 
+    public List<List<int>> GetAttack2Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() { };
+        List<int> enemies = new List<int>() { };
+
+        if (currentSpace == 0)
+        {
+            enemies = new List<int>() { };
+        }
+        else 
+        {
+            enemies = new List<int>() { };
+        }
+        return new List<List<int>>() { heroes, enemies };
+    }
+
     public override List<List<int>> GetAttackTargets(int currentSpace, int attack)
     {
         if (attack == 1)
         {
             return GetAttack1Targets(currentSpace);
+        }
+        else if (attack == 2)
+        {
+            return GetAttack2Targets(currentSpace);
         }
         else
         {
@@ -101,6 +155,8 @@ public class TheCreature : Enemy
     {
         if (attack == Attack1)
             return 1;
+        if (attack == Attack2)
+            return 2;
         else
             return 0;
     }
@@ -108,7 +164,9 @@ public class TheCreature : Enemy
     public override string GetAttackTooltip(Attack attack)
     {
         if (attack == Attack1)
-            return "The Creature: (Jab) Deals decent damage to the opposing hero.";
+            return "The Creature: [Slice] Deals a little damage to the opposing hero, applies bleed for 5 rounds.";
+        if (attack == Attack2)
+            return "The Creature: [Hide] Darts to the left side of the board, or the right side if already there.";
         else
             return "";
     }

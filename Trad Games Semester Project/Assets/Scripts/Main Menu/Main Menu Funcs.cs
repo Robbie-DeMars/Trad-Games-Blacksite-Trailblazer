@@ -28,12 +28,12 @@ public class MainMenuFuncs : MonoBehaviour
 
         //Set Level to 1 - first level
         PlayerPrefs.SetInt("level", 1);
-        PlayerPrefs.SetInt("visitedLevel1", 0);
+        PlayerPrefs.SetInt("visitedLevel1", 1);
         PlayerPrefs.SetInt("visitedLevel2", 0);
         PlayerPrefs.SetInt("visitedLevel3", 0);
 
         PlayerPrefs.Save();
-        SceneManager.LoadScene("Combat");
+        SceneManager.LoadScene("Combat Desert");
 
     }
 

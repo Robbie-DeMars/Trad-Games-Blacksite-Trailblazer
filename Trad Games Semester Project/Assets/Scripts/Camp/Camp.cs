@@ -41,7 +41,7 @@ public class Camp : MonoBehaviour
         reigon.LoadLevel(1);
         PlayerPrefs.SetInt("visitedLevel1", 1);
         DestroyAllDontDestroyOnLoad();
-        SceneManager.LoadScene("RoadScene");
+        SceneManager.LoadScene("RoadScene_Desert");
     }
 
     //Loads level 2
@@ -51,7 +51,7 @@ public class Camp : MonoBehaviour
         reigon.LoadLevel(2);
         PlayerPrefs.SetInt("visitedLevel2", 1);
         DestroyAllDontDestroyOnLoad();
-        SceneManager.LoadScene("RoadScene");
+        SceneManager.LoadScene("RoadScene_Swamp");
     }
 
     //Loads level 3
