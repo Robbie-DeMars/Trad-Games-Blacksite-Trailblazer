@@ -12,16 +12,11 @@ public class Evilman : Enemy
     
     public override void Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
-        //Hit in front
+        //Hit in front and right
         if (heroes[currentPosition] != null)
             heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
-
-        //Move towards camera
-        if (currentPosition > 0) {
-            GameObject temp = enemies[currentPosition];
-            enemies[currentPosition] = enemies[currentPosition - 1];
-            enemies[currentPosition - 1] = temp;
-        }
+        if (currentPosition + 1 < 5 && heroes[currentPosition + 1] != null)
+            heroes[currentPosition + 1].GetComponent<HeroBehavior>().IncrementHP(-Atk);
     }
 
     /// <summary>
@@ -32,17 +27,11 @@ public class Evilman : Enemy
     /// <param name="currentActor"> Current position of attack </param>
     public void Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
-        //Hit in front
+        //Hit in front and left
         if (heroes[currentPosition] != null)
             heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
-
-        //Move towards camera
-        if (currentPosition < enemies.Length - 1)
-        {
-            GameObject temp = enemies[currentPosition];
-            enemies[currentPosition] = enemies[currentPosition + 1];
-            enemies[currentPosition + 1] = temp;
-        }
+        if (currentPosition - 1 < 5 && heroes[currentPosition - 1] != null)
+            heroes[currentPosition - 1].GetComponent<HeroBehavior>().IncrementHP(-Atk);
     }
 
     
@@ -139,7 +128,7 @@ public class Evilman : Enemy
 
     public override List<List<int>> GetAttack1Targets(int currentSpace)
     {
-        List<int> heroes = new List<int>() { currentSpace };
+        List<int> heroes = new List<int>() { currentSpace, currentSpace + 1 };
         List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
     }
@@ -153,7 +142,7 @@ public class Evilman : Enemy
     /// <returns>The battefield state in the form of a 2D array</returns>
     public List<List<int>> GetAttack2Targets(int currentSpace)
     {
-        List<int> heroes = new List<int>() { currentSpace };
+        List<int> heroes = new List<int>() { currentSpace, currentSpace - 1 };
         List<int> enemies = new List<int>() { };
         return new List<List<int>>() { heroes, enemies };
     }
@@ -187,9 +176,9 @@ public class Evilman : Enemy
     public override string GetAttackTooltip(Attack attack)
     {
         if (attack == Attack1)
-            return "Lake Baikal Swimmer: (Right hook) Deals decent damage to the opposing hero, then moves right.";
+            return "Lake Baikal Swimmer: (Right hook) Deals decent damage to the opposing and right hero.";
         else if (attack == Attack2)
-            return "Lake Baikal Swimmer: (Left hook) Deals decent damage to the opposing hero, then moves left.";
+            return "Lake Baikal Swimmer: (Left hook) Deals decent damage to the opposing and left hero.";
         else
             return "";
     }

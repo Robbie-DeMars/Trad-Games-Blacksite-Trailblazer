@@ -199,7 +199,7 @@ public class Controller : StateMachine
 
         for (int x = 0; x < enemies.Count; x++)
         {
-            if (model.heroes.Length > heroes[x] && heroes[x] >= 0)
+            if (model.enemies.Length > enemies[x] && enemies[x] >= 0)
                 view.ActivateEnemyReticle(enemies[x]);
         }
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 50
   HP: 50
-  Atk: 5
+  Atk: 7
   Def: 2
   attacks: 1
   statusEffectManager: {fileID: 11400000, guid: 69fbb1e154699074e9b0409a189da064, type: 2}

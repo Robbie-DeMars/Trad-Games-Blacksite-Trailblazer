@@ -126,11 +126,11 @@ public class TheCreature : Enemy
 
         if (currentSpace == 0)
         {
-            enemies = new List<int>() { };
+            enemies = new List<int>() { 4 };
         }
         else 
         {
-            enemies = new List<int>() { };
+            enemies = new List<int>() { 0 };
         }
         return new List<List<int>>() { heroes, enemies };
     }

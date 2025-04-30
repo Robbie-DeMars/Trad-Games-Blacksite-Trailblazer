@@ -6,18 +6,67 @@ using UnityEngine;
 public class Jetpack : Enemy
 {
     //MAKE SURE TO CHANGE THIS WHEN ADDING NEW ATTACKS
-    int totalUniqueAttacks = 1;
+    int totalUniqueAttacks = 2;
 
-    //Implementation-Dependant
+
     public override void Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
     {
         //Hit in front
         if (heroes[currentPosition] != null)
             heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
+
+        //Move towards camera
+        if (currentPosition > 0)
+        {
+            GameObject temp = enemies[currentPosition];
+            enemies[currentPosition] = enemies[currentPosition - 1];
+            enemies[currentPosition - 1] = temp;
+        }
+    }
+
+    /// <summary>
+    /// Executes the models side of Attack 2's behavior
+    /// </summary>
+    /// <param name="heroes"> Current state of heroes </param>
+    /// <param name="enemies"> Current state of enemies </param>
+    /// <param name="currentActor"> Current position of attack </param>
+    public void Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
+    {
+        //Hit in front
+        if (heroes[currentPosition] != null)
+            heroes[currentPosition].GetComponent<HeroBehavior>().IncrementHP(-Atk);
+
+        //Move towards camera
+        if (currentPosition < enemies.Length - 1)
+        {
+            GameObject temp = enemies[currentPosition];
+            enemies[currentPosition] = enemies[currentPosition + 1];
+            enemies[currentPosition + 1] = temp;
+        }
     }
 
 
     public override IEnumerator PlayAttack1Anim(int currentPosition)
+    {
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentPosition);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
+    }
+
+    /// <summary>
+    /// Executes the views side of Attack 2's behavior
+    /// </summary>
+    /// <param name="currentActor"> Current position of attacker </param>
+    /// <returns></returns>
+    public IEnumerator PlayAttack2Anim(int currentPosition)
     {
         View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
         List<List<int>> targets = GetAttack1Targets(currentPosition);
@@ -44,6 +93,10 @@ public class Jetpack : Enemy
             {
                 attackList.Add(Attack1);
             }
+            else if (chosenAttack == 1)
+            {
+                attackList.Add(Attack2);
+            }
         }
 
         return attackList;
@@ -55,6 +108,10 @@ public class Jetpack : Enemy
         if (attack == Attack1)
         {
             yield return PlayAttack1Anim(currentPosition);
+        }
+        else if (attack == Attack2)
+        {
+            yield return PlayAttack2Anim(currentPosition);
         }
         else
         {
@@ -74,11 +131,27 @@ public class Jetpack : Enemy
     {
         if (attack == Attack1)
             return GetAttack1Targets(currentPosition);
+        else if (attack == Attack2)
+            return GetAttack2Targets(currentPosition);
         else
             return new List<List<int>>();
     }
 
     public override List<List<int>> GetAttack1Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() { currentSpace };
+        List<int> enemies = new List<int>() { };
+        return new List<List<int>>() { heroes, enemies };
+    }
+
+    /// <summary>
+    /// Returns the positions targeted in the form of a 2d list
+    /// int[0] = party side
+    /// int[1] = enemy side
+    /// </summary>
+    /// <param name="currentSpace"></param>
+    /// <returns>The battefield state in the form of a 2D array</returns>
+    public List<List<int>> GetAttack2Targets(int currentSpace)
     {
         List<int> heroes = new List<int>() { currentSpace };
         List<int> enemies = new List<int>() { };
@@ -91,6 +164,10 @@ public class Jetpack : Enemy
         {
             return GetAttack1Targets(currentSpace);
         }
+        else if (attack == 2)
+        {
+            return GetAttack2Targets(currentSpace);
+        }
         else
         {
             return GetAttack1Targets(currentSpace);
@@ -101,6 +178,8 @@ public class Jetpack : Enemy
     {
         if (attack == Attack1)
             return 1;
+        else if (attack == Attack2)
+            return 2;
         else
             return 0;
     }
@@ -108,7 +187,9 @@ public class Jetpack : Enemy
     public override string GetAttackTooltip(Attack attack)
     {
         if (attack == Attack1)
-            return "Jetpack Monstrosity: (Jab) Deals decent damage to the opposing hero.";
+            return "Jetpack: (Right Sweep) Deals decent damage to the opposing hero, then moves right.";
+        else if (attack == Attack2)
+            return "Jetpack: (Left Sweep) Deals decent damage to the opposing hero, then moves left.";
         else
             return "";
     }

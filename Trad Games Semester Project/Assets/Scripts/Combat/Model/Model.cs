@@ -79,12 +79,13 @@ public class Model : StateMachine
             view.HighlightPartyPosition(GetCurrentActor());
             view.SetMaxHeat(maxHeat);
             view.SetHeat(psiHeat);
-            HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
-            view.SetMaxAP(currentHero.hero.MaxAP);
-            view.SetAP(currentHero.GetAP());
         }
 
-      
+        HeroBehavior currentHero = heroes[GetCurrentActor()].GetComponent<HeroBehavior>();
+        view.SetMaxAP(currentHero.hero.MaxAP);
+        view.SetAP(currentHero.GetAP());
+
+
         if (Input.GetKey(KeyCode.F1))
         {
             currentState = State.WIN;
