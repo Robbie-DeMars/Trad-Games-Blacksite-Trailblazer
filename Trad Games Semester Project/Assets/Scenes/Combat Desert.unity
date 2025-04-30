@@ -2027,6 +2027,8 @@ GameObject:
   - component: {fileID: 544309444}
   - component: {fileID: 544309443}
   - component: {fileID: 544309446}
+  - component: {fileID: 544309448}
+  - component: {fileID: 544309447}
   m_Layer: 5
   m_Name: Move
   m_TagString: Untagged
@@ -2110,6 +2112,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 544309448}
+        m_TargetAssemblyTypeName: Model, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &544309444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,6 +2177,68 @@ MonoBehaviour:
   tooltip: 'AP[2]: Begin moving, click a position to swap places with whatever is
     there, if anything.'
   type: 1
+--- !u!114 &544309447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544309441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 544309448}
+          m_TargetAssemblyTypeName: HoverExpandMove, Assembly-CSharp
+          m_MethodName: Hover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 544309448}
+          m_TargetAssemblyTypeName: HoverExpandMove, Assembly-CSharp
+          m_MethodName: UnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &544309448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544309441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a93d94ba7aa034e8dbed6693413362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Moving: 0
+  model: {fileID: 0}
+  unHoveredScale: 1
+  hoveredScale: 1.2
+  duration: 0.4
 --- !u!1 &546351042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,6 +3598,7 @@ GameObject:
   - component: {fileID: 993104583}
   - component: {fileID: 993104582}
   - component: {fileID: 993104585}
+  - component: {fileID: 993104586}
   m_Layer: 5
   m_Name: Attack 3
   m_TagString: Untagged
@@ -3672,6 +3749,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 993104586}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: Hover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -3688,6 +3777,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 993104586}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: UnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &993104586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993104580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdbd3480c1805b489aa630cecda6e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unHoveredScale: 1
+  hoveredScale: 1.15
+  duration: 0.4
 --- !u!1 &1022581001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,6 +4403,8 @@ GameObject:
   - component: {fileID: 1196873155}
   - component: {fileID: 1196873154}
   - component: {fileID: 1196873157}
+  - component: {fileID: 1196873159}
+  - component: {fileID: 1196873158}
   m_Layer: 5
   m_Name: Pass
   m_TagString: Untagged
@@ -4422,6 +4540,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltip: Passes turn to the enemies, replenishes AP of your side.
   type: 1
+--- !u!114 &1196873158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196873152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1196873159}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: Hover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1196873159}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: UnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1196873159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196873152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdbd3480c1805b489aa630cecda6e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unHoveredScale: 1
+  hoveredScale: 1.15
+  duration: 0.4
 --- !u!1 &1209476009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5368,6 +5546,7 @@ GameObject:
   - component: {fileID: 1408212592}
   - component: {fileID: 1408212591}
   - component: {fileID: 1408212594}
+  - component: {fileID: 1408212595}
   m_Layer: 5
   m_Name: Attack 2
   m_TagString: Untagged
@@ -5518,6 +5697,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1408212595}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: Hover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -5534,6 +5725,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1408212595}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: UnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1408212595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408212589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdbd3480c1805b489aa630cecda6e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unHoveredScale: 1
+  hoveredScale: 1.15
+  duration: 0.4
 --- !u!1001 &1454170432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8622,6 +8840,7 @@ GameObject:
   - component: {fileID: 2141417538}
   - component: {fileID: 2141417537}
   - component: {fileID: 2141417540}
+  - component: {fileID: 2141417541}
   m_Layer: 5
   m_Name: Attack 1
   m_TagString: Untagged
@@ -8772,6 +8991,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2141417541}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: Hover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -8788,6 +9019,33 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2141417541}
+          m_TargetAssemblyTypeName: HoverExpand, Assembly-CSharp
+          m_MethodName: UnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2141417541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141417535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdbd3480c1805b489aa630cecda6e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unHoveredScale: 1
+  hoveredScale: 1.15
+  duration: 0.4
 --- !u!1 &2145729211
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,9 @@ public class Model : StateMachine
     //The current encounter
     CombatEncounter encounter;
 
+    //returns the current state of the state machine. 
+    public State GetCurrentState() { return currentState; }
+
     void Start()
     {
         currentState = State.ATTACK;
