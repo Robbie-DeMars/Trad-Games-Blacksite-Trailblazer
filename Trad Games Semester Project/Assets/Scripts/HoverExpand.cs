@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class HoverExpand : MonoBehaviour
 {
-    private GameObject thisElement;
+    private Button thisElement;
     private bool Hovered = false;
 
     public float unHoveredScale = 1f;
@@ -14,11 +15,12 @@ public class HoverExpand : MonoBehaviour
 
     private void Start()
     {
-        thisElement = this.gameObject;
+        thisElement = this.gameObject.GetComponent<Button>();
     }
     // Update is called once per frame
     void Update()
     {
+        if (thisElement.interactable == false) { t = duration; thisElement.transform.localScale = Vector3.one; return; }
         t += Time.deltaTime;
         float x = t / duration;
         float step = 0f;

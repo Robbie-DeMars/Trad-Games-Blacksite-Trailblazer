@@ -1,14 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 using TMPro;
 
 public class HoverExpandMove : MonoBehaviour
 {
-    private GameObject thisElement;
+    private Button thisElement;
     private bool Hovered = false;
 
-    public Model model;//evil hacky method of getting information regarding state
+    private Model model;//evil hacky method of getting information regarding state
 
     public float unHoveredScale = 1f;
     public float hoveredScale = 1.2f;
@@ -22,11 +23,12 @@ public class HoverExpandMove : MonoBehaviour
     private void Start()
     {
         model = FindAnyObjectByType<Model>();
-        thisElement = this.gameObject;
+        thisElement = this.gameObject.GetComponent<Button>();
     }
     // Update is called once per frame
     void Update()
     {
+        if (thisElement.interactable == false) { t = duration; thisElement.transform.localScale = Vector3.one; return; }
         s += Time.deltaTime;
         t += Time.deltaTime;
         float x = t / duration;//percent 0-1 (will go above 1 but smoothstep handles it)
