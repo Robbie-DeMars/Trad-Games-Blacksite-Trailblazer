@@ -21,7 +21,7 @@ public class Undead : Enemy
     {
         //Move left
         GameObject thisEnemy = enemies[currentPosition];
-        if (currentPosition != 0)
+        if (currentPosition > 0)
         {
             enemies[currentPosition] = enemies[currentPosition - 1];
             enemies[currentPosition - 1] = thisEnemy;
@@ -32,7 +32,7 @@ public class Undead : Enemy
     {
         //Move right
         GameObject thisEnemy = enemies[currentPosition];
-        if (currentPosition != enemies.Length)
+        if (currentPosition < enemies.Length)
         {
             enemies[currentPosition] = enemies[currentPosition + 1];
             enemies[currentPosition + 1] = thisEnemy;
@@ -160,11 +160,11 @@ public class Undead : Enemy
         }
         else if (attack == 2)
         {
-            return GetAttack1Targets(currentSpace);
+            return GetAttack2Targets(currentSpace);
         }
         else if (attack == 3)
         {
-            return GetAttack1Targets(currentSpace);
+            return GetAttack3Targets(currentSpace);
         }
         else
         {

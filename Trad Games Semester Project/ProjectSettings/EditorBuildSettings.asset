@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RoadScene_Swamp.unity
     guid: 3e5f1f7f4b3aa564580f35a4a5d77736
+  - enabled: 1
+    path: Assets/RoadScene_Japan.unity
+    guid: 74dd97496fcdd3a43b04e9f858510d05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -29,7 +29,7 @@ public class Singleton : MonoBehaviour
 
     private void Update()
     {
-        if ((SceneManager.GetActiveScene().name.Equals("RoadScene") || SceneManager.GetActiveScene().name.Equals("RoadScene_Desert")) || (SceneManager.GetActiveScene().name.Equals("RoadScene_Swamp")))
+        if ((SceneManager.GetActiveScene().name.Equals("RoadScene") || SceneManager.GetActiveScene().name.Equals("RoadScene_Desert")) || ((SceneManager.GetActiveScene().name.Equals("RoadScene_Swamp") || (SceneManager.GetActiveScene().name.Equals("RoadScene_Japan")))))
         {
             foreach (Transform child in transform)
             {
@@ -46,7 +46,7 @@ public class Singleton : MonoBehaviour
 
 
         //Do next encounter upon entering this scene
-        if ((SceneManager.GetActiveScene().name.Equals("RoadScene") || SceneManager.GetActiveScene().name.Equals("RoadScene_Desert")) || (SceneManager.GetActiveScene().name.Equals("RoadScene_Swamp")))
+        if ((SceneManager.GetActiveScene().name.Equals("RoadScene") || SceneManager.GetActiveScene().name.Equals("RoadScene_Desert")) || ((SceneManager.GetActiveScene().name.Equals("RoadScene_Swamp") || (SceneManager.GetActiveScene().name.Equals("RoadScene_Japan")))))
         {
             if (firstFrameInScene)
             {

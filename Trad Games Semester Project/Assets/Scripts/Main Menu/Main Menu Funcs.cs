@@ -91,9 +91,9 @@ public class MainMenuFuncs : MonoBehaviour
         if (PlayerPrefs.GetInt("level") == 1)
             SceneManager.LoadScene("RoadScene_Desert");
         if (PlayerPrefs.GetInt("level") == 2)
-            SceneManager.LoadScene("RoadScene_Swamp");
+            SceneManager.LoadScene("RoadScene_Japan");
         if (PlayerPrefs.GetInt("level") == 3)
-            SceneManager.LoadScene("RoadScene");
+            SceneManager.LoadScene("RoadScene_Swamp");
         if (PlayerPrefs.GetInt("level") == 4)
             SceneManager.LoadScene("RoadScene");
     }

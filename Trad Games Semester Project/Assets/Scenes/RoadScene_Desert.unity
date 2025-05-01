@@ -18585,7 +18585,7 @@ MonoBehaviour:
   party: {fileID: 11400000, guid: cf70e9ee760f7f04c9529262f34bddca, type: 2}
   transparent: {fileID: -4158553288356310445, guid: 2096b668e004d46438ac7d55a3dd5613, type: 3}
   main: {fileID: 2976579629911521224, guid: 37a132ec4880f5744af1c3bb2eba0e0b, type: 3}
-  side1: {fileID: 9128087612632610429, guid: 16addc52521718f408a1413041d37e46, type: 3}
+  side1: {fileID: 21300000, guid: 16addc52521718f408a1413041d37e46, type: 3}
   side2: {fileID: -5283261531042369010, guid: 6b33397fc2bbdee48851007aba22a9ad, type: 3}
   onImages:
   - {fileID: 75993150}
