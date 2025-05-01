@@ -15,7 +15,7 @@ MonoBehaviour:
   characterImages:
   - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
   - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
-  isEnemy: 00
+  isEnemy: 0000
   dialogue:
   - One last tip, party members will slowly heal outside of combat, but pressing
     [E] lets you opt them out of combat and choose their starting position, which
