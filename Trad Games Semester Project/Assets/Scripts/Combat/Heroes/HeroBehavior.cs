@@ -28,6 +28,7 @@ public class HeroBehavior : BattleActorBehavior
     [SerializeField] AudioResource attack3Sfx;
     [SerializeField] AudioResource attack3SfxHit;
 
+    [SerializeField] Animator m_animator;
 
     //SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA//SAVE DATA
 
@@ -79,6 +80,8 @@ public class HeroBehavior : BattleActorBehavior
     /// <returns> AP Cost </returns>
     public int Attack1(GameObject[] heroes, GameObject[] enemies, int currentActor)
     {
+        //start animation
+        if (m_animator != null) { m_animator.SetTrigger("Shoot"); }
         //Play the associated sound 
         if (attack1Sfx != null)
         {
