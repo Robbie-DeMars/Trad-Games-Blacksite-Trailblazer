@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: 0bffa49f9937f3348a47e59ca41f519a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8970636515188165122
+    second: BLACKSITE_TRAILBAZER_TITLE_0
+  - first:
+      213: -4849307893305847929
+    second: BLACKSITE_TRAILBAZER_TITLE_1
+  - first:
+      213: -4677624637694464014
+    second: BLACKSITE_TRAILBAZER_TITLE_2
+  - first:
+      213: 6445308433362067717
+    second: BLACKSITE_TRAILBAZER_TITLE_3
+  - first:
+      213: -4698271850441768491
+    second: BLACKSITE_TRAILBAZER_TITLE_4
+  - first:
+      213: 6696393436224959906
+    second: BLACKSITE_TRAILBAZER_TITLE_5
+  - first:
+      213: -1394512309517149267
+    second: BLACKSITE_TRAILBAZER_TITLE_6
+  - first:
+      213: 5186829603301348832
+    second: BLACKSITE_TRAILBAZER_TITLE_7
+  - first:
+      213: 1122694029909850324
+    second: BLACKSITE_TRAILBAZER_TITLE_8
+  - first:
+      213: -7835445589606052567
+    second: BLACKSITE_TRAILBAZER_TITLE_9
+  - first:
+      213: -6065571683744036336
+    second: BLACKSITE_TRAILBAZER_TITLE_10
+  - first:
+      213: -7622878562400287028
+    second: BLACKSITE_TRAILBAZER_TITLE_11
+  - first:
+      213: -8193422689711814164
+    second: BLACKSITE_TRAILBAZER_TITLE_12
+  - first:
+      213: 2648044575089301994
+    second: BLACKSITE_TRAILBAZER_TITLE_13
+  - first:
+      213: -5858626737580335521
+    second: BLACKSITE_TRAILBAZER_TITLE_14
+  - first:
+      213: -1076909407580884619
+    second: BLACKSITE_TRAILBAZER_TITLE_15
+  - first:
+      213: -1884793841768046918
+    second: BLACKSITE_TRAILBAZER_TITLE_16
+  - first:
+      213: 1452533951558133715
+    second: BLACKSITE_TRAILBAZER_TITLE_17
+  - first:
+      213: 4090972678724120246
+    second: BLACKSITE_TRAILBAZER_TITLE_18
+  - first:
+      213: 2961001139690222041
+    second: BLACKSITE_TRAILBAZER_TITLE_19
+  - first:
+      213: -6631102827710166017
+    second: BLACKSITE_TRAILBAZER_TITLE_20
+  - first:
+      213: -6725567231424039091
+    second: BLACKSITE_TRAILBAZER_TITLE_21
+  - first:
+      213: -1208465943850588870
+    second: BLACKSITE_TRAILBAZER_TITLE_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 17
+        width: 52
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a40f0d16a1e7c70800000000000000
+      internalID: 8970636515188165122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 18
+        width: 34
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78fc10de92cc3bcb0800000000000000
+      internalID: -4849307893305847929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 27
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ff2b95dc2db51fb0800000000000000
+      internalID: -4677624637694464014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_3
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 19
+        width: 38
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50120661fd5527950800000000000000
+      internalID: 6445308433362067717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_4
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 24
+        width: 39
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d1833005a26cceb0800000000000000
+      internalID: -4698271850441768491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 21
+        width: 43
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a5327ae95e5eec50800000000000000
+      internalID: 6696393436224959906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_6
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 10
+        width: 40
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab12546172b5ace0800000000000000
+      internalID: -1394512309517149267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_7
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 19
+        width: 21
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5d14f0b025bf740800000000000000
+      internalID: 5186829603301348832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_8
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 19
+        width: 54
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d87a3c954c949f00800000000000000
+      internalID: 1122694029909850324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_9
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 23
+        width: 32
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92d41ae00c7e24390800000000000000
+      internalID: -7835445589606052567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_10
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 19
+        width: 54
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ac4ceb0b2c2dba0800000000000000
+      internalID: -6065571683744036336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_11
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 20
+        width: 45
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6c032d558163690800000000000000
+      internalID: -7622878562400287028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_12
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 19
+        width: 39
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce90a1d697d1b4e80800000000000000
+      internalID: -8193422689711814164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_13
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 19
+        width: 21
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae91997d28ebfb420800000000000000
+      internalID: 2648044575089301994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_14
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 18
+        width: 34
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e1be2c50af1bea0800000000000000
+      internalID: -5858626737580335521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_15
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 27
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5717dd9799c0e01f0800000000000000
+      internalID: -1076909407580884619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_16
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 17
+        width: 52
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abe529aacfdd7d5e0800000000000000
+      internalID: -1884793841768046918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_17
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 18
+        width: 33
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d721dedeef682410800000000000000
+      internalID: 1452533951558133715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_18
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 27
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6beed25f9fd06c830800000000000000
+      internalID: 4090972678724120246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_19
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 19
+        width: 38
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d133c639d6971920800000000000000
+      internalID: 2961001139690222041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_20
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 18
+        width: 64
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb4f3d7c1799f3a0800000000000000
+      internalID: -6631102827710166017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_21
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 23
+        width: 32
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4776f19c3cf9a2a0800000000000000
+      internalID: -6725567231424039091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BLACKSITE_TRAILBAZER_TITLE_22
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 20
+        width: 45
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a35e0a570aaaa3fe0800000000000000
+      internalID: -1208465943850588870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BLACKSITE_TRAILBAZER_TITLE_0: 8970636515188165122
+      BLACKSITE_TRAILBAZER_TITLE_1: -4849307893305847929
+      BLACKSITE_TRAILBAZER_TITLE_10: -6065571683744036336
+      BLACKSITE_TRAILBAZER_TITLE_11: -7622878562400287028
+      BLACKSITE_TRAILBAZER_TITLE_12: -8193422689711814164
+      BLACKSITE_TRAILBAZER_TITLE_13: 2648044575089301994
+      BLACKSITE_TRAILBAZER_TITLE_14: -5858626737580335521
+      BLACKSITE_TRAILBAZER_TITLE_15: -1076909407580884619
+      BLACKSITE_TRAILBAZER_TITLE_16: -1884793841768046918
+      BLACKSITE_TRAILBAZER_TITLE_17: 1452533951558133715
+      BLACKSITE_TRAILBAZER_TITLE_18: 4090972678724120246
+      BLACKSITE_TRAILBAZER_TITLE_19: 2961001139690222041
+      BLACKSITE_TRAILBAZER_TITLE_2: -4677624637694464014
+      BLACKSITE_TRAILBAZER_TITLE_20: -6631102827710166017
+      BLACKSITE_TRAILBAZER_TITLE_21: -6725567231424039091
+      BLACKSITE_TRAILBAZER_TITLE_22: -1208465943850588870
+      BLACKSITE_TRAILBAZER_TITLE_3: 6445308433362067717
+      BLACKSITE_TRAILBAZER_TITLE_4: -4698271850441768491
+      BLACKSITE_TRAILBAZER_TITLE_5: 6696393436224959906
+      BLACKSITE_TRAILBAZER_TITLE_6: -1394512309517149267
+      BLACKSITE_TRAILBAZER_TITLE_7: 5186829603301348832
+      BLACKSITE_TRAILBAZER_TITLE_8: 1122694029909850324
+      BLACKSITE_TRAILBAZER_TITLE_9: -7835445589606052567
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
