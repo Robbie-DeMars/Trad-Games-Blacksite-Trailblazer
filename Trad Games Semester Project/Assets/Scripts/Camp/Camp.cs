@@ -61,7 +61,7 @@ public class Camp : MonoBehaviour
         reigon.LoadLevel(3);
         PlayerPrefs.SetInt("visitedLevel3", 1);
         DestroyAllDontDestroyOnLoad();
-        SceneManager.LoadScene("RoadScene_Japan");
+        SceneManager.LoadScene("RoadScene_Swamp");
     }
 
 
