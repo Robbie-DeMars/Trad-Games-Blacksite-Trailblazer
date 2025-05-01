@@ -5469,7 +5469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58b2cf415474d0f40893c5160032338a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16242cf7ddb2caf4eb01969e0f34d595, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7333,6 +7333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 90026646}
   view: {fileID: 1516968296}
+  tutorialMove: 0
+  tutorial: {fileID: 0}
   heroPositions:
   - {fileID: 2102609206}
   - {fileID: 860668154}
