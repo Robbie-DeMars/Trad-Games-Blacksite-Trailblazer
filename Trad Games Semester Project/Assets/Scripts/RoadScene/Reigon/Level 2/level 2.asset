@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f20979fa3ab189a42b246e0c4c23dfd2, type: 2}
   - {fileID: 11400000, guid: bb73808e87d2ed149953ab67c4ee6f28, type: 2}
   - {fileID: 11400000, guid: fbb94cdcc7f46d945ad8f0317617f1a4, type: 2}
-  dialogueEncounters:
-  - {fileID: 11400000, guid: 1292a8d46e043fd4093d0cc35b60fb9a, type: 2}
-  choiceEncounters:
-  - {fileID: 11400000, guid: c0c8c1d56eff9e44ab2b1fd2cc67a8c9, type: 2}
+  dialogueEncounters: []
+  choiceEncounters: []
+  ordered: 0
+  encounterOrder: []
