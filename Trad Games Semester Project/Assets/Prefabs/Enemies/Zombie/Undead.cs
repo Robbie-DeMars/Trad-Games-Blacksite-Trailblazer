@@ -32,7 +32,7 @@ public class Undead : Enemy
     {
         //Move right
         GameObject thisEnemy = enemies[currentPosition];
-        if (currentPosition < enemies.Length)
+        if (currentPosition < enemies.Length - 1)
         {
             enemies[currentPosition] = enemies[currentPosition + 1];
             enemies[currentPosition + 1] = thisEnemy;
