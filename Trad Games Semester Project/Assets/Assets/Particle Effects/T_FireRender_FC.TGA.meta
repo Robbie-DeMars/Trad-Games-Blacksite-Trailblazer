@@ -1,0 +1,1869 @@
+fileFormatVersion: 2
+guid: bb6999e6debcfac4abf30d9c667e910f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1597768144559666381
+    second: T_FireRender_FC_0
+  - first:
+      213: 4254412431382847457
+    second: T_FireRender_FC_1
+  - first:
+      213: 2741649767256685096
+    second: T_FireRender_FC_2
+  - first:
+      213: 957827569889546257
+    second: T_FireRender_FC_3
+  - first:
+      213: -5346212759722626519
+    second: T_FireRender_FC_4
+  - first:
+      213: -5743506756544710334
+    second: T_FireRender_FC_5
+  - first:
+      213: -5141395792721778510
+    second: T_FireRender_FC_6
+  - first:
+      213: -2030595301444276456
+    second: T_FireRender_FC_7
+  - first:
+      213: -5980711171389993518
+    second: T_FireRender_FC_8
+  - first:
+      213: -270426740090153242
+    second: T_FireRender_FC_9
+  - first:
+      213: -2554809501140705739
+    second: T_FireRender_FC_10
+  - first:
+      213: 5568385418286055919
+    second: T_FireRender_FC_11
+  - first:
+      213: 5243825654871409760
+    second: T_FireRender_FC_12
+  - first:
+      213: 8519300239756935388
+    second: T_FireRender_FC_13
+  - first:
+      213: 8195463116730250272
+    second: T_FireRender_FC_14
+  - first:
+      213: -7486246453962950498
+    second: T_FireRender_FC_15
+  - first:
+      213: 4194687190413021965
+    second: T_FireRender_FC_16
+  - first:
+      213: 4739343923155717446
+    second: T_FireRender_FC_17
+  - first:
+      213: 541822397053703716
+    second: T_FireRender_FC_18
+  - first:
+      213: -7685006038567833168
+    second: T_FireRender_FC_19
+  - first:
+      213: -1492868023827142700
+    second: T_FireRender_FC_20
+  - first:
+      213: 3710539941634764365
+    second: T_FireRender_FC_21
+  - first:
+      213: -8074296524230528384
+    second: T_FireRender_FC_22
+  - first:
+      213: 8876141105174584699
+    second: T_FireRender_FC_23
+  - first:
+      213: -7869228965264861592
+    second: T_FireRender_FC_24
+  - first:
+      213: -8244004101650008708
+    second: T_FireRender_FC_25
+  - first:
+      213: 6094015207947142461
+    second: T_FireRender_FC_26
+  - first:
+      213: 4116361358875657620
+    second: T_FireRender_FC_27
+  - first:
+      213: 1141740569308705520
+    second: T_FireRender_FC_28
+  - first:
+      213: 1257757057749965376
+    second: T_FireRender_FC_29
+  - first:
+      213: 606419129668103526
+    second: T_FireRender_FC_30
+  - first:
+      213: 8270676601679813213
+    second: T_FireRender_FC_31
+  - first:
+      213: 5667670859902551180
+    second: T_FireRender_FC_32
+  - first:
+      213: 5193178497662377420
+    second: T_FireRender_FC_33
+  - first:
+      213: 4448159636882998610
+    second: T_FireRender_FC_34
+  - first:
+      213: 7478096727268248851
+    second: T_FireRender_FC_35
+  - first:
+      213: -7820857869928900886
+    second: T_FireRender_FC_36
+  - first:
+      213: 1680012861604430506
+    second: T_FireRender_FC_37
+  - first:
+      213: 1326068815154461889
+    second: T_FireRender_FC_38
+  - first:
+      213: 4423050516046181526
+    second: T_FireRender_FC_39
+  - first:
+      213: -5972653633181516268
+    second: T_FireRender_FC_40
+  - first:
+      213: 4225902488096222628
+    second: T_FireRender_FC_41
+  - first:
+      213: -6500356493883132729
+    second: T_FireRender_FC_42
+  - first:
+      213: 7966635286866572129
+    second: T_FireRender_FC_43
+  - first:
+      213: 2816370725331369804
+    second: T_FireRender_FC_44
+  - first:
+      213: 7972531075051440587
+    second: T_FireRender_FC_45
+  - first:
+      213: -4381994298143415386
+    second: T_FireRender_FC_46
+  - first:
+      213: -3068292011997240244
+    second: T_FireRender_FC_47
+  - first:
+      213: 4003046476809254367
+    second: T_FireRender_FC_48
+  - first:
+      213: -7338769480986986442
+    second: T_FireRender_FC_49
+  - first:
+      213: -3903322518562695534
+    second: T_FireRender_FC_50
+  - first:
+      213: 182607095137306691
+    second: T_FireRender_FC_51
+  - first:
+      213: 6921306002858942626
+    second: T_FireRender_FC_52
+  - first:
+      213: -645226771349467581
+    second: T_FireRender_FC_53
+  - first:
+      213: 1167538790903305016
+    second: T_FireRender_FC_54
+  - first:
+      213: 3194012566381638798
+    second: T_FireRender_FC_55
+  - first:
+      213: -8126787702734218490
+    second: T_FireRender_FC_56
+  - first:
+      213: 7715620927631075752
+    second: T_FireRender_FC_57
+  - first:
+      213: 4349683899075314235
+    second: T_FireRender_FC_58
+  - first:
+      213: -7972292623183124130
+    second: T_FireRender_FC_59
+  - first:
+      213: 5030566955564926075
+    second: T_FireRender_FC_60
+  - first:
+      213: -4958365585827805434
+    second: T_FireRender_FC_61
+  - first:
+      213: -7412632243337923727
+    second: T_FireRender_FC_62
+  - first:
+      213: -4209537854389542785
+    second: T_FireRender_FC_63
+  - first:
+      213: -1985805499912297752
+    second: T_FireRender_FC_64
+  - first:
+      213: -5781410184751876612
+    second: T_FireRender_FC_65
+  - first:
+      213: -320266365411304137
+    second: T_FireRender_FC_66
+  - first:
+      213: 6970732149060550561
+    second: T_FireRender_FC_67
+  - first:
+      213: -2807658818235888015
+    second: T_FireRender_FC_68
+  - first:
+      213: 7777099943745593921
+    second: T_FireRender_FC_69
+  - first:
+      213: -6029914642011083515
+    second: T_FireRender_FC_70
+  - first:
+      213: 1725445652678505376
+    second: T_FireRender_FC_71
+  - first:
+      213: -3455386088809791391
+    second: T_FireRender_FC_72
+  - first:
+      213: 8867756494790246807
+    second: T_FireRender_FC_73
+  - first:
+      213: -360069907565811481
+    second: T_FireRender_FC_74
+  - first:
+      213: 8769675579558707850
+    second: T_FireRender_FC_75
+  - first:
+      213: -2215566576342508019
+    second: T_FireRender_FC_76
+  - first:
+      213: 8175406586791690620
+    second: T_FireRender_FC_77
+  - first:
+      213: -600649939943657108
+    second: T_FireRender_FC_78
+  - first:
+      213: -6316017037290852899
+    second: T_FireRender_FC_79
+  - first:
+      213: -110867347037866013
+    second: T_FireRender_FC_80
+  - first:
+      213: 7841804084047543062
+    second: T_FireRender_FC_81
+  - first:
+      213: -1090607065359211579
+    second: T_FireRender_FC_82
+  - first:
+      213: -3818284768367089615
+    second: T_FireRender_FC_83
+  - first:
+      213: -5520243856153327262
+    second: T_FireRender_FC_84
+  - first:
+      213: -3880217817979111904
+    second: T_FireRender_FC_85
+  - first:
+      213: 4910249545478555158
+    second: T_FireRender_FC_86
+  - first:
+      213: -5476689245631178962
+    second: T_FireRender_FC_87
+  - first:
+      213: 7555360537872703245
+    second: T_FireRender_FC_88
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: T_FireRender_FC_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9398daa50f8a84496ad0a5db6da39c
+      internalID: -1202940914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 191b6d655b690f14a90bbb3ea07ebf00
+      internalID: 494527136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea97dd221d78494a9b170fdd6b6a611
+      internalID: 1668276357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fe3a462cff80674685b9f16022ab399
+      internalID: 1026457930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b92b825bce24f6439b02e6bfaee6323
+      internalID: 1139131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a2491fffb5337439fa6deeafde97f5
+      internalID: -723658186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ac30de2fcbb62946a8f297a3dbcbc80
+      internalID: -592507446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d72287ce3224e4c99ab2b1142fa718
+      internalID: -1215298609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a0a9fce4c84cf419d31a730d0ebb89
+      internalID: 442221158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6daa33521ff274496fae08f6ad603c
+      internalID: 856524512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e84198a57e6a9b419ddb800e9b96700
+      internalID: 103748619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be12823a1c36cb419e735433d5365e3
+      internalID: 244506609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6123f8731272be246916f959995528e4
+      internalID: 2077508600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd9408e5b064174ebcb90a8c95d3bd9
+      internalID: -1533773724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c780254ecbc464397f9ca2bdcb7512
+      internalID: 1463804247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_15
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a8a0b7d4051374090b22e341270c96
+      internalID: 206679227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93fb1a1310c7f124a8a3615cab88efe6
+      internalID: -895260228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23709f196bad733439bec695fb3dc4d7
+      internalID: -254803668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec8bfcee5e26cf4b81e8e4d084974e4
+      internalID: 171529417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3da3e99b78517a4c988b13ef574bd6e
+      internalID: 350170865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_20
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85a9a1c01b822b498328a45989c5ef0
+      internalID: 1658272245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ceddf9ce145b514f846460a1173e812
+      internalID: 1793247724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d05783ea1647bb4b8fd39fba3f0e8f5
+      internalID: -1667895858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0460986a18fab6a4aae6100970df8871
+      internalID: 1931527228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716e87e84f718e843bfb3949241e7788
+      internalID: 57933858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56103492fb4e76945abdd0a8e9598c8a
+      internalID: 1479083993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1e3dba050184b48bf73dbd31455d6e
+      internalID: 1950861392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6061aa461ec4c4d968317900e8f5e6
+      internalID: 1387457712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2d4a7fd907d16449e40de118bbe3ff
+      internalID: 1475952591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d673ba3f8651084e8d202d196105a8a
+      internalID: 25210058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e71b655168aab4f8eda7de8acf9f90
+      internalID: 1583379612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e324df0d88bf56499fae6c3b8a7396d
+      internalID: -656853023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc4736dbad8678f4caed4bb2093222fd
+      internalID: 176656234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_33
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05173d7ad1c08904bb2044f30690a1d7
+      internalID: 893219850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_34
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe243fd06e14fb446a63b7bfede0dc60
+      internalID: -1948143067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_35
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d651e8eeaf57a40a104d1cf218b147
+      internalID: 1009149854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_36
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c2d8b7882b9d94e83081c7eb680adb
+      internalID: -95031085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_37
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b1992e614f90a43a3a93716a2ee614
+      internalID: 1033827477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_38
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f1239d24b5b5744969112fd6f91b50
+      internalID: 461131325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_39
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b741156649368514ea23a99ccfc0df3d
+      internalID: 503101041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695d53239a5f0fb449cf5fb484325e5d
+      internalID: -165355109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a59d6a5b7bcfc4d9d1dff2b71bd45a
+      internalID: 432185952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48169c9b1d854ce4eb0c61f875d5f66d
+      internalID: -1285310396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df130a02c14fda469a5939a92d255f1
+      internalID: -717976306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4305dddeeb92dce45bc40ba98066ecd5
+      internalID: 1439606067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccec969b09b62634fa18d5855c508645
+      internalID: -619070190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0e4f1dc33584349b7776be2a8900bd
+      internalID: 1109278386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f38eedabb8da94e816b7dcccee17da
+      internalID: -2084956256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff4dc0698bb1814a9331e14d770f029
+      internalID: 1649567379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_49
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb00ab74fdb5f643acae0b24a116be4
+      internalID: 932823927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_50
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a31f04f1564d03f46901d583480184dd
+      internalID: -1879049827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_51
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93b7e64d7ee14b4a93232b86c0943bd
+      internalID: -818552304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_52
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094b98dba7a6de44b8da7527f46dbe7e
+      internalID: -1391668390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_53
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914e263a8822e2840b88991f05b3ff40
+      internalID: -1224249131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_54
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9ab2282d5117e4d8cdaacbfd2633d4
+      internalID: -146492190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_55
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68cf7375c4b8d7844af80789c635c786
+      internalID: -1765659318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b7d572daf413a45a05f2af40c7641c
+      internalID: 716291907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea24f920037b9a4cba65324f10c2f75
+      internalID: 922874385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_58
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7057959ef8f9c5469a9058e0f897a0f
+      internalID: -2000495438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_59
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca87ca717a19a74ba472e952908fbaf
+      internalID: 1445698471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9a356603bfb55e4f879cf8ac8ab235d
+      internalID: -51937546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_61
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8043f533c6afc488b0ee7456b01464
+      internalID: -1641554746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d995653ed04909c41bf68e48c130542a
+      internalID: -2043756339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_FireRender_FC_63
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03dc175f006da3e498ed6c68d0f60326
+      internalID: 581388136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 17b23d56a14f6ab48b7f454d81a4b142
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      T_FireRender_FC_0: -1202940914
+      T_FireRender_FC_1: 494527136
+      T_FireRender_FC_10: 103748619
+      T_FireRender_FC_11: 244506609
+      T_FireRender_FC_12: 2077508600
+      T_FireRender_FC_13: -1533773724
+      T_FireRender_FC_14: 1463804247
+      T_FireRender_FC_15: 206679227
+      T_FireRender_FC_16: -895260228
+      T_FireRender_FC_17: -254803668
+      T_FireRender_FC_18: 171529417
+      T_FireRender_FC_19: 350170865
+      T_FireRender_FC_2: 1668276357
+      T_FireRender_FC_20: 1658272245
+      T_FireRender_FC_21: 1793247724
+      T_FireRender_FC_22: -1667895858
+      T_FireRender_FC_23: 1931527228
+      T_FireRender_FC_24: 57933858
+      T_FireRender_FC_25: 1479083993
+      T_FireRender_FC_26: 1950861392
+      T_FireRender_FC_27: 1387457712
+      T_FireRender_FC_28: 1475952591
+      T_FireRender_FC_29: 25210058
+      T_FireRender_FC_3: 1026457930
+      T_FireRender_FC_30: 1583379612
+      T_FireRender_FC_31: -656853023
+      T_FireRender_FC_32: 176656234
+      T_FireRender_FC_33: 893219850
+      T_FireRender_FC_34: -1948143067
+      T_FireRender_FC_35: 1009149854
+      T_FireRender_FC_36: -95031085
+      T_FireRender_FC_37: 1033827477
+      T_FireRender_FC_38: 461131325
+      T_FireRender_FC_39: 503101041
+      T_FireRender_FC_4: 1139131
+      T_FireRender_FC_40: -165355109
+      T_FireRender_FC_41: 432185952
+      T_FireRender_FC_42: -1285310396
+      T_FireRender_FC_43: -717976306
+      T_FireRender_FC_44: 1439606067
+      T_FireRender_FC_45: -619070190
+      T_FireRender_FC_46: 1109278386
+      T_FireRender_FC_47: -2084956256
+      T_FireRender_FC_48: 1649567379
+      T_FireRender_FC_49: 932823927
+      T_FireRender_FC_5: -723658186
+      T_FireRender_FC_50: -1879049827
+      T_FireRender_FC_51: -818552304
+      T_FireRender_FC_52: -1391668390
+      T_FireRender_FC_53: -1224249131
+      T_FireRender_FC_54: -146492190
+      T_FireRender_FC_55: -1765659318
+      T_FireRender_FC_56: 716291907
+      T_FireRender_FC_57: 922874385
+      T_FireRender_FC_58: -2000495438
+      T_FireRender_FC_59: 1445698471
+      T_FireRender_FC_6: -592507446
+      T_FireRender_FC_60: -51937546
+      T_FireRender_FC_61: -1641554746
+      T_FireRender_FC_62: -2043756339
+      T_FireRender_FC_63: 581388136
+      T_FireRender_FC_7: -1215298609
+      T_FireRender_FC_8: 442221158
+      T_FireRender_FC_9: 856524512
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

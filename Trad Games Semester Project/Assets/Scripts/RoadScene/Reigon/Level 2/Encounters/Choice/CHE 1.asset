@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304af0e27f5cb3d479dde933e18b8ba7, type: 3}
+  m_Name: CHE 1
+  m_EditorClassIdentifier: 
+  choices:
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
+  - {fileID: 11400000, guid: 2d2fb3059146a764590f839ad408df9e, type: 2}
+  choiceText: Lobotomy time!
+  optionTexts:
+  - Guhh
+  - Wuhh
+  - GHHnghg
+  - OUghh

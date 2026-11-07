@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b24f9a1b9a02a4c94f4f36807cd81d, type: 3}
+  m_Name: Level 0
+  m_EditorClassIdentifier: 
+  maxCombatEncounters: 1
+  minCombatEncounters: 1
+  combatEncounters:
+  - {fileID: 11400000, guid: a3d6c27d722a09e46b0bdb602f029ff8, type: 2}
+  dialogueEncounters:
+  - {fileID: 11400000, guid: 7a3538b2c4702ff41a597781dd5faf71, type: 2}
+  - {fileID: 11400000, guid: dca3de018aa1250438ba02fe5215a196, type: 2}
+  - {fileID: 11400000, guid: 75da7c0dcfc8f0e498d52311b30239da, type: 2}
+  choiceEncounters: []
+  ordered: 1
+  encounterOrder:
+  - {fileID: 11400000, guid: 7a3538b2c4702ff41a597781dd5faf71, type: 2}
+  - {fileID: 11400000, guid: dca3de018aa1250438ba02fe5215a196, type: 2}
+  - {fileID: 11400000, guid: a3d6c27d722a09e46b0bdb602f029ff8, type: 2}
+  - {fileID: 11400000, guid: 75da7c0dcfc8f0e498d52311b30239da, type: 2}

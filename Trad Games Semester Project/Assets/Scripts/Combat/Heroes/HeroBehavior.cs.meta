@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4ff60fc1b6593fe41a79cd1793db05ab
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - effectDisplayPosition: {instanceID: 0}
+  - hero: {instanceID: 0}
+  - HPBar: {instanceID: 0}
+  - damageReadoutPrefab: {fileID: 4429718679735075527, guid: fcd15070843acb842b2d99ff8f0b8c16, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

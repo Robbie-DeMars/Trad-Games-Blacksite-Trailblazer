@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b122cdcf88f035645a0cdab453eb5a4f, type: 3}
+  m_Name: Tutorial Text 3
+  m_EditorClassIdentifier: 
+  characterImages:
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  - {fileID: 8995154407686431259, guid: 3b12507c9f454ac40911aa5f7e98776a, type: 3}
+  isEnemy: 0000
+  dialogue:
+  - One last tip, party members will slowly heal outside of combat, but pressing
+    [E] lets you opt them out of combat and choose their starting position, which
+    heals them rapidly after a battle.
+  - Try leveling up your party members at camp!

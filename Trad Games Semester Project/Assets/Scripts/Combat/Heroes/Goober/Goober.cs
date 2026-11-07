@@ -1,0 +1,137 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Goober", menuName = "Scriptable Objects/BattleActors/Heroes/Goober")]
+public class Goober : Hero 
+{
+    public override int Attack1(GameObject[] heroes, GameObject[] enemies, int currentPosition)
+    {
+        if (enemies[currentPosition] !=  null)
+            enemies[currentPosition].GetComponent<EnemyBehavior>().IncrementHP(-Atk);
+        return GetAPOfAttack1();
+    }
+
+    public override int Attack2(GameObject[] heroes, GameObject[] enemies, int currentPosition)
+    {
+        return GetAPOfAttack2();
+    }
+
+    public override int Attack3(GameObject[] heroes, GameObject[] enemies, int currentPosition)
+    {
+        return GetAPOfAttack3();
+    }
+
+    public override int GetAPOfAttack1()
+    {
+        return 3;
+    }
+
+    public override int GetAPOfAttack2()
+    {
+        return 0;
+    }
+
+    public override int GetAPOfAttack3()
+    {
+        return 0;
+    }
+
+    public override List<List<int>> GetAttack1Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() {};
+        List<int> enemies = new List<int>() { currentSpace };
+        return new List<List<int>>() { heroes, enemies };
+    }
+
+    public override string GetAttack1Tooltip()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override List<List<int>> GetAttack2Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() { };
+        List<int> enemies = new List<int>() { };
+        return new List<List<int>>() { heroes, enemies };
+    }
+
+    public override string GetAttack2Tooltip()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override List<List<int>> GetAttack3Targets(int currentSpace)
+    {
+        List<int> heroes = new List<int>() { };
+        List<int> enemies = new List<int>() { };
+        return new List<List<int>>() { heroes, enemies };
+    }
+
+    public override string GetAttack3Tooltip()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void LoadStats()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator PlayAttack1Anim(int currentSpace)
+    {
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentSpace);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
+    }
+
+   
+    public override IEnumerator PlayAttack2Anim(int currentSpace)
+    {
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentSpace);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
+    }
+
+
+    public override IEnumerator PlayAttack3Anim(int currentSpace)
+    {
+        View view = GameObject.FindGameObjectWithTag("View").GetComponent<View>();
+        List<List<int>> targets = GetAttack1Targets(currentSpace);
+
+        //Activate particles at target's positions
+        for (int i = 0; i < targets[0].Count; i++)
+            view.ActivateHeroParticle(targets[0][i]);
+        for (int i = 0; i < targets[1].Count; i++)
+            view.ActivateEnemyParticle(targets[1][i]);
+
+        yield return new WaitForSeconds(0.2f);
+        view.clearParticles();
+    }
+
+    public override void ReplenishHP()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SaveStats(int currentHP)
+    {
+        throw new System.NotImplementedException();
+    }
+}
